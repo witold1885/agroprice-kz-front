@@ -1,0 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#main-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1440px) {
+  #main-container {
+    width: calc(1200 * 100vw / 1440);
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #main-container {
+    width: 688px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main-container {
+    width: calc(688 * 100vw / 768);
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #main-container {
+    width: 280px;
+    margin: 0 auto;
+  }
+}

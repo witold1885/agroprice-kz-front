@@ -1,0 +1,560 @@
+@import '@/assets/styles/_variables.scss';
+@import '@/assets/styles/_mixins.scss';
+
+.main-catalog {
+	width: 100%;
+	margin: 68px 0 0;
+	&__title {
+		margin: 0 0 37px;
+	}
+	&__grid {
+		width: 100%;
+		grid-column-gap: 20px;
+		grid-row-gap: 20px;
+	}
+}
+
+.category-card {
+	width: 285px;
+	height: 280px;
+	background: $color_white;
+	box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
+	border-radius: 8px;
+	padding-top: 30px;
+	padding-left: 26px;
+	position: relative;
+	cursor: pointer;
+	&__title {
+        @include font-ubuntu(500, 21px, 24px);
+		text-align: left;
+		color: #3F3F3F;
+	}
+	&__subtitle {
+		margin-top: 10px;
+        @include font-ubuntu(400, 18px, 21px);
+		text-align: left;
+		color: #BEBEBE;
+	}
+	&__image {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+}
+
+.sell-block {
+	width: 100%;
+	height: 143px;
+	background-color: #3FBD61;
+	background-image: url('@/assets/images/sell-block-mask.png');
+	border-radius: 19px;
+	margin: 57px 0 71px;
+	grid-row-gap: 23px;
+	&__text {
+        @include font-ubuntu(700, 24px, 28px);
+		text-align: center;
+		color: $color_white;
+	}
+	&__button {
+		width: 174px;
+		height: 41px;
+		background: transparent;
+		border: 1px solid $color_white;
+		border-radius: 8px;
+		box-shadow: none;
+        @include font-ubuntu(500, 12px, 14px);
+		text-align: center;
+		color: $color_white;
+	}
+}
+
+.products-carousel {
+	overflow-x: hidden;
+	padding-bottom: 73px;
+	width: 1215px;
+	margin-left: -7.5px;
+	margin-right: -7.5px;
+	&__container {
+		position: relative;
+	}
+	&__wrap {
+		width: 1200px;
+		margin: 0 auto;
+	}
+	&__title {
+		width: 1200px;
+		margin: 0 auto 40px;
+	}
+	&__slide {
+		box-sizing: border-box;
+	}
+	&__nav {
+		width: 100%;
+		position: absolute;
+		top: 229px;
+		&-buttons {
+			width: 100%;
+			position: relative;
+		}
+		&-button {
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			&-prev {
+				left: -87px;
+			}
+			&-next {
+				right: -87px;
+			}
+		}
+	}
+}
+
+.catalog-product {
+	width: 285px;
+	height: 365px;
+	background: $color_white;
+	border-radius: 8px;
+	padding: 25px 17px 18px;
+	box-sizing: border-box;
+	&__image {
+		width: 164px;
+		height: 164px;
+		margin-left: 36px;
+		margin-bottom: 18px;
+	}
+	&__subcategory {
+		margin-left: 3px;
+		margin-bottom: 9px;
+        @include font-ubuntu(400, 14px, 16px);
+		color: #BEBEBE;
+		text-align: left;
+	}
+	&__title {
+		margin-left: 3px;
+		margin-bottom: 33px;
+        @include font-ubuntu(400, 14px, 144.4%);
+		color: $color_black;
+		text-align: left;
+	}
+	&__bottom {
+		width: 100%;
+		margin-left: 0;
+	}
+	&__price {
+		&-main {
+			margin-bottom: 4px;
+        	@include font-ubuntu(500, 20px, 23px);
+			color: $color_black;
+			text-align: left;			
+		}
+		&-old {
+        	@include font-ubuntu(400, 12px, 14px);
+			color: #BDBDBD;
+			text-align: left;
+			text-decoration: line-through;
+		}
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.main-catalog {
+		margin: calc(68 * 100vw / 1440) 0 0;
+		&__title {
+			margin: 0 0 calc(37 * 100vw / 1440);
+		}
+		&__grid {
+			grid-column-gap: calc(20 * 100vw / 1440);
+			grid-row-gap: calc(20 * 100vw / 1440);
+		}
+	}
+
+	.category-card {
+		width: calc(285 * 100vw / 1440);
+		height: calc(280 * 100vw / 1440);
+		border-radius: calc(8 * 100vw / 1440);
+		padding-top: calc(30 * 100vw / 1440);
+		padding-left: calc(26 * 100vw / 1440);
+		&__title {
+	        @include font-ubuntu(500, calc(21 * 100vw / 1440), calc(24 * 100vw / 1440));
+		}
+		&__subtitle {
+			margin-top: calc(10 * 100vw / 1440);
+	        @include font-ubuntu(400, calc(18 * 100vw / 1440), calc(21 * 100vw / 1440));
+		}
+	}
+
+	.sell-block {
+		width: 100%;
+		height: calc(143 * 100vw / 1440);
+		border-radius: calc(19 * 100vw / 1440);
+		margin: calc(57 * 100vw / 1440) 0 calc(71 * 100vw / 1440);
+		grid-row-gap: calc(23 * 100vw / 1440);
+		&__text {
+	        @include font-ubuntu(700, calc(24 * 100vw / 1440), calc(28 * 100vw / 1440));
+		}
+		&__button {
+			width: calc(174 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+	        @include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+	}
+
+	.products-carousel {
+		padding-bottom: calc(73 * 100vw / 1440);
+		width: calc(1215 * 100vw / 1440);
+		margin-left: calc(-1 * 7.5 * 100vw / 1440);
+		margin-right: calc(-1 * 7.5 * 100vw / 1440);
+		&__wrap {
+			width: calc(1200 * 100vw / 1440);
+		}
+		&__title {
+			width: calc(1200 * 100vw / 1440);
+			margin: 0 auto calc(40 * 100vw / 1440);
+		}
+		&__nav {
+			top: calc(229 * 100vw / 1440);
+			&-button {
+				&-prev {
+					left: calc(-1 * 87 * 100vw / 1440);
+				}
+				&-next {
+					right: calc(-1 * 87 * 100vw / 1440);
+				}
+			}
+		}
+	}
+
+	.catalog-product {
+		width: calc(285 * 100vw / 1440);
+		height: calc(365 * 100vw / 1440);
+		border-radius: calc(8 * 100vw / 1440);
+		padding: calc(25 * 100vw / 1440) calc(17 * 100vw / 1440) calc(18 * 100vw / 1440);
+		&__image {
+			width: calc(164 * 100vw / 1440);
+			height: calc(164 * 100vw / 1440);
+			margin-left: calc(36 * 100vw / 1440);
+			margin-bottom: calc(18 * 100vw / 1440);
+		}
+		&__subcategory {
+			margin-left: calc(3 * 100vw / 1440);
+			margin-bottom: calc(9 * 100vw / 1440);
+	        @include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+		}
+		&__title {
+			margin-left: calc(3 * 100vw / 1440);
+			margin-bottom: calc(33 * 100vw / 1440);
+	        @include font-ubuntu(400, calc(14 * 100vw / 1440), 144.4%);
+		}
+		&__price {
+			&-main {
+				margin-bottom: calc(4 * 100vw / 1440);
+	        	@include font-ubuntu(500, calc(20 * 100vw / 1440), calc(23 * 100vw / 1440));
+			}
+			&-old {
+	        	@include font-ubuntu(400, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.main-catalog {
+		margin: 45px 0 0;
+		&__title {
+			margin: 0 0 39px;
+		}
+	}
+
+	.category-card {
+		width: 216px;
+		height: 212px;
+		padding-top: 18px;
+		padding-left: 19px;
+		&__title {
+	        @include font-ubuntu(500, 16px, 18px);
+		}
+		&__subtitle {
+			margin-top: 12px;
+	        @include font-ubuntu(400, 14px, 16px);
+		}
+	}
+
+	.sell-block {
+		height: 143px;
+		background-image: url('@/assets/images/sell-block-mask-md.png');
+		border-radius: 19px;
+		margin: 60px 0 58px;
+		grid-row-gap: 23px;
+		&__text {
+	        @include font-ubuntu(700, 24px, 28px);
+		}
+		&__button {
+			width: 174px;
+			height: 41px;
+			border-radius: 8px;
+	        @include font-ubuntu(500, 12px, 14px);
+		}
+	}
+
+	.products-carousel {
+		padding-bottom: 62px;
+		width: 700px;
+		&__wrap {
+			width: 688px;
+		}
+		&__title {
+			width: 688px;
+			margin: 0 auto 25px;
+		}
+		&__nav {
+			top: -2px;
+			&-button {
+				&-prev {
+					left: unset;
+					right: 55px;
+				}
+				&-next {
+					right: 0;
+				}
+			}
+		}
+	}
+
+	.catalog-product {
+		width: 216px;
+		height: 298px;
+		padding: 33px 12px 13px 13px;
+		&__image {
+			width: 138px;
+			height: 96px;
+			margin-left: 22px;
+			margin-bottom: 15px;
+		}
+		&__subcategory {
+			margin-left: 0;
+			margin-bottom: 11px;
+	        @include font-ubuntu(400, 12px, 14px);
+		}
+		&__title {
+			margin-left: 0;
+			margin-bottom: 33px;
+	        @include font-ubuntu(400, 14px, 144.4%);
+		}
+		&__price {
+			&-main {
+	        	@include font-ubuntu(500, 16px, 18px);
+			}
+			&-old {
+				margin-left: 1px;
+	        	@include font-ubuntu(400, 12px, 14px);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.main-catalog {
+		margin: calc(45 * 100vw / 768) 0 0;
+		&__title {
+			margin: 0 0 calc(39 * 100vw / 768);
+		}
+	}
+
+	.category-card {
+		width: calc(216 * 100vw / 768);
+		height: calc(212 * 100vw / 768);
+		padding-top: calc(18 * 100vw / 768);
+		padding-left: calc(19 * 100vw / 768);
+		&__title {
+	        @include font-ubuntu(500, calc(16 * 100vw / 768), calc(18 * 100vw / 768));
+		}
+		&__subtitle {
+			margin-top: calc(12 * 100vw / 768);
+	        @include font-ubuntu(400, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
+		}
+	}
+
+	.sell-block {
+		height: calc(143 * 100vw / 768);
+		border-radius: calc(19 * 100vw / 768);
+		margin: calc(60 * 100vw / 768) 0 calc(58 * 100vw / 768);
+		grid-row-gap: calc(23 * 100vw / 768);
+		&__text {
+	        @include font-ubuntu(700, calc(24 * 100vw / 768), calc(28 * 100vw / 768));
+		}
+		&__button {
+			width: calc(174 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+			border-radius: calc(8 * 100vw / 768);
+	        @include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		}
+	}
+
+	.products-carousel {
+		padding-bottom: calc(62 * 100vw / 768);
+		width: calc(700 * 100vw / 768);
+		&__wrap {
+			width: calc(688 * 100vw / 768);
+		}
+		&__title {
+			width: calc(688 * 100vw / 768);
+			margin: 0 auto calc(25 * 100vw / 768);
+		}
+		&__nav {
+			top: calc(-1 * 2 * 100vw / 768);
+			&-button {
+				&-prev {
+					right: calc(55 * 100vw / 768);
+				}
+			}
+		}
+	}
+
+	.catalog-product {
+		width: calc(216 * 100vw / 768);
+		height: calc(298 * 100vw / 768);
+		padding: calc(33 * 100vw / 768) calc(12 * 100vw / 768) calc(13 * 100vw / 768) calc(13 * 100vw / 768);
+		&__image {
+			width: calc(138 * 100vw / 768);
+			height: calc(96 * 100vw / 768);
+			margin-left: calc(22 * 100vw / 768);
+			margin-bottom: calc(15 * 100vw / 768);
+		}
+		&__subcategory {
+			margin-bottom: calc(11 * 100vw / 768);
+	        @include font-ubuntu(400, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		}
+		&__title {
+			margin-bottom: calc(33 * 100vw / 768);
+	        @include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
+		}
+		&__price {
+			&-main {
+	        	@include font-ubuntu(500, calc(16 * 100vw / 768), calc(18 * 100vw / 768));
+			}
+			&-old {
+				margin-left: calc(1 * 100vw / 768);
+	        	@include font-ubuntu(400, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.main-catalog {
+		margin: 43px 0 0;
+		&__title {
+			margin: 0 0 21px;
+		}
+		&__grid {
+			width: 100%;
+			grid-column-gap: 18px;
+			grid-row-gap: 20px;
+		}
+	}
+
+	.category-card {
+		width: 131px;
+		height: 129px;
+		padding-top: 10px;
+		padding-left: 12px;
+		&__title {
+	        @include font-ubuntu(500, 10px, 11px);
+		}
+		&__subtitle {
+			margin-top: 5px;
+	        @include font-ubuntu(400, 10px, 11px);
+		}
+	}
+
+	.sell-block {
+		height: 143px;
+		background-image: url('@/assets/images/sell-block-mask-sm.png');
+		border-radius: 5px;
+		margin: 50px 0 45px;
+		grid-row-gap: 9px;
+		&__text {
+	        @include font-ubuntu(700, 18px, 21px);
+		}
+		&__button {
+			width: 174px;
+			height: 41px;
+			border-radius: 8px;
+	        @include font-ubuntu(500, 12px, 14px);
+		}
+	}
+
+	.products-carousel {
+		padding-bottom: 34px;
+		width: 290px;
+		&__wrap {
+			width: 280px;
+			margin: 0 auto;
+		}
+		&__title {
+			width: 280px;
+			margin: 0 auto 17px;
+		}
+		&__slide {
+			box-sizing: border-box;
+		}
+		&__nav {
+			top: 0;
+			&-button {
+				&-prev {
+					left: unset;
+					right: 34px;
+				}
+				&-next {
+					right: 0;
+				}
+			}
+		}
+	}
+
+	.catalog-product {
+		position: relative;
+		width: 131px;
+		height: 220px;
+		padding: 14px 7px 7px 5px;
+		&__image {
+			width: 106px;
+			height: 74px;
+			margin-left: 2px;
+			margin-bottom: 10px;
+		}
+		&__subcategory {
+			margin-left: 2px;
+			margin-bottom: 4px;
+	        @include font-ubuntu(400, 10px, 11px);
+		}
+		&__title {
+			margin-left: 2px;
+			margin-bottom: 15px;
+	        @include font-ubuntu(400, 10px, 144.4%);
+		}
+		&__price {
+			&-main {
+				margin-bottom: 3px;
+	        	@include font-ubuntu(500, 14px, 16px);
+			}
+			&-old {
+	        	@include font-ubuntu(400, 10px, 11px);
+			}
+		}
+		&__favorite {
+			width: 31px!important;
+			height: 31px!important;
+			border-radius: 5px!important;
+			position: absolute;
+			right: 7px;
+			bottom: 7px;
+			& > .favorites-button__icon {
+				width: 13.19px;
+				height: 13.19px;
+			}
+		}
+	}
+}

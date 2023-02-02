@@ -1,0 +1,7 @@
+@mixin font-ubuntu ($font-weight: 400, $font-size, $line-height) {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+}

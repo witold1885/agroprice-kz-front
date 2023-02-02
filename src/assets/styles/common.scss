@@ -1,0 +1,324 @@
+@import '@/assets/styles/_variables.scss';
+
+/* @font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Regular'), url('@/assets/fonts/Ubuntu-R.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Italic'), url('@/assets/fonts/Ubuntu-RI.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Light'), url('@/assets/fonts/Ubuntu-L.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Light Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Light Italic'), url('@/assets/fonts/Ubuntu-LI.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Medium'), url('@/assets/fonts/Ubuntu-M.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Medium Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Medium Italic'), url('@/assets/fonts/Ubuntu-MI.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Bold'), url('@/assets/fonts/Ubuntu-B.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Bold Italic'), url('@/assets/fonts/Ubuntu-BI.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu Condensed Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu Condensed Regular'), url('@/assets/fonts/Ubuntu-C.woff') format('woff');
+} */
+
+@font-face {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Circe'), url('@/assets/fonts/CRC55.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Circe Extra Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Circe Extra Light'), url('@/assets/fonts/CRC25.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Circe Light';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Circe Light'), url('@/assets/fonts/CRC35.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Circe Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Circe Bold'), url('@/assets/fonts/CRC65.woff') format('woff');
+}
+
+div {
+	box-sizing: border-box;
+}
+
+a, button {
+	cursor: pointer;
+}
+
+button {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+input:focus, input:active {
+	border: none!important;
+	outline: none!important;
+}
+
+.d-flex {
+	display: flex;
+	// justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.flex-column {
+	flex-direction: column!important;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.justify-content-center {
+	justify-content: center!important;
+}
+
+.justify-content-between {
+	justify-content: space-between!important;
+}
+
+.justify-content-around {
+	justify-content: space-around!important;
+}
+
+.justify-content-end {
+	justify-content: flex-end!important;
+}
+
+.align-items-center {
+	align-items: center!important;
+}
+
+.align-items-stretch {
+	align-items: stretch!important;
+}
+
+.align-items-end {
+	align-items: flex-end!important;
+}
+
+.border-white {
+	border: 1px solid $color_white;
+}
+
+.border-grey {
+	border: 1px solid #ECECEC;	
+}
+
+.border-green {
+	border: 1px solid $color_green;	
+}
+
+h1 {
+	margin-top: 0;
+}
+
+.heading-1 {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 32px;
+	line-height: 37px;
+	color: $color_black;
+}
+
+@media screen and (max-width: 1440px) {
+	.heading-1 {
+		font-size: calc(32 * 100vw / 1440);
+		line-height: calc(37 * 100vw / 1440);
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.heading-1 {
+		font-size: 24px;
+		line-height: 28px;
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.heading-1 {
+		font-size: 18px;
+		line-height: 21px;
+	}
+}
+
+.favorites-button {
+	display: flex;
+	width: 47px;
+	height: 47px;
+	border-radius: 8px;
+	cursor: pointer;
+	&__icon {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.favorites-button {
+		width: calc(47 * 100vw / 1440);
+		height: calc(47 * 100vw / 1440);
+		border-radius: calc(8 * 100vw / 1440);
+		&__icon {
+			width: calc(20 * 100vw / 1440);
+			height: calc(20 * 100vw / 1440);
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.favorites-button {
+		width: 47px;
+		height: 47px;
+		border-radius: 8px;
+		&__icon {
+			width: 20px;
+			height: 20px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.favorites-button {
+		width: calc(47 * 100vw / 768);
+		height: calc(47 * 100vw / 768);
+		border-radius: calc(8 * 100vw / 768);
+		&__icon {
+			width: calc(20 * 100vw / 768);
+			height: calc(20 * 100vw / 768);
+		}
+	}
+}
+
+.nav-button {
+	width: 37px;
+	height: 37px;
+	border-radius: 100%;
+	background: transparent;
+	&-icon {
+		width: 6px;
+		height: 12px;
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.nav-button {
+		width: calc(37 * 100vw / 1440);
+		height: calc(37 * 100vw / 1440);
+		&-icon {
+			width: calc(6 * 100vw / 1440);
+			height: calc(12 * 100vw / 1440);
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.nav-button {
+		width: 37px;
+		height: 37px;
+		&-icon {
+			width: 6px;
+			height: 12px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.nav-button {
+		width: calc(37 * 100vw / 768);
+		height: calc(37 * 100vw / 768);
+		&-icon {
+			width: calc(6 * 100vw / 768);
+			height: calc(12 * 100vw / 768);
+		}
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.nav-button {
+		width: 29px;
+		height: 29px;
+		&-icon {
+			width: 4.7px;
+			height: 9.41px;
+		}
+	}
+}
+
+.close-button {
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
+	margin-top: 10px;
+	background: transparent;
+	position: relative;
+	&__icon {
+		width: 12.02px;
+		height: 12.02px;
+		position: absolute;
+		top: 11px;
+		left: 11px;
+		right: 11px;
+		bottom: 11px;
+	}
+}
+
+.carousel__viewport {
+	overflow: visible!important;
+}
+

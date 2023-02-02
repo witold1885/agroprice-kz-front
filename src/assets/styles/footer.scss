@@ -1,0 +1,629 @@
+@import '@/assets/styles/_variables.scss';
+@import '@/assets/styles/_mixins.scss';
+
+.footer {
+	width: 100%;
+	height: 392px;
+	background: #F4F4F4;
+	&__wrap {
+		width: 1200px;
+		height: 100%;
+		margin: 0 auto;
+		justify-content: space-between;
+	}
+	&__info {
+		margin-top: 49px;
+	}
+	&__logo {
+		width: 97px;
+		height: 41px;
+        @include font-ubuntu(300, 36px, 41px);
+		color: $color_black;
+	}
+	&__socials {
+		margin-top: 33px;
+		grid-column-gap: 9px;
+		&-button {
+			width: 34px;
+			height: 34px;
+			background: $color_green;
+			border-radius: 4px;
+		}
+	}
+	&__contacts {
+		max-width: 231px;
+		margin-top: 25px;
+		grid-row-gap: 11px;
+		&-location {
+			grid-column-gap: 16px;
+			&-icon {
+				width: 14px;
+				height: 19px;
+			}
+			&-value {
+        		@include font-ubuntu(400, 14px, 18px);
+				color: #232323;
+			}
+		}
+		&-phone {
+			grid-column-gap: 16px;
+			&-icon {
+				width: 14px;
+				height: 15px;
+			}
+			&-value {
+        		@include font-ubuntu(500, 16px, 24px);
+				color: #232323;
+			}
+		}
+	}
+	&__copyright {
+		display: block;
+		margin-top: 55px;
+        @include font-ubuntu(300, 14px, 16px);
+		color: rgba(0, 0, 0, 0.53);
+		&-mobile {
+			display: none;
+		}
+	}
+	&__nav {
+		margin-top: 57px;
+		margin-left: 34px;
+		&-item {
+			width: 177px;
+			grid-row-gap: 18px;
+			&-1 {
+				margin-right: 48px;
+			}
+			&-2 {
+				margin-right: 74px;
+			}
+			&-title {
+        		@include font-ubuntu(500, 14px, 16px);
+				color: $color_black;
+			}
+			&-list {
+				width: 177px;
+				height: 232px;
+				justify-content: space-between;
+        		@include font-ubuntu(300, 14px, 16px);
+				color: rgba(0, 0, 0, 0.53);
+			}
+		}
+	}
+	&__right {
+		margin-top: 60px;
+		flex-direction: column;
+		grid-row-gap: 66px;
+	}
+	&__account {
+		&-desktop {
+			display: flex;
+		}
+		&-mobile {
+			display: none;
+		}
+		grid-row-gap: 11px;
+		&-title {
+			width: 100%;
+        	@include font-ubuntu(500, 14px, 16px);
+			text-align: center;
+			color: $color_black;
+		}
+		&-buttons {
+			flex-direction: column;
+			grid-row-gap: 8px;
+		}
+		&-button {
+			width: 205px;
+			height: 39px;
+			border-radius: 5px;
+        	@include font-ubuntu(400, 13px, 14px);
+			text-align: center;
+			&-signin {
+				color: $color_white;
+				background: $color_green;
+				border: none;
+			}
+			&-signup {
+				color: $color_black;
+				background: transparent;
+				border: 1px solid $color_green;
+			}
+		}
+	}
+	&__payments {
+		grid-row-gap: 15px;
+		&-info {
+			max-width: 182px;
+        	@include font-ubuntu(300, 14px, 21px);
+			color: #151515;
+		}
+		&-cards {
+			grid-column-gap: 15px;
+		}
+		&-card {
+			width: 44px;
+			height: 26px;
+		}
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.footer {
+		height: calc(392 * 100vw / 1440);
+		&__wrap {
+			width: calc(1200 * 100vw / 1440);
+		}
+		&__info {
+			margin-top: calc(49 * 100vw / 1440);
+		}
+		&__logo {
+			width: calc(97 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+	        @include font-ubuntu(300, calc(36 * 100vw / 1440), calc(41 * 100vw / 1440));
+		}
+		&__socials {
+			margin-top: calc(33 * 100vw / 1440);
+			grid-column-gap: calc(9 * 100vw / 1440);
+			&-button {
+				width: calc(34 * 100vw / 1440);
+				height: calc(34 * 100vw / 1440);
+				border-radius: calc(4 * 100vw / 1440);
+			}
+		}
+		&__contacts {
+			max-width: calc(231 * 100vw / 1440);
+			margin-top: calc(25 * 100vw / 1440);
+			grid-row-gap: calc(11 * 100vw / 1440);
+			&-location {
+				grid-column-gap: calc(16 * 100vw / 1440);
+				&-icon {
+					width: calc(14 * 100vw / 1440);
+					height: calc(19 * 100vw / 1440);
+				}
+				&-value {
+	        		@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(18 * 100vw / 1440));
+				}
+			}
+			&-phone {
+				grid-column-gap: calc(16 * 100vw / 1440);
+				&-icon {
+					width: calc(14 * 100vw / 1440);
+					height: calc(15 * 100vw / 1440);
+				}
+				&-value {
+	        		@include font-ubuntu(500, calc(16 * 100vw / 1440), calc(24 * 100vw / 1440));
+				}
+			}
+		}
+		&__copyright {
+			margin-top: calc(55 * 100vw / 1440);
+	        @include font-ubuntu(300, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+		}
+		&__nav {
+			margin-top: calc(57 * 100vw / 1440);
+			margin-left: calc(34 * 100vw / 1440);
+			&-item {
+				width: calc(177 * 100vw / 1440);
+				grid-row-gap: calc(18 * 100vw / 1440);
+				&-1 {
+					margin-right: calc(48 * 100vw / 1440);
+				}
+				&-2 {
+					margin-right: calc(74 * 100vw / 1440);
+				}
+				&-title {
+	        		@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+				}
+				&-list {
+					width: calc(177 * 100vw / 1440);
+					height: calc(232 * 100vw / 1440);
+	        		@include font-ubuntu(300, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+				}
+			}
+		}
+		&__right {
+			margin-top: calc(60 * 100vw / 1440);
+			grid-row-gap: calc(66 * 100vw / 1440);
+		}
+		&__account {
+			grid-row-gap: calc(11 * 100vw / 1440);
+			&-title {
+	        	@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+			}
+			&-buttons {
+				grid-row-gap: calc(8 * 100vw / 1440);
+			}
+			&-button {
+				width: calc(205 * 100vw / 1440);
+				height: calc(39 * 100vw / 1440);
+				border-radius: calc(5 * 100vw / 1440);
+	        	@include font-ubuntu(400, calc(13 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
+		}
+		&__payments {
+			grid-row-gap: calc(15 * 100vw / 1440);
+			&-info {
+				max-width: calc(182 * 100vw / 1440);
+	        	@include font-ubuntu(300, calc(14 * 100vw / 1440), calc(21 * 100vw / 1440));
+			}
+			&-cards {
+				grid-column-gap: calc(15 * 100vw / 1440);
+			}
+			&-card {
+				width: calc(44 * 100vw / 1440);
+				height: calc(26 * 100vw / 1440);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.footer {
+		height: 393px;
+		&__wrap {
+			width: 688px;
+			flex-direction: column!important;
+			justify-content: flex-start;
+		}
+		&__info {
+			margin-top: 27px;
+		}
+		&__logo {
+			width: 97px;
+			height: 41px;
+	        @include font-ubuntu(300, 36px, 41px);
+		}
+		&__socials {
+			margin-top: 12px;
+			grid-column-gap: 7px;
+			&-button {
+				width: 26px;
+				height: 26px;
+				border-radius: 4px;
+			}
+		}
+		&__contacts {
+			max-width: unset;
+			min-width: 172px;
+			margin-top: 18px;
+			grid-row-gap: 18px;
+			&-location {
+				grid-column-gap: 11px;
+				&-icon {
+					width: 14px;
+					height: 19px;
+				}
+				&-value {
+	        		@include font-ubuntu(400, 12px, 18px);
+				}
+			}
+			&-phone {
+				grid-column-gap: 11px;
+				&-icon {
+					width: 14px;
+					height: 15px;
+				}
+				&-value {
+	        		@include font-ubuntu(500, 16px, 24px);
+				}
+			}
+		}
+		&__copyright {
+			display: none;
+			&-mobile {
+				display: block;
+				margin-top: 11px;
+		        @include font-ubuntu(300, 12px, 14px);
+				color: rgba(0, 0, 0, 0.53);
+			}
+		}
+		&__nav {
+			margin-top: 35px;
+			margin-left: 36px;
+			&-item {
+				width: 152px;
+				grid-row-gap: 20px;
+				&-1 {
+					margin-right: 24px;
+				}
+				&-2 {
+					margin-right: 24px;
+				}
+				&-title {
+	        		@include font-ubuntu(500, 12px, 14px);
+				}
+				&-list {
+					width: 152px;
+					height: 176px;
+	        		@include font-ubuntu(300, 12px, 14px);
+				}
+			}
+		}
+		&__right {
+			margin-top: 25px;
+			grid-column-gap: 175px;
+			flex-direction: row-reverse;
+			justify-content: space-between!important;
+			width: 100%;
+		}
+		&__account {
+			grid-row-gap: 15px;
+			&-title {
+	        	@include font-ubuntu(500, 12px, 14px);
+				text-align: left;
+			}
+			&-buttons {
+				flex-direction: row;
+				grid-column-gap: 9px;
+			}
+			&-button {
+				width: 137px;
+				height: 39px;
+				border-radius: 5px;
+	        	@include font-ubuntu(400, 12px, 14px);
+			}
+		}
+		&__payments {
+			grid-row-gap: 17px;
+			&-info {
+				max-width: 228px;
+	        	@include font-ubuntu(300, 12px, 21px);
+			}
+			&-cards {
+				grid-column-gap: 15px;
+			}
+			&-card {
+				width: 44px;
+				height: 26px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.footer {
+		height: calc(393 * 100vw / 768);
+		&__wrap {
+			width: calc(688 * 100vw / 768);
+		}
+		&__info {
+			margin-top: calc(27 * 100vw / 768);
+		}
+		&__logo {
+			width: calc(97 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+	        @include font-ubuntu(300, calc(36 * 100vw / 768), calc(41 * 100vw / 768));
+		}
+		&__socials {
+			margin-top: calc(12 * 100vw / 768);
+			grid-column-gap: calc(7 * 100vw / 768);
+			&-button {
+				width: calc(26 * 100vw / 768);
+				height: calc(26 * 100vw / 768);
+			}
+		}
+		&__contacts {
+			min-width: calc(172 * 100vw / 768);
+			margin-top: calc(18 * 100vw / 768);
+			grid-row-gap: calc(18 * 100vw / 768);
+			&-location {
+				grid-column-gap: calc(11 * 100vw / 768);
+				&-icon {
+					width: calc(14 * 100vw / 768);
+					height: calc(19 * 100vw / 768);
+				}
+				&-value {
+	        		@include font-ubuntu(400, calc(12 * 100vw / 768), calc(18 * 100vw / 768));
+				}
+			}
+			&-phone {
+				grid-column-gap: calc(11 * 100vw / 768);
+				&-icon {
+					width: calc(14 * 100vw / 768);
+					height: calc(15 * 100vw / 768);
+				}
+				&-value {
+	        		@include font-ubuntu(500, calc(16 * 100vw / 768), calc(24 * 100vw / 768));
+				}
+			}
+		}
+		&__copyright {
+			&-mobile {
+				margin-top: calc(11 * 100vw / 768);
+		        @include font-ubuntu(300, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+			}
+		}
+		&__nav {
+			margin-top: calc(35 * 100vw / 768);
+			margin-left: calc(36 * 100vw / 768);
+			&-item {
+				width: calc(152 * 100vw / 768);
+				grid-row-gap: calc(20 * 100vw / 768);
+				&-1 {
+					margin-right: calc(24 * 100vw / 768);
+				}
+				&-2 {
+					margin-right: calc(24 * 100vw / 768);
+				}
+				&-title {
+	        		@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+				}
+				&-list {
+					width: calc(152 * 100vw / 768);
+					height: calc(176 * 100vw / 768);
+	        		@include font-ubuntu(300, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+				}
+			}
+		}
+		&__right {
+			margin-top: calc(25 * 100vw / 768);
+			grid-column-gap: calc(175 * 100vw / 768);
+		}
+		&__account {
+			grid-row-gap: calc(15 * 100vw / 768);
+			&-title {
+	        	@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+			}
+			&-buttons {
+				grid-column-gap: calc(9 * 100vw / 768);
+			}
+			&-button {
+				width: calc(137 * 100vw / 768);
+				height: calc(39 * 100vw / 768);
+				border-radius: calc(5 * 100vw / 768);
+	        	@include font-ubuntu(400, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+			}
+		}
+		&__payments {
+			grid-row-gap: calc(17 * 100vw / 768);
+			&-info {
+				max-width: calc(228 * 100vw / 768);
+	        	@include font-ubuntu(300, calc(12 * 100vw / 768), calc(21 * 100vw / 768));
+			}
+			&-cards {
+				grid-column-gap: calc(15 * 100vw / 768);
+			}
+			&-card {
+				width: calc(44 * 100vw / 768);
+				height: calc(26 * 100vw / 768);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.footer {
+		height: unset;
+		&__wrap {
+			width: 280px;
+			justify-content: flex-start;
+		}
+		&__left {
+			flex-direction: column;
+		}
+		&__info {
+			margin-top: 34px;
+		}
+		&__logo {
+			width: 97px;
+			height: 41px;
+	        @include font-ubuntu(300, 36px, 41px);
+		}
+		&__socials {
+			margin-top: 12px;
+			grid-column-gap: 7px;
+			&-button {
+				width: 26px;
+				height: 26px;
+				border-radius: 4px;
+			}
+		}
+		&__contacts {
+			max-width: 267px;
+			margin-top: 18px;
+			grid-row-gap: 12px;
+			&-location {
+				grid-column-gap: 11px;
+				&-icon {
+					width: 14px;
+					height: 19px;
+				}
+				&-value {
+	        		@include font-ubuntu(400, 12px, 18px);
+				}
+			}
+			&-phone {
+				grid-column-gap: 11px;
+				&-icon {
+					width: 14px;
+					height: 15px;
+				}
+				&-value {
+	        		@include font-ubuntu(500, 16px, 24px);
+				}
+			}
+		}
+		&__copyright {
+			&-mobile {
+				margin-top: 18px;
+				margin-bottom: 33px;
+		        @include font-ubuntu(300, 12px, 14px);
+			}
+		}
+		&__nav {
+			margin-top: 35px;
+			margin-left: 0;
+			flex-direction: column;
+			grid-row-gap: 27px;
+			&-item {
+				width: 280px;
+				grid-row-gap: 20px;
+				&-1 {
+					margin-right: 0;
+				}
+				&-2 {
+					margin-right: 0;
+				}
+				&-title {
+	        		@include font-ubuntu(500, 12px, 14px);
+				}
+				&-list {
+					width: 280px;
+					height: 95px;
+					grid-column-gap: 14px;
+					grid-row-gap: 13px;
+					justify-content: flex-start;
+	        		@include font-ubuntu(300, 12px, 14px);
+					flex-wrap: wrap;
+					& a {
+						width: 133px;
+					}
+				}
+			}
+		}
+		&__right {
+			margin-top: 29px;
+			justify-content: flex-start!important;
+			flex-direction: row;
+		}
+		&__account {
+			&-desktop {
+				display: none;
+			}
+			&-mobile {
+				display: flex;
+				margin-top: 24px;
+			}
+			grid-row-gap: 15px;
+			&-title {
+	        	@include font-ubuntu(500, 12px, 14px);
+			}
+			&-buttons {
+				flex-direction: row;
+				grid-row-gap: 8px;
+			}
+			&-button {
+				width: 136px;
+				height: 39px;
+				border-radius: 5px;
+	        	@include font-ubuntu(400, 12px, 14px);
+			}
+		}
+		&__payments {
+			grid-row-gap: 17px;
+			&-info {
+				max-width: 228px;
+	        	@include font-ubuntu(300, 12px, 21px);
+			}
+			&-cards {
+				grid-column-gap: 15px;
+			}
+			&-card {
+				width: 44px;
+				height: 26px;
+			}
+		}
+	}
+}

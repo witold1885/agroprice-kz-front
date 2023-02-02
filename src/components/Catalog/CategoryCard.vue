@@ -1,0 +1,67 @@
+<template>
+	<div class="category-card">
+		<div class="category-card__title">{{ category.title }}</div>
+		<div class="category-card__subtitle">{{ category.subtitle }}</div>
+		<img
+			class="category-card__image"
+			:src="require(`@/assets/images/categories/${category.image.replace('.png', '-' + breakpoint + '.png')}`)"
+			:style="{
+				width: imageWidth,
+				height: imageHeight,
+				right: getPosition('right'),
+				bottom: getPosition('bottom'),
+				transform: 'rotate(' + category.position[breakpoint].rotate + ')'
+			}"
+		/>
+	</div>
+</template>
+
+<script>
+export default {
+	props: {
+		category: {
+			type: Object,
+			default: null
+		}
+	},
+	data () {
+		return {
+			breakpoint: 'lg',
+			imageWidth: `${this.category.imageSize.lg.width}px`,
+			imageHeight: `${this.category.imageSize.lg.height}px`
+		}
+	},
+	created () {
+		window.addEventListener('resize', this.handleResize)
+		this.handleResize()
+	},
+	unmounted () {
+		window.removeEventListener('resize', this.handleResize)
+	},
+	mounted () {
+		this.imageWidth = this.getImageSize('width')
+		this.imageHeight = this.getImageSize('height')
+	},
+    methods: {
+		handleResize () {
+			if (window.innerWidth > 992) this.breakpoint = 'lg'
+			else if (window.innerWidth > 414) this.breakpoint = 'md'
+			else this.breakpoint = 'sm'
+			this.imageWidth = this.getImageSize('width')
+			this.imageHeight = this.getImageSize('height')
+		},
+		getPosition (side) {
+			if (window.innerWidth > 1440) return `${this.category.position.lg[side]}px`
+			if (window.innerWidth > 992) return `calc(${this.category.position.lg[side]} * 100vw / 1440)`
+			if (window.innerWidth > 768) return `${this.category.position.md[side]}px`
+			if (window.innerWidth > 414) return `calc(${this.category.position.md[side]} * 100vw / 768)`
+		},
+		getImageSize (dim) {
+			if (window.innerWidth > 1440) return `${this.category.imageSize.lg[dim]}px`
+			if (window.innerWidth > 992) return `calc(${this.category.imageSize.lg[dim]} * 100vw / 1440)`
+			if (window.innerWidth > 768) return `${this.category.imageSize.md[dim]}px`
+			if (window.innerWidth > 414) return `calc(${this.category.imageSize.md[dim]} * 100vw / 768)`
+		}
+	}
+}
+</script>
