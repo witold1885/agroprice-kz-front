@@ -115,27 +115,73 @@
 	height: 365px;
 	background: $color_white;
 	border-radius: 8px;
-	padding: 25px 17px 18px;
+	padding: 13px 0 20px;
 	box-sizing: border-box;
+	position: relative;
+	&__up {
+		width: 100%;
+	}
+	&__down {
+		width: 100%;
+	}
+	&__date {
+		position: absolute;
+		top: 22px;
+		left: 14px;
+        @include font-ubuntu(400, 12px, 144.4%);
+        color: #6C6C6C;
+	}
+	&__favorite {
+		position: absolute;
+		top: 11px;
+		right: 11px;
+		width: 35px!important;
+		height: 35px!important;
+		& > .favorites-button__icon {
+			width: 14.89px;
+			height: 14.89px;
+		}
+	}
 	&__image {
+		align-self: center;
 		width: 164px;
 		height: 164px;
-		margin-left: 36px;
-		margin-bottom: 18px;
+		margin-left: 2px;
+	}
+	&__middle {
+		width: 100%;
+		padding: 0 11px 12px 20px;
 	}
 	&__subcategory {
-		margin-left: 3px;
-		margin-bottom: 9px;
-        @include font-ubuntu(400, 14px, 16px);
+	    @include font-ubuntu(400, 12px, 14px);
 		color: #BEBEBE;
 		text-align: left;
 	}
+	&__location {
+		grid-column-gap: 5px;
+		&-icon {
+			width: 10px;
+			height: 13px;
+		}
+		&-value {
+	        @include font-ubuntu(400, 12px, 14px);
+			color: $color_black;
+			text-align: right;
+		}
+	}
 	&__title {
-		margin-left: 3px;
-		margin-bottom: 33px;
+		margin-left: 20px;
+		margin-bottom: 13px;
         @include font-ubuntu(400, 14px, 144.4%);
 		color: $color_black;
 		text-align: left;
+	}
+	&__divider {
+		width: 100%;
+		height: 0;
+		padding-left: 20px;
+		padding-right: 18px;
+		border: 1px solid #FBFBFB;
 	}
 	&__bottom {
 		width: 100%;
@@ -143,16 +189,45 @@
 	}
 	&__price {
 		&-main {
-			margin-bottom: 4px;
-        	@include font-ubuntu(500, 20px, 23px);
+			margin-top: 9px;
+			margin-left: 20px;
+			margin-bottom: 12px;
+        	@include font-ubuntu(500, 16px, 18px);
 			color: $color_black;
 			text-align: left;			
 		}
 		&-old {
+			display: none;
         	@include font-ubuntu(400, 12px, 14px);
 			color: #BDBDBD;
 			text-align: left;
 			text-decoration: line-through;
+		}
+	}
+	&__stats {
+		width: 100%;
+		padding: 0 15px 0 21px;
+		&-status {
+			grid-column-gap: 7px;
+			&-icon {
+				width: 10px;
+				height: 9px;
+			}
+			&-value {
+        		@include font-ubuntu(400, 14px, 15px);
+        		color: #39BC64;
+			}
+		}
+		&-views {
+			grid-column-gap: 8px;
+			&-icon {
+				width: 18px;
+				height: 10.73px;
+			}
+			&-value {
+        		@include font-ubuntu(400, 14px, 15px);
+        		color: $color_black;
+			}
 		}
 	}
 }
@@ -230,30 +305,84 @@
 		width: calc(285 * 100vw / 1440);
 		height: calc(365 * 100vw / 1440);
 		border-radius: calc(8 * 100vw / 1440);
-		padding: calc(25 * 100vw / 1440) calc(17 * 100vw / 1440) calc(18 * 100vw / 1440);
+		padding: calc(13 * 100vw / 1440) 0 calc(20 * 100vw / 1440);
+		&__date {
+			top: calc(22 * 100vw / 1440);
+			left: calc(14 * 100vw / 1440);
+	        @include font-ubuntu(400, calc(12 * 100vw / 1440), 144.4%);
+		}
+		&__favorite {
+			top: calc(11 * 100vw / 1440);
+			right: calc(11 * 100vw / 1440);
+			width: calc(35 * 100vw / 1440)!important;
+			height: calc(35 * 100vw / 1440)!important;
+			& > .favorites-button__icon {
+				width: calc(14.89 * 100vw / 1440);
+				height: calc(14.89 * 100vw / 1440);
+			}
+		}
 		&__image {
 			width: calc(164 * 100vw / 1440);
 			height: calc(164 * 100vw / 1440);
-			margin-left: calc(36 * 100vw / 1440);
-			margin-bottom: calc(18 * 100vw / 1440);
+			margin-left: calc(2 * 100vw / 1440);
+		}
+		&__middle {
+			padding: 0 calc(11 * 100vw / 1440) calc(12 * 100vw / 1440) calc(20 * 100vw / 1440);
 		}
 		&__subcategory {
-			margin-left: calc(3 * 100vw / 1440);
-			margin-bottom: calc(9 * 100vw / 1440);
-	        @include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+		    @include font-ubuntu(400, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+		&__location {
+			grid-column-gap: calc(5 * 100vw / 1440);
+			&-icon {
+				width: calc(10 * 100vw / 1440);
+				height: calc(13 * 100vw / 1440);
+			}
+			&-value {
+		        @include font-ubuntu(400, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
 		}
 		&__title {
-			margin-left: calc(3 * 100vw / 1440);
-			margin-bottom: calc(33 * 100vw / 1440);
+			margin-left: calc(20 * 100vw / 1440);
+			margin-bottom: calc(13 * 100vw / 1440);
 	        @include font-ubuntu(400, calc(14 * 100vw / 1440), 144.4%);
+		}
+		&__divider {
+			padding-left: calc(20 * 100vw / 1440);
+			padding-right: calc(18 * 100vw / 1440);
 		}
 		&__price {
 			&-main {
-				margin-bottom: calc(4 * 100vw / 1440);
-	        	@include font-ubuntu(500, calc(20 * 100vw / 1440), calc(23 * 100vw / 1440));
+				margin-top: calc(9 * 100vw / 1440);
+				margin-left: calc(20 * 100vw / 1440);
+				margin-bottom: calc(12 * 100vw / 1440);
+	        	@include font-ubuntu(500, calc(16 * 100vw / 1440), calc(18 * 100vw / 1440));
 			}
 			&-old {
 	        	@include font-ubuntu(400, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
+		}
+		&__stats {
+			padding: 0 calc(15 * 100vw / 1440) 0 calc(21 * 100vw / 1440);
+			&-status {
+				grid-column-gap: calc(7 * 100vw / 1440);
+				&-icon {
+					width: calc(10 * 100vw / 1440);
+					height: calc(9 * 100vw / 1440);
+				}
+				&-value {
+	        		@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+				}
+			}
+			&-views {
+				grid-column-gap: calc(8 * 100vw / 1440);
+				&-icon {
+					width: calc(18 * 100vw / 1440);
+					height: calc(10.73 * 100vw / 1440);
+				}
+				&-value {
+	        		@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+				}
 			}
 		}
 	}
@@ -324,31 +453,87 @@
 
 	.catalog-product {
 		width: 216px;
-		height: 298px;
-		padding: 33px 12px 13px 13px;
+		height: 320px;
+		padding: 13px 0 16px;
+		&__date {
+			top: 22px;
+			left: 14px;
+	        @include font-ubuntu(400, 12px, 144.4%);
+		}
+		&__favorite {
+			top: 11px;
+			right: 7px;
+			width: 35px!important;
+			height: 35px!important;
+			& > .favorites-button__icon {
+				width: 14.89px;
+				height: 14.89px;
+			}
+		}
 		&__image {
-			width: 138px;
-			height: 96px;
-			margin-left: 22px;
-			margin-bottom: 15px;
+			width: 164px;
+			height: 164px;
+			margin-left: 2px;
+		}
+		&__middle {
+			padding: 0 7px 12px 20px;
+			margin-top: -15px;
 		}
 		&__subcategory {
-			margin-left: 0;
-			margin-bottom: 11px;
-	        @include font-ubuntu(400, 12px, 14px);
+		    @include font-ubuntu(400, 12px, 14px);
+		}
+		&__location {
+			grid-column-gap: 5px;
+			&-icon {
+				width: 10px;
+				height: 13px;
+			}
+			&-value {
+		        @include font-ubuntu(400, 12px, 14px);
+			}
 		}
 		&__title {
-			margin-left: 0;
-			margin-bottom: 33px;
+			margin-left: 20px;
+			margin-bottom: 13px;
 	        @include font-ubuntu(400, 14px, 144.4%);
+		}
+		&__divider {
+			padding-left: 20px;
+			padding-right: 14px;
 		}
 		&__price {
 			&-main {
+				margin-top: 9px;
+				margin-left: 20px;
+				margin-bottom: 12px;
 	        	@include font-ubuntu(500, 16px, 18px);
 			}
 			&-old {
 				margin-left: 1px;
 	        	@include font-ubuntu(400, 12px, 14px);
+			}
+		}
+		&__stats {
+			padding: 0 15px 0 21px;
+			&-status {
+				grid-column-gap: 7px;
+				&-icon {
+					width: 10px;
+					height: 9px;
+				}
+				&-value {
+	        		@include font-ubuntu(400, 14px, 15px);
+				}
+			}
+			&-views {
+				grid-column-gap: 8px;
+				&-icon {
+					width: 18px;
+					height: 10.73px;
+				}
+				&-value {
+	        		@include font-ubuntu(400, 14px, 15px);
+				}
 			}
 		}
 	}
@@ -414,29 +599,87 @@
 
 	.catalog-product {
 		width: calc(216 * 100vw / 768);
-		height: calc(298 * 100vw / 768);
-		padding: calc(33 * 100vw / 768) calc(12 * 100vw / 768) calc(13 * 100vw / 768) calc(13 * 100vw / 768);
+		height: calc(320 * 100vw / 768);
+		padding: calc(13 * 100vw / 768) 0 calc(16 * 100vw / 768);
+		&__date {
+			top: calc(22 * 100vw / 768);
+			left: calc(14 * 100vw / 768);
+	        @include font-ubuntu(400, calc(12 * 100vw / 768), 144.4%);
+		}
+		&__favorite {
+			top: calc(11 * 100vw / 768);
+			right: calc(7 * 100vw / 768);
+			width: calc(35 * 100vw / 768)!important;
+			height: calc(35 * 100vw / 768)!important;
+			& > .favorites-button__icon {
+				width: calc(14.89 * 100vw / 768);
+				height: calc(14.89 * 100vw / 768);
+			}
+		}
 		&__image {
-			width: calc(138 * 100vw / 768);
-			height: calc(96 * 100vw / 768);
-			margin-left: calc(22 * 100vw / 768);
-			margin-bottom: calc(15 * 100vw / 768);
+			width: calc(164 * 100vw / 768);
+			height: calc(164 * 100vw / 768);
+			margin-left: calc(2 * 100vw / 768);
+		}
+		&__middle {
+			padding: 0  calc(7 * 100vw / 768)  calc(12 * 100vw / 768)  calc(20 * 100vw / 768);
+			margin-top: calc(-1 * 15 * 100vw / 768);
 		}
 		&__subcategory {
-			margin-bottom: calc(11 * 100vw / 768);
-	        @include font-ubuntu(400, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		    @include font-ubuntu(400,  calc(12 * 100vw / 768),  calc(14 * 100vw / 768));
+		}
+		&__location {
+			grid-column-gap:  calc(5 * 100vw / 768);
+			&-icon {
+				width:  calc(10 * 100vw / 768);
+				height:  calc(13 * 100vw / 768);
+			}
+			&-value {
+		        @include font-ubuntu(400,  calc(12 * 100vw / 768),  calc(14 * 100vw / 768));
+			}
 		}
 		&__title {
-			margin-bottom: calc(33 * 100vw / 768);
+			margin-left: calc(20 * 100vw / 768);
+			margin-bottom: calc(13 * 100vw / 768);
 	        @include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
+		}
+		&__divider {
+			padding-left: calc(20 * 100vw / 768);
+			padding-right: calc(14 * 100vw / 768);
 		}
 		&__price {
 			&-main {
+				margin-top: calc(9 * 100vw / 768);
+				margin-left: calc(20 * 100vw / 768);
+				margin-bottom: calc(12 * 100vw / 768);
 	        	@include font-ubuntu(500, calc(16 * 100vw / 768), calc(18 * 100vw / 768));
 			}
 			&-old {
 				margin-left: calc(1 * 100vw / 768);
 	        	@include font-ubuntu(400, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+			}
+		}
+		&__stats {
+			padding: 0 calc(15 * 100vw / 768) 0 calc(21 * 100vw / 768);
+			&-status {
+				grid-column-gap: calc(7 * 100vw / 768);
+				&-icon {
+					width: calc(10 * 100vw / 768);
+					height: calc(9 * 100vw / 768);
+				}
+				&-value {
+	        		@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+				}
+			}
+			&-views {
+				grid-column-gap: calc(8 * 100vw / 768);
+				&-icon {
+					width: calc(18 * 100vw / 768);
+					height: calc(10.73 * 100vw / 768);
+				}
+				&-value {
+	        		@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+				}
 			}
 		}
 	}
@@ -517,44 +760,90 @@
 	.catalog-product {
 		position: relative;
 		width: 131px;
-		height: 220px;
-		padding: 14px 7px 7px 5px;
-		&__image {
-			width: 106px;
-			height: 74px;
-			margin-left: 2px;
-			margin-bottom: 10px;
-		}
-		&__subcategory {
-			margin-left: 2px;
-			margin-bottom: 4px;
-	        @include font-ubuntu(400, 10px, 11px);
-		}
-		&__title {
-			margin-left: 2px;
-			margin-bottom: 15px;
-	        @include font-ubuntu(400, 10px, 144.4%);
-		}
-		&__price {
-			&-main {
-				margin-bottom: 3px;
-	        	@include font-ubuntu(500, 14px, 16px);
-			}
-			&-old {
-	        	@include font-ubuntu(400, 10px, 11px);
-			}
+		height: 246px;
+		padding: 29px 9px 10px 5px;
+		&__date {
+			display: none;
 		}
 		&__favorite {
+			top: 7px;
+			right: 7px;
 			width: 31px!important;
 			height: 31px!important;
 			border-radius: 5px!important;
-			position: absolute;
-			right: 7px;
-			bottom: 7px;
 			& > .favorites-button__icon {
 				width: 13.19px;
 				height: 13.19px;
 			}
 		}
+		&__image {
+			width: 84px;
+			height: 59px;
+			margin-left: -3px;
+			margin-bottom: 10px;
+		}
+		&__middle {
+			padding: 0 7px 5px;
+			flex-direction: column;
+			grid-row-gap: 6px;
+			align-items: flex-start!important;
+		}
+		&__subcategory {
+		    @include font-ubuntu(400, 10px, 11px);
+		}
+		&__location {
+			grid-column-gap: 5px;
+			&-icon {
+				width: 10px;
+				height: 13px;
+			}
+			&-value {
+		        @include font-ubuntu(400, 10px, 14px);
+			}
+		}
+		&__title {
+			margin-left: 2px;
+			margin-bottom: 9px;
+	        @include font-ubuntu(400, 10px, 144.4%);
+		}
+		&__divider {
+			padding: 0 7px;
+		}
+		&__price {
+			&-main {
+				margin-top: 9px;
+				margin-left: 0;
+				margin-bottom: 3px;
+	        	@include font-ubuntu(500, 14px, 16px);
+			}
+			&-old {
+				display: block;
+				margin-left: 1px;
+	        	@include font-ubuntu(400, 10px, 11px);
+			}
+		}
+	&__stats {
+		padding: 0 9px 0 7px;
+		&-status {
+			grid-column-gap: 5px;
+			&-icon {
+				width: 8px;
+				height: 7px;
+			}
+			&-value {
+        		@include font-ubuntu(400, 12px, 15px);
+			}
+		}
+		&-views {
+			grid-column-gap: 6px;
+			&-icon {
+				width: 16px;
+				height: 9.54px;
+			}
+			&-value {
+        		@include font-ubuntu(400, 12px, 15px);
+			}
+		}
+	}
 	}
 }
