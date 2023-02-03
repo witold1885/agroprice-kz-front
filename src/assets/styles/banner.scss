@@ -6,6 +6,7 @@
 	height: 436px;
 	background-color: $color_green;
 	background-image: url('@/assets/images/banner-mask.png');
+	background-size: 100%;
 	border-radius: 30px;
 	padding-top: 80px;
 	padding-left: 52px;
@@ -113,6 +114,7 @@
 	.banner {
 		height: 362px;
 		background-image: url('@/assets/images/banner-mask-768.png');
+		border-radius: 30px;
 		padding-top: 33px;
 		padding-left: 38px;
 		&__title {
@@ -158,6 +160,7 @@
 @media screen and (max-width: 768px) {
 	.banner {
 		height: calc(362 * 100vw / 768);
+		border-radius: calc(30 * 100vw / 768);
 		padding-top: calc(33 * 100vw / 768);
 		padding-left: calc(38 * 100vw / 768);
 		&__title {
