@@ -89,7 +89,7 @@ export default {
 	},
 	computed: {
 		siteKey () {
-			return '6Lf0hWIkAAAAAADV6WvtBvtrEcBxKaPq1rI9cAKJ'
+			return '6LfC2GIkAAAAAA9wOMfzZ7PJ8ym1VoEGOc64VDzE'
 		}
 	},
 	validations () {
