@@ -5,3 +5,8 @@
     font-size: $font-size;
     line-height: $line-height;
 }
+
+@mixin box ($width, $height) {
+    width: $width;
+    height: $height;
+}

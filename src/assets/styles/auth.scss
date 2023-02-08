@@ -1,0 +1,222 @@
+@import '@/assets/styles/_variables.scss';
+@import '@/assets/styles/_mixins.scss';
+
+.auth-dialog {
+	width: 616px;
+	background: $color_white;
+	&-login {
+		height: 671px;
+	}
+	&-register {
+		height: 566px;
+	}
+	&__shadow {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.48);
+	}
+	&__top {
+		width: 100%;
+		height: 113px;
+		border-bottom: 3px solid #F4F4F4;
+		position: relative;
+	}
+	&__close {
+		width: 19px;
+		height: 19px;
+		position: absolute;
+		top: 22px;
+		right: 21px;
+		cursor: pointer;
+	}
+	&__tabs {
+		grid-column-gap: 54px;
+		margin-bottom: -2px;
+		&-item {
+			width: 156.5px;
+			padding-bottom: 15px;
+			@include font-ubuntu(700, 20px, 25px);
+			color: rgba(0, 0, 0, 0.29);
+			cursor: pointer;
+			&-active {
+				border-bottom: 5px solid $color_green;
+				color: $color_black;
+			}
+		}
+	}
+	&__title {
+		@include font-ubuntu(700, 32px, 25px);
+		color: $color_black;
+		margin: 67px auto 30px;
+		text-align: center;
+	}
+	&__form {
+		grid-row-gap: 19px;
+		&-submit {
+			grid-row-gap: 30px;
+			&-captcha {
+				width: 304px;
+				height: 78px;
+				background: #F9F9F9;
+				border: 1.34317px solid #D3D3D3;
+				box-shadow: 0px 0px 5.37269px 1.34317px rgba(0, 0, 0, 0.08);
+				border-radius: 4.02952px;
+				overflow: hidden;
+				/* & > div, & > iframe {
+					width: 100%!important;
+					height: 100%!important;
+				} */
+			}
+			&-button {
+				width: 205px;
+				height: 52px;
+				background: $color_green;
+				border-radius: 5px;
+				border: none;
+				@include font-ubuntu(400, 14px, 14px);
+				text-align: center;
+				color: $color_white;
+			}
+			&-forgot {
+				@include font-ubuntu(300, 14px, 16px);
+				color: #505050;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.auth-dialog {
+		width: calc(616 * 100vw / 1440);
+		&-login {
+			height: calc(671 * 100vw / 1440);
+		}
+		&-register {
+			height: calc(566 * 100vw / 1440);
+		}
+		&__top {
+			height: calc(113 * 100vw / 1440);
+			border-bottom: calc(3 * 100vw / 1440) solid #F4F4F4;
+		}
+		&__close {
+			width: calc(19 * 100vw / 1440);
+			height: calc(19 * 100vw / 1440);
+			top: calc(22 * 100vw / 1440);
+			right: calc(21 * 100vw / 1440);
+		}
+		&__tabs {
+			grid-column-gap: calc(54 * 100vw / 1440);
+			margin-bottom: calc(-1 * 2 * 100vw / 1440);
+			&-item {
+				width: calc(156.5 * 100vw / 1440);
+				padding-bottom: calc(15 * 100vw / 1440);
+				@include font-ubuntu(700, calc(20 * 100vw / 1440), calc(25 * 100vw / 1440));
+				&-active {
+					border-bottom: calc(5 * 100vw / 1440) solid $color_green;
+				}
+			}
+		}
+		&__title {
+			@include font-ubuntu(700, calc(32 * 100vw / 1440), calc(25 * 100vw / 1440));
+			margin: calc(67 * 100vw / 1440) auto calc(30 * 100vw / 1440);
+		}
+		&__form {
+			grid-row-gap: calc(19 * 100vw / 1440);
+			&-submit {
+				grid-row-gap: calc(30 * 100vw / 1440);
+				&-captcha {
+					// width: calc(405.64 * 100vw / 1440);
+					// height: calc(102.08 * 100vw / 1440);
+					border: calc(1.34317 * 100vw / 1440) solid #D3D3D3;
+					border-radius: calc(4.02952 * 100vw / 1440);
+				}
+				&-button {
+					width: calc(205 * 100vw / 1440);
+					height: calc(52 * 100vw / 1440);
+					background: $color_green;
+					border-radius: calc(5 * 100vw / 1440);
+					@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+				}
+				&-forgot {
+					@include font-ubuntu(300, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+				}
+			}
+		}
+	}
+}
+
+.auth-form {
+	width: 100%;
+	grid-row-gap: 10px;
+	position: relative;
+	&__error {
+		position: absolute;
+		top: -17px;
+		@include font-ubuntu(400, 12px, 12px);
+		color: red;
+	}
+	&__field {
+		width: 473px;
+		height: 52px;
+		background: #F4F4F4;
+		border-radius: 5px;
+		border: none;
+		padding: 14px 18px 13px;
+		box-sizing: border-box;
+		@include font-ubuntu(400, 14px, 25px);
+		color: #868686;
+		&-error {
+			border: 1px solid red!important;
+		}
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.auth-form {
+		grid-row-gap: calc(10 * 100vw / 1440);
+		&__field {
+			width: calc(473 * 100vw / 1440);
+			height: calc(52 * 100vw / 1440);
+			border-radius: calc(5 * 100vw / 1440);
+			padding: calc(14 * 100vw / 1440) calc(18 * 100vw / 1440) calc(13 * 100vw / 1440);
+			@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(25 * 100vw / 1440));
+		}
+	}
+}
+
+.info-dialog {
+	width: 616px;
+	background: $color_white;
+	&__shadow {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.48);
+	}
+	&__top {
+		width: 100%;
+		height: 63px;
+		border-bottom: 3px solid #F4F4F4;
+		position: relative;
+	}
+	&__close {
+		width: 19px;
+		height: 19px;
+		position: absolute;
+		top: 22px;
+		right: 21px;
+		cursor: pointer;
+	}
+	&__body {
+		margin: 60px 20px;
+		text-align: center;
+		@include font-ubuntu(400, 18px, 27px);
+	}
+}

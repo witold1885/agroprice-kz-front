@@ -1,0 +1,426 @@
+@import '@/assets/styles/_variables.scss';
+@import '@/assets/styles/_mixins.scss';
+
+.profile {
+	&__wrap {
+		grid-column-gap: 24px;
+		min-height: 736px;
+	}
+	&-sidebar {
+		width: 221px;
+		height: 560px;
+		margin-top: 7px;
+		background: #F4F4F4;
+		border-radius: 11px;
+		&__top {
+			margin-top: 22px;
+			margin-left: 14px;
+			grid-column-gap: 15px;
+			&-avatar {
+				width: 51px;
+				height: 51px;
+				background: #D9D9D9;
+				border-radius: 100%;
+				&-icon {
+					width: 17px;
+					height: 17px;
+				}
+			}
+			&-username {
+				@include font-ubuntu(400, 15px, 231.9%);
+				color: #000000;
+			}
+		}
+		&__menu {
+			margin-top: 27px;
+			&-item {
+				padding-left: 14px;
+				position: relative;
+				height: 20px;
+				cursor: pointer;
+				&-marker {
+					position: absolute;
+					left: 0;
+					width: 2px;
+					height: 20px;
+					background: $color_green;
+				}
+				&-icon {
+					&-user {
+						@include box(12px, 12px);
+						margin-right: 14px;
+					}
+					&-ad {
+						@include box(15px, 15px);
+						margin-right: 11px;
+					}
+					&-logout {
+						@include box(14px, 14px);
+						margin-right: 12px;
+					}
+				}
+				&-title {
+					@include font-ubuntu(400, 14px, 100%);
+					color: $color_black;
+				}
+			}
+			&-subitems {
+				margin-top: 15px;
+				margin-left: 48px;
+				margin-bottom: 35.5px;
+				grid-row-gap: 16px;
+			}
+			&-subitem {
+				cursor: pointer;
+				&-title {
+					@include font-ubuntu(400, 14px, 100%);
+					color: #484848;
+				}
+				&-children {
+					margin-top: 15px;
+					grid-row-gap: 17.7px;
+				}
+				&-child {
+					padding-left: 19px;
+					position: relative;
+					cursor: pointer;
+					color: #484848;
+					&-marker {
+						position: absolute;
+						top: 1.5px;
+						left: 5px;
+						width: 2px;
+						height: 11px;
+						background: $color_green;
+					}
+					&-title {
+						@include font-ubuntu(400, 14px, 100%);
+					}
+					&-active {
+						color: $color_green;
+					}
+					&:hover {
+						color: $color_green;
+					}
+					&:hover &-marker{
+						display: block!important;
+					}
+				}
+			}
+		}
+	}
+}
+
+.complete-register {
+	&__title {
+		margin: 0;
+		@include font-ubuntu(500, 32px, 37px);
+		color: $color_black;
+	}
+	&__form {
+		margin: 27px 0 41px;
+		width: 955px;
+		height: 371px;
+		background: #F4F4F4;
+		border-radius: 11px;
+		padding: 30px 35px 37px;
+		box-sizing: border-box;
+		position: relative;
+		&-error {
+			position: absolute;
+			top: 15px;
+			width: 100%;
+			text-align: center;
+			@include font-ubuntu(400, 14px, 14px);
+			color: red;
+		}
+		&-label {
+			@include font-ubuntu(500, 14px, 195.9%);
+			color: #262626;
+			&-disabled {
+				color: #676767;
+			}
+		}
+		&-required {
+			color: red;
+		}
+		&-field {
+			width: 224px;
+			height: 34px;
+			box-sizing: border-box;
+			background: $color_white;
+			border-radius: 3px;
+			padding: 3px 11px 4px;
+			border: none;
+			@include font-ubuntu(400, 14px, 195.9%);
+			color: $color_black;
+		}
+		&-customer {
+			grid-column-gap: 27px;
+			&-name {
+				grid-row-gap: 10px;
+			}
+			&-type {
+				grid-column-gap: 17px;
+				margin-bottom: 3.3px;
+				&-item {
+					grid-column-gap: 8px;
+					&-switch {
+						@include box(15px, 15px);
+						background: $color_white;
+						border-radius: 3px;
+  						position: relative;
+  						& input {  							
+							position: absolute;
+							width: 0;
+							height: 0;
+							opacity: 0;
+							cursor: pointer;
+  						}
+  						& img {
+  							display: none;
+						}
+						& input:checked ~ img {
+							display: block;
+						}
+					}
+					& label {
+						@include font-ubuntu(400, 14px, 195.9%);
+						color: #262626;
+					}
+				}
+			}
+		}
+		&-phone {
+			margin-top: 16px;
+			grid-column-gap: 9px;
+			&-specify {
+				grid-row-gap: 13px;
+			}
+			&-submit {
+				width: 123px;
+				height: 34px;
+				background: $color_green;
+				border-radius: 3px;
+				border: none;
+				@include font-ubuntu(500, 12px, 14px);
+				color: $color_white;
+			}
+		}
+		&-email {
+			margin-top: 12px;
+			&-specified {
+				// grid-row-gap: 10px;
+				&-value {
+					@include font-ubuntu(500, 14px, 195.9%);
+					color: #262626;
+
+				}
+			}
+		}
+		&-password {
+			margin-top: 17px;
+			grid-column-gap: 27px;
+			&-specify {
+				grid-row-gap: 10px;
+			}
+			&-confirm {
+				grid-row-gap: 10px;
+			}
+		}
+	}
+	&__buttons {
+		grid-column-gap: 14px;
+	}
+	&__button {
+		width: 131px;
+		height: 41px;
+		border-radius: 8px;
+		@include font-ubuntu(500, 12px, 14px);
+		&-save {
+			background: $color_green;
+			border: none;
+			color: $color_white;
+		}
+		&-cancel {
+			background: transparent;
+			border: 1px solid $color_green;
+			color: $color_black;
+		}
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.profile {
+		&__wrap {
+			grid-column-gap: calc(24 * 100vw / 1440);
+			min-height: calc(736 * 100vw / 1440);
+		}
+		&-sidebar {
+			width: calc(221 * 100vw / 1440);
+			height: calc(560 * 100vw / 1440);
+			margin-top: calc(7 * 100vw / 1440);
+			border-radius: calc(11 * 100vw / 1440);
+			&__top {
+				margin-top: calc(22 * 100vw / 1440);
+				margin-left: calc(14 * 100vw / 1440);
+				grid-column-gap: calc(15 * 100vw / 1440);
+				&-avatar {
+					width: calc(51 * 100vw / 1440);
+					height: calc(51 * 100vw / 1440);
+					&-icon {
+						width: calc(17 * 100vw / 1440);
+						height: calc(17 * 100vw / 1440);
+					}
+				}
+				&-username {
+					@include font-ubuntu(400, calc(15 * 100vw / 1440), 231.9%);
+				}
+			}
+			&__menu {
+				margin-top: calc(27 * 100vw / 1440);
+				&-item {
+					padding-left: calc(14 * 100vw / 1440);
+					height: calc(20 * 100vw / 1440);
+					&-marker {
+						width: calc(2 * 100vw / 1440);
+						height: calc(20 * 100vw / 1440);
+					}
+					&-icon {
+						&-user {
+							@include box(calc(12 * 100vw / 1440), calc(12 * 100vw / 1440));
+							margin-right: calc(14 * 100vw / 1440);
+						}
+						&-ad {
+							@include box(calc(15 * 100vw / 1440), calc(15 * 100vw / 1440));
+							margin-right: calc(11 * 100vw / 1440);
+						}
+						&-logout {
+							@include box(calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+							margin-right: calc(12 * 100vw / 1440);
+						}
+					}
+					&-title {
+						@include font-ubuntu(400, calc(14 * 100vw / 1440), 100%);
+					}
+				}
+				&-subitems {
+					margin-top: calc(15 * 100vw / 1440);
+					margin-left: calc(48 * 100vw / 1440);
+					margin-bottom: calc(35.5 * 100vw / 1440);
+					grid-row-gap: calc(16 * 100vw / 1440);
+				}
+				&-subitem {
+					&-title {
+						@include font-ubuntu(400, calc(14 * 100vw / 1440), 100%);
+					}
+					&-children {
+						margin-top: calc(15 * 100vw / 1440);
+						grid-row-gap: calc(17.7 * 100vw / 1440);
+					}
+					&-child {
+						padding-left: calc(19 * 100vw / 1440);
+						&-marker {
+							top: calc(1.5 * 100vw / 1440);
+							left: calc(5 * 100vw / 1440);
+							width: calc(2 * 100vw / 1440);
+							height: calc(11 * 100vw / 1440);
+						}
+						&-title {
+							@include font-ubuntu(400, calc(14 * 100vw / 1440), 100%);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.complete-register {
+		&__title {
+			@include font-ubuntu(500, calc(32 * 100vw / 1440), calc(37 * 100vw / 1440));
+		}
+		&__form {
+			margin: calc(27 * 100vw / 1440) 0 calc(41 * 100vw / 1440);
+			width: calc(955 * 100vw / 1440);
+			height: calc(371 * 100vw / 1440);
+			border-radius: calc(11 * 100vw / 1440);
+			padding: calc(30 * 100vw / 1440) calc(35 * 100vw / 1440) calc(37 * 100vw / 1440);
+			&-error {
+				top: calc(15 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
+			&-label {
+				@include font-ubuntu(500, calc(14 * 100vw / 1440), 195.9%);
+			}
+			&-field {
+				width: calc(224 * 100vw / 1440);
+				height: calc(34 * 100vw / 1440);
+				border-radius: calc(3 * 100vw / 1440);
+				padding: calc(3 * 100vw / 1440) calc(11 * 100vw / 1440) calc(4 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), 195.9%);
+			}
+			&-customer {
+				grid-column-gap: calc(27 * 100vw / 1440);
+				&-name {
+					grid-row-gap: calc(10 * 100vw / 1440);
+				}
+				&-type {
+					grid-column-gap: calc(17 * 100vw / 1440);
+					margin-bottom: calc(3.3 * 100vw / 1440);
+					&-item {
+						grid-column-gap: calc(8 * 100vw / 1440);
+						&-switch {
+							@include box(calc(15 * 100vw / 1440), calc(15 * 100vw / 1440));
+							border-radius: calc(3 * 100vw / 1440);
+						}
+						& label {
+							@include font-ubuntu(400, calc(14 * 100vw / 1440), 195.9%);
+						}
+					}
+				}
+			}
+			&-phone {
+				margin-top: calc(16 * 100vw / 1440);
+				grid-column-gap: calc(9 * 100vw / 1440);
+				&-specify {
+					grid-row-gap: calc(13 * 100vw / 1440);
+				}
+				&-submit {
+					width: calc(123 * 100vw / 1440);
+					height: calc(34 * 100vw / 1440);
+					border-radius: calc(3 * 100vw / 1440);
+					@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+				}
+			}
+			&-email {
+				margin-top: calc(12 * 100vw / 1440);
+				&-specified {
+					// grid-row-gap: calc(10 * 100vw / 1440);
+					&-value {
+						@include font-ubuntu(500, calc(14 * 100vw / 1440), 195.9%);
+
+					}
+				}
+			}
+			&-password {
+				margin-top: calc(17 * 100vw / 1440);
+				grid-column-gap: calc(27 * 100vw / 1440);
+				&-specify {
+					grid-row-gap: calc(10 * 100vw / 1440);
+				}
+				&-confirm {
+					grid-row-gap: calc(10 * 100vw / 1440);
+				}
+			}
+		}
+		&__buttons {
+			grid-column-gap: calc(14 * 100vw / 1440);
+		}
+		&__button {
+			width: calc(131 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+			@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+	}
+}
