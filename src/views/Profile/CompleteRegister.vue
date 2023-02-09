@@ -5,7 +5,10 @@
 			<div v-if="error" class="complete-register__form-error">{{ error }}</div>
 			<div class="complete-register__form-customer d-flex align-items-end">
 				<div class="complete-register__form-customer-name d-flex flex-column">
-					<div class="complete-register__form-label">
+					<div v-if="profile.type == 'company'" class="complete-register__form-label">
+						Название организации<span class="complete-register__form-required">*</span>
+					</div>
+					<div v-else class="complete-register__form-label">
 						Имя<span class="complete-register__form-required">*</span>
 					</div>
 					<input class="complete-register__form-field" v-model="v$.profile.name.$model" autocomplete />
@@ -28,7 +31,7 @@
 
 				</div>
 			</div>
-			<div class="complete-register__form-phone d-flex align-items-end">
+			<!-- <div class="complete-register__form-phone d-flex align-items-end">
 				<div class="complete-register__form-phone-specify d-flex flex-column">
 					<div class="complete-register__form-label">
 						Номер телефона<span class="complete-register__form-required">*</span>
@@ -36,7 +39,7 @@
 					<input class="complete-register__form-field" placeholder="+7 (7__) ___ -___-__" v-model="v$.profile.phone.$model" autocomplete />					
 				</div>
 				<button type="button" class="complete-register__form-phone-submit">Подтвердить</button>
-			</div>
+			</div> -->
 			<div class="complete-register__form-email d-flex align-items-end">
 				<div class="complete-register__form-email-specified d-flex flex-column">
 					<div class="complete-register__form-label complete-register__form-label-disabled">
@@ -50,15 +53,16 @@
 					<div class="complete-register__form-label">
 						Пароль<span class="complete-register__form-required">*</span>
 					</div>
-					<input class="complete-register__form-field" v-model="v$.password.$model" />
+					<input type="password" class="complete-register__form-field" v-model="v$.password.$model" />
 				</div>
 				<div class="complete-register__form-password-confirm d-flex flex-column">
 					<div class="complete-register__form-label">
 						Подтверждение пароля<span class="complete-register__form-required">*</span>
 					</div>
-					<input class="complete-register__form-field" v-model="v$.password_confirmation.$model" />
+					<input type="password" class="complete-register__form-field" v-model="v$.password_confirmation.$model" />
 				</div>
 			</div>
+			<div v-if="successMessage" class="complete-register__form-success">{{ successMessage }}</div>
 		</form>
 		<div class="complete-register__buttons d-flex align-items-center">
 			<button class="complete-register__button complete-register__button-save" @click="saveProfile">Сохранить</button>
@@ -73,6 +77,7 @@ import axios from "axios";
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import errorMessages from './errorMessages'
+import { API_URL } from '@/store/constants'
 
 export default {
 	setup () {
@@ -84,12 +89,13 @@ export default {
 			profile: {
 				name: '',
 				type: 'private',
-				phone: ''
+				phone: null
 			},
-			email: 'test@test.com',
+			email: '',
 			password: '',
 			password_confirmation: '',
-			error: null
+			error: null,
+			successMessage: null
 		}
 	},
 	validations () {
@@ -99,9 +105,9 @@ export default {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Имя'), required),
 					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '2'), minLength(2))
 				},
-				phone: {
+				/*phone: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Номер телефона'), required),
-				},
+				},*/
 			},
 			password: {
 				required: helpers.withMessage(errorMessages.required.replace(':field', 'Пароль'), required),
@@ -116,7 +122,6 @@ export default {
 		let access_token = this.cookies.get("access_token")
 		if (access_token) {
 			this.$user = await this.getUser(access_token)
-			console.log(this.$user)
 			this.email = this.$user.email
 			this.profile.name = this.$user.profile.name
 			this.profile.type = this.$user.profile.type
@@ -126,14 +131,14 @@ export default {
 	methods: {
 		async saveProfile () {
 			this.error = null
+			this.successMessage = null
 			this.v$.$validate()
 			if (!this.v$.$error) {
-				// await this[this.action]()
 				if (this.password !== this.password_confirmation) {
 					this.error = errorMessages.sameAsPassword
 					return
 				}
-				let response = await axios.post('http://localhost:8000/api/complete', {
+				let response = await axios.post(API_URL + '/complete', {
 					user_id: this.$user.id,
 					profile: this.profile,
 					password: this.password,
@@ -144,7 +149,8 @@ export default {
 					this.error = 'Ошибка сохранения профиля. Попробуйте позже'
 				})
 				if (response.data.success) {
-					console.log('profile saved')
+					this.successMessage = 'Регистрация успешно завершена'
+					window.location.reload(true)
 				}
 				else {
 					console.log(response.data.error)
@@ -157,12 +163,11 @@ export default {
 			}
 		},
 		async getUser (token) {
-			let res = await axios.get('http://localhost:8000/api/user', {
+			let res = await axios.get(API_URL + '/user', {
 				headers: {
 					Authorization: `Bearer ${token}`,
 					"Content-type": "application/json"
 				}})
-			console.log(res)
 			if (res.data.id) {
 				return res.data
 			}

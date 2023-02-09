@@ -31,7 +31,6 @@
 		<button
 			class="auth-dialog__form-submit-button"
 			@click="onSubmit"
-			:disabled="captchaVerified === false"
 		>{{ submitButtonText }}</button>
 		<a
 			v-if="forgotPasswordLink"
@@ -47,6 +46,7 @@ import { useCookies } from 'vue3-cookies'
 // import errorMessages from './errorMessages'
 import axios from 'axios'
 import { VueRecaptcha } from 'vue-recaptcha';
+import { API_URL, SITE_KEY } from '@/store/constants'
 
 export default {
 	setup () {
@@ -89,7 +89,7 @@ export default {
 	},
 	computed: {
 		siteKey () {
-			return '6LfC2GIkAAAAAA9wOMfzZ7PJ8ym1VoEGOc64VDzE'
+			return SITE_KEY
 		}
 	},
 	validations () {
@@ -108,24 +108,33 @@ export default {
 			console.log(response)
 		},
 		async onSubmit () {
-			if (this.captchaVerified) {
-				this.v$.$validate()
-				if (!this.v$.$error) {
+			this.v$.$validate()
+			if (!this.v$.$error) {
+				if (this.captchaVerified) {
+					console.log(this.action)
 					await this[this.action]()
 				}
 				else {
-					this.getErrorMessage()
+					this.error = 'Подтвердите капчу'
 				}
+			}
+			else {
+				this.getErrorMessage()
 			}
 		},
 		async login() {
-			let response = await axios.post('http://localhost:8000/api/login', this.form)
+			let response = await axios.post(API_URL + '/login', this.form)
 				.catch((error) => {
 					console.log(error)
 					this.error = 'Ошибка авторизации. Попробуйте позже'
 				})
+			console.log(response.data)
 			if (response.data.success) {
 				this.handleResponse(response.data, 'login')
+			}
+			else {
+				console.log(response.data.error)
+				this.error = response.data.error
 			}
 		},
 		async register () {
@@ -139,7 +148,7 @@ export default {
 				...this.form,
 				...{ name, password, password_confirmation: password }
 			}
-			let response = await axios.post('http://localhost:8000/api/register', payload)
+			let response = await axios.post(API_URL + '/register', payload)
 				.catch((error) => {
 					console.log(error)
 					this.error = 'Ошибка регистрации. Попробуйте позже'
