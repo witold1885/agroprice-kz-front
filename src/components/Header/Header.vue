@@ -1,10 +1,12 @@
 <template>
 	<header class="d-flex flex-column justify-content-between align-items-stretch">
 		<div class="header-top d-flex justify-content-between">
-			<a href="/" class="header-top__logo">
-				<img :src="require('@/assets/images/logo.png')" />
-			</a>
-			<TopMenu />
+			<div class="header-top__left d-flex align-items-center">
+				<a href="/" class="header-top__logo">
+					<img :src="require('@/assets/images/logo.png')" />
+				</a>
+				<TopMenu />
+			</div>
 			<!-- <FavoritesButton class="header__favorites-mobile" border-color="grey"/> -->
 			<div class="header-top__buttons d-flex justify-content-end">
 				<FavoritesButton class="header__favorites-mobile" border-color="grey"/>

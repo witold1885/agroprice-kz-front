@@ -22,7 +22,9 @@ header {
 }
 
 .header-top {
-	grid-column-gap: 69px;
+	&__left {
+		grid-column-gap: 69px;
+	}
 	&__logo {
 		display: inline-block;
 		width: 127px;
@@ -57,11 +59,25 @@ header {
 
 .account-block {
 	display: flex;
-	width: 200px;
 	height: 47px;
 	margin-top: 26px;
 	border: 1px solid #ECECEC;
 	border-radius: 8px;
+	&__user {
+		// width: 186px;
+	}
+	&__guest {
+		width: 200px;
+	}
+	&__avatar {
+		width: 34px;
+		height: 34px;
+		margin-top: 6px;
+		margin-left: 13px;
+		& img {
+			width: 100%;
+		}
+	}
 	&__icon {
 		width: 16px;
 		height: 16px;
@@ -72,14 +88,30 @@ header {
 		}
 	}
 	&__link {
-		margin-top: 17px;
-		margin-right: 27px;
 		font-family: 'Circe';
 		font-style: normal;
 		font-weight: 400;
 		font-size: 14px;
 		line-height: 14px;
 		color: #212529;
+		&-user {
+			margin-top: 18px;
+			margin-left: 9px;
+			margin-right: 20px;
+			& a {
+				white-space: nowrap;
+			}
+		}
+		&-login {
+			margin-top: 17px;
+			margin-right: 27px;
+		}
+	}
+	&__exit {
+		margin-top: 18px;
+		margin-right: 14px;
+		@include box(13px, 13px);
+		cursor: pointer;
 	}
 }
 
@@ -113,7 +145,7 @@ header {
 			}
 		}
 		&-title {
-      @include font-ubuntu(500, 14px, 16px);
+      		@include font-ubuntu(500, 14px, 16px);
 			color: #1B1B1B;
 			margin-top: 16px;
 			margin-right: 18px;
@@ -233,9 +265,9 @@ header {
 		height: 41px;
 		background: $color_green;
 		border-radius: 8px;
-    @include font-ubuntu(500, 12px, 14px);
+    	@include font-ubuntu(500, 12px, 14px);
 		color: $color_white;
-	  box-shadow: none;
+	  	box-shadow: none;
 		border: none;
 	}
 }
@@ -247,7 +279,9 @@ header {
 	}
 
 	.header-top {
-		grid-column-gap: calc(69 * 100vw / 1440);
+		&__left {
+			grid-column-gap: calc(69 * 100vw / 1440);
+		}
 		&__logo {
 			width: calc(127 * 100vw / 1440);
 			height: calc(28 * 100vw / 1440);
@@ -272,6 +306,21 @@ header {
 		height: calc(47 * 100vw / 1440);
 		margin-top: calc(26 * 100vw / 1440);
 		border-radius: calc(8 * 100vw / 1440);
+		&__user {
+			// width: calc(186 * 100vw / 1440);
+		}
+		&__guest {
+			width: calc(200 * 100vw / 1440);
+		}
+		&__avatar {
+			width: calc(34 * 100vw / 1440);
+			height: calc(34 * 100vw / 1440);
+			margin-top: calc(6 * 100vw / 1440);
+			margin-left: calc(13 * 100vw / 1440);
+			& img {
+				width: 100%;
+			}
+		}
 		&__icon {
 			width: calc(16 * 100vw / 1440);
 			height: calc(16 * 100vw / 1440);
@@ -279,10 +328,22 @@ header {
 			margin-left: calc(13 * 100vw / 1440);
 		}
 		&__link {
-			margin-top: calc(17 * 100vw / 1440);
-			margin-right: calc(27 * 100vw / 1440);
 			font-size: calc(14 * 100vw / 1440);
 			line-height: calc(14 * 100vw / 1440);
+			&-user {
+				margin-top: calc(18 * 100vw / 1440);
+				margin-left: calc(9 * 100vw / 1440);
+				margin-right: calc(20 * 100vw / 1440);
+			}
+			&-login {
+				margin-top: calc(17 * 100vw / 1440);
+				margin-right: calc(27 * 100vw / 1440);
+			}
+		}
+		&__exit {
+			margin-top: calc(18 * 100vw / 1440);
+			margin-right: calc(14 * 100vw / 1440);
+			@include box(calc(13 * 100vw / 1440), calc(13 * 100vw / 1440));
 		}
 	}
 

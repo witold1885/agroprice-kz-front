@@ -34,6 +34,7 @@
 					:forgot-password-link="activeTab.forgotPasswordLink"
 					@login="emitEvent('login')"
 					@register="emitEvent('register')"
+					@forgot="emitEvent('forgot')"
 				/>
 			</div>
 		</div>
@@ -69,10 +70,12 @@ export default {
 					fields: [
 						{
 							type: 'email',
+							variable: 'email',
 							placeholder: 'E-mail'
 						},
 						{
 							type: 'password',
+							variable: 'password',
 							placeholder: 'Пароль'
 						}
 					],
@@ -101,6 +104,7 @@ export default {
 					fields: [
 						{
 							type: 'email',
+							variable: 'email',
 							placeholder: 'E-mail'
 						},
 					],
