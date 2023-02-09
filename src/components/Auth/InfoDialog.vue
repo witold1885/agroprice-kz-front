@@ -1,14 +1,14 @@
 <template>
 	<div
 		v-if="dialog.visible"
-		class="info-dialog__shadow d-flex justify-content-center align-items-center"
+		class="auth-dialog__shadow d-flex justify-content-center align-items-center"
 	>
 		<div
 			class="info-dialog"
 		>
 			<div class="info-dialog__top d-flex justify-content-center align-items-end">
 				<img
-					class="info-dialog__close" :src="require('@/assets/images/dialog-close.png')"
+					class="auth-dialog__close" :src="require('@/assets/images/dialog-close.png')"
 					@click="dialog.visible = false"
 				/>
 			</div>

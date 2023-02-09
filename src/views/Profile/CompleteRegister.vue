@@ -1,7 +1,9 @@
 <template>
 	<div class="complete-register">
-		<h1 class="complete-register__title">Завершите регистрацию</h1>
-		<form class="complete-register__form d-flex flex-column">
+		<h1 v-if="!registerCompleted" class="complete-register__title">Завершите регистрацию</h1>
+		<h1 v-else class="complete-register__title">Регистрация завершена</h1>
+		<ProfileMenu />
+		<form v-if="!registerCompleted" class="complete-register__form d-flex flex-column">
 			<div v-if="error" class="complete-register__form-error">{{ error }}</div>
 			<div class="complete-register__form-customer d-flex align-items-end">
 				<div class="complete-register__form-customer-name d-flex flex-column">
@@ -64,9 +66,13 @@
 			</div>
 			<div v-if="successMessage" class="complete-register__form-success">{{ successMessage }}</div>
 		</form>
-		<div class="complete-register__buttons d-flex align-items-center">
+		<div v-else class="complete-register__success">Поздравляем! Регистрация на agroprice.kz завершена успешно</div>
+		<div v-if="!registerCompleted" class="complete-register__buttons d-flex align-items-center">
 			<button class="complete-register__button complete-register__button-save" @click="saveProfile">Сохранить</button>
 			<button class="complete-register__button complete-register__button-cancel">Отмена</button>
+		</div>
+		<div v-else class="complete-register__buttons d-flex align-items-center">
+			<button class="complete-register__button complete-register__button-save" @click="goHome">На главную</button>
 		</div>
 	</div>
 </template>
@@ -78,12 +84,14 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import errorMessages from './errorMessages'
 import { API_URL } from '@/store/constants'
+import ProfileMenu from '@/components/Profile/ProfileMenu'
 
 export default {
 	setup () {
 		const { cookies } = useCookies()
 		return { v$: useVuelidate(), cookies }
 	},
+	components: { ProfileMenu },
 	data () {
 		return {
 			profile: {
@@ -95,7 +103,8 @@ export default {
 			password: '',
 			password_confirmation: '',
 			error: null,
-			successMessage: null
+			successMessage: null,
+			registerCompleted: false
 		}
 	},
 	validations () {
@@ -126,6 +135,7 @@ export default {
 			this.profile.name = this.$user.profile.name
 			this.profile.type = this.$user.profile.type
 			this.profile.phone = this.$user.profile.phone
+			this.registerCompleted = this.$user.status !== 'incomplete'
 		}
 	},
 	methods: {
@@ -149,8 +159,9 @@ export default {
 					this.error = 'Ошибка сохранения профиля. Попробуйте позже'
 				})
 				if (response.data.success) {
-					this.successMessage = 'Регистрация успешно завершена'
-					window.location.reload(true)
+					// this.successMessage = 'Регистрация успешно завершена'
+					// window.location.reload(true)
+					this.registerCompleted = true
 				}
 				else {
 					console.log(response.data.error)
@@ -180,6 +191,9 @@ export default {
 			if (this.v$.$errors.length != 0) {
 				this.error = this.v$.$errors[0].$message
 			}
+		},
+		goHome () {
+			this.$router.push('/')
 		}
 	}
 }

@@ -349,3 +349,24 @@ h1 {
 		}
 	}
 }
+
+@media screen and (max-width: 1440px) {
+	.breadcrumbs {
+		&__list {
+			grid-column-gap: calc(9 * 100vw / 1440);
+			margin-bottom: calc(27 * 100vw / 1440);
+		}
+		&__item {
+			grid-column-gap: calc(9 * 100vw / 1440);
+			&-link {
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.breadcrumbs {
+		display: none;
+	}
+}

@@ -2,11 +2,6 @@
 	<form
 		class="auth-form d-flex flex-column justify-content-between align-items-center"
 	>
-		<!-- <component
-			v-for="(field, index) of fields"
-			:key="index"
-			:is="`input-${field.type}`"
-		></component> -->
 		<div v-if="error" class="auth-form__error">{{ error }}</div>
 		<input
 			v-for="(field, index) of fields"
@@ -14,20 +9,19 @@
 			:type="field.type"
 			class="auth-form__field"
 			:placeholder="field.placeholder"
-			v-model="v$.form[field.type].$model"
-			:class="{ 'auth-form__field-error': v$.form[field.type].$error }"
+			v-model="v$.form[field.variable].$model"
+			:class="{ 'auth-form__field-error': v$.form[field.variable].$error }"
 		/>
 	</form>
 	<div class="auth-dialog__form-submit d-flex flex-column align-items-center">
-		<!-- <div class="auth-dialog__form-submit-captcha"> -->
-			<VueRecaptcha
-				class="auth-dialog__form-submit-captcha"
-				:sitekey="siteKey"
-				:load-recaptcha-script="true"
-				@verify="captchaSuccess"
-				@error="captchaError"
-			></VueRecaptcha>
-		<!-- </div> -->
+		<VueRecaptcha
+			class="auth-dialog__form-submit-captcha"
+			:sitekey="siteKey"
+			:load-recaptcha-script="true"
+			@verify="captchaSuccess"
+			@error="captchaFailed"
+		></VueRecaptcha>
+		<span v-if="captchaError" class="auth-dialog__form-submit-captcha-error">{{ captchaError }}</span>
 		<button
 			class="auth-dialog__form-submit-button"
 			@click="onSubmit"
@@ -35,6 +29,7 @@
 		<a
 			v-if="forgotPasswordLink"
 			class="auth-dialog__form-submit-forgot"
+			@click="forgotPassword"
 		>Забыли пароль?</a>
 	</div>
 </template>
@@ -45,7 +40,7 @@ import { useCookies } from 'vue3-cookies'
 // import AuthService from "@/services/AuthService"
 // import errorMessages from './errorMessages'
 import axios from 'axios'
-import { VueRecaptcha } from 'vue-recaptcha';
+import { VueRecaptcha } from 'vue-recaptcha'
 import { API_URL, SITE_KEY } from '@/store/constants'
 
 export default {
@@ -77,6 +72,10 @@ export default {
 		forgotPasswordLink: {
 			type: Boolean,
 			default: false
+		},
+		resetToken: {
+			type: String,
+			default: null
 		}
 	},
 	components: { VueRecaptcha },
@@ -84,7 +83,8 @@ export default {
 		return {
 			form: this.values,
 			error: null,
-			captchaVerified: false
+			captchaVerified: false,
+			captchaError: null
 		}
 	},
 	computed: {
@@ -104,10 +104,12 @@ export default {
 		captchaSuccess () {
 			this.captchaVerified = true
 		},
-		captchaError (response) {
+		captchaFailed (response) {
 			console.log(response)
 		},
 		async onSubmit () {
+			this.error = null
+			this.captchaError = null
 			this.v$.$validate()
 			if (!this.v$.$error) {
 				if (this.captchaVerified) {
@@ -115,7 +117,7 @@ export default {
 					await this[this.action]()
 				}
 				else {
-					this.error = 'Подтвердите капчу'
+					this.captchaError = 'Подтвердите, что вы не робот'
 				}
 			}
 			else {
@@ -128,7 +130,7 @@ export default {
 					console.log(error)
 					this.error = 'Ошибка авторизации. Попробуйте позже'
 				})
-			console.log(response.data)
+			// console.log(response.data)
 			if (response.data.success) {
 				this.handleResponse(response.data, 'login')
 			}
@@ -138,12 +140,8 @@ export default {
 			}
 		},
 		async register () {
-			this.error = null;
-			// let cookies = inject('cookies')
 			const name = this.generateId()
 			const password = this.generateString(16)
-			console.log('password')
-			console.log(password)
 			const payload = {
 				...this.form,
 				...{ name, password, password_confirmation: password }
@@ -153,7 +151,7 @@ export default {
 					console.log(error)
 					this.error = 'Ошибка регистрации. Попробуйте позже'
 				})
-			console.log(response)
+			// console.log(response)
 			if (response.data.success) {
 				this.handleResponse(response.data, 'register')
 			}
@@ -162,11 +160,35 @@ export default {
 				this.error = response.data.error
 			}
 		},
+		async reset () {
+			if (!this.resetToken) {
+				this.error = 'Не указан ключ'
+				return
+			}
+			const payload = { ...this.form, ...{ token: this.resetToken } }
+			let response = await axios.post(API_URL + '/password/change', payload)
+				.catch((error) => {
+					console.log(error)
+					this.error = 'Ошибка восстановления пароля. Попробуйте позже'
+				})
+			// console.log(response)
+			if (response.data.success) {
+				this.$emit('reset')
+			}
+			else {
+				console.log(response.data.error)
+				this.error = response.data.error
+			}
+
+		},
 		handleResponse (data, responseType) {
 			console.log(`${responseType} success`)
 			this.cookies.set('access_token', data.access_token)
 			this.$user = data.user
 			this.$emit(responseType)
+		},
+		forgotPassword () {
+			this.$emit('forgot')
 		},
 		getErrorMessage () {
 			if (this.v$.$errors.length != 0) {
