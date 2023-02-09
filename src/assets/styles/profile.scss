@@ -120,7 +120,7 @@
 	&__form {
 		margin: 27px 0 41px;
 		width: 955px;
-		height: 371px;
+		// height: 371px;
 		background: #F4F4F4;
 		border-radius: 11px;
 		padding: 30px 35px 37px;
@@ -133,6 +133,14 @@
 			text-align: center;
 			@include font-ubuntu(400, 14px, 14px);
 			color: red;
+		}
+		&-success {
+			position: absolute;
+			bottom: -25px;
+			width: 100%;
+			text-align: left;
+			@include font-ubuntu(400, 14px, 14px);
+			color: $color_green;
 		}
 		&-label {
 			@include font-ubuntu(500, 14px, 195.9%);
@@ -342,11 +350,15 @@
 		&__form {
 			margin: calc(27 * 100vw / 1440) 0 calc(41 * 100vw / 1440);
 			width: calc(955 * 100vw / 1440);
-			height: calc(371 * 100vw / 1440);
+			// height: calc(371 * 100vw / 1440);
 			border-radius: calc(11 * 100vw / 1440);
 			padding: calc(30 * 100vw / 1440) calc(35 * 100vw / 1440) calc(37 * 100vw / 1440);
 			&-error {
 				top: calc(15 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
+			&-success {
+				bottom: calc(-1 * 25 * 100vw / 1440);
 				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
 			}
 			&-label {

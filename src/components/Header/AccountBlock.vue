@@ -31,6 +31,7 @@ import { useCookies } from "vue3-cookies"
 import axios from "axios";
 import AuthDialog from '@/components/Auth/AuthDialog'
 import InfoDialog from '@/components/Auth/InfoDialog'
+import { API_URL } from '@/store/constants'
 
 export default {
 	setup () {
@@ -78,7 +79,7 @@ export default {
 			this.infoDialog.visible = true
 		},
 		async getUser (token) {
-			let res = await axios.get('http://localhost:8000/api/user', {
+			let res = await axios.get(API_URL + '/user', {
 				headers: {
 					Authorization: `Bearer ${token}`,
 					"Content-type": "application/json"

@@ -1,10 +1,10 @@
 <template>
 	<div class="profile-sidebar">
-		<div class="profile-sidebar__top d-flex align-items-center">
+		<div v-if="user" class="profile-sidebar__top d-flex align-items-center">
 			<div class="profile-sidebar__top-avatar d-flex justify-content-center align-items-center">
 				<img class="profile-sidebar__top-avatar-icon" :src="require('@/assets/images/user.png')" />
 			</div>
-			<div class="profile-sidebar__top-username">Иван Иванов</div>
+			<div class="profile-sidebar__top-username">{{ user.profile.name || `user-${user.name}` }}</div>
 		</div>
 		<div class="profile-sidebar__menu d-flex flex-column">
 			<div
@@ -56,6 +56,7 @@
 <script>
 import { useCookies } from "vue3-cookies"
 import axios from "axios";
+import { API_URL } from '@/store/constants'
 
 export default {
 	setup () {
@@ -87,7 +88,14 @@ export default {
 				{
 					title: 'Выйти', action: 'logout', icon: 'logout', active: false, children: []
 				},
-			]
+			],
+			user: null
+		}
+	},
+	async mounted () {		
+		let access_token = this.cookies.get("access_token")
+		if (access_token) {
+			this.user = await this.getUser(access_token)
 		}
 	},
 	methods: {
@@ -99,7 +107,7 @@ export default {
 		},
 		async logout () {
 			let access_token = this.cookies.get("access_token")
-			let response = await axios.post('http://localhost:8000/api/logout', {}, {
+			let response = await axios.post(API_URL + '/logout', {}, {
 				headers: {
 					Authorization: `Bearer ${access_token}`,
 					"Content-type": "application/json"
@@ -112,6 +120,21 @@ export default {
 				this.cookies.remove('access_token')
 				this.$user = null
 				window.location.reload(true)
+				this.$router.push('/')
+			}
+		},
+		async getUser (token) {
+			let res = await axios.get(API_URL + '/user', {
+				headers: {
+					Authorization: `Bearer ${token}`,
+					"Content-type": "application/json"
+				}})
+			if (res.data.id) {
+				return res.data
+			}
+			else {
+				console.log(res.data.status)
+				return null
 			}
 		}
 	}
