@@ -13,7 +13,7 @@
 					<div v-else class="complete-register__form-label">
 						Имя<span class="complete-register__form-required">*</span>
 					</div>
-					<input class="complete-register__form-field" v-model="v$.profile.name.$model" autocomplete />
+					<input class="complete-register__form-field" v-model="v$.profile.fullname.$model" autocomplete />
 				</div>
 				<div class="complete-register__form-customer-type d-flex align-items-center">
 					<div class="complete-register__form-customer-type-item d-flex align-items-center">
@@ -95,7 +95,7 @@ export default {
 	data () {
 		return {
 			profile: {
-				name: '',
+				fullname: '',
 				type: 'private',
 				phone: null
 			},
@@ -110,7 +110,7 @@ export default {
 	validations () {
 		return {
 			profile: {
-				name: {
+				fullname: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Имя'), required),
 					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '2'), minLength(2))
 				},
@@ -132,7 +132,7 @@ export default {
 		if (access_token) {
 			this.$user = await this.getUser(access_token)
 			this.email = this.$user.email
-			this.profile.name = this.$user.profile.name
+			this.profile.fullname = this.$user.profile.fullname
 			this.profile.type = this.$user.profile.type
 			this.profile.phone = this.$user.profile.phone
 			this.registerCompleted = this.$user.status !== 'incomplete'
