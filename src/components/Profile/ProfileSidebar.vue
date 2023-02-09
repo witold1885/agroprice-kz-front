@@ -4,7 +4,7 @@
 			<div class="profile-sidebar__top-avatar d-flex justify-content-center align-items-center">
 				<img class="profile-sidebar__top-avatar-icon" :src="require('@/assets/images/user.png')" />
 			</div>
-			<div class="profile-sidebar__top-username">{{ user.profile.name || `user-${user.name}` }}</div>
+			<div class="profile-sidebar__top-username">{{ user.profile.fullname || `user-${user.name}` }}</div>
 		</div>
 		<div class="profile-sidebar__menu d-flex flex-column">
 			<div

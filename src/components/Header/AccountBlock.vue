@@ -13,7 +13,7 @@
 			class="account-block__link account-block__link-user"
 			@click="handleAccount"
 		>
-			<a>{{ user.profile.name || `user-${user.name}` }}</a>
+			<a>{{ user.profile.fullname || `user-${user.name}` }}</a>
 		</div>
 		<div
 			class="account-block__exit d-flex justify-content-center align-items-center"
