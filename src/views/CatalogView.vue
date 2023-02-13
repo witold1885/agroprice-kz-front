@@ -2,7 +2,7 @@
 	<div class="catalog">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div v-if="category" class="category__wrap">
-			<h1 class="category__title heading-1">{{ category.name }}</h1>
+			<h1 class="category__title heading-1">{{ category.meta_heading || category.name }}</h1>
 			<div class="category__subcategories d-flex align-items-center">
 				<a
 					v-for="(child, index) of category.children"
@@ -14,6 +14,11 @@
 				<CategoryFilters />
 				<CategoryProducts />
 			</div>
+			<div
+				v-if="category.description"
+				class="category__description"
+				v-html="category.description"
+			></div>
 		</div>
 	</div>
 </template>
