@@ -24,4 +24,4 @@ pnpm-debug.log*
 
 package-lock.json
 
-src/store/constants.js
+src/constants/index.js
