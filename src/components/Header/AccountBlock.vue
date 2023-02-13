@@ -43,24 +43,23 @@
 			:src="require(`@/assets/images/account.png`)"
 		/>
 	</button>
-	<AuthDialog :dialog="authDialog" @login="afterLogin" @register="infoRegister" @forgot="initForgot" />
+	<AuthDialog
+		:dialog="authDialog"
+		@login="afterLogin"
+		@register="infoRegister"
+		@forgot="initForgot"
+	/>
 	<ForgotDialog :dialog="forgotDialog" @forgot="infoForgot"/>
 	<InfoDialog :dialog="infoDialog" />
 </template>
 
 <script>
-import { useCookies } from "vue3-cookies"
-import axios from "axios";
+import { mapState, mapActions } from 'vuex'
 import AuthDialog from '@/components/Auth/AuthDialog'
 import ForgotDialog from '@/components/Auth/ForgotDialog'
 import InfoDialog from '@/components/Auth/InfoDialog'
-import { API_URL } from '@/store/constants'
 
 export default {
-	setup () {
-		const { cookies } = useCookies()
-		return { cookies }
-	},
 	components: {
 		AuthDialog,
 		ForgotDialog,
@@ -68,7 +67,6 @@ export default {
 	},
 	data () {
 		return {
-			user: null,
 			authDialog: {
 				visible: false,
 				name: 'login'
@@ -83,13 +81,11 @@ export default {
 			}
 		}
 	},
-	async mounted () {
-		let access_token = this.cookies.get("access_token")
-		if (access_token) {
-			this.user = await this.getUser(access_token)
-		}
+	computed: {
+		...mapState('auth', ['user']),
 	},
 	methods: {
+		...mapActions('auth', ['logoutUser']),
 		handleAccount () {
 			if (!this.user) {
 				this.authDialog.visible = true
@@ -99,7 +95,8 @@ export default {
 			}
 		},
 		afterLogin () {
-			window.location.reload(true)
+			this.authDialog.visible = false
+			this.$router.push('/')
 		},
 		infoRegister () {
 			this.authDialog.visible = false
@@ -115,38 +112,10 @@ export default {
 			this.infoDialog.message = 'Запрос на восстановление пароля создан успешно. Письмо с ссылкой для подтверждения отправлено на Ваш E-mal'
 			this.infoDialog.visible = true
 		},
-		async getUser (token) {
-			let res = await axios.get(API_URL + '/user', {
-				headers: {
-					Authorization: `Bearer ${token}`,
-					"Content-type": "application/json"
-				}})
-			if (res.data.id) {
-				return res.data
-			}
-			else {
-				console.log(res.data.status)
-				return null
-			}
-		},
 		async logout () {
-			let access_token = this.cookies.get("access_token")
-			let response = await axios.post(API_URL + '/logout', {}, {
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-					"Content-type": "application/json"
-				}})
-				.catch((error) => {
-					console.log(error)
-				})
-			console.log(response.data)
-			if (response.data.success) {
-				this.cookies.remove('access_token')
-				this.$user = null
-				window.location.reload(true)
-				this.$router.push('/')
-			}
-		},
+			const logoutSuccess = await this.logoutUser()
+			if (logoutSuccess) this.$router.push('/')
+		}
 	}
 
 }

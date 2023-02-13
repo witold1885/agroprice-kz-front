@@ -35,18 +35,14 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
-import { useCookies } from 'vue3-cookies'
-// import AuthService from "@/services/AuthService"
-// import errorMessages from './errorMessages'
-import axios from 'axios'
 import { VueRecaptcha } from 'vue-recaptcha'
-import { API_URL, SITE_KEY } from '@/store/constants'
+import { SITE_KEY } from '@/constants'
 
 export default {
 	setup () {
-		const { cookies } = useCookies()
-		return { v$: useVuelidate(), cookies }
+		return { v$: useVuelidate() }
 	},
 	props: {
 		action: {
@@ -82,12 +78,12 @@ export default {
 	data () {
 		return {
 			form: this.values,
-			error: null,
 			captchaVerified: false,
 			captchaError: null
 		}
 	},
 	computed: {
+		...mapState('auth', ['error']),
 		siteKey () {
 			return SITE_KEY
 		}
@@ -97,10 +93,9 @@ export default {
 			form: this.rules,
 		}
 	},
-	mounted () {
-
-	},
 	methods: {
+		...mapActions('auth', ['loginUser', 'registerUser', 'resetPassword']),
+		...mapMutations('auth', ['setError']),
 		captchaSuccess () {
 			this.captchaVerified = true
 		},
@@ -108,7 +103,6 @@ export default {
 			console.log(response)
 		},
 		async onSubmit () {
-			this.error = null
 			this.captchaError = null
 			this.v$.$validate()
 			if (!this.v$.$error) {
@@ -125,19 +119,8 @@ export default {
 			}
 		},
 		async login() {
-			let response = await axios.post(API_URL + '/login', this.form)
-				.catch((error) => {
-					console.log(error)
-					this.error = 'Ошибка авторизации. Попробуйте позже'
-				})
-			// console.log(response.data)
-			if (response.data.success) {
-				this.handleResponse(response.data, 'login')
-			}
-			else {
-				console.log(response.data.error)
-				this.error = response.data.error
-			}
+			const loginSuccess = await this.loginUser(this.form)
+			if (loginSuccess) this.$emit('login')
 		},
 		async register () {
 			const name = this.generateId()
@@ -146,53 +129,20 @@ export default {
 				...this.form,
 				...{ name, password, password_confirmation: password }
 			}
-			let response = await axios.post(API_URL + '/register', payload)
-				.catch((error) => {
-					console.log(error)
-					this.error = 'Ошибка регистрации. Попробуйте позже'
-				})
-			// console.log(response)
-			if (response.data.success) {
-				this.handleResponse(response.data, 'register')
-			}
-			else {
-				console.log(response.data.error)
-				this.error = response.data.error
-			}
+			const registerSuccess = await this.registerUser(payload)
+			if (registerSuccess) this.$emit('register')
 		},
 		async reset () {
-			if (!this.resetToken) {
-				this.error = 'Не указан ключ'
-				return
-			}
 			const payload = { ...this.form, ...{ token: this.resetToken } }
-			let response = await axios.post(API_URL + '/password/change', payload)
-				.catch((error) => {
-					console.log(error)
-					this.error = 'Ошибка восстановления пароля. Попробуйте позже'
-				})
-			// console.log(response)
-			if (response.data.success) {
-				this.$emit('reset')
-			}
-			else {
-				console.log(response.data.error)
-				this.error = response.data.error
-			}
-
-		},
-		handleResponse (data, responseType) {
-			console.log(`${responseType} success`)
-			this.cookies.set('access_token', data.access_token)
-			this.$user = data.user
-			this.$emit(responseType)
+			const resetSuccess = await this.resetPassword(payload)
+			if (resetSuccess) this.$emit('reset')
 		},
 		forgotPassword () {
 			this.$emit('forgot')
 		},
 		getErrorMessage () {
 			if (this.v$.$errors.length != 0) {
-				this.error = this.v$.$errors[0].$message
+				this.setError(this.v$.$errors[0].$message)
 			}
 		},
 		generateId () {

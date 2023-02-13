@@ -7,7 +7,7 @@
 				class="breadcrumbs__item d-flex align-items-center"
 			>
 				<a
-					v-if="breadcrumb.link"
+					v-if="!breadcrumb.current"
 					class="breadcrumbs__item-link"
 					:href="breadcrumb.link"
 				>{{ breadcrumb.text }}</a>

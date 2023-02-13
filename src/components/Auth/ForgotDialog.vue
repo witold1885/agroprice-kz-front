@@ -23,6 +23,7 @@
 						placeholder="E-mail"
 						v-model="v$.email.$model"
 						:class="{ 'auth-form__field-error': v$.email.$error }"
+						autocomplete
 					/>
 				</form>
 				<div class="auth-dialog__form-submit d-flex flex-column align-items-center">
@@ -31,8 +32,9 @@
 						:sitekey="siteKey"
 						:load-recaptcha-script="true"
 						@verify="captchaSuccess"
-						@error="captchaError"
+						@error="captchaFailed"
 					></VueRecaptcha>
+					<span v-if="captchaError" class="auth-dialog__form-submit-captcha-error">{{ captchaError }}</span>
 					<button
 						class="auth-dialog__form-submit-button"
 						@click="onSubmit"
@@ -44,12 +46,12 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import errorMessages from './errorMessages'
-import axios from 'axios'
 import { VueRecaptcha } from 'vue-recaptcha'
-import { API_URL, SITE_KEY } from '@/store/constants'
+import { SITE_KEY } from '@/constants'
 
 export default {
 	setup () {
@@ -67,11 +69,12 @@ export default {
 	data () {
 		return {
 			email: '',
-			error: null,
-			captchaVerified: false
+			captchaVerified: false,
+			captchaError: null
 		}
 	},
 	computed: {
+		...mapState('auth', ['error']),
 		siteKey () {
 			return SITE_KEY
 		}
@@ -85,20 +88,23 @@ export default {
 		}
 	},
 	methods: {
+		...mapActions('auth', ['forgotPassword']),
+		...mapMutations('auth', ['setError']),
 		captchaSuccess () {
 			this.captchaVerified = true
 		},
-		captchaError (response) {
+		captchaFailed (response) {
 			console.log(response)
 		},
 		async onSubmit () {
+			this.captchaError = null
 			this.v$.$validate()
 			if (!this.v$.$error) {
 				if (this.captchaVerified) {
 					await this.sendRequest()
 				}
 				else {
-					this.error = 'Подтвердите капчу'
+					this.captchaError = 'Подтвердите, что вы не робот'
 				}
 			}
 			else {
@@ -106,23 +112,14 @@ export default {
 			}
 		},
 		async sendRequest() {
-			let response = await axios.post(API_URL + '/password/forgot', { email: this.email })
-				.catch((error) => {
-					console.log(error)
-					this.error = 'Ошибка отправки запроса. Попробуйте позже'
-				})
-			console.log(response.data)
-			if (response.data.success) {
+			const success = await this.forgotPassword({ email: this.email })
+			if (success) {
 				this.$emit('forgot')
-			}
-			else {
-				console.log(response.data.error)
-				this.error = response.data.error
 			}
 		},
 		getErrorMessage () {
 			if (this.v$.$errors.length != 0) {
-				this.error = this.v$.$errors[0].$message
+				this.setError(this.v$.$errors[0].$message)
 			}
 		},
 	}

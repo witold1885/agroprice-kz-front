@@ -137,14 +137,6 @@
 			@include font-ubuntu(400, 14px, 14px);
 			color: red;
 		}
-		&-success {
-			position: absolute;
-			bottom: -25px;
-			width: 100%;
-			text-align: left;
-			@include font-ubuntu(400, 14px, 14px);
-			color: $color_green;
-		}
 		&-label {
 			@include font-ubuntu(500, 14px, 195.9%);
 			color: #262626;
@@ -365,10 +357,6 @@
 				top: calc(15 * 100vw / 1440);
 				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
 			}
-			&-success {
-				bottom: calc(-1 * 25 * 100vw / 1440);
-				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
-			}
 			&-label {
 				@include font-ubuntu(500, calc(14 * 100vw / 1440), 195.9%);
 			}
@@ -497,11 +485,6 @@
 			&-error {
 				top: 5px;
 				@include font-ubuntu(400, 10px, 10px);
-			}
-			&-success {
-				bottom: -5px;
-				@include font-ubuntu(400, 10px, 10px);
-				color: $color_green;
 			}
 			&-label {
 				@include font-ubuntu(500, 14px, 195.9%);

@@ -1,78 +1,185 @@
-// import router from "@/router";
-// import { getError } from "@/utils/helpers";
-import AuthService from "@/services/AuthService";
+import api from '@/services/api'
+import { useCookies } from 'vue3-cookies'
 
-export const namespaced = true;
+export const namespaced = true
 
 export const state = {
   user: null,
+  token: null,
   loading: false,
-  // error: null,
-};
+  error: null,
+}
 
 export const mutations = {
-  SET_USER(state, user) {
-    state.user = user;
-  },
   SET_LOADING(state, loading) {
-    state.loading = loading;
+    state.loading = loading
   },
-  /*SET_ERROR(state, error) {
-    state.error = error;
-  },*/
-};
+  setToken (state, token) {
+    state.token = token
+  },
+  setUser(state, user) {
+    state.user = user
+  },
+  setError(state, error) {
+    state.error = error
+  },
+}
 
 export const actions = {
-  logout({ commit, dispatch }) {
-    return AuthService.logout()
-      .then(() => {
-        commit("SET_USER", null);
-        dispatch("setGuest", { value: "isGuest" });
-        /*if (router.currentRoute.name !== "login")
-          router.push({ path: "/login" });*/
-      })
-      /*.catch((error) => {
-        // commit("SET_ERROR", getError(error));
-      });*/
+  getToken ({ commit }) {
+    const { cookies } = useCookies()
+    const token = cookies.get("access_token")
+    commit('setToken', token)
   },
-  async getAuthUser({ commit }) {
-    commit("SET_LOADING", true);
-    try {
-      const response = await AuthService.getAuthUser();
-      commit("SET_USER", response.data.data);
-      commit("SET_LOADING", false);
-      return response.data.data;
-    } catch (error) {
-      commit("SET_LOADING", false);
-      commit("SET_USER", null);
-      // commit("SET_ERROR", getError(error));
+  saveToken ({ commit }, token) {
+    const { cookies } = useCookies()
+    cookies.set('access_token', token)
+    commit('setToken', token)
+  },
+  deleteToken ({ commit }) {
+    const { cookies } = useCookies()
+    cookies.remove('access_token')
+    commit('setToken', null)
+  },
+  async getUser ({ commit, dispatch }) {
+    dispatch('getToken')
+    const response = await api.get('/user', {
+      headers: {
+        Authorization: `Bearer ${state.token}`,
+        "Content-type": "application/json"
+      }})
+    // console.log(response)
+    if (response.data.id) {
+      commit('setUser', response.data)
+    }
+    else {
+      console.log(response.data.status)
+      commit('setUser', null)
     }
   },
-  setGuest(context, { value }) {
-    window.localStorage.setItem("guest", value);
+  async loginUser ({ commit, dispatch }, payload) {
+    commit('setError', null)
+    const response = await api.post('/login', payload)
+      .catch((error) => {
+        console.log(error)
+        commit('setError', 'Ошибка авторизации. Попробуйте позже')
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      dispatch('saveToken', response.data.access_token)
+      commit('setUser', response.data.user)
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+    }
+    return false
   },
-};
+  async registerUser ({ commit, dispatch }, payload) {
+    commit('setError', null)
+    const response = await api.post('/register', payload)
+      .catch((error) => {
+        console.log(error)
+        commit('setError', 'Ошибка регистрации. Попробуйте позже')
+      })
+    // console.log(response)
+    if (response.data.success) {
+      dispatch('saveToken', response.data.access_token)
+      commit('setUser', response.data.user)
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+    }
+    return false
+  },
+  async forgotPassword ({ commit }, payload) {
+    commit('setError', null)
+    const response = await api.post('/password/forgot', payload)
+      .catch((error) => {
+        console.log(error)
+        commit('setError', 'Ошибка отправки запроса. Попробуйте позже')
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+    }
+    return false
+  },
+  async checkResetPassword (context, resetToken) {
+    const response = await api.get('/password/check/' + resetToken)
+      .catch((error) => {
+        console.log(error)
+      })
+    return response.data.existToken ? true : false
+  },
+  async resetPassword ({ commit }, payload) {
+    commit('setError', null)
+    if (!payload.token) {
+      commit('setError', 'Ошибка. Не указан ключ')
+      return
+    }
+    const response = await api.post('/password/change', payload)
+      .catch((error) => {
+        console.log(error)
+        commit('setError', 'Ошибка восстановления пароля. Попробуйте позже')
+      })
+    // console.log(response)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+    }
+    return false
+  },
+  async logoutUser ({ commit, dispatch }) {
+    dispatch('getToken')
+    const response = await api.post('/logout', {}, {
+      headers: {
+        Authorization: `Bearer ${state.token}`,
+        "Content-type": "application/json"
+      }})
+      .catch((error) => {
+        console.log(error)
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      dispatch('deleteToken')
+      commit('setUser', null)
+      return true
+    }
+    return false
+  },
+  setGuest(context, { value }) {
+    window.localStorage.setItem("guest", value)
+  },
+}
 
 export const getters = {
   authUser: (state) => {
-    return state.user;
-  },
-  isAdmin: (state) => {
-    return state.user ? state.user.isAdmin : false;
+    return state.user
   },
   error: (state) => {
-    return state.error;
+    return state.error
   },
   loading: (state) => {
-    return state.loading;
+    return state.loading
   },
   loggedIn: (state) => {
-    return !!state.user;
+    return !!state.user
   },
   guest: () => {
-    const storageItem = window.localStorage.getItem("guest");
-    if (!storageItem) return false;
-    if (storageItem === "isGuest") return true;
-    if (storageItem === "isNotGuest") return false;
+    const storageItem = window.localStorage.getItem("guest")
+    if (!storageItem) return false
+    if (storageItem === "isGuest") return true
+    if (storageItem === "isNotGuest") return false
   },
-};
+}
