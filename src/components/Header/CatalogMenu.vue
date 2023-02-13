@@ -84,7 +84,6 @@
 
 <script>
 import { mapState } from 'vuex'
-// import categories from '../Catalog/categories'
 import CloseButton from '@/components/Common/CloseButton'
 
 export default {
@@ -93,8 +92,7 @@ export default {
 	},
 	data () {
 		return {
-			// menuCategories: categories,
-			showMenu: true,
+			showMenu: false,
 			selectedCategory: null,
 			min: 3,
 			max: 5
@@ -107,9 +105,6 @@ export default {
 		await this.$store.dispatch('catalog/getMenuCategories')
 	},
 	methods: {
-		getRandomCount () {
-			return Math.floor(Math.random() * (this.max - this.min + 1)) + this.min
-		},
 		toggleMenu () {
 			if (this.showMenu == false) {
 				document.getElementById('app').style.maxHeight = '100vh'
