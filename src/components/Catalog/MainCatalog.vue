@@ -3,7 +3,7 @@
 		<h1 class="main-catalog__title heading-1">Главный каталог</h1>
 		<div class="main-catalog__grid d-flex flex-wrap justify-content-between">
 			<CategoryCard
-				v-for="(category, index) of catalogCategories"
+				v-for="(category, index) of mainCategories"
 				:key="index"
 				:category="category"
 			/>
@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import categories from './categories'
+import { mapState } from 'vuex'
+// import categories from './categories'
 import products from './products'
 import CategoryCard from './CategoryCard'
 import SellBlock from './SellBlock'
@@ -31,9 +32,15 @@ export default {
 	},
 	data () {
 		return {
-			catalogCategories: categories,
+			// catalogCategories: categories,
 			lastProducts: products 
 		}
+	},
+	computed: {
+		...mapState('catalog', ['mainCategories']),
+	},
+	async mounted () {
+		await this.$store.dispatch('catalog/getMainCategories')
 	}
 }
 </script>
