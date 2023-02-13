@@ -4,6 +4,7 @@ export const namespaced = true
 
 export const state = {
   mainCategories: [],
+  menuCategories: [],
   category: null,
   error: null,
 }
@@ -14,6 +15,9 @@ export const mutations = {
   },
   setMainCategories(state, categories) {
     state.mainCategories = categories
+  },
+  setMenuCategories(state, categories) {
+    state.menuCategories = categories
   },
   setError(state, error) {
     state.error = error
@@ -43,6 +47,19 @@ export const actions = {
     // console.log(response.data)
     if (response.data.success) {
       commit('setMainCategories', response.data.categories)
+    }
+    else {
+      console.log(response.data.error)
+    }
+  },
+  async getMenuCategories ({ commit }) {
+    const response = await api.get('/catalog/menu-categories/')
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      commit('setMenuCategories', response.data.categories)
     }
     else {
       console.log(response.data.error)

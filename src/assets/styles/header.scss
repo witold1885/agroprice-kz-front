@@ -224,7 +224,7 @@ header {
 				width: 100%;
 			}
 			&-block {
-				max-width: 229px;
+				// max-width: 229px;
 				grid-row-gap: 17px;
 				&-title {
         	@include font-ubuntu(500, 15px, 17px);
@@ -400,7 +400,7 @@ header {
 				grid-column-gap: calc(37 * 100vw / 1440);
 				grid-row-gap: calc(36 * 100vw / 1440);
 				&-block {
-					max-width: calc(229 * 100vw / 1440);
+					// max-width: calc(229 * 100vw / 1440);
 					grid-row-gap: calc(17 * 100vw / 1440);
 					&-title {
 	        	@include font-ubuntu(500, calc(15 * 100vw / 1440), calc(17 * 100vw / 1440));
@@ -530,7 +530,7 @@ header {
 				grid-column-gap: 13px;
 				grid-row-gap: 30px;
 				&-block {
-					max-width: 164px;
+					// max-width: 164px;
 					grid-row-gap: 10px;
 					&-title {
 	        	@include font-ubuntu(500, 14px, 16px);
@@ -641,7 +641,7 @@ header {
 				grid-column-gap: calc(13 * 100vw / 768);
 				grid-row-gap: calc(30 * 100vw / 768);
 				&-block {
-					max-width: calc(164 * 100vw / 768);
+					// max-width: calc(164 * 100vw / 768);
 					grid-row-gap: calc(10 * 100vw / 768);
 					&-title {
 	        	@include font-ubuntu(500, calc(14 * 100vw / 768), calc(16 * 100vw / 768));

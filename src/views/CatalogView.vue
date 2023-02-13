@@ -8,6 +8,7 @@
 					v-for="(child, index) of category.children"
 					:key="index"
 					class="category__subcategories-item d-flex justify-content-center align-items-center"
+					:href="`/#/catalog/${child.url}`"
 				>{{ child.name }}</a>
 			</div>
 			<div class="category__data d-flex">
