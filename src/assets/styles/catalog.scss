@@ -37,8 +37,9 @@
 	}
 	&__image {
 		position: absolute;
-		bottom: 0;
-		right: 0;
+		width: 166px;
+		bottom: 26px;
+		right: 19px;
 	}
 }
 
@@ -257,6 +258,11 @@
 			margin-top: calc(10 * 100vw / 1440);
 	        @include font-ubuntu(400, calc(18 * 100vw / 1440), calc(21 * 100vw / 1440));
 		}
+		&__image {
+			width: calc(166 * 100vw / 1440);
+			bottom: calc(26 * 100vw / 1440);
+			right: calc(19 * 100vw / 1440);
+		}
 	}
 
 	.sell-block {
@@ -406,6 +412,12 @@
 		&__subtitle {
 			margin-top: 12px;
 	        @include font-ubuntu(400, 14px, 16px);
+		}
+		&__image {
+			position: absolute;
+			width: 148px;
+			bottom: 14px;
+			right: 11px;
 		}
 	}
 
@@ -557,6 +569,11 @@
 			margin-top: calc(12 * 100vw / 768);
 	        @include font-ubuntu(400, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
 		}
+		&__image {
+			width: calc(148 * 100vw / 768);
+			bottom: calc(14 * 100vw / 768);
+			right: calc(11 * 100vw / 768);
+		}
 	}
 
 	.sell-block {
@@ -706,6 +723,12 @@
 		&__subtitle {
 			margin-top: 5px;
 	        @include font-ubuntu(400, 10px, 11px);
+		}
+		&__image {
+			position: absolute;
+			width: 90px;
+			bottom: 9px;
+			right: 7px;
 		}
 	}
 

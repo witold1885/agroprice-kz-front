@@ -1,22 +1,18 @@
 import { createApp } from 'vue'
-// import VueCookie from 'vue-cookie'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-/*const app = createApp(App)
-	// .use(VueCookie)
-	// .provide('cookies', app.config.globalProperties.$cookies)
-	.use(store)
-	.use(router)
-	.mount('#app')*/
+import { createMetaManager, defaultConfig, plugin as vueMetaPlugin } from 'vue-meta'
 
 const app = createApp(App)
 
-app.config.globalProperties = {
-  user: null
-}
-
-app.use(store)
+app
   .use(router)
+	.use(store)
+	.use(createMetaManager(false, {
+		...defaultConfig,
+		meta: { tag: 'meta', nameless: true },
+  }))
+	.use(vueMetaPlugin)
   .mount('#app')

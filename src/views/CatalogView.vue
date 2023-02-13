@@ -29,13 +29,25 @@ export default {
 	data () {
 		return {
 			breadcrumbs: null,
-			categoryUrl: this.$route.params.category
+			categoryUrl: this.$route.params.category,
+			metaTitle: '',
+			metaDescription: '',
+			metaKeywords: ''
 		}
 	},
 	computed: {
 		...mapState('catalog', ['category']),
 	},
-	created() {
+	metaInfo () {
+		return {
+			title: this.metaTitle,
+			description: this.metaDescription,
+			meta: [
+				{ name: 'keywords', content: this.metaKeywords },
+			],
+		}
+    },
+	created () {
 		this.$watch(
 			() => this.$route.params.category,
 			async (toParams) => {
@@ -55,6 +67,9 @@ export default {
 				if (this.category) {
 					console.log(this.category)
 					this.makeBreadcrumbs()
+					this.metaTitle = this.category.meta_title || this.category.name
+					this.metaDescription = this.category.meta_description || this.category.name
+					this.metaKeywords = this.category.meta_keywords || this.category.name
 				}
 			}
 			else {

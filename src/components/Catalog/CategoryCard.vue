@@ -1,22 +1,21 @@
 <template>
-	<div class="category-card">
-		<div class="category-card__title">{{ category.title }}</div>
-		<div class="category-card__subtitle">{{ category.subtitle }}</div>
+	<a
+		class="category-card"
+		:href="`/#/catalog/${category.url}`"
+	>
+		<div class="category-card__title">{{ category.name }}</div>
+		<div class="category-card__subtitle">Техники (234)</div>
 		<img
+			v-if="category.image"
 			class="category-card__image"
-			:src="require(`@/assets/images/categories/${category.image.replace('.png', '-' + breakpoint + '.png')}`)"
-			:style="{
-				width: imageWidth,
-				height: imageHeight,
-				right: getPosition('right'),
-				bottom: getPosition('bottom'),
-				transform: 'rotate(' + category.position[breakpoint].rotate + ')'
-			}"
+			:src="`${storageURL}/${category.image}`"
 		/>
-	</div>
+	</a>
 </template>
 
 <script>
+import { STORAGE_URL } from '@/constants'
+
 export default {
 	props: {
 		category: {
@@ -27,8 +26,13 @@ export default {
 	data () {
 		return {
 			breakpoint: 'lg',
-			imageWidth: `${this.category.imageSize.lg.width}px`,
-			imageHeight: `${this.category.imageSize.lg.height}px`
+			// imageWidth: `${this.category.imageSize.lg.width}px`,
+			// imageHeight: `${this.category.imageSize.lg.height}px`
+		}
+	},
+	computed: {
+		storageURL () {
+			return STORAGE_URL
 		}
 	},
 	created () {
@@ -39,16 +43,16 @@ export default {
 		window.removeEventListener('resize', this.handleResize)
 	},
 	mounted () {
-		this.imageWidth = this.getImageSize('width')
-		this.imageHeight = this.getImageSize('height')
+		// this.imageWidth = this.getImageSize('width')
+		// this.imageHeight = this.getImageSize('height')
 	},
     methods: {
 		handleResize () {
 			if (window.innerWidth > 992) this.breakpoint = 'lg'
 			else if (window.innerWidth > 414) this.breakpoint = 'md'
 			else this.breakpoint = 'sm'
-			this.imageWidth = this.getImageSize('width')
-			this.imageHeight = this.getImageSize('height')
+			// this.imageWidth = this.getImageSize('width')
+			// this.imageHeight = this.getImageSize('height')
 		},
 		getPosition (side) {
 			if (window.innerWidth > 1440) return `${this.category.position.lg[side]}px`
