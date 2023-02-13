@@ -32,11 +32,10 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { required, email, minLength, helpers } from '@vuelidate/validators'
 import errorMessages from '@/components/Auth/errorMessages'
 import AuthForm from '@/components/Auth/AuthForm'
-import axios from 'axios'
-import { API_URL } from '@/store/constants'
 
 export default {
 	data () {
@@ -85,16 +84,14 @@ export default {
 	async mounted () {
 		if (this.$route.params) {
 			this.token = this.$route.params.token
-			let response = await axios.get(API_URL + '/password/check/' + this.token)
-				.catch((error) => {
-					console.log(error)
-				})
-			if (!response.data.existToken) {
+			const checkTokenSuccess = await this.checkResetPassword(this.token)
+			if (!checkTokenSuccess) {
 				this.token = null
 			}
 		}
 	},
 	methods: {
+		...mapActions('auth', ['checkResetPassword']),
 		onReseted () {
 			this.reseted = true
 		},

@@ -370,3 +370,28 @@ h1 {
 		display: none;
 	}
 }
+
+.pagination {
+	grid-column-gap: 10px;
+	margin: 0 auto;
+	&__item {
+		@include box(45px, 45px);
+		border: 1px solid #E9E9E9;
+		border-radius: 5px;
+		cursor: pointer;
+		&-page {
+			font-family: 'Circe';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 24px;
+			text-align: center;
+			color: #333333;
+			&-active {
+				background: #39BC64;
+				border: none;
+				color: $color_white;
+			}
+		}
+	}
+}

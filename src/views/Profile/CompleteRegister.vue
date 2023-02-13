@@ -64,11 +64,10 @@
 					<input type="password" class="complete-register__form-field" v-model="v$.password_confirmation.$model" />
 				</div>
 			</div>
-			<div v-if="successMessage" class="complete-register__form-success">{{ successMessage }}</div>
 		</form>
 		<div v-else class="complete-register__success">Поздравляем! Регистрация на agroprice.kz завершена успешно</div>
 		<div v-if="!registerCompleted" class="complete-register__buttons d-flex align-items-center">
-			<button class="complete-register__button complete-register__button-save" @click="saveProfile">Сохранить</button>
+			<button class="complete-register__button complete-register__button-save" @click="save">Сохранить</button>
 			<button class="complete-register__button complete-register__button-cancel">Отмена</button>
 		</div>
 		<div v-else class="complete-register__buttons d-flex align-items-center">
@@ -78,18 +77,15 @@
 </template>
 
 <script>
-import { useCookies } from "vue3-cookies"
-import axios from "axios";
+import { mapState, mapActions } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import errorMessages from './errorMessages'
-import { API_URL } from '@/store/constants'
 import ProfileMenu from '@/components/Profile/ProfileMenu'
 
 export default {
 	setup () {
-		const { cookies } = useCookies()
-		return { v$: useVuelidate(), cookies }
+		return { v$: useVuelidate() }
 	},
 	components: { ProfileMenu },
 	data () {
@@ -103,7 +99,6 @@ export default {
 			password: '',
 			password_confirmation: '',
 			error: null,
-			successMessage: null,
 			registerCompleted: false
 		}
 	},
@@ -127,64 +122,42 @@ export default {
 			}
 		}
 	},
+	computed: {
+		...mapState('auth', ['user']),
+		...mapState('profile', ['error'])
+	},
 	async mounted () {
-		let access_token = this.cookies.get("access_token")
-		if (access_token) {
-			this.$user = await this.getUser(access_token)
-			this.email = this.$user.email
-			this.profile.fullname = this.$user.profile.fullname
-			this.profile.type = this.$user.profile.type
-			this.profile.phone = this.$user.profile.phone
-			this.registerCompleted = this.$user.status !== 'incomplete'
+		await this.$store.dispatch('auth/getUser')
+		if (this.user) {
+			this.email = this.user.email
+			this.profile.fullname = this.user.profile.fullname
+			this.profile.type = this.user.profile.type
+			this.profile.phone = this.user.profile.phone
+			this.registerCompleted = this.user.status !== 'incomplete'
 		}
 	},
 	methods: {
-		async saveProfile () {
-			this.error = null
-			this.successMessage = null
+		...mapActions('profile', ['saveProfile']),
+		async save () {
 			this.v$.$validate()
 			if (!this.v$.$error) {
 				if (this.password !== this.password_confirmation) {
 					this.error = errorMessages.sameAsPassword
 					return
 				}
-				let response = await axios.post(API_URL + '/complete', {
-					user_id: this.$user.id,
+				const completeSuccess = await this.saveProfile({
+					user_id: this.user.id,
 					profile: this.profile,
 					password: this.password,
 					password_confirmation: this.password,
 				})
-				.catch((error) => {
-					console.log(error)
-					this.error = 'Ошибка сохранения профиля. Попробуйте позже'
-				})
-				if (response.data.success) {
-					// this.successMessage = 'Регистрация успешно завершена'
-					// window.location.reload(true)
+				if (completeSuccess) {
 					this.registerCompleted = true
-				}
-				else {
-					console.log(response.data.error)
-					this.error = response.data.error
 				}
 			}
 			else {
 				this.getErrorMessage()
 				return
-			}
-		},
-		async getUser (token) {
-			let res = await axios.get(API_URL + '/user', {
-				headers: {
-					Authorization: `Bearer ${token}`,
-					"Content-type": "application/json"
-				}})
-			if (res.data.id) {
-				return res.data
-			}
-			else {
-				console.log(res.data.status)
-				return null
 			}
 		},
 		getErrorMessage () {

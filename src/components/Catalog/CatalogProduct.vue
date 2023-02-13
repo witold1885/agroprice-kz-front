@@ -26,7 +26,7 @@
 						<div class="catalog-product__stats-status-value">{{ product.status }}</div>
 					</div>
 					<div class="catalog-product__stats-views d-flex justify-content-end align-items-center">
-						<img class="catalog-product__stats-views-icon" :src="require('@/assets/images/eye.png')" />
+						<img class="catalog-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
 						<div class="catalog-product__stats-views-value">{{ product.views }}</div>
 					</div>
 				</div>

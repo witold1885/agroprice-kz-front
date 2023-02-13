@@ -54,15 +54,9 @@
 </template>
 
 <script>
-import { useCookies } from "vue3-cookies"
-import axios from "axios";
-import { API_URL } from '@/store/constants'
+import { mapState, mapActions } from 'vuex'
 
 export default {
-	setup () {
-		const { cookies } = useCookies()
-		return { cookies }
-	},
 	data () {
 		return {
 			menu: [
@@ -89,16 +83,13 @@ export default {
 					title: 'Выйти', action: 'logout', icon: 'logout', active: false, children: []
 				},
 			],
-			user: null
 		}
 	},
-	async mounted () {		
-		let access_token = this.cookies.get("access_token")
-		if (access_token) {
-			this.user = await this.getUser(access_token)
-		}
+	computed: {
+		...mapState('auth', ['user'])
 	},
 	methods: {
+		...mapActions('auth', ['logoutUser']),
 		async setAction (action) {
 			console.log(action)
 			if (action == 'logout') {
@@ -106,36 +97,8 @@ export default {
 			}
 		},
 		async logout () {
-			let access_token = this.cookies.get("access_token")
-			let response = await axios.post(API_URL + '/logout', {}, {
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-					"Content-type": "application/json"
-				}})
-				.catch((error) => {
-					console.log(error)
-				})
-			console.log(response.data)
-			if (response.data.success) {
-				this.cookies.remove('access_token')
-				this.$user = null
-				window.location.reload(true)
-				this.$router.push('/')
-			}
-		},
-		async getUser (token) {
-			let res = await axios.get(API_URL + '/user', {
-				headers: {
-					Authorization: `Bearer ${token}`,
-					"Content-type": "application/json"
-				}})
-			if (res.data.id) {
-				return res.data
-			}
-			else {
-				console.log(res.data.status)
-				return null
-			}
+			const logoutSuccess = await this.logoutUser()
+			if (logoutSuccess) this.$router.push('/')
 		}
 	}
 }
