@@ -90,7 +90,7 @@
 	        @include font-ubuntu(300, calc(12 * 100vw / 1440), 176.9%);
 		}
 		&__button {
-			width: calc(241 * 100vw / 1440);
+			top: calc(241 * 100vw / 1440);
 			width: calc(144 * 100vw / 1440);
 			height: calc(41 * 100vw / 1440);
 			border-radius: calc(8 * 100vw / 1440);
@@ -127,7 +127,7 @@
 		height: 362px;
 		background-image: url('@/assets/images/banner-mask-768.png');
 		border-radius: 30px;
-		padding-top: 33px;
+		// padding-top: 33px;
 		padding-left: 38px;
 		&__title {
 			max-width: 316px;
@@ -140,6 +140,7 @@
 	        @include font-ubuntu(300, 12px, 176.9%);
 		}
 		&__button {
+			top: 220px;
 			width: 144px;
 			height: 41px;
 			border-radius: 8px;
@@ -173,7 +174,7 @@
 	.banner {
 		height: calc(362 * 100vw / 768);
 		border-radius: calc(30 * 100vw / 768);
-		padding-top: calc(33 * 100vw / 768);
+		// padding-top: calc(33 * 100vw / 768);
 		padding-left: calc(38 * 100vw / 768);
 		&__title {
 			max-width: calc(316 * 100vw / 768);
@@ -186,6 +187,7 @@
 	        @include font-ubuntu(300, calc(12 * 100vw / 768), 176.9%);
 		}
 		&__button {
+			top: calc(220 * 100vw / 768);
 			width: calc(144 * 100vw / 768);
 			height: calc(41 * 100vw / 768);
 			border-radius: calc(8 * 100vw / 768);
@@ -220,7 +222,7 @@
 		height: 216px;
 		background-image: url('@/assets/images/banner-mask-320.png');
 		border-radius: 5px;
-		padding-top: 20px;
+		// padding-top: 20px;
 		padding-left: 11px;
 		&__title {
 			max-width: 113px;
@@ -233,6 +235,7 @@
 	        @include font-ubuntu(300, 8px, 160.4%);
 		}
 		&__button {
+			top: 116px;
 			width: 116px;
 			height: 33px;
 	        @include font-ubuntu(500, 10px, 11px);
