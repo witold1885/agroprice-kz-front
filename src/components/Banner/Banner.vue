@@ -1,57 +1,43 @@
 <template>
-	<div class="banner">
-		<div class="banner__title">Льготный кредит на развитие</div>
+	<div v-if="activeImage" class="banner">
+		<!-- <div class="banner__title">Льготный кредит на развитие</div>
 		<div class="banner__subtitle">
 			Увеличивайте продажи и повышайте узнаваемость - используйте услуги продвижения экосистемы Своё
-		</div>
+		</div> -->
 		<button class="banner__button">Узнать подробнее</button>
 		<img
 			class="banner__image"
-			:src="require('@/assets/images/banner-traktor.png')"
+			:src="`${storageURL}/${activeImage.path}`"
 		/>
 		<div class="banner__nav d-flex justify-content-between align-items-center">
 			<NavButton
 				side="left"
 				color="white"
 				class="banner__nav-button-left"
-				@click="switchBanner('left')"
+				@click="changeImage('left')"
 			/>
-			<!-- <div
-				class="banner__nav-button d-flex justify-content-center align-items-center banner__nav-button-left"
-				@click="switchBanner('left')"
-			>
-				<div class="banner__nav-button-icon">
-					<img :src="require('@/assets/images/arrow-left.png')" />
-				</div>
-			</div> -->
 			<div class="banner__nav-dots d-flex justify-content-between align-items-center">
 				<div
-					v-for="(banner, index) of banners"
+					v-for="(image, index) of images"
 					:key="index"
 					class="banner__nav-dots-item"
-					:class="{ 'banner__nav-dots-item-active': banner.active }"
-					@click="setActiveBanner(banner.num)"
+					:class="{ 'banner__nav-dots-item-active': image.show }"
+					@click="changeActiveImage(image.num)"
 				></div>
 			</div>
 			<NavButton
 				side="right"
 				color="white"
 				class="banner__nav-button-right"
-				@click="switchBanner('right')"
+				@click="changeImage('right')"
 			/>
-			<!-- <div
-				class="banner__nav-button d-flex justify-content-center align-items-center banner__nav-button-right"
-				@click="switchBanner('right')"
-			>
-				<div class="banner__nav-button-icon">
-					<img :src="require('@/assets/images/arrow-right.png')" />
-				</div>
-			</div> -->
 		</div>
 	</div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { STORAGE_URL } from '@/constants'
 import NavButton from '@/components/Common/NavButton'
 
 export default {
@@ -60,33 +46,63 @@ export default {
 	},
 	data () {
 		return {
-			banners: [
-				{ num: 1, active: false },
-				{ num: 2, active: true },
-				{ num: 3, active: false },
-				{ num: 4, active: false },
-			]
+			images: [],
+			activeImage: null,
+			autoplayInterval: null
 		}
 	},
+	computed: {
+		...mapState('info', ['banner']),
+		storageURL () {
+			return STORAGE_URL
+		}
+	},
+	async mounted () {
+		await this.$store.dispatch('info/getBanner', { code: 'main' })
+		console.log(this.banner)
+		this.images = this.banner.images
+		this.activeImage = this.images.find(image => image.show)
+		this.setAutoplay()
+	},
 	methods: {
-		switchBanner (side) {
-			const activeBanner = this.banners.find(banner => banner.active)
-			let nextBannerNum
+		changeImage (side) {
+			this.stopAutoplay()
+			this.switchImage(side)
+		},
+		switchImage (side) {
+			let nextImageNum
 			if (side == 'left') {
-				nextBannerNum = activeBanner.num == 1 ? this.banners.length : activeBanner.num - 1
+				nextImageNum = this.activeImage.num == 1 ? this.images.length : this.activeImage.num - 1
 			}
 			if (side == 'right') {
-				nextBannerNum = activeBanner.num == this.banners.length ? 1 : activeBanner.num + 1
+				nextImageNum = this.activeImage.num == this.images.length ? 1 : this.activeImage.num + 1
 			}
-			this.setActiveBanner(nextBannerNum)
+			this.setActiveImage(nextImageNum)
 		},
-		setActiveBanner (num) {
-			this.banners = this.banners.map(banner => {
+		changeActiveImage (num) {
+			this.stopAutoplay()
+			this.setActiveImage(num)
+		},
+		setActiveImage (num) {
+			this.images = this.images.map(image => {
 				return {
-					num: banner.num,
-					active: banner.num === num
+					...image,
+					show: image.num === num
 				}
 			})
+			this.activeImage = this.images.find(image => image.show)
+		},
+		setAutoplay () {
+			if (this.banner.autoplay) {
+				this.autoplayInterval = setInterval(() => {
+					this.switchImage('right')
+				}, this.banner.duration * 1000);
+			}
+		},
+		stopAutoplay () {
+			if (this.autoplayInterval) {
+				clearInterval(this.autoplayInterval)
+			}
 		}
 	}
 }

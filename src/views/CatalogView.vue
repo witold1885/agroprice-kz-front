@@ -2,7 +2,10 @@
 	<div class="catalog">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div v-if="category" class="category__wrap">
-			<h1 class="category__title heading-1">{{ category.meta_heading || category.name }}</h1>
+			<div class="category__top d-flex justify-content-between align-items-center">
+				<h1 class="category__title heading-1">{{ category.meta_heading || category.name }}</h1>
+				<LocationMenu />
+			</div>
 			<div class="category__subcategories d-flex align-items-center">
 				<a
 					v-for="(child, index) of category.children"
@@ -27,11 +30,12 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
+import LocationMenu from '@/components/Common/LocationMenu'
 import CategoryFilters from '@/components/Catalog/CategoryFilters'
 import CategoryProducts from '@/components/Catalog/CategoryProducts'
 
 export default {
-	components: { Breadcrumbs, CategoryFilters, CategoryProducts },
+	components: { Breadcrumbs, LocationMenu, CategoryFilters, CategoryProducts },
 	data () {
 		return {
 			breadcrumbs: null,
