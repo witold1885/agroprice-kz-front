@@ -6,7 +6,7 @@
 	height: 436px;
 	// background-color: $color_green;
 	// background-image: url('@/assets/images/banner-mask.png');
-	background-size: 100%;
+	// background-size: 100%;
 	border-radius: 30px;
 	// padding-top: 80px;
 	padding-left: 52px;
@@ -125,7 +125,7 @@
 @media screen and (max-width: 992px) {
 	.banner {
 		height: 362px;
-		background-image: url('@/assets/images/banner-mask-768.png');
+		// background-image: url('@/assets/images/banner-mask-768.png');
 		border-radius: 30px;
 		// padding-top: 33px;
 		padding-left: 38px;
@@ -148,10 +148,10 @@
 			margin-top: 25px;
 		}
 		&__image {
-			width: 405px;
-			height: 225px;
-			right: 25px;
-			bottom: 67px;
+			// width: 405px;
+			// height: 225px;
+			// right: 25px;
+			// bottom: 67px;
 		}
 		&__nav {
 			width: 149px;
@@ -195,10 +195,10 @@
 			margin-top: calc(25 * 100vw / 768);
 		}
 		&__image {
-			width: calc(405 * 100vw / 768);
-			height: calc(225 * 100vw / 768);
-			right: calc(25 * 100vw / 768);
-			bottom: calc(67 * 100vw / 768);
+			// width: calc(405 * 100vw / 768);
+			// height: calc(225 * 100vw / 768);
+			// right: calc(25 * 100vw / 768);
+			// bottom: calc(67 * 100vw / 768);
 		}
 		&__nav {
 			width: calc(149 * 100vw / 768);
@@ -220,7 +220,7 @@
 @media screen and (max-width: 414px) {
 	.banner {
 		height: 216px;
-		background-image: url('@/assets/images/banner-mask-320.png');
+		// background-image: url('@/assets/images/banner-mask-320.png');
 		border-radius: 5px;
 		// padding-top: 20px;
 		padding-left: 11px;
@@ -242,10 +242,10 @@
 			margin-top: -7px;
 		}
 		&__image {
-			width: 145.07px;
-			height: 80.73px;
-			right: 7.93px;
-			bottom: 91.27px;
+			// width: 145.07px;
+			// height: 80.73px;
+			// right: 7.93px;
+			// bottom: 91.27px;
 		}
 		&__nav {
 			position: absolute;
