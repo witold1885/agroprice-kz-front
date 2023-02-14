@@ -145,7 +145,7 @@
 			height: 41px;
 			border-radius: 8px;
 	        @include font-ubuntu(500, 12px, 14px);
-			margin-top: 25px;
+			// margin-top: 25px;
 		}
 		&__image {
 			// width: 405px;
@@ -192,7 +192,7 @@
 			height: calc(41 * 100vw / 768);
 			border-radius: calc(8 * 100vw / 768);
 	        @include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
-			margin-top: calc(25 * 100vw / 768);
+			// margin-top: calc(25 * 100vw / 768);
 		}
 		&__image {
 			// width: calc(405 * 100vw / 768);
@@ -239,7 +239,7 @@
 			width: 116px;
 			height: 33px;
 	        @include font-ubuntu(500, 10px, 11px);
-			margin-top: -7px;
+			// margin-top: -7px;
 		}
 		&__image {
 			// width: 145.07px;
