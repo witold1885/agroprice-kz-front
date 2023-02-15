@@ -26,7 +26,7 @@
 	}
 	&__button {
 		position: absolute;
-		top: 241px;
+		top: 269px;
 		z-index: 3;
 		width: 144px;
 		height: 41px;
@@ -90,7 +90,7 @@
 	        @include font-ubuntu(300, calc(12 * 100vw / 1440), 176.9%);
 		}
 		&__button {
-			top: calc(241 * 100vw / 1440);
+			top: calc(269 * 100vw / 1440);
 			width: calc(144 * 100vw / 1440);
 			height: calc(41 * 100vw / 1440);
 			border-radius: calc(8 * 100vw / 1440);

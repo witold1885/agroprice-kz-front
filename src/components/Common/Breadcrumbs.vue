@@ -9,7 +9,7 @@
 				<a
 					v-if="!breadcrumb.current"
 					class="breadcrumbs__item-link"
-					:href="breadcrumb.link"
+					@click="goTo(breadcrumb.link)"
 				>{{ breadcrumb.text }}</a>
 				<span
 					v-else
@@ -27,6 +27,17 @@ export default {
 		breadcrumbs: {
 			type: Array,
 			default: () => []
+		}
+	},
+	methods: {		
+		goTo (url) {
+			console.log(url)
+			if (url.includes('/catalog/')) {
+				this.$router.push({ path: url, query: this.$route.query });
+			}
+			else {
+				this.$router.push(url)
+			}
 		}
 	}
 }

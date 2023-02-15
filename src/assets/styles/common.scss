@@ -432,6 +432,7 @@ h1 {
 			padding: 10px 30px;
 			&-row {
 				padding: 20px 0;
+				grid-column-gap: 10px;
 				&-actions {
 					padding: 0 10px 20px;
 					& > div {

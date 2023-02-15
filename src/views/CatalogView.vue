@@ -11,7 +11,7 @@
 					v-for="(child, index) of category.children"
 					:key="index"
 					class="category__subcategories-item d-flex justify-content-center align-items-center"
-					:href="`/#/catalog/${child.url}`"
+					@click="goTo(child.url)"
 				>{{ child.name }}</a>
 			</div>
 			<div class="category__data d-flex">
@@ -91,7 +91,7 @@ export default {
 			for (const item of this.category.path) {
 				this.breadcrumbs.push({
 					text: item.name,
-					link: '/#/catalog/' + item.url,
+					link: '/catalog/' + item.url,
 					current: item.category_id === this.category.id
 
 				})
@@ -105,6 +105,9 @@ export default {
 					current: false
 				}
 			]
+		},
+		goTo (url) {
+			this.$router.push({ path: `/catalog/${url}`, query: this.$route.query });
 		}
 	}
 }
