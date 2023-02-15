@@ -227,8 +227,8 @@ header {
 				// max-width: 229px;
 				grid-row-gap: 17px;
 				&-title {
-        	@include font-ubuntu(500, 15px, 17px);
-					color: #3F3F3F;
+        	@include font-ubuntu(500, 18px, 113.33%);
+					color: $color_green;
 				}
 				&-items {
 					grid-row-gap: 10px;
@@ -403,7 +403,7 @@ header {
 					// max-width: calc(229 * 100vw / 1440);
 					grid-row-gap: calc(17 * 100vw / 1440);
 					&-title {
-	        	@include font-ubuntu(500, calc(15 * 100vw / 1440), calc(17 * 100vw / 1440));
+	        	@include font-ubuntu(500, calc(18 * 100vw / 1440), 113.33%);
 					}
 					&-items {
 						grid-row-gap: calc(10 * 100vw / 1440);
@@ -533,7 +533,7 @@ header {
 					// max-width: 164px;
 					grid-row-gap: 10px;
 					&-title {
-	        	@include font-ubuntu(500, 14px, 16px);
+	        	@include font-ubuntu(500, 16px, 113.33%);
 					}
 					&-items {
 						grid-row-gap: 12px;
@@ -644,7 +644,7 @@ header {
 					// max-width: calc(164 * 100vw / 768);
 					grid-row-gap: calc(10 * 100vw / 768);
 					&-title {
-	        	@include font-ubuntu(500, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
+	        	@include font-ubuntu(500, calc(16 * 100vw / 768), 113.33%);
 					}
 					&-items {
 						grid-row-gap: calc(12 * 100vw / 768);

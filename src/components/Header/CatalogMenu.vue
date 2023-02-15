@@ -38,7 +38,7 @@
 					:key="ci"
 					class="catalog-menu__dropdown-categories-item d-flex align-items-center"
 					@mouseover="selectedCategory = category"
-					:href="`/#/catalog/${category.url}`"
+					@click="goTo(category.url)"
 				>
 					<div class="catalog-menu__dropdown-categories-item-wrap d-flex justify-content-between align-items-center">
 						<div class="catalog-menu__dropdown-categories-item-title">{{ category.name }}</div>
@@ -64,14 +64,14 @@
 				>
 					<a
 						class="catalog-menu__dropdown-subcategories-block-title"
-						:href="`/#/catalog/${subcategory.url}`"
+						@click="goTo(subcategory.url)"
 					>{{ subcategory.name }}</a>
 					<div class="catalog-menu__dropdown-subcategories-block-items d-flex flex-column">
 						<a
 							v-for="(subsubcategory, ssi) of subcategory.subsubcategories"
 							:key="ssi"
 							class="catalog-menu__dropdown-subcategories-block-item"
-							:href="`/#/catalog/${subsubcategory.url}`"
+							@click="goTo(subsubcategory.url)"
 						>
 							{{ subsubcategory.name }}
 						</a>
@@ -128,6 +128,10 @@ export default {
 			document.getElementById('app').style.maxHeight = 'unset'
 			document.getElementById('app').style.overflow = 'unset'
 			this.showMenu = false
+		},
+		goTo (url) {
+			this.showMenu = false
+			this.$router.push({ path: `/catalog/${url}`, query: this.$route.query });
 		}
 	}
 }

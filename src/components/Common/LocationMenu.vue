@@ -25,6 +25,16 @@
 				>
 					<div class="location-menu__dropdown-body-row d-flex flex-wrap">
 						<div 
+							class="location-menu__dropdown-body-row-item"
+							:class="{ 'location-menu__dropdown-body-row-item-active': selectedLocationsIds.length == 0 }"
+							@click="resetAll()"
+						>
+							Весь Казахстан
+						</div>
+					</div>
+					<div class="location-menu__dropdown-body-divider"></div>
+					<div class="location-menu__dropdown-body-row d-flex flex-wrap">
+						<div 
 							v-for="(location, index) of locations.except.cities"
 							:key="index"
 							class="location-menu__dropdown-body-row-item"
@@ -103,6 +113,12 @@ export default {
 	},
 	async mounted () {
 		await this.$store.dispatch('location/getLocations')
+		if (this.$route.query.locations) {
+			this.selectedLocationsIds = this.$route.query.locations.split(',').map(id => Number(id))
+			console.log('selectedLocationsIds')
+			console.log(this.selectedLocationsIds)
+			this.submitSelection()
+		}
 	},
 	methods: {
 		toggleLocation (location_id) {
@@ -152,8 +168,19 @@ export default {
 					}
 				}
 			}
-			// console.log(this.selectedLocations)
+			console.log('selectedLocations')
+			console.log(this.selectedLocations)
+			if (this.selectedLocationsIds.length != 0) {
+				this.$router.push({ path: this.$route.path, query: { locations: this.selectedLocationsIds.join(',') } })
+			}
+			else {
+				this.$router.push({ path: this.$route.path, query: {} });
+			}
 			this.showMenu = false
+		},
+		resetAll () {
+			this.selectedLocationsIds = []
+			this.selectedLocations = []
 		}
 	}
 }
