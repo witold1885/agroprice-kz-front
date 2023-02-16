@@ -130,6 +130,8 @@ export default {
 			this.showMenu = false
 		},
 		goTo (url) {
+			document.getElementById('app').style.maxHeight = 'unset'
+			document.getElementById('app').style.overflow = 'unset'
 			this.showMenu = false
 			this.$router.push({ path: `/catalog/${url}`, query: this.$route.query });
 		}
