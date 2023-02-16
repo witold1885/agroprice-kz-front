@@ -69,7 +69,7 @@
 								class="location-menu__dropdown-body-row-actions-all"
 								@click="toggleLocations(openRegion.cities_ids)"
 							>
-								Выбрать все
+								Вся {{ openRegion.region }}
 							</div>
 						</div>
 						<div class="location-menu__dropdown-body-row-items d-flex flex-wrap">
