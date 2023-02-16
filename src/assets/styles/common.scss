@@ -494,6 +494,13 @@ h1 {
 					& > div {
 						@include font-ubuntu(400, 15px, 20px);
 						cursor: pointer;
+						max-width: 50%;
+					}
+					&-back {
+						text-align: left;
+					}
+					&-all {
+						text-align: right;
 					}
 				}
 				&-items {
@@ -727,6 +734,8 @@ h1 {
 				@include font-ubuntu(500, 18px, 21px);
 			}
 			&-body {
+				max-height: 50vh;
+				overflow: scroll;
 				padding: 10px 20px;
 				&-row {
 					padding: 10px 0;
@@ -734,7 +743,7 @@ h1 {
 					&-actions {
 						padding: 0 10px 20px;
 						& > div {
-							@include font-ubuntu(400, 15px, 20px);
+							@include font-ubuntu(400, 12px, 16px);
 						}
 					}
 					&-items {
@@ -743,12 +752,12 @@ h1 {
 
 					}
 					&-item {
-						@include font-ubuntu(400, 14px, 16px);
+						@include font-ubuntu(400, 12px, 16px);
 						padding: 10px;
 						border-radius: 5px;
 					}
 					&-region {
-						@include font-ubuntu(400, 10px, 12px);
+						@include font-ubuntu(400, 12px, 14px);
 						padding: 5px 0;
 						width: 45%;
 					}
