@@ -154,46 +154,46 @@
 
 @media screen and (max-width: 414px) {
 	.auth-dialog {
-		width: 280px;
+		width: calc(280 * 100vw / 320);
 		background: $color_white;
 		&-login {
-			height: 489px;
+			height: calc(489 * 100vw / 320);
 		}
 		&-register {
-			height: 425px;
+			height: calc(425 * 100vw / 320);
 		}
 		&__top {
-			height: 87px;
-			border-bottom: 3px solid #F4F4F4;
+			height: calc(87 * 100vw / 320);
+			border-bottom: calc(3 * 100vw / 320) solid #F4F4F4;
 		}
 		&__close {
-			@include box(12px, 12px);
-			top: 13px;
-			right: 12px;
+			@include box(calc(12 * 100vw / 320), calc(12 * 100vw / 320));
+			top: calc(13 * 100vw / 320);
+			right: calc(12 * 100vw / 320);
 		}
 		&__tabs {
-			grid-column-gap: 29px;
-			margin-bottom: -2px;
+			grid-column-gap: calc(29 * 100vw / 320);
+			margin-bottom: calc(-1 * 2 * 100vw / 320);
 			&-item {
-				width: 108px;
-				padding-bottom: 15px;
-				@include font-ubuntu(700, 16px, 25px);
+				width: calc(108 * 100vw / 320);
+				padding-bottom: calc(15 * 100vw / 320);
+				@include font-ubuntu(700, calc(16 * 100vw / 320), calc(25 * 100vw / 320));
 				&-active {
-					border-bottom: 5px solid $color_green;
+					border-bottom: calc(5 * 100vw / 320) solid $color_green;
 				}
 			}
 		}
 		&__title {
-			@include font-ubuntu(700, 20px, 25px);
-			margin: 29px auto 20px;
+			@include font-ubuntu(700, calc(20 * 100vw / 320), calc(25 * 100vw / 320));
+			margin: calc(29 * 100vw / 320) auto calc(20 * 100vw / 320);
 		}
 		&__form {
-			grid-row-gap: 17px;
+			grid-row-gap: calc(17 * 100vw / 320);
 			&-submit {
-				grid-row-gap: 9px;
+				grid-row-gap: calc(9 * 100vw / 320);
 				&-captcha {
-					width: 246px;
-					height: 61px;
+					width: calc(246 * 100vw / 320);
+					height: calc(61 * 100vw / 320);
 					border: 1.34317px solid #D3D3D3;
 					box-shadow: 0px 0px 5.37269px 1.34317px rgba(0, 0, 0, 0.08);
 					border-radius: 4.02952px;
@@ -203,19 +203,19 @@
 					}
 					&-error {
 						position: absolute;
-						top: -15px;
-						@include font-ubuntu(400, 10px, 10px);
+						top: calc(-1 * 15 * 100vw / 320);
+						@include font-ubuntu(400, calc(10 * 100vw / 320), calc(10 * 100vw / 320));
 						color: red;
 					}
 				}
 				&-button {
-					width: 246px;
-					height: 52px;
-					border-radius: 5px;
-					@include font-ubuntu(400, 14px, 14px);
+					width: calc(246 * 100vw / 320);
+					height: calc(52 * 100vw / 320);
+					border-radius: calc(5 * 100vw / 320);
+					@include font-ubuntu(400, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
 				}
 				&-forgot {
-					@include font-ubuntu(300, 14px, 16px);
+					@include font-ubuntu(300, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
 				}
 			}
 		}
@@ -263,17 +263,17 @@
 
 @media screen and (max-width: 414px) {
 	.auth-form {
-		grid-row-gap: 10px;
+		grid-row-gap: calc(10 * 100vw / 320);
 		&__error {
-			top: -15px;
-			@include font-ubuntu(400, 12px, 12px);
+			top: calc(-1 * 15 * 100vw / 320);
+			@include font-ubuntu(400, calc(12 * 100vw / 320), calc(12 * 100vw / 320));
 		}
 		&__field {
-			width: 246px;
-			height: 52px;
-			border-radius: 5px;
-			padding: 14px 18px 13px;
-			@include font-ubuntu(400, 14px, 25px);
+			width: calc(246 * 100vw / 320);
+			height: calc(52 * 100vw / 320);
+			border-radius: calc(5 * 100vw / 320);
+			padding: calc(14 * 100vw / 320) calc(18 * 100vw / 320) calc(13 * 100vw / 320);
+			@include font-ubuntu(400, calc(14 * 100vw / 320), calc(25 * 100vw / 320));
 		}
 	}
 }
@@ -310,13 +310,13 @@
 
 @media screen and (max-width: 414px) {
 	.info-dialog {
-		width: 280px;
+		width: calc(280 * 100vw / 320);
 		&__top {
-			height: 38px;
+			height: calc(38 * 100vw / 320);
 		}
 		&__body {
-			margin: 20px 20px;
-			@include font-ubuntu(400, 18px, 27px);
+			margin: calc(20 * 100vw / 320) calc(20 * 100vw / 320);
+			@include font-ubuntu(400, calc(18 * 100vw / 320), calc(27 * 100vw / 320));
 		}
 	}	
 }
@@ -347,12 +347,12 @@
 
 @media screen and (max-width: 414px) {
 	.forgot-dialog {
-		width: 280px;
-		height: 321px;
+		width: calc(280 * 100vw / 320);
+		height: calc(321 * 100vw / 320);
 		&__title {
-			@include font-ubuntu(700, 20px, 25px);
+			@include font-ubuntu(700, calc(20 * 100vw / 320), calc(25 * 100vw / 320));
 			color: $color_black;
-			margin: 44px auto 20px;
+			margin: calc(44 * 100vw / 320) auto calc(20 * 100vw / 320);
 			text-align: center;
 		}
 	}

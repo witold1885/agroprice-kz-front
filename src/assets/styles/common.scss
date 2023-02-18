@@ -198,8 +198,8 @@ h1 {
 
 @media screen and (max-width: 414px) {
 	.heading-1 {
-		font-size: 18px;
-		line-height: 21px;
+		font-size: calc(18 * 100vw / 320);
+		line-height: calc(21 * 100vw / 320);
 	}
 }
 
@@ -297,11 +297,11 @@ h1 {
 
 @media screen and (max-width: 414px) {
 	.nav-button {
-		width: 29px;
-		height: 29px;
+		width: calc(29 * 100vw / 320);
+		height: calc(29 * 100vw / 320);
 		&-icon {
-			width: 4.7px;
-			height: 9.41px;
+			width: calc(4.7 * 100vw / 320);
+			height: calc(9.41 * 100vw / 320);
 		}
 	}
 }
@@ -440,13 +440,13 @@ h1 {
 
 @media screen and (max-width: 414px) {
 	.pagination {
-		grid-column-gap: 8.78px;
+		grid-column-gap: calc(8.78 * 100vw / 320);
 		&__item {
-			@include box(39.5px, 39.5px);
-			border-radius: 5px;
+			@include box(calc(39.5 * 100vw / 320), calc(39.5 * 100vw / 320));
+			border-radius: calc(5 * 100vw / 320);
 			&-page {
-				font-size: 16px;
-				line-height: 24px;
+				font-size: calc(16 * 100vw / 320);
+				line-height: calc(24 * 100vw / 320);
 			}
 		}
 	}
@@ -720,56 +720,56 @@ h1 {
 		width: 100%;
 		&__field {
 			width: 100%;
-			height: 32px;
-			border-radius: 8px;
-			@include font-ubuntu(400, 14px, 16px);
-			padding: 8px;
+			height: calc(32 * 100vw / 320);
+			border-radius: calc(8 * 100vw / 320);
+			@include font-ubuntu(400, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
+			padding: calc(8 * 100vw / 320);
 		}
 		&__dropdown {
-			width: 280px;
+			width: calc(280 * 100vw / 320);
 			&-top {
-				height: 73px;
+				height: calc(73 * 100vw / 320);
 			}
 			&-title {
-				@include font-ubuntu(500, 18px, 21px);
+				@include font-ubuntu(500, calc(18 * 100vw / 320), calc(21 * 100vw / 320));
 			}
 			&-body {
 				max-height: 50vh;
 				overflow: scroll;
-				padding: 10px 20px;
+				padding: calc(10 * 100vw / 320) calc(20 * 100vw / 320);
 				&-row {
-					padding: 10px 0;
-					grid-column-gap: 10px;
+					padding: calc(10 * 100vw / 320) 0;
+					grid-column-gap: calc(10 * 100vw / 320);
 					&-actions {
-						padding: 0 10px 20px;
+						padding: 0 calc(10 * 100vw / 320) calc(20 * 100vw / 320);
 						& > div {
-							@include font-ubuntu(400, 12px, 16px);
+							@include font-ubuntu(400, calc(12 * 100vw / 320), calc(16 * 100vw / 320));
 						}
 					}
 					&-items {
-						grid-column-gap: 15px;
-						grid-row-gap: 5px;
+						grid-column-gap: calc(15 * 100vw / 320);
+						grid-row-gap: calc(5 * 100vw / 320);
 
 					}
 					&-item {
-						@include font-ubuntu(400, 12px, 16px);
-						padding: 10px;
-						border-radius: 5px;
+						@include font-ubuntu(400, calc(12 * 100vw / 320), calc(16 * 100vw / 320));
+						padding: calc(10 * 100vw / 320);
+						border-radius: calc(5 * 100vw / 320);
 					}
 					&-region {
-						@include font-ubuntu(400, 12px, 14px);
-						padding: 5px 0;
+						@include font-ubuntu(400, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+						padding: calc(5 * 100vw / 320) 0;
 						width: 45%;
 					}
 				}
 			}
 			&-bottom {
-				padding: 20px 30px 20px;
+				padding: calc(20 * 100vw / 320) calc(30 * 100vw / 320) calc(20 * 100vw / 320);
 			}
 			&-submit {
-				@include box(100px, 40px);
-				border-radius: 8px;
-				@include font-ubuntu(400, 14px, 16px);
+				@include box(calc(100 * 100vw / 320), calc(40 * 100vw / 320));
+				border-radius: calc(8 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
 			}
 		}
 	}

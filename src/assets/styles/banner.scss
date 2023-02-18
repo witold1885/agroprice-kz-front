@@ -219,46 +219,46 @@
 
 @media screen and (max-width: 414px) {
 	.banner {
-		height: 216px;
+		height: calc(216 * 100vw / 320);
 		// background-image: url('@/assets/images/banner-mask-320.png');
-		border-radius: 5px;
-		// padding-top: 20px;
-		padding-left: 11px;
+		border-radius: calc(5 * 100vw / 320);
+		// padding-top: 20 * 100vw / 320);
+		padding-left: calc(11 * 100vw / 320);
 		&__title {
-			max-width: 113px;
-			margin-bottom: 8px;
-	        @include font-ubuntu(500, 12px, 14px);
+			max-width: calc(113 * 100vw / 320);
+			margin-bottom: calc(8 * 100vw / 320);
+	        @include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
 		}
 		&__subtitle {
-			max-width: 143px;
-			height: 67px; // temp
-	        @include font-ubuntu(300, 8px, 160.4%);
+			max-width: calc(143 * 100vw / 320);
+			height: calc(67 * 100vw / 320); // temp
+	        @include font-ubuntu(300, calc(8 * 100vw / 320), 160.4%);
 		}
 		&__button {
-			top: 116px;
-			width: 116px;
-			height: 33px;
-	        @include font-ubuntu(500, 10px, 11px);
-			// margin-top: -7px;
+			top: calc(116 * 100vw / 320);
+			width: calc(116 * 100vw / 320);
+			height: calc(33 * 100vw / 320);
+	        @include font-ubuntu(500, calc(10 * 100vw / 320), calc(11 * 100vw / 320));
+			// margin-top: calc(-1 * 7 * 100vw / 320);
 		}
 		&__image {
-			// width: 145.07px;
-			// height: 80.73px;
-			// right: 7.93px;
-			// bottom: 91.27px;
+			// width: calc(145.07 * 100vw / 320);
+			// height: calc(80.73 * 100vw / 320);
+			// right: calc(7.93 * 100vw / 320);
+			// bottom: calc(91.27 * 100vw / 320);
 		}
 		&__nav {
 			position: absolute;
-			width: 116.78px;
-			height: 29px;
-			left: 82.11px;
-			bottom: 18px;
-			grid-column-gap: 10.19px;
+			width: calc(116.78 * 100vw / 320);
+			height: calc(29 * 100vw / 320);
+			left: calc(82.11 * 100vw / 320);
+			bottom: calc(18 * 100vw / 320);
+			grid-column-gap: calc(10.19 * 100vw / 320);
 			&-dots {
-				grid-column-gap: 5.49px;
+				grid-column-gap: calc(5.49 * 100vw / 320);
 				&-item {
-					width: 5.49px;
-					height: 5.49px;
+					width: calc(5.49 * 100vw / 320);
+					height: calc(5.49 * 100vw / 320);
 				}
 			}
 		}
