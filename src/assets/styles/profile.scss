@@ -437,7 +437,7 @@
 
 	.profile {
 		&__wrap {
-			grid-column-gap: 24px;
+			grid-column-gap: calc(24 * 100vw / 320);
 			min-height: unset;
 		}
 		&-sidebar {
@@ -446,24 +446,24 @@
 		&-menu {
 			display: block;
 			position: relative;
-			margin-top: 20px;
+			margin-top: calc(20 * 100vw / 320);
 			&__button {
-				width: 280px;
-				height: 41px;
+				width: calc(280 * 100vw / 320);
+				height: calc(41 * 100vw / 320);
 				background: $color_green;
-				border-radius: 8px;
-				grid-column-gap: 14px;
+				border-radius: calc(8 * 100vw / 320);
+				grid-column-gap: calc(14 * 100vw / 320);
 				cursor: pointer;
 				&-icon {
-					width: 14px;
-					grid-row-gap: 3px;
+					width: calc(14 * 100vw / 320);
+					grid-row-gap: calc(3 * 100vw / 320);
 					& img {
 						width: 100%;
-						height: 2px;
+						height: calc(2 * 100vw / 320);
 					}
 				}
 				&-title {
-					@include font-ubuntu(500, 12px, 14px);
+					@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
 					color: $color_white;
 				}
 			}			
@@ -471,100 +471,100 @@
 	}
 
 	.complete-register {
-		margin-bottom: 45px;
+		margin-bottom: calc(45 * 100vw / 320);
 		&__title {
 			margin: 0;
-			@include font-ubuntu(500, 18px, 21px);
+			@include font-ubuntu(500, calc(18 * 100vw / 320), calc(21 * 100vw / 320));
 		}
 		&__form {
-			margin: 17px 0 28px;
-			width: 280px;
-			// height: 371px;
-			border-radius: 11px;
-			padding: 11px 15px 25px;
+			margin: calc(17 * 100vw / 320) 0 calc(28 * 100vw / 320);
+			width: calc(280 * 100vw / 320);
+			// height: 371 * 100vw / 320);
+			border-radius: calc(11 * 100vw / 320);
+			padding: calc(11 * 100vw / 320) calc(15 * 100vw / 320) calc(25 * 100vw / 320);
 			&-error {
-				top: 5px;
-				@include font-ubuntu(400, 10px, 10px);
+				top: calc(5 * 100vw / 320);
+				@include font-ubuntu(400, calc(10 * 100vw / 320), calc(10 * 100vw / 320));
 			}
 			&-label {
-				@include font-ubuntu(500, 14px, 195.9%);
+				@include font-ubuntu(500, calc(14 * 100vw / 320), 195.9%);
 			}
 			&-field {
-				width: 249px;
-				height: 34px;
-				border-radius: 3px;
-				padding: 3px 11px 4px;
-				@include font-ubuntu(400, 14px, 195.9%);
+				width: calc(249 * 100vw / 320);
+				height: calc(34 * 100vw / 320);
+				border-radius: calc(3 * 100vw / 320);
+				padding: calc(3 * 100vw / 320) calc(11 * 100vw / 320) calc(4 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), 195.9%);
 			}
 			&-customer {
 				flex-direction: column;
-				grid-row-gap: 8px;
+				grid-row-gap: calc(8 * 100vw / 320);
 				&-name {
-					grid-row-gap: 10px;
+					grid-row-gap: calc(10 * 100vw / 320);
 				}
 				&-type {
-					grid-column-gap: 17px;
-					margin-bottom: 3.3px;
+					grid-column-gap: calc(17 * 100vw / 320);
+					margin-bottom: calc(3.3 * 100vw / 320);
 					&-item {
-						grid-column-gap: 8px;
+						grid-column-gap: calc(8 * 100vw / 320);
 						&-switch {
-							@include box(15px, 15px);
-							border-radius: 3px;
+							@include box(calc(15 * 100vw / 320), calc(15 * 100vw / 320));
+							border-radius: calc(3 * 100vw / 320);
 						}
 						& label {
-							@include font-ubuntu(400, 14px, 195.9%);
+							@include font-ubuntu(400, calc(14 * 100vw / 320), 195.9%);
 						}
 					}
 				}
 			}
 			&-phone {
-				margin-top: 20px;
+				margin-top: calc(20 * 100vw / 320);
 				flex-direction: column;
-				grid-row-gap: 13px;
+				grid-row-gap: calc(13 * 100vw / 320);
 				&-specify {
-					grid-row-gap: 13px;
+					grid-row-gap: calc(13 * 100vw / 320);
 				}
 				&-submit {
-					width: 123px;
-					height: 34px;
-					border-radius: 3px;
-					@include font-ubuntu(500, 12px, 14px);
+					width: calc(123 * 100vw / 320);
+					height: calc(34 * 100vw / 320);
+					border-radius: calc(3 * 100vw / 320);
+					@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
 				}
 			}
 			&-email {
-				margin-top: 22px;
+				margin-top: calc(22 * 100vw / 320);
 				&-specified {
-					// grid-row-gap: 10px;
+					// grid-row-gap: 10 * 100vw / 320);
 					&-value {
-						@include font-ubuntu(500, 14px, 195.9%);
+						@include font-ubuntu(500, calc(14 * 100vw / 320), 195.9%);
 					}
 				}
 			}
 			&-password {
-				margin-top: 17px;
+				margin-top: calc(17 * 100vw / 320);
 				flex-direction: column;
-				grid-row-gap: 10px;
+				grid-row-gap: calc(10 * 100vw / 320);
 				&-specify {
-					grid-row-gap: 10px;
+					grid-row-gap: calc(10 * 100vw / 320);
 				}
 				&-confirm {
-					grid-row-gap: 10px;
+					grid-row-gap: calc(10 * 100vw / 320);
 				}
 			}
 		}
 		&__success {
-			margin: 25px 0;
-			@include font-ubuntu(400, 18px, 36px);
+			margin: calc(25 * 100vw / 320) 0;
+			@include font-ubuntu(400, calc(18 * 100vw / 320), calc(36 * 100vw / 320));
 			color: $color_black;
 		}
 		&__buttons {
-			grid-column-gap: 14px;
+			grid-column-gap: calc(14 * 100vw / 320);
 		}
 		&__button {
-			width: 131px;
-			height: 41px;
-			border-radius: 8px;
-			@include font-ubuntu(500, 12px, 14px);
+			width: calc(131 * 100vw / 320);
+			height: calc(41 * 100vw / 320);
+			border-radius: calc(8 * 100vw / 320);
+			@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
 			&-save {
 				background: $color_green;
 				border: none;
