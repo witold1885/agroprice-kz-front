@@ -192,8 +192,8 @@
 			&-submit {
 				grid-row-gap: calc(9 * 100vw / 320);
 				&-captcha {
-					width: calc(246 * 100vw / 320);
-					height: calc(61 * 100vw / 320);
+					width: 246 * 100vw / 320;
+					height: 61 * 100vw / 320;
 					border: 1.34317px solid #D3D3D3;
 					box-shadow: 0px 0px 5.37269px 1.34317px rgba(0, 0, 0, 0.08);
 					border-radius: 4.02952px;
