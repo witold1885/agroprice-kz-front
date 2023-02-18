@@ -24,6 +24,7 @@
 	padding-left: 26px;
 	position: relative;
 	cursor: pointer;
+	box-sizing: border-box;
 	&__title {
         @include font-ubuntu(500, 21px, 24px);
 		text-align: left;
