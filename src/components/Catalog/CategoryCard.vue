@@ -1,7 +1,7 @@
 <template>
 	<a
 		class="category-card"
-		:href="`/#/catalog/${category.url}`"
+		:href="`/catalog/${category.url}`"
 	>
 		<div class="category-card__title">{{ category.name }}</div>
 		<div class="category-card__subtitle">Техники (234)</div>
