@@ -64,6 +64,20 @@ export const actions = {
     else {
       console.log(response.data.error)
     }
+  },
+  async getChildCategories (context, parent_id) {
+    const response = await api.get('/catalog/child-categories/' + parent_id)
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      return response.data.categories
+    }
+    else {
+      console.log(response.data.error)
+      return null
+    }
   }
 }
 
