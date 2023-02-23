@@ -30,6 +30,20 @@ export const actions = {
       console.log(response.data.error)
     }
   },
+  async searchLocations (context, search) {
+    const response = await api.get('/locations/search/' + search)
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      return response.data.locations
+    }
+    else {
+      console.log(response.data.error)
+      return null
+    }
+  },
 }
 
 export const getters = {

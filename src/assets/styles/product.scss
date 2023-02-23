@@ -1,0 +1,237 @@
+@import '@/assets/styles/_variables.scss';
+@import '@/assets/styles/_mixins.scss';
+
+.create-product {
+	&__form {
+		&-blocks {
+			grid-row-gap: 10px;
+		}
+		&-block {
+			width: 1200px;
+			padding-top: 24px;
+			padding-left: 25px;
+			padding-right: 25px;
+			background: #F4F4F4;
+			border-radius: 11px;
+			&-main {
+				padding-bottom: 38px;
+			}
+			&-images {
+				padding-bottom: 31px;
+			}
+			&-description {
+				padding-bottom: 32px;
+			}
+			&-price {
+				padding-top: 33px;
+				padding-bottom: 33px;
+				grid-column-gap: 39px;
+			}
+			&-item {
+				&-negotiable {
+					margin-top: 49px;
+					grid-column-gap: 16px;
+				}
+			}
+			&-location {
+				padding-top: 33px;
+				padding-bottom: 45px;
+			}
+			&-contacts {
+				padding-top: 33px;
+				padding-bottom: 27px;
+			}
+		}
+		&-label {
+			@include font-ubuntu(700, 14px, 25px);
+			color: $color_black;
+			margin-bottom: 10px;
+			&-inline {
+				margin-bottom: 0;
+			}
+		}
+		&-field {
+			width: 100%;
+			height: 52px;
+			box-sizing: border-box;
+			background: $color_white;
+			border-radius: 5px;
+			padding: 14px 18px 13px;
+			border: none;
+			@include font-ubuntu(400, 14px, 25px);
+			color: $color_black;
+			&-price {
+				width: 336px;
+			}
+		}
+		&-hint {
+			@include font-ubuntu(400, 14px, 25px);
+			color: #868686;
+			margin-top: 4px;
+		}
+		&-name {
+			width: 100%;
+			margin-bottom: 25px;
+		}
+		&-selects {
+			grid-column-gap: 20px;
+			grid-row-gap: 13px;
+		}
+		&-select {
+			width: 565px;
+			position: relative;
+			&-location {
+				width: 473px;
+			}
+			&-field {
+				width: 100%;
+				height: 52px;
+				box-sizing: border-box;
+				background: $color_white;
+				border-radius: 5px;
+				padding: 14px 14px 13px 18px;
+				border: none;
+				cursor: pointer;
+				&-value {
+					@include font-ubuntu(400, 14px, 25px);
+					color: $color_black;					
+				}
+				&-arrow {
+					width: 13px;
+					height: 8px;
+				}
+				&-input {
+					@include font-ubuntu(400, 14px, 25px);
+					color: $color_black;
+					width: 100%;
+					flex: 1;
+					border: none;
+					outline: none;
+					padding: 0;
+				}
+				&-location {
+					width: 12px;
+					height: 16px;
+
+				}
+			}
+			&-menu {
+				position: absolute;
+				top: 47px;
+				width: 100%;
+				background: $color_white;
+				border-radius: 5px;
+				padding: 5px 14px 13px 18px;
+				z-index: 2;
+				&-item {
+					@include font-ubuntu(400, 14px, 25px);
+					color: $color_black;	
+					cursor: pointer;				
+				}
+			}
+		}
+		&-thumbs {
+			grid-column-gap: 20px;
+			grid-row-gap: 15px;
+			&-sublabel {
+				@include font-ubuntu(400, 14px, 25px);
+				color: #161616;	
+				margin-bottom: 20px;
+			}
+		}
+		&-thumb {
+			width: 272px;
+			height: 158px;
+			background: $color_white;
+			border-radius: 5px;
+			&-active {
+				box-shadow: 0px 7px 11px rgba(0, 0, 0, 0.08);
+				border: 1px solid $color_green;
+				cursor: pointer;
+			}
+			&-text {
+				@include font-ubuntu(700, 14px, 25px);
+				color: $color_green;
+				margin-bottom: 8px;
+			}
+		}
+		&-textarea {
+			width: 100%;
+			height: 182px;
+			background: $color_white;
+			border-radius: 5px;
+			resize: none;
+			border: none;
+			box-shadow: none;
+			outline: none;
+			@include font-ubuntu(400, 14px, 25px);
+			color: #868686;
+			padding: 14px 18px 13px;
+		}
+		&-switch {
+			width: 40px;
+			height: 20px;
+			background: $color_white;
+			border-radius: 10px;
+			position: relative;
+			cursor: pointer;
+			&-position {
+				width: 20px;
+				height: 20px;
+				box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
+				position: absolute;
+				top: 0;
+				border-radius: 100%;
+				&-on {
+					right: 0;
+					background: $color_green;
+				}
+				&-off {
+					left: 0;
+					background: #868686;
+				}
+			}
+		}
+		&-inputs {
+			width: 473px;
+			grid-row-gap: 11px;
+		}
+		&-bottom {
+			margin-top: 38px;
+			margin-bottom: 93px;
+		}
+		&-limitation {
+			grid-column-gap: 15px;
+			&-option {
+				@include font-ubuntu(500, 14px, 25px);
+				color: $color_black;
+			}
+			&-description {
+				@include font-ubuntu(400, 14px, 25px);
+				color: $color_black;
+			}
+		}
+		&-buttons {
+			grid-column-gap: 15px;
+			& button {
+				width: 205px;
+				height: 39px;
+				border-radius: 5px;
+				box-shadow: none;
+				@include font-ubuntu(400, 13px, 14px);
+			}
+		}
+		&-button {
+			&-publish {
+				background: $color_green;
+				color: $color_white;
+				border: none;
+			}
+			&-preview {
+				background: $color_white;
+				color: $color_black;
+				border: 1px solid $color_green;
+			}
+		}
+	}
+}
