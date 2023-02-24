@@ -12,7 +12,6 @@ export const mutations = {
 
 export const actions = {
   async saveProduct (context, payload) {
-    console.log(payload)
     const response = await api.post('/product/save/', payload, { headers: { "Content-Type": "multipart/form-data" } })
       .catch((error) => {
         console.log(error)
@@ -20,7 +19,8 @@ export const actions = {
     console.log(response.data)
     return {
       success: response.data.success,
-      error: response.data.error || null
+      error: response.data.error || null,
+      line: response.data.line || null
     }
   }
 }

@@ -227,8 +227,8 @@ export default {
 	data () {
 		return {
 			product: {
-				id: null,
-				user_id: null,
+				id: '',
+				user_id: '',
 				name: '',
 				description: '',
 				price: 0,
@@ -327,22 +327,19 @@ export default {
 			}
 		},
 		onImageSelected(e, index) {
-			var images = e.target.files;
-			// console.log(images);
+			let images = e.target.files
 			if (images && images[0]) {
 				const reader = new FileReader
 				reader.onload = e => {
 					this.imgs[index].imageData = e.target.result
 				}
 				reader.readAsDataURL(images[0])
-				// this.$emit('input', images[0])
 				this.imgs[index].active = false
 				this.imgs[index].name = images[0].name
 				this.imgs[index].file = images[0]
 				if (this.imgs[index + 1]) {
 					this.imgs[index + 1].active = true
 				}
-				// console.log(this.imgs)
 			}
 		},
 		async getLocations () {
@@ -389,15 +386,20 @@ export default {
 					const { num, file } = item
 					return { num, file }
 				})
-				const payload = {
-					...this.product,
-					...{ contact: this.contact },
-					...{ categories },
-					...{ images }
+				let payload = new FormData()
+				for (const param in this.product) {
+					payload.append(param, this.product[param])
 				}
-				// console.log(payload)
+				for (const param in this.contact) {
+					payload.append(`contact[${param}]`, this.contact[param])
+				}
+				for (const category of categories) {
+					payload.append('categories[]', JSON.stringify(category))
+				}
+				for (const img of images) {
+					payload.append('images[]', img.file)
+				}
 				const saveResult = await this.saveProduct(payload)
-				console.log(saveResult)
 				if (!saveResult.success) {
 					this.errors.save = errorMessages.saveProductError
 				}
