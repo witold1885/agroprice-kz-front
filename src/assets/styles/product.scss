@@ -7,12 +7,26 @@
 			grid-row-gap: 10px;
 		}
 		&-block {
+			position: relative;
 			width: 1200px;
 			padding-top: 24px;
 			padding-left: 25px;
 			padding-right: 25px;
 			background: #F4F4F4;
 			border-radius: 11px;
+			&-error {
+				position: absolute;
+				top: 10px;
+				@include font-ubuntu(400, 12px, 12px);
+				color: red;
+				&-category {
+					top: 150px;
+				}
+				&-save {
+					top: -20px;
+					right: 0;
+				}
+			}
 			&-main {
 				padding-bottom: 38px;
 			}
@@ -62,6 +76,9 @@
 			color: $color_black;
 			&-price {
 				width: 336px;
+			}
+			&-error {
+				border: 1px solid red;
 			}
 		}
 		&-hint {
@@ -172,8 +189,11 @@
 			box-shadow: none;
 			outline: none;
 			@include font-ubuntu(400, 14px, 25px);
-			color: #868686;
+			color: $color_black;
 			padding: 14px 18px 13px;
+			&-error {
+				border: 1px solid red;
+			}
 		}
 		&-switch {
 			width: 40px;
@@ -204,6 +224,7 @@
 			grid-row-gap: 11px;
 		}
 		&-bottom {
+			position: relative;
 			margin-top: 38px;
 			margin-bottom: 93px;
 		}

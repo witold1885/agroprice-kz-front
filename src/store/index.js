@@ -4,6 +4,7 @@ import * as profile from './modules/profile'
 import * as catalog from './modules/catalog'
 import * as location from './modules/location'
 import * as info from './modules/info'
+import * as product from './modules/product'
 
 export default createStore({
   state: {
@@ -20,5 +21,6 @@ export default createStore({
     catalog,
     location,
     info,
+    product,
   }
 })
