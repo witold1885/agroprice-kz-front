@@ -55,9 +55,17 @@
 							:key="`thumb-${index}`"
 							class="create-product__form-thumb d-flex flex-column justify-content-center align-items-center"
 							:class="{ 'create-product__form-thumb-active': img.active }"
+							:style="{ 'background-image': `url(${img.imageData})` }"
+							@click="selectImage(img, index)"
 						>
-							<img :src="require('@/assets/images/add-image.png')">
+							<img v-if="!img.imageData" :src="require('@/assets/images/add-image.png')">
 							<div v-if="img.active" class="create-product__form-thumb-text">Добавить фото</div>
+							<input
+								type="file"
+								style="display: none"
+								:ref="el => addImageRefs.push(el)"
+								@change="onImageSelected($event, index)"
+							>
 						</div>
 					</div>
 				</div>
@@ -171,8 +179,13 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { ref } from 'vue'
 
 export default {
+	setup () {
+		const addImageRefs = ref([])
+		return { addImageRefs }
+	},
 	data () {
 		return {
 			cats: [
@@ -202,8 +215,10 @@ export default {
 		for (let i = 1; i <= 8; i++) {
 			this.imgs.push({
 				num: i,
-				path: '',
-				active: i === 1
+				active: i === 1,
+				imageData: null,
+				name: null,
+				file: null
 			})
 		}
 	},
@@ -227,6 +242,31 @@ export default {
 					list: childCategories,
 					show: false
 				})
+			}
+		},
+		selectImage(img, index) {
+			console.log(img)
+			if (img.active) {
+				this.addImageRefs[index].click()
+			}
+		},
+		onImageSelected(e, index) {
+			var images = e.target.files;
+			// console.log(images);
+			if (images && images[0]) {
+				const reader = new FileReader
+				reader.onload = e => {
+					this.imgs[index].imageData = e.target.result
+				}
+				reader.readAsDataURL(images[0])
+				// this.$emit('input', images[0])
+				this.imgs[index].active = false
+				this.imgs[index].name = images[0].name
+				this.imgs[index].file = images[0]
+				if (this.imgs[index + 1]) {
+					this.imgs[index + 1].active = true
+				}
+				// console.log(this.imgs)
 			}
 		},
 		async getLocations () {
