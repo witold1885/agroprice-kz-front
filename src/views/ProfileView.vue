@@ -1,5 +1,5 @@
 <template>
-	<div class="profile">
+	<div class="profile" v-if="user">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div class="profile__wrap d-flex">
 			<ProfileSidebar />
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 import ProfileSidebar from '@/components/Profile/ProfileSidebar'
 
@@ -28,6 +29,15 @@ export default {
 					current: false
 				},
 			]
+		}
+	},
+	computed: {
+		...mapState('auth', ['user'])
+	},
+	async mounted () {
+		await this.$store.dispatch('auth/getUser')
+		if (!this.user) {
+			this.$router.push('/')
 		}
 	}
 }

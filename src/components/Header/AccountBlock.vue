@@ -43,44 +43,12 @@
 			:src="require(`@/assets/images/account.png`)"
 		/>
 	</button>
-	<AuthDialog
-		:dialog="authDialog"
-		@login="afterLogin"
-		@register="infoRegister"
-		@forgot="initForgot"
-	/>
-	<ForgotDialog :dialog="forgotDialog" @forgot="infoForgot"/>
-	<InfoDialog :dialog="infoDialog" />
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import AuthDialog from '@/components/Auth/AuthDialog'
-import ForgotDialog from '@/components/Auth/ForgotDialog'
-import InfoDialog from '@/components/Auth/InfoDialog'
 
 export default {
-	components: {
-		AuthDialog,
-		ForgotDialog,
-		InfoDialog
-	},
-	data () {
-		return {
-			authDialog: {
-				visible: false,
-				name: 'login'
-			},
-			infoDialog: {
-				visible: false,
-				message: ''
-			},
-			forgotDialog: {
-				visible: false,
-				message: ''
-			}
-		}
-	},
 	computed: {
 		...mapState('auth', ['user']),
 	},
@@ -88,29 +56,11 @@ export default {
 		...mapActions('auth', ['logoutUser']),
 		handleAccount () {
 			if (!this.user) {
-				this.authDialog.visible = true
+				this.emitter.emit('auth', '/profile')
 			}
 			else {
 				this.$router.push('/profile')
 			}
-		},
-		afterLogin () {
-			this.authDialog.visible = false
-			this.$router.push('/')
-		},
-		infoRegister () {
-			this.authDialog.visible = false
-			this.infoDialog.message = 'Регистрация прошла успешно. Письмо с ссылкой для подтверждения отправлено на Ваш E-mal'
-			this.infoDialog.visible = true
-		},
-		initForgot () {
-			this.authDialog.visible = false
-			this.forgotDialog.visible = true
-		},
-		infoForgot () {
-			this.forgotDialog.visible = false
-			this.infoDialog.message = 'Запрос на восстановление пароля создан успешно. Письмо с ссылкой для подтверждения отправлено на Ваш E-mal'
-			this.infoDialog.visible = true
 		},
 		async logout () {
 			const logoutSuccess = await this.logoutUser()

@@ -33,15 +33,38 @@
 
 				</div>
 			</div>
-			<!-- <div class="complete-register__form-phone d-flex align-items-end">
+			<div class="complete-register__form-phone d-flex align-items-end">
 				<div class="complete-register__form-phone-specify d-flex flex-column">
 					<div class="complete-register__form-label">
 						Номер телефона<span class="complete-register__form-required">*</span>
 					</div>
-					<input class="complete-register__form-field" placeholder="+7 (7__) ___ -___-__" v-model="v$.profile.phone.$model" autocomplete />					
+					<input
+						class="complete-register__form-field"
+						v-model="v$.profile.phone.$model"
+						v-maska
+						data-maska="['+7 (7##) ###-##-##']"
+						@maska="onPhoneMaska"
+						autocomplete
+					/>
 				</div>
-				<button type="button" class="complete-register__form-phone-submit">Подтвердить</button>
-			</div> -->
+				<!-- <button type="button" class="complete-register__form-phone-submit">Подтвердить</button> -->
+			</div>
+			<div class="complete-register__form-phone d-flex align-items-end">
+				<div class="complete-register__form-phone-specify d-flex flex-column">
+					<div class="complete-register__form-label">
+						Whatsapp<span class="complete-register__form-required">*</span>
+					</div>
+					<input
+						class="complete-register__form-field"
+						v-model="v$.profile.whatsapp.$model"
+						v-maska
+						data-maska="['+7 (7##) ###-##-##']"
+						@maska="onWhatsappMaska"
+						autocomplete
+					/>
+				</div>
+				<!-- <button type="button" class="complete-register__form-phone-submit">Подтвердить</button> -->
+			</div>
 			<div class="complete-register__form-email d-flex align-items-end">
 				<div class="complete-register__form-email-specified d-flex flex-column">
 					<div class="complete-register__form-label complete-register__form-label-disabled">
@@ -81,25 +104,29 @@ import { mapState, mapActions } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import errorMessages from './errorMessages'
+import { vMaska } from "maska"
 import ProfileMenu from '@/components/Profile/ProfileMenu'
 
 export default {
 	setup () {
 		return { v$: useVuelidate() }
 	},
+	directives: { maska: vMaska },
 	components: { ProfileMenu },
 	data () {
 		return {
 			profile: {
 				fullname: '',
 				type: 'private',
-				phone: null
+				phone: null,
+				whatsapp: null
 			},
 			email: '',
 			password: '',
 			password_confirmation: '',
+			phoneEntered: false,
 			error: null,
-			registerCompleted: false
+			registerCompleted: false,
 		}
 	},
 	validations () {
@@ -109,9 +136,12 @@ export default {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Имя'), required),
 					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '2'), minLength(2))
 				},
-				/*phone: {
+				phone: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Номер телефона'), required),
-				},*/
+				},
+				whatsapp: {
+					required: helpers.withMessage(errorMessages.required.replace(':field', 'Whatsapp'), required),
+				},
 			},
 			password: {
 				required: helpers.withMessage(errorMessages.required.replace(':field', 'Пароль'), required),
@@ -133,11 +163,18 @@ export default {
 			this.profile.fullname = this.user.profile.fullname
 			this.profile.type = this.user.profile.type
 			this.profile.phone = this.user.profile.phone
+			this.profile.whatsapp = this.user.profile.whatsapp
 			this.registerCompleted = this.user.status !== 'incomplete'
 		}
 	},
 	methods: {
 		...mapActions('profile', ['saveProfile']),
+		onPhoneMaska (event) {
+			this.phoneEntered = event.detail.completed
+		},
+		onWhatsappMaska (event) {
+			this.phoneEntered = event.detail.completed
+		},
 		async save () {
 			this.v$.$validate()
 			if (!this.v$.$error) {
