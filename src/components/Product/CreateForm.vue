@@ -101,7 +101,8 @@
 					<input
 						class="create-product__form-field create-product__form-field-price"
 						placeholder="12 000"
-						v-model="product.price"
+						v-model="v$.product.price.$model"
+						:class="{ 'create-product__form-textarea-error': v$.product.price.$error }"
 					/>
 				</div>
 				<div class="create-product__form-block-item create-product__form-block-item-negotiable d-flex align-items-center">
@@ -205,6 +206,11 @@
 					class="create-product__form-button-preview"
 					@click="onSubmit('draft')"
 				>Предпросмотр</button>
+				<button
+					type="button"
+					class="create-product__form-button-cancel"
+					@click="cancelCreating"
+				>Отмена</button>
 			</div>
 		</div>
 	</form>
@@ -213,7 +219,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
-import { required, email, minLength, helpers } from '@vuelidate/validators'
+import { required, email, numeric, minLength, helpers } from '@vuelidate/validators'
 import errorMessages from './errorMessages'
 import { ref } from 'vue'
 import { vMaska } from "maska"
@@ -269,23 +275,42 @@ export default {
 				description: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Описание'), required),
 					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '8'), minLength(8))
+				},
+				price: {
+					numeric: helpers.withMessage(errorMessages.numeric.replace(':field', 'Цена'), numeric),
 				}
 			},
 			contact: {
 				person: {
+					required: helpers.withMessage(errorMessages.required.replace(':field', 'Контактное лицо'), required),
 					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '3'), minLength(3))					
 				},
 				email: {
+					required: helpers.withMessage(errorMessages.required.replace(':field', 'E-mail'), required),
 					email: helpers.withMessage(errorMessages.email, email)
+				},
+				phone: {
+					required: helpers.withMessage(errorMessages.required.replace(':field', 'Номер телефона'), required)
 				}
 			}
 		}
 	},
 	computed: {
+		...mapState('auth', ['user']),
 		...mapState('catalog', ['mainCategories']),
 	},
 	async mounted () {
 		this.resetErrors()
+		await this.$store.dispatch('auth/getUser')
+		if (!this.user) {
+			this.emitter.emit('auth', this.$route.path)
+		}
+		else {
+			this.product.user_id = this.user.id
+			this.contact.person = this.user.profile.fullname
+			this.contact.email = this.user.email
+			this.contact.phone = this.user.profile.phone
+		}
 		await this.$store.dispatch('catalog/getMainCategories')
 		this.cats[0].list = this.mainCategories
 		for (let i = 1; i <= 8; i++) {
@@ -359,6 +384,10 @@ export default {
 		},
 		async onSubmit (status) {
 			this.resetErrors()
+			if (!this.user) {
+				this.emitter.emit('auth', this.$route.path)
+				return
+			}
 			const categories = this.cats.filter(item => item.id !== 0).map(item => {
 				const { level, id, name } = item
 				return { level, id, name }
@@ -403,6 +432,9 @@ export default {
 				if (!saveResult.success) {
 					this.errors.save = errorMessages.saveProductError
 				}
+				else {
+					this.emitter.emit('product-created')
+				}
 			}
 			else {
 				this.getErrorMessage()
@@ -425,6 +457,9 @@ export default {
 				phone: null,
 				save: null,
 			}
+		},
+		cancelCreating () {
+			this.$router.push('/profile')
 		}
 	}
 }

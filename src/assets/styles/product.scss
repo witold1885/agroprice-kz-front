@@ -260,6 +260,32 @@
 				color: $color_black;
 				border: 1px solid $color_green;
 			}
+			&-cancel {
+				background: $color_white;
+				color: $color_black;
+				border: 1px solid $color_green;
+			}
+		}
+	}
+	&__success {
+		&-info {
+			@include font-ubuntu(400, 18px, 36px);
+			text-align: center;
+			margin: 60px auto 30px;
+		}
+		&-buttons {
+			margin: 30px auto;
+			grid-column-gap: 30px;
+		}
+		&-button {
+			width: 205px;
+			height: 39px;
+			border-radius: 5px;
+			box-shadow: none;
+			@include font-ubuntu(400, 14px, 14px);
+			background: $color_green;
+			color: $color_white;
+			border: none;
 		}
 	}
 }
@@ -276,6 +302,16 @@
 				padding-left: calc(25 * 100vw / 1440);
 				padding-right: calc(25 * 100vw / 1440);
 				border-radius: calc(11 * 100vw / 1440);
+				&-error {
+					top: calc(10 * 100vw / 1440);
+					@include font-ubuntu(400, calc(12 * 100vw / 1440), calc(12 * 100vw / 1440));
+					&-category {
+						top: calc(150 * 100vw / 1440);
+					}
+					&-save {
+						top: calc(-1 * 20 * 100vw / 1440);
+					}
+				}
 				&-main {
 					padding-bottom: calc(38 * 100vw / 1440);
 				}
@@ -426,6 +462,22 @@
 				}
 			}
 		}
+		&__success {
+			&-info {
+				@include font-ubuntu(400, calc(18 * 100vw / 1440), calc(36 * 100vw / 1440));
+				margin: calc(60 * 100vw / 1440) auto calc(30 * 100vw / 1440);
+			}
+			&-buttons {
+				margin: calc(30 * 100vw / 1440) auto;
+				grid-column-gap: calc(30 * 100vw / 1440);
+			}
+			&-button {
+				width: calc(205 * 100vw / 1440);
+				height: calc(39 * 100vw / 1440);
+				border-radius: calc(5 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
+		}
 	}
 }
 
@@ -440,6 +492,16 @@
 				padding-left: calc(17 * 100vw / 320);
 				padding-right: calc(17 * 100vw / 320);
 				border-radius: calc(11 * 100vw / 320);
+				&-error {
+					top: calc(10 * 100vw / 320);
+					@include font-ubuntu(400, calc(12 * 100vw / 320), calc(12 * 100vw / 320));
+					&-category {
+						top: calc(150 * 100vw / 320);
+					}
+					&-save {
+						top: calc(-1 * 20 * 100vw / 320);
+					}
+				}
 				&-main {
 					padding-top: calc(19 * 100vw / 320);
 					padding-bottom: calc(19 * 100vw / 320);
@@ -604,6 +666,22 @@
 					border-radius: calc(5 * 100vw / 320);
 					@include font-ubuntu(400, calc(13 * 100vw / 320), calc(14 * 100vw / 320));
 				}
+			}
+		}
+		&__success {
+			&-info {
+				@include font-ubuntu(400, calc(18 * 100vw / 320), calc(36 * 100vw / 320));
+				margin: calc(60 * 100vw / 320) auto calc(30 * 100vw / 320);
+			}
+			&-buttons {
+				margin: calc(30 * 100vw / 320) auto;
+				grid-column-gap: calc(30 * 100vw / 320);
+			}
+			&-button {
+				width: calc(205 * 100vw / 320);
+				height: calc(39 * 100vw / 320);
+				border-radius: calc(5 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
 			}
 		}
 	}
