@@ -107,15 +107,11 @@ export default {
 	methods: {
 		toggleMenu () {
 			if (this.showMenu == false) {
-				document.getElementById('app').style.maxHeight = '100vh'
-				document.getElementById('app').style.overflow = 'hidden'
-				this.showMenu = true
+				this.openMenu()
 				return
 			}
 			if (this.showMenu == true) {
-				document.getElementById('app').style.maxHeight = 'unset'
-				document.getElementById('app').style.overflow = 'unset'
-				this.showMenu = false
+				this.closeMenu()
 				return
 			}
 		},
@@ -130,9 +126,7 @@ export default {
 			this.showMenu = false
 		},
 		goTo (url) {
-			document.getElementById('app').style.maxHeight = 'unset'
-			document.getElementById('app').style.overflow = 'unset'
-			this.showMenu = false
+			this.closeMenu()
 			this.$router.push({ path: `/catalog/${url}`, query: this.$route.query });
 		}
 	}

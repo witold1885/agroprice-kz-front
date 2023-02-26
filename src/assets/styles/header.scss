@@ -231,7 +231,7 @@ header {
 					color: $color_green;
 				}
 				&-items {
-					grid-row-gap: 10px;
+					grid-row-gap: 7px;
 				}
 				&-item {
         	@include font-ubuntu(400, 14px, 16px);
@@ -406,7 +406,7 @@ header {
 	        	@include font-ubuntu(500, calc(18 * 100vw / 1440), 113.33%);
 					}
 					&-items {
-						grid-row-gap: calc(10 * 100vw / 1440);
+						grid-row-gap: calc(7 * 100vw / 1440);
 					}
 					&-item {
 	        	@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));

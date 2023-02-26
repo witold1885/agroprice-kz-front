@@ -270,11 +270,11 @@ export default {
 			product: {
 				name: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Название'), required),
-					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '3'), minLength(3))
+					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '35'), minLength(35))
 				},
 				description: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Описание'), required),
-					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '8'), minLength(8))
+					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '80'), minLength(80))
 				},
 				price: {
 					numeric: helpers.withMessage(errorMessages.numeric.replace(':field', 'Цена'), numeric),
@@ -283,7 +283,7 @@ export default {
 			contact: {
 				person: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'Контактное лицо'), required),
-					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '3'), minLength(3))					
+					minLength: helpers.withMessage(errorMessages.minLength.replace(':length', '2'), minLength(2))					
 				},
 				email: {
 					required: helpers.withMessage(errorMessages.required.replace(':field', 'E-mail'), required),
