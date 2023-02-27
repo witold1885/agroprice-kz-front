@@ -4,6 +4,7 @@
 			<div class="create-product__form-block create-product__form-block-main">
 				<div class="create-product__form-block-error">{{ errors.name }}</div>
 				<div class="create-product__form-block-item create-product__form-name">
+					<div ref="product_name" class="create-product__form-block-refpoint"></div>
 					<div class="create-product__form-label">
 						Укажите название товара*
 					</div>
@@ -17,6 +18,7 @@
 				</div>
 				<div class="create-product__form-block-error create-product__form-block-error-category">{{ errors.category }}</div>
 				<div class="create-product__form-block-item create-product__form-category">
+					<div ref="product_category" class="create-product__form-block-refpoint"></div>
 					<div class="create-product__form-label">
 						Выберите категорию*
 					</div>
@@ -48,8 +50,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="create-product__form-block create-product__form-block-images">				
+			<div class="create-product__form-block create-product__form-block-images">
+				<div class="create-product__form-block-error create-product__form-block-error-images">{{ errors.images }}</div>		
 				<div class="create-product__form-block-item">
+					<div ref="product_images" class="create-product__form-block-refpoint"></div>
 					<div class="create-product__form-label">
 						Фото
 					</div>
@@ -80,6 +84,7 @@
 			<div class="create-product__form-block create-product__form-block-description">
 				<div class="create-product__form-block-error">{{ errors.description }}</div>
 				<div class="create-product__form-block-item create-product__form-description">
+					<div ref="product_description" class="create-product__form-block-refpoint"></div>
 					<div class="create-product__form-label">
 						Описание*
 					</div>
@@ -95,6 +100,7 @@
 			<div class="create-product__form-block create-product__form-block-price d-flex">
 				<div class="create-product__form-block-error">{{ errors.price }}</div>
 				<div class="create-product__form-block-item">
+					<div ref="product_price" class="create-product__form-block-refpoint"></div>
 					<div class="create-product__form-label">
 						Цена
 					</div>
@@ -126,6 +132,7 @@
 			<div class="create-product__form-block create-product__form-block-location">	
 				<div class="create-product__form-block-error">{{ errors.location }}</div>				
 				<div class="create-product__form-block-item">
+					<div ref="product_location" class="create-product__form-block-refpoint"></div>
 					<div class="create-product__form-label">
 						Местоположение
 					</div>
@@ -388,22 +395,34 @@ export default {
 				this.emitter.emit('auth', this.$route.path)
 				return
 			}
-			const categories = this.cats.filter(item => item.id !== 0).map(item => {
-				const { level, id, name } = item
-				return { level, id, name }
-			})
-			if (categories.length == 0) {
-				this.errors.category = errorMessages.category
-				return
-			}
 			this.v$.$validate()
 			if (!this.v$.$error) {
+				const categories = this.cats.filter(item => item.id !== 0).map(item => {
+					const { level, id, name } = item
+					return { level, id, name }
+				})
+				if (categories.length == 0) {
+					this.errors.category = errorMessages.category
+					this.showError('category')
+					return
+				}
+				const images = this.imgs.filter(item => item.file !== null).map(item => {
+					const { num, file } = item
+					return { num, file }
+				})
+				if (images.length == 0) {
+					this.errors.images = errorMessages.images
+					this.showError('images')
+					return
+				}
 				if (this.product.price == 0 && !this.product.price_negotiable) {
 					this.errors.price = errorMessages.price
+					this.showError('price')
 					return
 				}
 				if (this.product.location_id == 0) {
 					this.errors.location = errorMessages.location
+					this.showError('location')
 					return
 				}
 				if (this.contact.phone && !this.phoneEntered) {
@@ -411,10 +430,6 @@ export default {
 					return
 				}
 				this.product.status = status
-				const images = this.imgs.filter(item => item.file !== null).map(item => {
-					const { num, file } = item
-					return { num, file }
-				})
 				let payload = new FormData()
 				for (const param in this.product) {
 					payload.append(param, this.product[param])
@@ -440,15 +455,22 @@ export default {
 				this.getErrorMessage()
 			}
 		},
+		showError (point) {
+			this.$refs[`product_${point}`].scrollIntoView({ behavior: 'smooth' })
+		},
 		getErrorMessage () {
 			if (this.v$.$errors.length != 0) {
 				this.errors[this.v$.$errors[0].$property] = this.v$.$errors[0].$message
+				if (['name', 'description', 'price'].indexOf(this.v$.$errors[0].$property) !== -1) {
+					this.showError(this.v$.$errors[0].$property)
+				}
 			}
 		},
 		resetErrors () {
 			this.errors = {
 				name: null,
 				category: null,
+				images: null,
 				description: null,
 				price: null,
 				location: null,
