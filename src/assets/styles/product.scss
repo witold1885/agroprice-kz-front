@@ -42,6 +42,7 @@
 				grid-column-gap: 39px;
 			}
 			&-item {
+				position: relative;
 				&-negotiable {
 					margin-top: 49px;
 					grid-column-gap: 16px;
@@ -54,6 +55,10 @@
 			&-contacts {
 				padding-top: 33px;
 				padding-bottom: 27px;
+			}
+			&-refpoint {
+				position: absolute;
+				top: -50px;
 			}
 		}
 		&-label {

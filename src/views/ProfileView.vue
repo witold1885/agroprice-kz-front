@@ -1,5 +1,5 @@
 <template>
-	<div class="profile" v-if="user">
+	<div class="profile">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div class="profile__wrap d-flex">
 			<ProfileSidebar />
@@ -36,9 +36,9 @@ export default {
 	},
 	async mounted () {
 		await this.$store.dispatch('auth/getUser')
-		if (!this.user) {
+		/*if (!this.user) {
 			this.$router.push('/')
-		}
+		}*/
 	}
 }
 </script>
