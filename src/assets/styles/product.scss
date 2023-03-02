@@ -691,3 +691,463 @@
 		}
 	}
 }
+
+.product {
+	&__main {
+		grid-column-gap: 32px;
+		margin-bottom: 83px;
+	}
+	&__images {
+		width: 418px;
+		height: 508px;
+		&-full {
+			width: 100%;
+			height: 415px;
+			border: 1px solid #DFDFDF;
+			border-radius: 11px;
+			overflow: hidden;
+			margin-bottom: 17px;
+			& img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+			}
+		}
+		&-list {
+			grid-column-gap: 9px;
+			&-item {
+				width: 75px;
+				height: 77px;
+				border: 1px solid #DFDFDF;
+				border-radius: 11px;
+				overflow: hidden;
+				& img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					object-position: center;
+				}
+			}
+		}
+	}
+	&__info {
+		width: 748px;
+		&-negotiable {
+			@include font-ubuntu(500, 36px, 41px);
+			color: $color_black;
+			margin-top: 39px;
+			margin-bottom: 62px;
+		}
+		&-main {
+			height: 508px;
+		}
+		&-title {
+			@include font-ubuntu(500, 32px, 133.9%);
+			color: $color_black;
+		}
+		&-sell {
+			grid-column-gap: 18px;
+			&-left {
+				width: 474px;
+			}
+			&-price {
+				margin-top: 32.304px;
+				&-text {
+					font-family: 'Circe';
+					font-style: normal;
+					font-weight: 400;
+					font-size: 14px;
+					line-height: 14px;
+					color: $color_black;
+				}
+				&-value {
+					@include font-ubuntu(500, 36px, 41px);
+					color: $color_black;
+					margin-top: 10px;
+				}
+				&-condition {
+					margin-top: 22px;
+					grid-column-gap: 12px;
+					&-text {
+						@include font-ubuntu(400, 16px, 16px);
+						color: rgba(0, 0, 0, 0.51);
+					}
+					&-value {
+						grid-column-gap: 7px;
+						&-text {
+							@include font-ubuntu(400, 14px, 15px);
+							color: $color_green;
+						}
+					}
+				}
+			}
+			&-divider {
+				width: 100%;
+				height: 0;
+				border: 1px solid #E4E4E4;
+				margin: 27px 0 24px;
+			}
+			&-location {
+				grid-column-gap: 11px;
+				&-value {
+					font-family: 'Circe';
+					font-style: normal;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 16px;
+					color: $color_black;
+				}
+			}
+			&-user {
+				height: 39px;
+				margin-top: 29.304px;
+				margin-bottom: 8px;
+				font-family: 'Circe';
+				font-style: normal;
+				font-size: 14px;
+				line-height: 20px;
+				color: $color_black;
+				&-text {
+					font-weight: 700;
+				}
+				&-value {
+					font-weight: 400;
+				}
+			}
+			&-avatar {
+				width: 254px;
+				height: 121px;
+				border: 1px solid #ECECEC;
+				border-radius: 8px;
+			}
+		}
+		&-favorite {
+			width: 145px;
+			height: 47px;
+			border: 1px solid #ECECEC;
+			border-radius: 8px;
+			background: transparent;
+			padding: 14px 0 14px 14px;
+			grid-column-gap: 14px;
+			&-icon {
+				@include box(20px, 20px);
+			}
+			&-text {
+				@include font-ubuntu(400, 14px, 14px);
+				color: $color_black;
+			}
+		}
+		&-buttons {
+			grid-column-gap: 18px;
+			grid-row-gap: 11px;
+			margin-bottom: 45px;
+			&-clearfix {
+				width: 474px;
+			}
+		}
+		&-button {
+			&-write {
+				width: 228px;
+				height: 55px;
+				background: $color_green;
+				border: 1px solid $color_green;
+				border-radius: 8px;
+				@include font-ubuntu(700, 16px, 16px);
+				color: $color_white;
+			}
+			&-allproducts {
+				width: 228px;
+				height: 55px;
+				background: transparent;
+				border: 1px solid #F79E1B;
+				border-radius: 8px;
+				@include font-ubuntu(400, 16px, 16px);
+				color: $color_black;
+			}
+			&-whatsapp {
+				width: 256px;
+				height: 55px;
+				background: #F79E1B;;
+				border: 1px solid #F79E1B;
+				border-radius: 8px;
+				@include font-ubuntu(500, 14px, 14px);
+				color: $color_white;
+			}
+			&-call {
+				width: 256px;
+				height: 55px;
+				background: $color_green;
+				border: 1px solid $color_green;
+				border-radius: 8px;
+				@include font-ubuntu(500, 14px, 14px);
+				color: $color_white;
+			}
+		}
+	}
+	&__tabs {
+		margin-bottom: 55px;
+		&-switch {
+			grid-column-gap: 56px;
+			&-item {
+				@include font-ubuntu(500, 24px, 28px);
+				padding: 0 0 15px;
+				color: rgba(0, 0, 0, 0.2);
+				border-bottom: 3px solid transparent;
+				cursor: pointer;
+				&-active {
+					color: $color_black;
+					border-bottom: 3px solid $color_green;
+				}
+			}
+		}
+		&-info {
+			margin-top: 28px;
+			&-description {
+				@include font-ubuntu(400, 14px, 27px);
+				color: $color_black;
+			}
+			&-features {
+				grid-column-gap: 400px;
+				grid-row-gap: 7px;
+				&-item {
+					width: 400px;
+					grid-column-gap: 10px;
+					&-name {
+						@include font-ubuntu(400, 14px, 27px);
+						color: #8D8D8D;
+					}
+					&-divider {
+						width: 100%;
+						flex: 1;
+						border-bottom: 1px dashed #B5B5B5;
+						margin-bottom: 7px;
+					}
+					&-value {
+						@include font-ubuntu(400, 14px, 27px);
+						color: $color_black;						
+					}
+				}
+			}
+		}
+	}
+	&__divider {
+		width: 100%;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+	}
+	&__text {		
+		font-family: 'Circe';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 27px;
+		color: $color_black;
+		margin-top: 55px;
+		margin-bottom: 54px;
+	}
+	&__seller-products {
+		text-align: center;
+		&-title {
+			@include font-ubuntu(500, 32px, 37px);
+			color: $color_black;
+			margin-bottom: 30px;
+			text-align: left;
+		}
+		&-grid {
+			margin-bottom: 58px!important;
+		}
+		&-showmore {
+			margin: 0 auto 58px!important;
+		}
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.product {
+		&__main {
+			grid-column-gap: calc(32 * 100vw / 1440);
+			margin-bottom: calc(83 * 100vw / 1440);
+		}
+		&__images {
+			width: calc(418 * 100vw / 1440);
+			height: calc(508 * 100vw / 1440);
+			&-full {
+				height: calc(415 * 100vw / 1440);
+				border-radius: calc(11 * 100vw / 1440);
+				margin-bottom: calc(17 * 100vw / 1440);
+			}
+			&-list {
+				grid-column-gap: calc(9 * 100vw / 1440);
+				&-item {
+					width: calc(75 * 100vw / 1440);
+					height: calc(77 * 100vw / 1440);
+					border-radius: calc(11 * 100vw / 1440);
+				}
+			}
+		}
+		&__info {
+			width: calc(748 * 100vw / 1440);
+			&-negotiable {
+				@include font-ubuntu(500, calc(36 * 100vw / 1440), calc(41 * 100vw / 1440));
+				margin-top: calc(39 * 100vw / 1440);
+				margin-bottom: calc(62 * 100vw / 1440);
+			}
+			&-main {
+				height: calc(508 * 100vw / 1440);
+			}
+			&-title {
+				@include font-ubuntu(500, calc(32 * 100vw / 1440), 133.9%);
+			}
+			&-sell {
+				grid-column-gap: calc(18 * 100vw / 1440);
+				&-left {
+					width: calc(474 * 100vw / 1440);
+				}
+				&-price {
+					margin-top: calc(32.304 * 100vw / 1440);
+					&-text {
+						font-size: calc(14 * 100vw / 1440);
+						line-height: calc(14 * 100vw / 1440);
+					}
+					&-value {
+						@include font-ubuntu(500, calc(36 * 100vw / 1440), calc(41 * 100vw / 1440));
+						margin-top: calc(10 * 100vw / 1440);
+					}
+					&-condition {
+						margin-top: calc(22 * 100vw / 1440);
+						grid-column-gap: calc(12 * 100vw / 1440);
+						&-text {
+							@include font-ubuntu(400, calc(16 * 100vw / 1440), calc(16 * 100vw / 1440));
+						}
+						&-value {
+							grid-column-gap: calc(7 * 100vw / 1440);
+							&-text {
+								@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+							}
+						}
+					}
+				}
+				&-divider {
+					margin: calc(27 * 100vw / 1440) 0 calc(24 * 100vw / 1440);
+				}
+				&-location {
+					grid-column-gap: calc(11 * 100vw / 1440);
+					&-value {
+						font-size: calc(16 * 100vw / 1440);
+						line-height: calc(16 * 100vw / 1440);
+					}
+				}
+				&-user {
+					height: calc(39 * 100vw / 1440);
+					margin-top: calc(29.304 * 100vw / 1440);
+					margin-bottom: calc(8 * 100vw / 1440);
+					font-size: calc(14 * 100vw / 1440);
+					line-height: calc(20 * 100vw / 1440);
+				}
+				&-avatar {
+					width: calc(254 * 100vw / 1440);
+					height: calc(121 * 100vw / 1440);
+					border-radius: calc(8 * 100vw / 1440);
+				}
+			}
+			&-favorite {
+				width: calc(145 * 100vw / 1440);
+				height: calc(47 * 100vw / 1440);
+				border-radius: calc(8 * 100vw / 1440);
+				padding: calc(14 * 100vw / 1440) 0 calc(14 * 100vw / 1440) calc(14 * 100vw / 1440);
+				grid-column-gap: calc(14 * 100vw / 1440);
+				&-icon {
+					@include box(calc(20 * 100vw / 1440), calc(20 * 100vw / 1440));
+				}
+				&-text {
+					@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+				}
+			}
+			&-buttons {
+				grid-column-gap: calc(18 * 100vw / 1440);
+				grid-row-gap: calc(11 * 100vw / 1440);
+				margin-bottom: calc(45 * 100vw / 1440);
+				&-clearfix {
+					width: calc(474 * 100vw / 1440);
+				}
+			}
+			&-button {
+				&-write {
+					width: calc(228 * 100vw / 1440);
+					height: calc(55 * 100vw / 1440);
+					border-radius: calc(8 * 100vw / 1440);
+					@include font-ubuntu(700, calc(16 * 100vw / 1440), calc(16 * 100vw / 1440));
+				}
+				&-allproducts {
+					width: calc(228 * 100vw / 1440);
+					height: calc(55 * 100vw / 1440);
+					border-radius: calc(8 * 100vw / 1440);
+					@include font-ubuntu(400, calc(16 * 100vw / 1440), calc(16 * 100vw / 1440));
+				}
+				&-whatsapp {
+					width: calc(256 * 100vw / 1440);
+					height: calc(55 * 100vw / 1440);
+					border-radius: calc(8 * 100vw / 1440);
+					@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+				}
+				&-call {
+					width: calc(256 * 100vw / 1440);
+					height: calc(55 * 100vw / 1440);
+					border-radius: calc(8 * 100vw / 1440);
+					@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+				}
+			}
+		}
+		&__tabs {
+			margin-bottom: calc(55 * 100vw / 1440);
+			&-switch {
+				grid-column-gap: calc(56 * 100vw / 1440);
+				&-item {
+					@include font-ubuntu(500, calc(24 * 100vw / 1440), calc(28 * 100vw / 1440));
+					padding: 0 0 calc(15 * 100vw / 1440);
+				}
+			}
+			&-info {
+				margin-top: calc(28 * 100vw / 1440);
+				&-description {
+					@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(27 * 100vw / 1440));
+				}
+				&-features {
+					grid-column-gap: calc(400 * 100vw / 1440);
+					grid-row-gap: calc(7 * 100vw / 1440);
+					&-item {
+						width: calc(400 * 100vw / 1440);
+						grid-column-gap: calc(10 * 100vw / 1440);
+						&-name {
+							@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(27 * 100vw / 1440));
+						}
+						&-divider {
+							margin-bottom: calc(7 * 100vw / 1440);
+						}
+						&-value {
+							@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(27 * 100vw / 1440));	
+						}
+					}
+				}
+			}
+		}
+		&__text {
+			font-size: calc(14 * 100vw / 1440);
+			line-height: calc(27 * 100vw / 1440);
+			margin-top: calc(55 * 100vw / 1440);
+			margin-bottom: calc(54 * 100vw / 1440);
+		}
+		&__seller-products {
+			&-title {
+				@include font-ubuntu(500, calc(32 * 100vw / 1440), calc(37 * 100vw / 1440));
+				margin-bottom: calc(30 * 100vw / 1440);
+			}
+			&-grid {
+				margin-bottom: calc(58 * 100vw / 1440)!important;
+			}
+			&-showmore {
+				margin: 0 auto calc(58 * 100vw / 1440)!important;
+			}
+		}
+	}
+}

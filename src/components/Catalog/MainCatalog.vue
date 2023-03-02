@@ -10,8 +10,9 @@
 		</div>
 		<SellBlock />
 		<ProductsCarousel
+			v-show="randomProducts.length != 0"
 			title="Последние товары"
-			:products="lastProducts"
+			:products="randomProducts"
 		/>
 	</div>
 </template>
@@ -38,9 +39,11 @@ export default {
 	},
 	computed: {
 		...mapState('catalog', ['mainCategories']),
+		...mapState('catalog', ['randomProducts']),
 	},
 	async mounted () {
 		await this.$store.dispatch('catalog/getMainCategories')
+		await this.$store.dispatch('catalog/getRandomProducts')
 	}
 }
 </script>

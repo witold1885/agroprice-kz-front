@@ -5,6 +5,7 @@ export const namespaced = true
 export const state = {
   mainCategories: [],
   menuCategories: [],
+  randomProducts: [],
   category: null,
   error: null,
 }
@@ -18,6 +19,9 @@ export const mutations = {
   },
   setMenuCategories(state, categories) {
     state.menuCategories = categories
+  },
+  setRandomProducts(state, products) {
+    state.randomProducts = products
   },
   setError(state, error) {
     state.error = error
@@ -77,6 +81,33 @@ export const actions = {
     else {
       console.log(response.data.error)
       return null
+    }
+  },
+  async getCategoryProducts (context, category_id) {
+    const response = await api.get('/catalog/category-products/' + category_id)
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      return response.data.products
+    }
+    else {
+      console.log(response.data.error)
+      return null
+    }
+  },
+  async getRandomProducts ({ commit }) {
+    const response = await api.get('/catalog/random-products/')
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      commit('setRandomProducts', response.data.products)
+    }
+    else {
+      console.log(response.data.error)
     }
   }
 }

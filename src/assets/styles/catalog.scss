@@ -135,6 +135,7 @@
         color: #6C6C6C;
 	}
 	&__favorite {
+		background: $color_white;
 		position: absolute;
 		top: 11px;
 		right: 11px;
@@ -177,6 +178,8 @@
         @include font-ubuntu(400, 14px, 144.4%);
 		color: $color_black;
 		text-align: left;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 	&__divider {
 		width: 100%;

@@ -16,7 +16,7 @@
 			</div>
 			<div class="category__data d-flex">
 				<CategoryFilters />
-				<CategoryProducts />
+				<CategoryProducts v-show="products.length != 0" :products="products" />
 			</div>
 			<div
 				v-if="category.description"
@@ -29,6 +29,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 import LocationMenu from '@/components/Common/LocationMenu'
 import CategoryFilters from '@/components/Catalog/CategoryFilters'
@@ -42,11 +43,15 @@ export default {
 			categoryUrl: this.$route.params.category,
 			metaTitle: '',
 			metaDescription: '',
-			metaKeywords: ''
+			metaKeywords: '',
+			products: []
 		}
 	},
 	computed: {
 		...mapState('catalog', ['category']),
+		storageURL () {
+			return STORAGE_URL
+		}
 	},
 	metaInfo () {
 		return {
@@ -54,7 +59,7 @@ export default {
 			description: this.metaDescription,
 			meta: [
 				{ name: 'keywords', content: this.metaKeywords },
-			],
+			]
 		}
     },
 	created () {
@@ -71,6 +76,7 @@ export default {
 	},
 	methods: {
 		...mapActions('catalog', ['getCategory']),
+		...mapActions('catalog', ['getCategoryProducts']),
 		async init () {
 			if (this.categoryUrl) {
 				await this.getCategory(this.categoryUrl)
@@ -80,6 +86,8 @@ export default {
 					this.metaTitle = this.category.meta_title || this.category.name
 					this.metaDescription = this.category.meta_description || this.category.name
 					this.metaKeywords = this.category.meta_keywords || this.category.name
+					this.products = await this.getCategoryProducts(this.category.id)
+					// console.log(this.products)
 				}
 			}
 			else {

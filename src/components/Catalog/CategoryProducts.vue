@@ -80,8 +80,8 @@
 				</button>
 			</div>
 		</div>
-		<ProductsGrid v-if="view == 'grid'" :count="gridCount" />
-		<ProductsList v-if="view == 'list'" :count="listCount" />
+		<ProductsGrid v-if="view == 'grid'" v-show="products.length != 0" :count="gridCount" :products="products" />
+		<ProductsList v-if="view == 'list'" v-show="products.length != 0" :count="listCount" :products="products" />
 		<Pagination />
 		<button
 			class="products__showmore"
@@ -96,6 +96,12 @@ import ProductsList from './ProductsList'
 import Pagination from '@/components/Common/Pagination'
 
 export default {
+	props: {
+		products: {
+			type: Array,
+			default: () => []
+		}
+	},
 	components: { ProductsGrid, ProductsList, Pagination },
 	data () {
 		return {
