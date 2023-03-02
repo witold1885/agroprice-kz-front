@@ -3,11 +3,14 @@ import api from '@/services/api'
 export const namespaced = true
 
 export const state = {
-
+  product: null,
+  error: null,
 }
 
 export const mutations = {
-
+  setProduct (state, product) {
+    state.product = product
+  },
 }
 
 export const actions = {
@@ -22,7 +25,21 @@ export const actions = {
       error: response.data.error || null,
       line: response.data.line || null
     }
-  }
+  },
+  async getProduct ({ commit }, productUrl) {
+    const response = await api.get('/product/get/' + productUrl)
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      commit('setProduct', response.data.product)
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+    }
+  },
 }
 
 export const getters = {

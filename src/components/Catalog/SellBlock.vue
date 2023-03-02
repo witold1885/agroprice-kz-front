@@ -22,10 +22,10 @@ export default {
 	methods: {
 		goProductCreate () {
 			if (!this.user) {
-				this.emitter.emit('auth', '/product/create')
+				this.emitter.emit('auth', '/create-product')
 			}
 			else {
-				this.$router.push('/product/create')
+				this.$router.push('/create-product')
 			}
 		}
 	}

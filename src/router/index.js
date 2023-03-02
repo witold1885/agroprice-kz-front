@@ -4,6 +4,7 @@ import CatalogView from '../views/CatalogView.vue'
 import CompleteRegister from '../views/Profile/CompleteRegister.vue'
 import ResetPassword from '../views/Actions/ResetPassword.vue'
 import CreateProduct from '../views/Product/CreateProduct.vue'
+import ProductView from '../views/ProductView.vue'
 
 const routes = [
   {
@@ -44,13 +45,22 @@ const routes = [
     component: CatalogView
   },
   {
-    path: '/product/create',
-    name: 'product',
+    path: '/create-product',
+    name: 'create-product',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: CreateProduct
+  },
+  {
+    path: '/product/:product?',
+    name: 'product',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    component: ProductView
   }
 ]
 

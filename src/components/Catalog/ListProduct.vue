@@ -1,29 +1,30 @@
 <template>
-	<div class="list-product d-flex justify-content-between">
+	<a :href="`/product/${product.url}`" class="list-product d-flex justify-content-between">
 		<div class="list-product__left d-flex">
-			<img class="list-product__image" :src="require(`@/assets/images/products/${product.image.replace('.png', '-' + breakpoint + '.png')}`)" />
+			<img v-if="product.product_images.length != 0" class="list-product__image" :src="`${storageURL}/${product.product_images[0].path}`" />
+			<div v-else class="list-product__image"></div>
 			<div class="list-product__info">
 				<div class="list-product__subcategory d-flex justify-content-between align-items-center">
-					{{ product.subcategory }}
+					{{ product.category_name }}
 					<div class="list-product__date">{{ product.date }}</div>
 				</div>
 				<div class="list-product__location list-product__location-mobile">
 					<img class="list-product__location-icon" :src="require('@/assets/images/location.png')" />
-					<div class="list-product__location-value">{{ product.location }}</div>
+					<div class="list-product__location-value">{{ product.location.city }}</div>
 				</div>
-				<div class="list-product__title">{{ product.title }}</div>
+				<div class="list-product__title">{{ product.name }}</div>
 				<div class="list-product__description">
 					Укрепление и развитие структуры способствует подготовки и реализации дальнейших направлений развития.
 				</div>
-				<div class="list-product__price-main">{{ product.price }}</div>				
+				<div class="list-product__price-main">{{ Intl.NumberFormat('ru-RU').format(product.price) }} тенге</div>				
 				<div class="list-product__stats list-product__stats-mobile align-items-center">
 					<div class="list-product__stats-status d-flex align-items-center">
 						<img class="list-product__stats-status-icon" :src="require('@/assets/images/ok.png')" />
-						<div class="list-product__stats-status-value">{{ product.status }}</div>
+						<div class="list-product__stats-status-value">Новый</div>
 					</div>
 					<div class="list-product__stats-views d-flex justify-content-end align-items-center">
 						<img class="list-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
-						<div class="list-product__stats-views-value">{{ product.views }}</div>
+						<div class="list-product__stats-views-value">{{ product.views || 123 }}</div>
 					</div>
 				</div>
 			</div>
@@ -34,26 +35,27 @@
 				<div class="list-product__date">{{ product.date }}</div>
 				<div class="list-product__location d-flex">
 					<img class="list-product__location-icon" :src="require('@/assets/images/location.png')" />
-					<div class="list-product__location-value">{{ product.location }}</div>
+					<div class="list-product__location-value">{{ product.location.city }}</div>
 				</div>
 			</div>
 			<div class="list-product__right-bottom">				
 				<div class="list-product__stats d-flex justify-content-end align-items-center">
 					<div class="list-product__stats-status d-flex align-items-center">
 						<img class="list-product__stats-status-icon" :src="require('@/assets/images/ok.png')" />
-						<div class="list-product__stats-status-value">{{ product.status }}</div>
+						<div class="list-product__stats-status-value">Новый</div>
 					</div>
 					<div class="list-product__stats-views d-flex justify-content-end align-items-center">
 						<img class="list-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
-						<div class="list-product__stats-views-value">{{ product.views }}</div>
+						<div class="list-product__stats-views-value">{{ product.views || 123 }}</div>
 					</div>
 				</div>
 			</div>
 		</div>		
-	</div>
+	</a>
 </template>
 
 <script>
+import { STORAGE_URL } from '@/constants'
 import FavoritesButton from '@/components/Common/FavoritesButton'
 
 export default {
@@ -67,6 +69,11 @@ export default {
 	data () {
 		return {
 			breakpoint: 'lg'
+		}
+	},
+	computed: {
+		storageURL () {
+			return STORAGE_URL
 		}
 	},
 	created () {

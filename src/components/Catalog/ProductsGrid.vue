@@ -1,9 +1,17 @@
 <template>
-	<div class="products-grid d-flex flex-wrap">
+	<div v-if="products.length != 0" class="products-grid d-flex flex-wrap">
+		<CatalogProduct
+			v-for="(product, index) of products"
+			:key="index"
+			:product="product"
+			class="products-grid__item"
+		/>
+	</div>
+	<div v-else class="products-grid d-flex flex-wrap">
 		<CatalogProduct
 			v-for="i in count"
 			:key="i"
-			:product="product"
+			:product="defaultProduct"
 			class="products-grid__item"
 		/>
 	</div>
@@ -17,17 +25,21 @@ export default {
 		count: {
 			type: Number,
 			default: 20
+		},
+		products: {
+			type: Array,
+			default: () => []
 		}
 	},
 	components: { CatalogProduct },
 	data () {
 		return {
-			product: {
+			defaultProduct: {
 				subcategory: 'Сеялки',
 				title: '8-ми рядковая анкерная пневматическая сеялка',
-				price: '1 581 643 тенге',
-				oldPrice: '1 581 643 тенге',
-				image: 'last-product.png',
+				price: '1 581 643',
+				oldPrice: '1 581 643',
+				product_images: [{ path: 'last-product.png' }],
 				location: 'Усть-Каменогорск',
 				date: '12.01.2023',
 				status: 'Новый',
