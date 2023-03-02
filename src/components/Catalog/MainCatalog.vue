@@ -10,7 +10,7 @@
 		</div>
 		<SellBlock />
 		<ProductsCarousel
-			v-show="randomProducts.length != 0"
+			v-if="randomProducts.length != 0"
 			title="Последние товары"
 			:products="randomProducts"
 		/>
@@ -20,7 +20,7 @@
 <script>
 import { mapState } from 'vuex'
 // import categories from './categories'
-import products from './products'
+// import products from './products'
 import CategoryCard from './CategoryCard'
 import SellBlock from './SellBlock'
 import ProductsCarousel from './ProductsCarousel'
@@ -34,16 +34,16 @@ export default {
 	data () {
 		return {
 			// catalogCategories: categories,
-			lastProducts: products 
+			// lastProducts: products 
 		}
 	},
 	computed: {
-		...mapState('catalog', ['mainCategories']),
-		...mapState('catalog', ['randomProducts']),
+		...mapState('catalog', ['mainCategories', 'randomProducts']),
 	},
 	async mounted () {
 		await this.$store.dispatch('catalog/getMainCategories')
 		await this.$store.dispatch('catalog/getRandomProducts')
+		console.log(this.randomProducts)
 	}
 }
 </script>
