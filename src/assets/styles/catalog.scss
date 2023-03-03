@@ -479,7 +479,8 @@
 	.catalog-product {
 		width: 216px;
 		height: 320px;
-		padding: 13px 0 16px;
+		// padding: 13px 0 16px;
+		padding: 0 0 16px;
 		&__date {
 			top: 22px;
 			left: 14px;
@@ -496,8 +497,10 @@
 			}
 		}
 		&__image {
-			width: 164px;
-			height: 164px;
+			/* width: 164px;
+			height: 164px; */
+			height: 177px;
+			padding: 5px 5px 0;
 		}
 		&__middle {
 			padding: 0 7px 12px 20px;
@@ -629,7 +632,8 @@
 	.catalog-product {
 		width: calc(216 * 100vw / 768);
 		height: calc(320 * 100vw / 768);
-		padding: calc(13 * 100vw / 768) 0 calc(16 * 100vw / 768);
+		// padding: calc(13 * 100vw / 768) 0 calc(16 * 100vw / 768);
+		padding: 0 0 calc(16 * 100vw / 768);
 		&__date {
 			top: calc(22 * 100vw / 768);
 			left: calc(14 * 100vw / 768);
@@ -646,8 +650,10 @@
 			}
 		}
 		&__image {
-			width: calc(164 * 100vw / 768);
-			height: calc(164 * 100vw / 768);
+			// width: calc(164 * 100vw / 768);
+			// height: calc(164 * 100vw / 768);
+			height: calc(177 * 100vw / 768);
+			padding: calc(5 * 100vw / 768) calc(5 * 100vw / 768) 0;
 		}
 		&__middle {
 			padding: 0  calc(7 * 100vw / 768)  calc(12 * 100vw / 768)  calc(20 * 100vw / 768);
@@ -795,7 +801,8 @@
 		position: relative;
 		width: calc(131 * 100vw / 320);
 		height: calc(246 * 100vw / 320);
-		padding: calc(29 * 100vw / 320) calc(9 * 100vw / 320) calc(10 * 100vw / 320) calc(5 * 100vw / 320);
+		// padding: calc(29 * 100vw / 320) calc(9 * 100vw / 320) calc(10 * 100vw / 320) calc(5 * 100vw / 320);
+		padding: 0 calc(9 * 100vw / 320) calc(10 * 100vw / 320) calc(5 * 100vw / 320);
 		&__date {
 			display: none;
 		}
@@ -811,10 +818,13 @@
 			}
 		}
 		&__image {
-			width: calc(84 * 100vw / 320);
+			/* width: calc(84 * 100vw / 320);
 			height: calc(59 * 100vw / 320);
 			margin-left: calc(-1 * 3 * 100vw / 320);
-			margin-bottom: calc(10 * 100vw / 320);
+			margin-bottom: calc(10 * 100vw / 320); */
+			margin: 0;
+			padding: calc(5 * 100vw / 320) 0 0;
+			height: calc(88 * 100vw / 320);
 		}
 		&__middle {
 			padding: 0 calc(7 * 100vw / 320) calc(5 * 100vw / 320);

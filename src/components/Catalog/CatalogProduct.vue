@@ -7,10 +7,10 @@
 			<div v-else class="catalog-product__image"></div>
 			<div class="catalog-product__middle d-flex justify-content-between align-items-center">
 				<div class="catalog-product__subcategory">{{ product.category_name }}</div>
-				<div class="catalog-product__location d-flex justify-content-end align-items-center">
+				<!-- <div class="catalog-product__location d-flex justify-content-end align-items-center">
 					<img class="catalog-product__location-icon" :src="require('@/assets/images/location.png')" />
 					<div class="catalog-product__location-value">{{ product.location.city }}</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="catalog-product__title">{{ product.name }}</div>
 		</div>
@@ -22,9 +22,13 @@
 					<div v-if="product.oldPrice" class="catalog-product__price-old">{{ Intl.NumberFormat('ru-RU').format(product.oldPrice) }} тенге</div>
 				</div>
 				<div class="catalog-product__stats d-flex justify-content-between align-items-center">
-					<div class="catalog-product__stats-status d-flex align-items-center">
+					<!-- <div class="catalog-product__stats-status d-flex align-items-center">
 						<img class="catalog-product__stats-status-icon" :src="require('@/assets/images/ok.png')" />
 						<div class="catalog-product__stats-status-value">Новый</div>
+					</div> -->
+					<div class="catalog-product__location d-flex justify-content-end align-items-center">
+						<img class="catalog-product__location-icon" :src="require('@/assets/images/location.png')" />
+						<div class="catalog-product__location-value">{{ product.location.city }}</div>
 					</div>
 					<div class="catalog-product__stats-views d-flex justify-content-end align-items-center">
 						<img class="catalog-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
