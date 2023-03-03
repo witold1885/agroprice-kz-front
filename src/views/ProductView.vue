@@ -8,15 +8,46 @@
 					<div class="product__images-full">
 						<img :src="`${storageURL}/${activeImage.path}`" />
 					</div>
-					<div class="product__images-list d-flex align-items-center">
+					<!-- <div class="product__images-list d-flex justify-content-center align-items-center">
 						<div
 							v-for="(img, index) of product.product_images"
 							:key="index"
 							class="product__images-list-item"
+							:class="{ 'product__images-list-item-active': img.path == activeImage.path }"
+							@click="setActiveImage(index)"
 						>
 							<img :src="`${storageURL}/${img.path}`" />
-						</div>						
-					</div>
+						</div>
+					</div> -->
+					<carousel
+						ref="carousel"
+						:settings="settings"
+						class="product__images-list d-flex"
+					>
+						<template #slides>
+							<slide
+								v-for="(img, index) of product.product_images"
+								:key="index"
+								class="product__images-list-item"
+								:class="{ 'product__images-list-item-active': img.path == activeImage.path }"
+								@click="setActiveImage(index)"
+							>
+								<img :src="`${storageURL}/${img.path}`" />
+							</slide>
+						</template>
+					</carousel>
+						<div
+							class="product__images-list-nav product__images-list-nav-prev d-flex justify-content-center align-items-center"
+							@click="slidePrev"
+						>
+							<img :src="require('@/assets/images/arrow-left-green.png')" />
+						</div>					
+						<div
+							class="product__images-list-nav product__images-list-nav-next d-flex justify-content-center align-items-center"
+							@click="slideNext"
+						>
+							<img :src="require('@/assets/images/arrow-right-green.png')" />							
+						</div>
 				</div>
 				<div class="product__info">
 					<!-- <div v-if="product.price_negotiable" class="product__info-negotiable">Договорная</div> -->
@@ -128,13 +159,15 @@
 import { mapState, mapActions } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide } from 'vue3-carousel'
 import products from '@/components/Catalog/products'
 import ProductsCarousel from '@/components/Catalog/ProductsCarousel'
 import SellBlock from '@/components/Catalog/SellBlock'
 import ProductsGrid from '@/components/Catalog/ProductsGrid'
 
 export default {
-	components: { Breadcrumbs, ProductsCarousel, SellBlock, ProductsGrid },
+	components: { Breadcrumbs, Carousel, Slide, ProductsCarousel, SellBlock, ProductsGrid },
 	data () {
 		return {
 			breadcrumbs: null,
@@ -142,6 +175,7 @@ export default {
 			metaTitle: '',
 			metaDescription: '',
 			metaKeywords: '',
+			activeImageIndex: 0,
 			activeImage: null,
 			tabs: [
 				{ title: 'Описание', code: 'description' },
@@ -150,6 +184,23 @@ export default {
 			activeTab: 'description',
 			similarProducts: products,
 			gridCount: 5,
+			settings: {
+				itemsToShow: 5,
+				itemsToSlide: 1,
+				// wrapAround: true,
+				snapAlign: 'start',
+				breakpoints: {
+					993: {
+						itemsToShow: 5
+					},
+					415: {
+						itemsToShow: 4
+					},
+					1: {
+						itemsToShow: 4
+					}
+				}
+			},
 		}
 	},
 	computed: {
@@ -185,7 +236,8 @@ export default {
 					this.metaTitle = this.product.name
 					this.metaDescription = this.product.name
 					this.metaKeywords = this.product.name
-					this.activeImage = this.product.product_images[0]
+					this.activeImageIndex = 0
+					this.setActiveImage(0)
 				}
 			}
 			else {
@@ -214,6 +266,26 @@ export default {
 		},
 		goTo (url) {
 			this.$router.push({ path: `/catalog/${url}`, query: this.$route.query });
+		},
+		setActiveImage (index) {
+			this.activeImageIndex = index
+			this.activeImage = this.product.product_images[index]
+		},
+		slidePrev () {
+			this.activeImageIndex--
+			if (this.activeImageIndex < 0) {
+				this.activeImageIndex = this.product.product_images.length - 1
+			}
+			this.setActiveImage(this.activeImageIndex)
+			this.$refs.carousel.slideTo(this.activeImageIndex)
+		},
+		slideNext () {
+			this.activeImageIndex++
+			if (this.activeImageIndex > this.product.product_images.length - 1) {
+				this.activeImageIndex = 0
+			}
+			this.setActiveImage(this.activeImageIndex)
+			this.$refs.carousel.slideTo(this.activeImageIndex)
 		},
 		showMore () {
 			this.gridCount += 5
