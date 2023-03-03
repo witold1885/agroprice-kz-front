@@ -2,7 +2,8 @@
 	<div class="product">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div v-if="product" class="product__wrap">
-			<div class="product__main d-flex align-items-end">
+			<div class="product__main d-flex">
+				<div class="product__info-mobile-title">{{ product.name }}</div>
 				<div v-if="activeImage" class="product__images d-flex flex-column justify-content-between">
 					<div class="product__images-full">
 						<img :src="`${storageURL}/${activeImage.path}`" />
@@ -18,7 +19,7 @@
 					</div>
 				</div>
 				<div class="product__info">
-					<div v-if="product.price_negotiable" class="product__info-negotiable">Договорная</div>
+					<!-- <div v-if="product.price_negotiable" class="product__info-negotiable">Договорная</div> -->
 					<div class="product__info-main d-flex flex-column justify-content-between align-items-end">
 						<div class="product__info-top">
 							<div class="product__info-title">{{ product.name }}</div>
@@ -48,13 +49,20 @@
 										<span class="product__info-sell-user-value">{{ product.user ? product.user.profile.fullname : '' }}</span>
 										
 									</div>
-									<div class="product__info-sell-avatar d-flex justify-content-center align-items-center">
-										<img :src="require('@/assets/images/logo.png')" />
+									<div class="d-flex">
+										<div class="product__info-sell-avatar d-flex justify-content-center align-items-center">
+											<img :src="require('@/assets/images/logo.png')" />
+										</div>
+										<div class="product__info-mobile-buttons flex-column">
+											<button class="product__info-mobile-button-call">Позвонить</button>
+											<button class="product__info-mobile-button-whatsapp">Написать на Whatsapp</button>
+										</div>
 									</div>
 								</div>
 								
 							</div>
 						</div>
+						<div class="product__info-mobile-divider"></div>
 						<div class="product__info-bottom">
 							<div class="product__info-buttons d-flex flex-wrap justify-content-end align-items-end">
 								<div class="product__info-buttons-clearfix"></div>
