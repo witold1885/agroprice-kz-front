@@ -58,7 +58,7 @@
 								<div class="product__info-sell-left">
 									<div class="product__info-sell-price">
 										<div class="product__info-sell-price-text">Цена</div>
-										<div class="product__info-sell-price-value">{{ Intl.NumberFormat('ru-RU').format(product.price) }} тенге</div>									
+										<div class="product__info-sell-price-value">{{ product.price != 0 ? Intl.NumberFormat('ru-RU').format(product.price) + ' тенге' : 'Цена договорная' }}</div>									
 										<!-- <div class="product__info-sell-price-condition d-flex align-items-center">
 											<div class="product__info-sell-price-condition-text">Состояние:</div>
 											<div class="product__info-sell-price-condition-value d-flex align-items-center">

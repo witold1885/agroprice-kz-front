@@ -18,7 +18,7 @@
 			<div class="catalog-product__divider"></div>
 			<div class="catalog-product__bottom d-flex flex-column justify-content-end">
 				<div class="catalog-product__price d-flex flex-column">
-					<div class="catalog-product__price-main">{{ Intl.NumberFormat('ru-RU').format(product.price) }} тенге</div>
+					<div class="catalog-product__price-main">{{ product.price != 0 ? Intl.NumberFormat('ru-RU').format(product.price) + ' тенге' : 'Цена договорная' }}</div>
 					<div v-if="product.oldPrice" class="catalog-product__price-old">{{ Intl.NumberFormat('ru-RU').format(product.oldPrice) }} тенге</div>
 				</div>
 				<div class="catalog-product__stats d-flex justify-content-between align-items-center">

@@ -17,7 +17,7 @@
 					<!-- <div class="list-product__description">
 						Укрепление и развитие структуры способствует подготовки и реализации дальнейших направлений развития.
 					</div> -->
-					<div class="list-product__price-main">{{ Intl.NumberFormat('ru-RU').format(product.price) }} тенге</div>				
+					<div class="list-product__price-main">{{ product.price != 0 ? Intl.NumberFormat('ru-RU').format(product.price) + ' тенге' : 'Цена договорная' }}</div>				
 				</div>
 				<div class="list-product__location d-flex">
 					<img class="list-product__location-icon" :src="require('@/assets/images/location.png')" />

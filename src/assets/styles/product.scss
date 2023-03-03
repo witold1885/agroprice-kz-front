@@ -773,10 +773,17 @@
 		}
 		&-main {
 			height: 508px;
+			width: 100%;
+		}
+		&-top {
+			width: 100%;
 		}
 		&-title {
 			@include font-ubuntu(500, 32px, 133.9%);
 			color: $color_black;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			max-width: 100%;
 		}
 		&-sell {
 			grid-column-gap: 18px;
