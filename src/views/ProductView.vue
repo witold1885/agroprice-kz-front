@@ -59,13 +59,13 @@
 									<div class="product__info-sell-price">
 										<div class="product__info-sell-price-text">Цена</div>
 										<div class="product__info-sell-price-value">{{ Intl.NumberFormat('ru-RU').format(product.price) }} тенге</div>									
-										<div class="product__info-sell-price-condition d-flex align-items-center">
+										<!-- <div class="product__info-sell-price-condition d-flex align-items-center">
 											<div class="product__info-sell-price-condition-text">Состояние:</div>
 											<div class="product__info-sell-price-condition-value d-flex align-items-center">
 												<img class="product__info-sell-price-condition-value-icon" :src="require('@/assets/images/ok.png')" />
 												<div class="product__info-sell-price-condition-value-text">Новый</div>
 											</div>
-										</div>									
+										</div>	 -->								
 									</div>
 									<div class="product__info-sell-divider"></div>
 									<div class="product__info-sell-location d-flex align-items-center">
