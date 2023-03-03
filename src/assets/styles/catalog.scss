@@ -2418,13 +2418,16 @@
 		width: calc(954 * 100vw / 1440);
 		height: calc(176 * 100vw / 1440);
 		border-radius: calc(8 * 100vw / 1440);
-		padding: 0 calc(13 * 100vw / 1440) calc(19 * 100vw / 1440) calc(29 * 100vw / 1440);
+		// padding: 0 calc(13 * 100vw / 1440) calc(19 * 100vw / 1440) calc(29 * 100vw / 1440);
+		padding: 0 calc(13 * 100vw / 1440) calc(19 * 100vw / 1440) 0;
 		&__left {
 			grid-column-gap: calc(62 * 100vw / 1440);
 		}
 		&__image {
-			@include box(calc(142 * 100vw / 1440), calc(142 * 100vw / 1440));
-			margin-top: calc(15 * 100vw / 1440);
+			// @include box(calc(142 * 100vw / 1440), calc(142 * 100vw / 1440));
+			// margin-top: calc(15 * 100vw / 1440);
+			width: calc(171 * 100vw / 1440);
+			padding: calc(5 * 100vw / 1440) 0 calc(5 * 100vw / 1440) calc(5 * 100vw / 1440);
 		}
 		&__subcategory {
 			margin-top: calc(25 * 100vw / 1440);
