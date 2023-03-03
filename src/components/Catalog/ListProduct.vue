@@ -3,25 +3,31 @@
 		<div class="list-product__left d-flex">
 			<img v-if="product.product_images.length != 0" class="list-product__image" :src="`${storageURL}/${product.product_images[0].path}`" />
 			<div v-else class="list-product__image"></div>
-			<div class="list-product__info">
-				<div class="list-product__subcategory d-flex justify-content-between align-items-center">
-					{{ product.category_name }}
-					<div class="list-product__date">{{ product.date }}</div>
+			<div class="list-product__info d-flex flex-column justify-content-between">
+				<div>
+					<div class="list-product__subcategory d-flex justify-content-between align-items-center">
+						{{ product.category_name }}
+						<div class="list-product__date">{{ product.date }}</div>
+					</div>
+					<div class="list-product__location list-product__location-mobile">
+						<img class="list-product__location-icon" :src="require('@/assets/images/location.png')" />
+						<div class="list-product__location-value">{{ product.location.city }}</div>
+					</div>
+					<div class="list-product__title">{{ product.name }}</div>
+					<!-- <div class="list-product__description">
+						Укрепление и развитие структуры способствует подготовки и реализации дальнейших направлений развития.
+					</div> -->
+					<div class="list-product__price-main">{{ Intl.NumberFormat('ru-RU').format(product.price) }} тенге</div>				
 				</div>
-				<div class="list-product__location list-product__location-mobile">
+				<div class="list-product__location d-flex">
 					<img class="list-product__location-icon" :src="require('@/assets/images/location.png')" />
 					<div class="list-product__location-value">{{ product.location.city }}</div>
 				</div>
-				<div class="list-product__title">{{ product.name }}</div>
-				<div class="list-product__description">
-					Укрепление и развитие структуры способствует подготовки и реализации дальнейших направлений развития.
-				</div>
-				<div class="list-product__price-main">{{ Intl.NumberFormat('ru-RU').format(product.price) }} тенге</div>				
 				<div class="list-product__stats list-product__stats-mobile align-items-center">
-					<div class="list-product__stats-status d-flex align-items-center">
+					<!-- <div class="list-product__stats-status d-flex align-items-center">
 						<img class="list-product__stats-status-icon" :src="require('@/assets/images/ok.png')" />
 						<div class="list-product__stats-status-value">Новый</div>
-					</div>
+					</div> -->
 					<div class="list-product__stats-views d-flex justify-content-end align-items-center">
 						<img class="list-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
 						<div class="list-product__stats-views-value">{{ product.views || 123 }}</div>
@@ -33,17 +39,17 @@
 		<div class="list-product__right d-flex flex-column justify-content-between align-items-end">
 			<div class="list-product__right-top">
 				<div class="list-product__date">{{ product.date }}</div>
-				<div class="list-product__location d-flex">
+				<!-- <div class="list-product__location d-flex">
 					<img class="list-product__location-icon" :src="require('@/assets/images/location.png')" />
 					<div class="list-product__location-value">{{ product.location.city }}</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="list-product__right-bottom">				
 				<div class="list-product__stats d-flex justify-content-end align-items-center">
-					<div class="list-product__stats-status d-flex align-items-center">
+					<!-- <div class="list-product__stats-status d-flex align-items-center">
 						<img class="list-product__stats-status-icon" :src="require('@/assets/images/ok.png')" />
 						<div class="list-product__stats-status-value">Новый</div>
-					</div>
+					</div> -->
 					<div class="list-product__stats-views d-flex justify-content-end align-items-center">
 						<img class="list-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
 						<div class="list-product__stats-views-value">{{ product.views || 123 }}</div>

@@ -2315,6 +2315,9 @@
 		object-fit: cover;
 		object-position: center;
 	}
+	&__info {
+		height: 100%;
+	}
 	&__subcategory {
 		margin-top: 25px;
 	    @include font-ubuntu(400, 12px, 14px);
@@ -2368,8 +2371,9 @@
         color: #6C6C6C;
 	}
 	&__location {
-		margin-top: 27px;
-		margin-right: 13px;
+		// margin-top: 27px;
+		// margin-right: 13px;
+		margin-bottom: 19px;
 		grid-column-gap: 5px;
 		&-mobile {
 			display: none;
@@ -2470,8 +2474,9 @@
 	        @include font-ubuntu(400, calc(12 * 100vw / 1440), 144.4%);
 		}
 		&__location {
-			margin-top: calc(27 * 100vw / 1440);
-			margin-right: calc(13 * 100vw / 1440);
+			// margin-top: calc(27 * 100vw / 1440);
+			// margin-right: calc(13 * 100vw / 1440);
+			margin-bottom: calc(19 * 100vw / 1440);
 			grid-column-gap: calc(5 * 100vw / 1440);
 			&-icon {
 				width: calc(10 * 100vw / 1440);
