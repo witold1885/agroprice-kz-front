@@ -2343,7 +2343,7 @@
 	}
 	&__price {
 		&-main {
-		margin-top: 10px;
+			margin-top: 20px;
         	@include font-ubuntu(500, 20px, 23px);
 			color: $color_black;		
 		}
@@ -2453,7 +2453,7 @@
 		}
 		&__price {
 			&-main {
-			margin-top: calc(10 * 100vw / 1440);
+				margin-top: calc(20 * 100vw / 1440);
 	        	@include font-ubuntu(500, calc(20 * 100vw / 1440), calc(23 * 100vw / 1440));
 			}
 		}
