@@ -5,6 +5,7 @@ import CompleteRegister from '../views/Profile/CompleteRegister.vue'
 import ResetPassword from '../views/Actions/ResetPassword.vue'
 import CreateProduct from '../views/Product/CreateProduct.vue'
 import ProductView from '../views/ProductView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -61,6 +62,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: ProductView
+  },
+  {
+    path: '/:pathMatch(.*)',
+    name: 'not-found',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    component: NotFoundView
   }
 ]
 
