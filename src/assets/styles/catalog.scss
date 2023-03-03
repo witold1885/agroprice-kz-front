@@ -117,7 +117,8 @@
 	height: 365px;
 	background: $color_white;
 	border-radius: 8px;
-	padding: 13px 0 20px;
+	// padding: 13px 0 20px;
+	padding: 0 0 20px;
 	box-sizing: border-box;
 	position: relative;
 	&__up {
@@ -148,8 +149,12 @@
 	}
 	&__image {
 		align-self: center;
-		width: 164px;
-		height: 164px;
+		/* width: 164px;
+		height: 164px; */
+		width: 100%;
+		height: 177px;
+		object-fit: cover;
+		object-position: center;
 	}
 	&__middle {
 		width: 100%;
@@ -315,7 +320,8 @@
 		width: calc(285 * 100vw / 1440);
 		height: calc(365 * 100vw / 1440);
 		border-radius: calc(8 * 100vw / 1440);
-		padding: calc(13 * 100vw / 1440) 0 calc(20 * 100vw / 1440);
+		// padding: calc(13 * 100vw / 1440) 0 calc(20 * 100vw / 1440);
+		padding: 0 0 calc(20 * 100vw / 1440);
 		&__date {
 			top: calc(22 * 100vw / 1440);
 			left: calc(14 * 100vw / 1440);
@@ -332,8 +338,9 @@
 			}
 		}
 		&__image {
-			width: calc(164 * 100vw / 1440);
-			height: calc(164 * 100vw / 1440);
+			// width: calc(164 * 100vw / 1440);
+			// height: calc(164 * 100vw / 1440);
+			height: calc(177 * 100vw / 1440);
 		}
 		&__middle {
 			padding: 0 calc(11 * 100vw / 1440) calc(12 * 100vw / 1440) calc(20 * 100vw / 1440);
