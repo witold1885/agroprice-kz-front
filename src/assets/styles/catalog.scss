@@ -2296,14 +2296,22 @@
 	background: $color_white;
 	box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
 	border-radius: 8px;
-	padding: 0 13px 19px 29px;
+	// padding: 0 13px 19px 29px;
+	padding: 0 13px 19px 0;
 	position: relative;
 	&__left {
+		height: 100%;
 		grid-column-gap: 62px;
 	}
 	&__image {
-		@include box(142px, 142px);
-		margin-top: 15px;
+		// @include box(142px, 142px);
+		// margin-top: 15px;
+		width: 171px;
+		height: 100%;
+		padding: 5px 0 5px 5px;
+		box-sizing: border-box;
+		object-fit: cover;
+		object-position: center;
 	}
 	&__subcategory {
 		margin-top: 25px;
