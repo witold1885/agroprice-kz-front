@@ -401,7 +401,7 @@ export default {
 					const { level, id, name } = item
 					return { level, id, name }
 				})
-				if (categories.length == 0) {
+				if (categories.length <= 1) {
 					this.errors.category = errorMessages.category
 					this.showError('category')
 					return

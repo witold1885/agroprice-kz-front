@@ -4,17 +4,15 @@
 	>
 		<div
 			class="catalog-menu__button d-flex justify-content-between"
-			@mouseover="openMenu"
+			@click="toggleMenu"
 		>
 			<!-- <div class="catalog-menu__button-icon"> -->
 				<img
 					class="catalog-menu__button-icon" :src="require('@/assets/images/menu.png')"
-					@mouseover="openMenu"
 				/>
 			<!-- </div> -->
 			<div
 				class="catalog-menu__button-title"
-				@mouseover="openMenu"
 			>
 				Каталог товаров
 			</div>
@@ -22,7 +20,6 @@
 		<div
 			class="catalog-menu__dropdown d-flex"
 			v-if="showMenu"
-			@mouseleave="closeMenu"
 		>
 			<div class="catalog-menu__dropdown-top justify-content-between">
 				<h1 class="catalog-menu__dropdown-top-title">Каталог товаров</h1>
@@ -36,20 +33,48 @@
 				<a
 					v-for="(category, ci) of menuCategories"
 					:key="ci"
-					class="catalog-menu__dropdown-categories-item d-flex align-items-center"
-					@mouseover="selectedCategory = category"
-					@click="goTo(category.url)"
+					class="catalog-menu__dropdown-categories-item d-flex flex-column align-items-center"
 				>
 					<div class="catalog-menu__dropdown-categories-item-wrap d-flex justify-content-between align-items-center">
-						<div class="catalog-menu__dropdown-categories-item-title">{{ category.name }}</div>
+						<div
+							class="catalog-menu__dropdown-categories-item-title"
+							@click="goTo(category.url)"
+						>{{ category.name }}</div>
 						<img
 							class="catalog-menu__dropdown-categories-item-arrow catalog-menu__dropdown-categories-item-arrow-green"
 							:src="require('@/assets/images/arrow-right-green.png')"
+							@click="category.show = !category.show"
 						/>
 						<img
 							class="catalog-menu__dropdown-categories-item-arrow catalog-menu__dropdown-categories-item-arrow-white"
 							:src="require('@/assets/images/arrow-right-white.png')"
+							@click="category.show = !category.show"
 						/>
+					</div>
+					<div 
+						v-show="category.show"
+						class="catalog-menu__dropdown-mobile-subcategories d-flex flex-column justify-content-between"
+					>
+						<div
+							v-for="(subcategory, si) of category.subcategories"
+							:key="si"
+							class="catalog-menu__dropdown-mobile-subcategories-block d-flex flex-column"
+						>
+							<a
+								class="catalog-menu__dropdown-mobile-subcategories-block-title"
+								@click="goTo(subcategory.url)"
+							>{{ subcategory.name }}</a>
+							<div class="catalog-menu__dropdown-mobile-subcategories-block-items d-flex flex-column">
+								<a
+									v-for="(subsubcategory, ssi) of subcategory.subsubcategories"
+									:key="ssi"
+									class="catalog-menu__dropdown-mobile-subcategories-block-item"
+									@click="goTo(subsubcategory.url)"
+								>
+									{{ subsubcategory.name }}
+								</a>
+							</div>
+						</div>
 					</div>
 				</a>
 			</div>
@@ -92,7 +117,7 @@ export default {
 	},
 	data () {
 		return {
-			showMenu: false,
+			showMenu: true,
 			selectedCategory: null,
 			min: 3,
 			max: 5
@@ -103,6 +128,7 @@ export default {
 	},
 	async mounted () {
 		await this.$store.dispatch('catalog/getMenuCategories')
+		this.menuCategories.map(cat => cat.show = false)
 	},
 	methods: {
 		toggleMenu () {
