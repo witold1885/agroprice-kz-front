@@ -33,7 +33,8 @@
 				<a
 					v-for="(category, ci) of menuCategories"
 					:key="ci"
-					class="catalog-menu__dropdown-categories-item d-flex flex-column align-items-center"
+					class="catalog-menu__dropdown-categories-item d-flex align-items-center"
+					@mouseover="selectedCategory = category"
 				>
 					<div class="catalog-menu__dropdown-categories-item-wrap d-flex justify-content-between align-items-center">
 						<div
@@ -52,7 +53,7 @@
 						/>
 					</div>
 					<div 
-						v-show="category.show"
+						v-if="category.show && breakpoint == 'sm'"
 						class="catalog-menu__dropdown-mobile-subcategories d-flex flex-column justify-content-between"
 					>
 						<div
@@ -117,20 +118,31 @@ export default {
 	},
 	data () {
 		return {
-			showMenu: true,
+			showMenu: false,
 			selectedCategory: null,
-			min: 3,
-			max: 5
+			breakpoint: 'lg'
 		}
 	},
 	computed: {
 		...mapState('catalog', ['menuCategories']),
+	},
+	created () {
+		window.addEventListener('resize', this.handleResize)
+		this.handleResize()
+	},
+	unmounted () {
+		window.removeEventListener('resize', this.handleResize)
 	},
 	async mounted () {
 		await this.$store.dispatch('catalog/getMenuCategories')
 		this.menuCategories.map(cat => cat.show = false)
 	},
 	methods: {
+		handleResize () {
+			if (window.innerWidth > 992) this.breakpoint = 'lg'
+			else if (window.innerWidth > 414) this.breakpoint = 'md'
+			else this.breakpoint = 'sm'
+		},
 		toggleMenu () {
 			if (this.showMenu == false) {
 				this.openMenu()
