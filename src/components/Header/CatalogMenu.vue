@@ -20,6 +20,7 @@
 		<div
 			class="catalog-menu__dropdown d-flex"
 			v-if="showMenu"
+			v-click-outside="closeMenu"
 		>
 			<div class="catalog-menu__dropdown-top justify-content-between">
 				<h1 class="catalog-menu__dropdown-top-title">Каталог товаров</h1>
@@ -111,11 +112,15 @@
 <script>
 import { mapState } from 'vuex'
 import CloseButton from '@/components/Common/CloseButton'
+import vClickOutside from 'click-outside-vue3'
 
 export default {
 	components: {
 		CloseButton
 	},
+    directives: {
+		clickOutside: vClickOutside.directive
+    },
 	data () {
 		return {
 			showMenu: false,
