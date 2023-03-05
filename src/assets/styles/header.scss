@@ -847,6 +847,7 @@ header {
 				overflow-y: scroll;
 				padding-top: 0;
 				&-item {
+					flex-direction: column;
 					margin-left: 0;
 					height: auto;
 					min-height: calc(50 * 100vw / 320);
@@ -896,25 +897,25 @@ header {
 					max-height: 100%;
 					overflow: scroll;
 					flex: 1;
-					padding: 0 19px;
-					grid-column-gap: 7px;
-					grid-row-gap: 6px;
+					padding: calc(19 * 100vw / 320) calc(19 * 100vw / 320);
+					grid-column-gap: calc(7 * 100vw / 320);
+					grid-row-gap: calc(6 * 100vw / 320);
 					&-row {
 						width: 100%;
 					}
 					&-block {
 						// max-width: 229px;
-						
-						grid-row-gap: 7px;
+
+						grid-row-gap: calc(7 * 100vw / 320);
 						&-title {
-		        			@include font-ubuntu(500, 12px, 113.33%);
+		        			@include font-ubuntu(500, calc(12 * 100vw / 320), 113.33%);
 							color: $color_green;
 						}
 						&-items {
-							grid-row-gap: 7px;
+							grid-row-gap: calc(7 * 100vw / 320);
 						}
 						&-item {
-		        			@include font-ubuntu(400, 10px, 12px);
+		        			@include font-ubuntu(400, calc(10 * 100vw / 320), calc(12 * 100vw / 320));
 							color: #3F3F3F;
 						}
 					}
