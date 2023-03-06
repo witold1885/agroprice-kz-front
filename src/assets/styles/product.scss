@@ -246,7 +246,7 @@
 		}
 		&-buttons {
 			grid-column-gap: 15px;
-			& button {
+			& button, & a {
 				width: 205px;
 				height: 39px;
 				border-radius: 5px;
@@ -459,7 +459,7 @@
 			}
 			&-buttons {
 				grid-column-gap: calc(15 * 100vw / 1440);
-				& button {
+				& button, & a {
 					width: calc(205 * 100vw / 1440);
 					height: calc(39 * 100vw / 1440);
 					border-radius: calc(5 * 100vw / 1440);
@@ -665,7 +665,7 @@
 			&-buttons {
 				flex-direction: column;
 				grid-row-gap: calc(8 * 100vw / 320);
-				& button {
+				& button, & a {
 					width: calc(205 * 100vw / 320);
 					height: calc(39 * 100vw / 320);
 					border-radius: calc(5 * 100vw / 320);
@@ -1334,7 +1334,7 @@
 					display: flex;
 					grid-row-gap: 11px;
 					margin-left: 12px;
-					& button {
+					& button, & a {
 						width: 208px;
 						height: 55px;
 						border-radius: 8px;
@@ -1559,7 +1559,7 @@
 				&-buttons {
 					grid-row-gap: calc(11 * 100vw / 768);
 					margin-left: calc(12 * 100vw / 768);
-					& button {
+					& button, & a {
 						width: calc(208 * 100vw / 768);
 						height: calc(55 * 100vw / 768);
 						border-radius: calc(8 * 100vw / 768);
@@ -1777,7 +1777,7 @@
 					display: flex;
 					grid-row-gap: calc(11 * 100vw / 320);
 					margin-left: calc(16 * 100vw / 320);
-					& button {
+					& button, & a {
 						width: calc(158 * 100vw / 320);
 						height: calc(55 * 100vw / 320);
 						border-radius: calc(8 * 100vw / 320);
