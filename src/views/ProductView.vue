@@ -79,7 +79,7 @@
 											<img :src="require('@/assets/images/logo.png')" />
 										</div>
 										<div class="product__info-mobile-buttons flex-column">
-											<button class="product__info-mobile-button-call">Позвонить</button>
+											<a :href="`tel:${product.contact.phone}`" class="product__info-mobile-button-call">Позвонить</a>
 											<button class="product__info-mobile-button-whatsapp">Написать на Whatsapp</button>
 										</div>
 									</div>
@@ -91,7 +91,7 @@
 						<div class="product__info-bottom">
 							<div class="product__info-buttons d-flex flex-wrap justify-content-end align-items-end">
 								<div class="product__info-buttons-clearfix"></div>
-								<button class="product__info-button-call">Позвонить</button>
+								<a :href="`tel:${product.contact.phone}`" class="product__info-button-call">Позвонить</a>
 								<button class="product__info-button-write">Написать продавцу</button>
 								<button class="product__info-button-allproducts">Все товары продавца</button>
 								<button class="product__info-button-whatsapp">Написать на Whatsapp</button>
