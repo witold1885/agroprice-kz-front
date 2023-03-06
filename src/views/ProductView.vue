@@ -77,7 +77,7 @@
 								<div class="product__info-sell-right">
 									<div class="product__info-sell-user">
 										<span class="product__info-sell-user-text">Продавец: </span>
-										<span class="product__info-sell-user-value">{{ product.user ? product.user.profile.fullname : '' }}</span>
+										<span class="product__info-sell-user-value">{{ product.contact.person }}</span>
 										
 									</div>
 									<div class="d-flex">
@@ -138,10 +138,10 @@
 				title="Похожие товары"
 				:products="product.similar"
 			/>
-			<div class="product__divider"></div>
+			<!-- <div class="product__divider"></div>
 			<div class="product__text">
 				Укрепление и развитие структуры способствует подготовки и реализации дальнейших направлений развития. Задача организации, в особенности же постоянное информационно-пропагандистское обеспечение нашей деятельности играет важную роль в формировании форм развития. С другой стороны начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке направлений прогрессивного развития. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке форм развития. Товарищи! дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.
-			</div>
+			</div> -->
 			<SellBlock />
 			<div class="product__seller-products">
 				<div class="product__seller-products-title">Все товары продавца</div>
@@ -286,6 +286,9 @@ export default {
 			}
 			this.setActiveImage(this.activeImageIndex)
 			this.$refs.carousel.slideTo(this.activeImageIndex)
+		},
+		getSeller () {
+
 		},
 		showMore () {
 			this.gridCount += 5
