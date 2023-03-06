@@ -410,11 +410,11 @@ export default {
 					const { num, file } = item
 					return { num, file }
 				})
-				if (images.length == 0) {
+				/*if (images.length == 0) {
 					this.errors.images = errorMessages.images
 					this.showError('images')
 					return
-				}
+				}*/
 				if (this.product.price == 0 && !this.product.price_negotiable) {
 					this.errors.price = errorMessages.price
 					this.showError('price')
