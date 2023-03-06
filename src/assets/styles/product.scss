@@ -1341,7 +1341,10 @@
 					grid-row-gap: 11px;
 					margin-left: 12px;
 					& button, & a {
-
+						box-sizing: border-box;
+						display: flex;
+						justify-content: center;
+						align-items: center;
 						width: 208px;
 						height: 55px;
 						border-radius: 8px;
