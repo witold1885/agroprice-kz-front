@@ -892,6 +892,12 @@
 			&-clearfix {
 				width: 474px;
 			}
+			& button, & a {
+				box-sizing: border-box;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
 		}
 		&-button {
 			&-write {
@@ -1335,6 +1341,7 @@
 					grid-row-gap: 11px;
 					margin-left: 12px;
 					& button, & a {
+
 						width: 208px;
 						height: 55px;
 						border-radius: 8px;
