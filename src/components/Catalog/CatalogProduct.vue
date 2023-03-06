@@ -4,7 +4,7 @@
 			<div class="catalog-product__date">{{ product.date }}</div>
 			<FavoritesButton class="catalog-product__favorite" border-color="green"/>
 			<img v-if="product.product_images.length != 0" class="catalog-product__image" :src="`${storageURL}/${product.product_images[0].path}`" />
-			<div v-else class="catalog-product__image"></div>
+			<img v-else class="catalog-product__image" :src="require('@/assets/images/no-image.png')" />
 			<div class="catalog-product__middle d-flex justify-content-between align-items-center">
 				<div class="catalog-product__subcategory">{{ product.category_name }}</div>
 				<!-- <div class="catalog-product__location d-flex justify-content-end align-items-center">

@@ -2,7 +2,7 @@
 	<a :href="`/product/${product.url}`" class="list-product d-flex justify-content-between">
 		<div class="list-product__left d-flex">
 			<img v-if="product.product_images.length != 0" class="list-product__image" :src="`${storageURL}/${product.product_images[0].path}`" />
-			<div v-else class="list-product__image"></div>
+			<img v-else class="catalog-product__image" :src="require('@/assets/images/no-image.png')" />
 			<div class="list-product__info d-flex flex-column justify-content-between">
 				<div>
 					<div class="list-product__subcategory d-flex justify-content-between align-items-center">
