@@ -8,17 +8,6 @@
 					<div class="product__images-full">
 						<img :src="`${storageURL}/${activeImage.path}`" />
 					</div>
-					<!-- <div class="product__images-list d-flex justify-content-center align-items-center">
-						<div
-							v-for="(img, index) of product.product_images"
-							:key="index"
-							class="product__images-list-item"
-							:class="{ 'product__images-list-item-active': img.path == activeImage.path }"
-							@click="setActiveImage(index)"
-						>
-							<img :src="`${storageURL}/${img.path}`" />
-						</div>
-					</div> -->
 					<carousel
 						ref="carousel"
 						:settings="settings"
@@ -48,6 +37,11 @@
 						>
 							<img :src="require('@/assets/images/arrow-right-green.png')" />							
 						</div>
+				</div>
+				<div v-else class="product__images d-flex flex-column justify-content-between">
+					<div class="product__images-full">
+						<img class="catalog-product__image" :src="require('@/assets/images/no-image.png')" />
+					</div>
 				</div>
 				<div class="product__info">
 					<!-- <div v-if="product.price_negotiable" class="product__info-negotiable">Договорная</div> -->
@@ -236,8 +230,10 @@ export default {
 					this.metaTitle = this.product.name
 					this.metaDescription = this.product.name
 					this.metaKeywords = this.product.name
-					this.activeImageIndex = 0
-					this.setActiveImage(0)
+					if (this.product.product_images.length != 0) {
+						this.activeImageIndex = 0
+						this.setActiveImage(0)
+					}
 				}
 			}
 			else {
