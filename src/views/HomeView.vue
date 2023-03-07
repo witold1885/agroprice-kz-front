@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Banner />
-    <h1 class="heading-1" style="height: 0; color: white;">Сельскохозяйственная техника в Казахстане купить</h1>
+    <h1 class="heading-1" style="height: 0; color: white; margin: 0;">Сельскохозяйственная техника в Казахстане купить</h1>
     <MainCatalog />
     <NewsCarousel
       title="Новости"
