@@ -1,6 +1,6 @@
 <template>
   <metainfo>
-    <template v-slot:title="{ content }">{{ content ? `${content} | ${siteName}` : `${siteName}` }}</template>
+    <template v-slot:title="{ content }">{{ content ? `${content}` : `${siteName}` }}</template>
     <template v-slot:description="{ content }">{{ content }}</template>
     <template v-slot:keywords="{ metaInfo }">{{ metaInfo.content }}</template>
   </metainfo>
@@ -32,10 +32,10 @@ import InfoDialog from '@/components/Auth/InfoDialog'
 export default {
   setup () {
     useMeta({
-      title: 'Главная страница',
-      description: 'Agroprice',
+      title: 'Продажа сельхозтехники в Казахстане Сельскохозяйственная техника на Agroprice.kz',
+      description: 'Сельскохозяйственная техника, купить сельхозтехнику в Казахстане Алматы Астана Костанай Шымкент Петропавловск Караганда Кокшетау продажа на  Agroprice.kz Агропрайс',
       meta: [
-        { name: 'keywords', content: 'Agroprice'},
+        { name: 'keywords', content: 'сельхозтехника, сельскохозяйственная техника, казахстан, алматы, астана, agroprice, агропрайс, костанай, шымкент, петропавловск, караганда, кокшетау'},
       ],
       htmlAttrs: { lang: 'ru', amp: true }
     })
