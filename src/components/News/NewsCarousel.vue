@@ -1,7 +1,7 @@
 <template>
 	<div class="news-carousel__container">
 		<div class="news-carousel">
-			<h1 class="news-carousel__title heading-1">{{ title }}</h1>
+			<div class="news-carousel__title heading-1">{{ title }}</div>
 			<carousel
 				ref="carousel"
 				:settings="settings"

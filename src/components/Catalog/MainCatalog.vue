@@ -1,6 +1,6 @@
 <template>
 	<div class="main-catalog">
-		<h1 class="main-catalog__title heading-1">Главный каталог</h1>
+		<div class="main-catalog__title heading-1">Главный каталог</div>
 		<div class="main-catalog__grid d-flex flex-wrap justify-content-between">
 			<CategoryCard
 				v-for="(category, index) of mainCategories"
