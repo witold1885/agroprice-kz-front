@@ -1409,10 +1409,10 @@
 					color: $color_black;
 				}
 				&-whatsapp {
-					display: none;
+					display: none!important;
 				}
 				&-call {
-					display: none;
+					display: none!important;
 				}
 			}
 		}
