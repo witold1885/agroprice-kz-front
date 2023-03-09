@@ -16,9 +16,6 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/ProfileView.vue'),
     children: [
       {
@@ -30,46 +27,31 @@ const routes = [
   {
     path: '/reset-password/:token?',
     name: 'reset-password',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: ResetPassword
   },
   {
     path: '/catalog/:category?',
     name: 'catalog',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: CatalogView
   },
   {
     path: '/create-product',
     name: 'create-product',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: CreateProduct
   },
   {
     path: '/product/:product?',
     name: 'product',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
     component: ProductView
   },
   {
-    path: '/:pathMatch(.*)',
+    path: '/:pathMatch(.*)*',
     name: 'not-found',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    beforeEnter: (to, from, next) => { next('/404') }
+  },
+  {
+    path: '/404',
+    name: '404',
     component: NotFoundView
   }
 ]
