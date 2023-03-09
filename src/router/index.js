@@ -47,7 +47,7 @@ const routes = [
   {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
-    beforeEnter: (to, from, next) => { next('/404') }
+    beforeEnter: () => { window.location = `/404` }
   },
   {
     path: '/404',
