@@ -22,7 +22,6 @@
 				v-if="category.description"
 				class="category__description"
 				v-html="category.description"
-				style="height: 0; display: none; overflow: hidden;"
 			></div>
 		</div>
 	</div>
