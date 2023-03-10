@@ -22,6 +22,7 @@
 				v-if="category.description"
 				class="category__description"
 				v-html="category.description"
+				style="height: 0"
 			></div>
 		</div>
 	</div>
