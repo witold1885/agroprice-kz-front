@@ -16,7 +16,7 @@
 			</div>
 			<div class="category__data d-flex">
 				<CategoryFilters />
-				<CategoryProducts v-show="products.length != 0" :products="products" />
+				<CategoryProducts v-show="products.length != 0" :products="products" :pages="pages" />
 			</div>
 			<div
 				v-if="category.description"
@@ -44,7 +44,9 @@ export default {
 			metaTitle: '',
 			metaDescription: '',
 			metaKeywords: '',
-			products: []
+			products: [],
+			pages: 1,
+			productsPerPage: 20
 		}
 	},
 	computed: {
@@ -73,6 +75,10 @@ export default {
 	},
 	async mounted () {
 		await this.init()
+		this.emitter.on('change-page', async (page) => {
+			console.log('CHanging page to ' + page)
+			await this.getProducts(page)
+		})
 	},
 	methods: {
 		...mapActions('catalog', ['getCategory']),
@@ -86,8 +92,7 @@ export default {
 					this.metaTitle = this.category.meta_title || this.category.name
 					this.metaDescription = this.category.meta_description || this.category.name
 					this.metaKeywords = this.category.meta_keywords || this.category.name
-					this.products = await this.getCategoryProducts(this.category.id)
-					// console.log(this.products)
+					await this.getProducts()
 				}
 			}
 			else {
@@ -104,6 +109,13 @@ export default {
 
 				})
 			}
+		},
+		async getProducts (page = 1) {
+			const productsData = await this.getCategoryProducts({ category_id: this.category.id, page })
+			this.products = productsData.products
+			const total = productsData.total
+			// console.log(this.products)
+			this.pages = Math.ceil(total / this.productsPerPage)
 		},
 		setDefaultBreadcrumbs () {
 			return [

@@ -82,7 +82,7 @@
 		</div>
 		<ProductsGrid v-if="view == 'grid'" v-show="products.length != 0" :count="gridCount" :products="products" />
 		<ProductsList v-if="view == 'list'" v-show="products.length != 0" :count="listCount" :products="products" />
-		<Pagination />
+		<Pagination :pagesCount="pages" v-show="pages > 1"/>
 		<button
 			class="products__showmore"
 			@click="showMore"
@@ -100,6 +100,10 @@ export default {
 		products: {
 			type: Array,
 			default: () => []
+		},
+		pages: {
+			type: Number,
+			default: 1
 		}
 	},
 	components: { ProductsGrid, ProductsList, Pagination },

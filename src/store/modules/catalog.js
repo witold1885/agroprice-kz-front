@@ -83,14 +83,15 @@ export const actions = {
       return null
     }
   },
-  async getCategoryProducts (context, category_id) {
-    const response = await api.get('/catalog/category-products/' + category_id)
+  async getCategoryProducts (context, payload) {
+    // const response = await api.get('/catalog/category-products/' + category_id + '/' + page + '/' + limit)
+    const response = await api.get('/catalog/category-products/' + payload.category_id + '/' + payload.page)
       .catch((error) => {
         console.log(error)
       })
     console.log(response.data)
     if (response.data.success) {
-      return response.data.products
+      return response.data
     }
     else {
       console.log(response.data.error)
