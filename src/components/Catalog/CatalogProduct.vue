@@ -28,7 +28,7 @@
 					</div> -->
 					<div class="catalog-product__location d-flex justify-content-end align-items-center">
 						<img class="catalog-product__location-icon" :src="require('@/assets/images/location.png')" />
-						<div class="catalog-product__location-value">{{ product.location.city }}</div>
+						<div class="catalog-product__location-value">{{ product.location ? product.location.city : 'Не указано' }}</div>
 					</div>
 					<div class="catalog-product__stats-views d-flex justify-content-end align-items-center">
 						<img class="catalog-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
