@@ -2,12 +2,19 @@
 	<div class="pagination d-flex justify-content-center align-items-center">
 		<!-- <div class="pagination__item pagination__item-prev"></div> -->
 		<div
+			class="pagination__item pagination__item-prev d-flex justify-content-center align-items-center"
+			@click="goPrevPage"
+		>
+			<img :src="require('@/assets/images/arrow-right-grey.png')">
+		</div>
+		<div
 			v-for="i in pagesCount"
+			v-show="isShowingPage(i) || isDotsPage(i)"
 			:key="i"
 			class="pagination__item pagination__item-page d-flex justify-content-center align-items-center"
-			:class="{ 'pagination__item-page-active': i == activePage }"
+			:class="{ 'pagination__item-page-active': i == activePage, 'pagination__item-page-dot': isDotsPage(i) }"
 			@click="setActivePage(i)"
-		>{{ i }}</div>
+		>{{ isDotsPage(i) ? '...' : i }}</div>
 		<div
 			class="pagination__item pagination__item-next d-flex justify-content-center align-items-center"
 			@click="goNextPage"
@@ -32,8 +39,30 @@ export default {
 		}
 	},
 	methods: {
-		setActivePage(page) {
-			this.activePage = page
+		isShowingPage (page) {
+			return page == 1 || page == 2 || page == this.activePage - 1 || page == this.activePage || page == this.activePage + 1 || page == this.pagesCount - 1 || page == this.pagesCount
+		},
+		isDotsPage (page) {
+			if (this.pagesCount >= 9) {
+				if (this.activePage <= 2) return page == 3
+				else if (this.activePage >= this.pagesCount - 1) return page == this.pagesCount - 2
+				else if (this.activePage >= 4 && this.activePage <= this.pagesCount - 3) return page == 3 || page == this.pagesCount - 2
+				else if (this.activePage == 3) return page == this.pagesCount - 2
+				else if (this.activePage == this.pagesCount - 2) return page == 3
+			}
+			return false
+		},
+		setActivePage (page) {
+			if (!this.isDotsPage(page)) {
+				this.activePage = page
+				this.emitter.emit('change-page', this.activePage)
+			}
+		},
+		goPrevPage () {
+			this.activePage--
+			if (this.activePage < 1) {
+				this.activePage = this.pagesCount
+			}
 			this.emitter.emit('change-page', this.activePage)
 		},
 		goNextPage () {

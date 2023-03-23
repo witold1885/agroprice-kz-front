@@ -379,6 +379,10 @@ h1 {
 		border: 1px solid #E9E9E9;
 		border-radius: 5px;
 		cursor: pointer;
+		&-prev {
+			transform-origin: center;
+			transform: rotate(180deg);
+		}
 		&-page {
 			font-family: 'Circe';
 			font-style: normal;
@@ -391,6 +395,9 @@ h1 {
 				background: #39BC64;
 				border: none;
 				color: $color_white;
+			}
+			&-dot {
+				cursor: default!important;
 			}
 		}
 	}
