@@ -258,6 +258,82 @@
 	}
 }
 
+.preferences {
+	&__title {
+		margin: 0;
+		@include font-ubuntu(500, 32px, 37px);
+		color: $color_black;
+	}
+	&__form {
+		margin: 27px 0 41px;
+		width: 955px;
+		// height: 371px;
+		background: #F4F4F4;
+		border-radius: 11px;
+		padding: 30px 35px 37px;
+		box-sizing: border-box;
+		position: relative;
+		&-avatar {
+			display: none;
+		}
+		&-columns {
+			grid-column-gap: 34px;
+		}
+		&-field {
+			&-label {
+				@include font-ubuntu(500, 14px, 195.9%);
+				color: #676767;
+			}
+			&-value {
+				@include font-ubuntu(500, 14px, 195.9%);
+				color: $color_black;
+				&-edit {
+					@include box(11px, 11px);
+					margin-left: 11px;
+					cursor: pointer;
+				}
+			}
+			&-input {
+				width: 224px;
+				height: 34px;
+				background: #FFFFFF;
+				border-radius: 3px;
+				padding: 3px 12px 4px;
+				@include font-ubuntu(400, 14px, 195.9%);
+				border: none;
+				box-shadow: none;
+				outline: none;
+			}
+		}
+		&-error {
+			position: absolute;
+			bottom: -25px;
+			width: 100%;
+			@include font-ubuntu(400, 14px, 14px);
+			color: red;
+		}
+	}
+	&__buttons {
+		grid-column-gap: 14px;
+	}
+	&__button {
+		width: 131px;
+		height: 41px;
+		border-radius: 8px;
+		@include font-ubuntu(500, 12px, 14px);
+		&-save {
+			background: $color_green;
+			border: none;
+			color: $color_white;
+		}
+		&-cancel {
+			background: transparent;
+			border: 1px solid $color_green;
+			color: $color_black;
+		}
+	}
+}
+
 @media screen and (max-width: 1440px) {
 	.profile {
 		&__wrap {
@@ -431,6 +507,55 @@
 			@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
 		}
 	}
+
+	.preferences {
+		&__title {
+			@include font-ubuntu(500, calc(32 * 100vw / 1440), calc(37 * 100vw / 1440));
+		}
+		&__form {
+			margin: calc(27 * 100vw / 1440) 0 calc(41 * 100vw / 1440);
+			width: calc(955 * 100vw / 1440);
+			// height: calc(371 * 100vw / 1440);
+			border-radius: calc(11 * 100vw / 1440);
+			padding: calc(30 * 100vw / 1440) calc(35 * 100vw / 1440) calc(37 * 100vw / 1440);
+			&-columns {
+				grid-column-gap: calc(34 * 100vw / 1440);
+			}
+			&-field {
+				&-label {
+					@include font-ubuntu(500, calc(14 * 100vw / 1440), 195.9%);
+				}
+				&-value {
+					@include font-ubuntu(500, calc(14 * 100vw / 1440), 195.9%);
+					&-edit {
+						@include box(calc(11 * 100vw / 1440), calc(11 * 100vw / 1440));
+						margin-left: calc(11 * 100vw / 1440);
+					}
+				}
+				&-input {
+					width: calc(224 * 100vw / 1440);
+					height: calc(34 * 100vw / 1440);
+					border-radius: calc(3 * 100vw / 1440);
+					padding: calc(3 * 100vw / 1440) calc(12 * 100vw / 1440) calc(4 * 100vw / 1440);
+					@include font-ubuntu(400, calc(14 * 100vw / 1440), 195.9%);
+				}
+			}
+			&-error {
+				bottom: calc(-25 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+			}
+		}
+		&__buttons {
+			grid-column-gap: calc(14 * 100vw / 1440);
+		}
+		&__button {
+			width: calc(131 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+			@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+	}
+
 }
 
 @media screen and (max-width: 414px) {
@@ -578,4 +703,78 @@
 		}
 	}
 
+	.preferences {
+		margin-bottom: calc(45 * 100vw / 320);
+		&__title {
+			margin: 0;
+			@include font-ubuntu(500, calc(18 * 100vw / 320), calc(21 * 100vw / 320));
+		}
+		&__form {
+			margin: calc(17 * 100vw / 320) 0 calc(28 * 100vw / 320);
+			width: calc(280 * 100vw / 320);
+			// height: 371 * 100vw / 320);
+			border-radius: calc(11 * 100vw / 320);
+			padding: calc(11 * 100vw / 320) calc(15 * 100vw / 320) calc(25 * 100vw / 320);
+			flex-direction: column;
+			&-avatar {
+				display: flex;
+				width: 100%;
+				margin: calc(9 * 100vw / 320) 0 calc(20 * 100vw / 320);
+				&-wrap {
+					width: calc(73 * 100vw / 320);
+					height: calc(73 * 100vw / 320);
+					border-radius: 100%;
+					background: #D9D9D9;
+				}
+				&-icon {
+					@include box(calc(25 * 100vw / 320), calc(25 * 100vw / 320));
+				}
+			}
+			&-columns {
+				flex-direction: column;
+			}
+			&-field {
+				&-label {
+					@include font-ubuntu(500, calc(14 * 100vw / 320), 195.9%);
+				}
+				&-value {
+					@include font-ubuntu(500, calc(14 * 100vw / 320), 195.9%);
+					&-edit {
+						@include box(calc(11 * 100vw / 320), calc(11 * 100vw / 320));
+						margin-left: calc(11 * 100vw / 320);
+					}
+				}
+				&-input {
+					width: calc(242 * 100vw / 320);
+					height: calc(34 * 100vw / 320);
+					border-radius: calc(3 * 100vw / 320);
+					padding: calc(3 * 100vw / 320) calc(12 * 100vw / 320) calc(4 * 100vw / 320);
+					@include font-ubuntu(400, calc(14 * 100vw / 320), 195.9%);
+				}
+			}
+			&-error {
+				bottom: calc(-25 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
+			}
+		}
+		&__buttons {
+			grid-column-gap: calc(14 * 100vw / 320);
+		}
+		&__button {
+			width: calc(131 * 100vw / 320);
+			height: calc(41 * 100vw / 320);
+			border-radius: calc(8 * 100vw / 320);
+			@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+			&-save {
+				background: $color_green;
+				border: none;
+				color: $color_white;
+			}
+			&-cancel {
+				background: transparent;
+				border: 1px solid $color_green;
+				color: $color_black;
+			}
+		}
+	}
 }

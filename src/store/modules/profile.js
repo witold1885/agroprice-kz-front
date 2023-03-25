@@ -28,6 +28,22 @@ export const actions = {
       commit('setError', response.data.error)
     }
     return false
+  },
+  async updateProfile ({ commit }, payload) {
+    const response = await api.post('/profile/update', payload)
+      .catch((error) => {
+        console.log(error)
+        commit('setError', 'Ошибка сохранения профиля. Попробуйте позже')
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+    }
+    return false
   }
 }
 

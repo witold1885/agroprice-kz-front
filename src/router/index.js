@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CatalogView from '../views/CatalogView.vue'
 import CompleteRegister from '../views/Profile/CompleteRegister.vue'
+import Preferences from '../views/Profile/Preferences.vue'
 import ResetPassword from '../views/Actions/ResetPassword.vue'
 import CreateProduct from '../views/Product/CreateProduct.vue'
 import ProductView from '../views/ProductView.vue'
@@ -21,7 +22,11 @@ const routes = [
       {
         path: 'complete-register',
         component: CompleteRegister
-      }
+      },
+      {
+        path: 'preferences',
+        component: Preferences
+      },
     ]
   },
   {

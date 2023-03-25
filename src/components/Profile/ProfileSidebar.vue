@@ -11,7 +11,7 @@
 				v-for="(item, index) of menu"
 				:key="index"
 				class="profile-sidebar__menu-item-wrap d-flex flex-column"
-				@click="setAction(item.action)"
+				
 			>	
 				<div class="profile-sidebar__menu-item d-flex align-items-center">
 					<div v-if="item.active" class="profile-sidebar__menu-item-marker"></div>
@@ -20,7 +20,7 @@
 						:class="`profile-sidebar__menu-item-icon-${item.icon}`"
 						:src="require(`@/assets/images/${item.icon}-green.png`)"
 					/>
-					<div class="profile-sidebar__menu-item-title">{{ item.title }}</div>
+					<div class="profile-sidebar__menu-item-title" @click="setAction(item.action)">{{ item.title }}</div>
 				</div>
 				<div
 					v-if="item.children.length != 0"
@@ -31,7 +31,7 @@
 						:key="index"
 						class="profile-sidebar__menu-subitem"
 					>
-						<div class="profile-sidebar__menu-subitem-title">{{ child.title }}</div>
+						<div class="profile-sidebar__menu-subitem-title" @click="goFurther(child.link)">{{ child.title }}</div>
 						<div
 							v-if="child.children.length != 0"
 							class="profile-sidebar__menu-subitem-children d-flex flex-column"
@@ -62,7 +62,7 @@ export default {
 			menu: [
 				{
 					title: 'Личный кабинет', action: 'none', icon: 'user', active: true, children: [
-						{ title: 'Настройки', link: null, active: false, children: [] },
+						{ title: 'Настройки', link: '/profile/preferences', active: false, children: [] },
 						{ title: 'Сообщения', link: null, active: false, children: [] },
 					]
 				},
@@ -94,6 +94,11 @@ export default {
 			console.log(action)
 			if (action == 'logout') {
 				await this.logout()
+			}
+		},
+		goFurther (link) {
+			if (link) {
+				this.$router.push(link)
 			}
 		},
 		async logout () {
