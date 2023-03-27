@@ -17,7 +17,7 @@
 		<div class="header-bottom d-flex justify-content-between">
 			<CatalogMenu />
 			<SearchBlock />
-			<FavoritesButton class="header__favorites" border-color="grey"/>
+			<FavoritesButton class="header__favorites" border-color="grey" @click="goFavorites" />
 		</div>
 	</header>
 </template>
@@ -38,6 +38,11 @@ export default {
 		SearchBlock,
 		FavoritesButton,
 		MobileMenu
+	},
+	methods: {
+		goFavorites () {
+			this.$router.push('/profile/favorites')
+		}
 	}
 }
 </script>

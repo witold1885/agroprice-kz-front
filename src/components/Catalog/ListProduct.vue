@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		</div>
-		<FavoritesButton class="list-product__favorite" border-color="green"/>
+		<FavoritesButton class="list-product__favorite" border-color="green" :product_id="product.id" />
 		<div class="list-product__right d-flex flex-column justify-content-between align-items-end">
 			<div class="list-product__right-top">
 				<div class="list-product__date">{{ product.date }}</div>

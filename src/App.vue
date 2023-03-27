@@ -72,6 +72,7 @@ export default {
   },
   async mounted() {
     await this.$store.dispatch('auth/getUser')
+    console.log(this.user)
     this.emitter.on('auth', (redirect = '/') => {
       this.authDialog.visible = true
       this.redirect = redirect

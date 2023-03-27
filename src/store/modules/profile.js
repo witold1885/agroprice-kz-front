@@ -5,6 +5,7 @@ export const namespaced = true
 
 export const state = {
   token: null,
+  favorites: [],
   products: [],
   pages: 1,
   product: null,
@@ -14,6 +15,9 @@ export const state = {
 export const mutations = {
   setToken (state, token) {
     state.token = token
+  },
+  setFavorites(state, favorites) {
+    state.favorites = favorites
   },
   setProducts(state, products) {
     state.products = products
@@ -124,7 +128,66 @@ export const actions = {
       commit('setError', response.data.error)
     }
     return false
-  }
+  },
+  async addProductToFavorites ({ dispatch }, payload) {
+    dispatch('getToken')
+    const response = await api.post('/profile/products/add-favorite', payload, {
+      headers: {
+        Authorization: `Bearer ${state.token}`,
+        "Content-type": "application/json"
+      }})
+      .catch((error) => {
+        console.log(error)
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      return false
+    }
+  },
+  async delProductFromFavorites ({ dispatch }, payload) {
+    dispatch('getToken')
+    const response = await api.post('/profile/products/del-favorite', payload, {
+      headers: {
+        Authorization: `Bearer ${state.token}`,
+        "Content-type": "application/json"
+      }})
+      .catch((error) => {
+        console.log(error)
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      return false
+    }
+  },
+  async getProfileFavorites ({ commit, dispatch }, payload) {
+    dispatch('getToken')
+    const response = await api.get('/profile/favorites/all/' + payload.user_id + '/' + payload.page, {
+      headers: {
+        Authorization: `Bearer ${state.token}`,
+        "Content-type": "application/json"
+      }})
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      // return response.data
+      commit('setPages', response.data.pages)
+      commit('setFavorites', response.data.favorites)
+    }
+    else {
+      console.log(response.data.error)
+      // return null
+    }
+  },
 }
 
 export const getters = {

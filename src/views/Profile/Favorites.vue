@@ -21,7 +21,7 @@
 				<input class="profile-favorites__top-search" placeholder="Поиск по объявлениям" />
 			</div>
 		</div>
-		<ProductsGrid class="profile-favorites__list" />
+		<ProductsGrid v-if="favorites.length != 0" class="profile-favorites__list" :products="favorites" />
 		<Pagination :pagesCount="pages" v-show="pages > 1" />
 		<div class="profile-favorites__showmore" v-show="pages > 1">
 			<button
@@ -33,17 +33,38 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import ProductsGrid from '@/components/Catalog/ProductsGrid'
 import Pagination from '@/components/Common/Pagination'
 
 export default {
 	data() {
 		return {
-			pages: 5,
+			search: '',
+			page: 1
 		}
 	},
 	components: { ProductsGrid, Pagination },
+	computed: {
+		...mapState('auth', ['user']),
+		...mapState('profile', ['favorites', 'pages']),
+	},
+	async mounted () {
+		await this.$store.dispatch('auth/getUser')
+		await this.getFavorites()
+		this.emitter.on('change-page', async (page) => {
+			this.page = page
+			await this.getFavorites()
+		})
+		this.emitter.on('favorite-deleted', async () => {
+			await this.getFavorites()
+		})
+	},
 	methods: {
+		...mapActions('profile', ['getProfileFavorites']),
+		async getFavorites () {
+			await this.$store.dispatch('profile/getProfileFavorites', { user_id: this.user.id, page: this.page })
+		},
 		goProductCreate () {
 			this.$router.push('/create-product')
 		}
