@@ -71,6 +71,22 @@ export const actions = {
     }
     return false
   },
+  async setProfileAvatar ({ commit }, payload) {
+    const response = await api.post('/profile/set-avatar', payload)
+      .catch((error) => {
+        console.log(error)
+        commit('setError', 'Ошибка сохранения профиля. Попробуйте позже')
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+    }
+    return false
+  },
   async getProfileProducts ({ commit }, payload) {
     let searchString = payload.search ? ('?search=' + payload.search) : '' 
     const response = await api.get('/profile/products/all/' + payload.user_id + '/' + payload.page + '/' + payload.status + searchString)

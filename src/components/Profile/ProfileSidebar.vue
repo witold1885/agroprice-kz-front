@@ -1,9 +1,16 @@
 <template>
 	<div class="profile-sidebar">
 		<div v-if="user" class="profile-sidebar__top d-flex align-items-center">
-			<div class="profile-sidebar__top-avatar d-flex justify-content-center align-items-center">
+			<img v-if="user.profile.avatar" class="profile-sidebar__top-avatar" :src="`${storageURL}/${user.profile.avatar}`" @click="selectAvatar" />
+			<div v-else class="profile-sidebar__top-avatar d-flex justify-content-center align-items-center" @click="selectAvatar">
 				<img class="profile-sidebar__top-avatar-icon" :src="require('@/assets/images/user.png')" />
 			</div>
+			<input
+				type="file"
+				style="display: none"
+				ref="avatar"
+				@change="onAvatarSelected"
+			>
 			<div class="profile-sidebar__top-username">{{ user.profile.fullname || `user-${user.name}` }}</div>
 		</div>
 		<div class="profile-sidebar__menu d-flex flex-column">
@@ -54,6 +61,7 @@
 </template>
 
 <script>
+import { STORAGE_URL } from '@/constants'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -64,6 +72,9 @@ export default {
 	},
 	computed: {
 		...mapState('auth', ['user']),
+		storageURL () {
+			return STORAGE_URL
+		},
 		menu() {
 			return [
 				{
@@ -93,6 +104,7 @@ export default {
 	},
 	methods: {
 		...mapActions('auth', ['logoutUser']),
+		...mapActions('profile', ['setProfileAvatar']),
 		async setAction (action) {
 			if (action == 'logout') {
 				await this.logout()
@@ -106,7 +118,28 @@ export default {
 		async logout () {
 			const logoutSuccess = await this.logoutUser()
 			if (logoutSuccess) this.$router.push('/')
-		}
+		},
+		selectAvatar() {
+			this.$refs.avatar.click()
+		},
+		async onAvatarSelected(e) {
+			let files = e.target.files
+			if (files && files[0]) {
+				let file = files[0]
+				const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png']
+				if (!allowedTypes.includes(file.type)) {
+					alert('Недопустимый формат файла!')
+					return
+				}
+				let payload = new FormData()
+				payload.append('avatar', file)
+				payload.append('user_id', this.user.id)
+				const saveSuccess = await this.setProfileAvatar(payload)
+				if (saveSuccess) {
+					await this.$store.dispatch('auth/getUser')
+				}
+			}
+		},
 	}
 }
 </script>

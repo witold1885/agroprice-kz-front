@@ -7,7 +7,8 @@
 			class="account-block__avatar d-flex justify-content-center align-items-center"
 			@click="handleAccount"
 		>
-			<img :src="require('@/assets/images/fake-avatar.png')" />
+			<img v-if="user.profile.avatar" :src="`${storageURL}/${user.profile.avatar}`" />
+			<img v-else :src="require('@/assets/images/fake-avatar.png')" />
 		</div>
 		<div
 			class="account-block__link account-block__link-user"
@@ -46,11 +47,15 @@
 </template>
 
 <script>
+import { STORAGE_URL } from '@/constants'
 import { mapState, mapActions } from 'vuex'
 
 export default {
 	computed: {
 		...mapState('auth', ['user']),
+		storageURL () {
+			return STORAGE_URL
+		}
 	},
 	methods: {
 		...mapActions('auth', ['logoutUser']),
