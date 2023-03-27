@@ -36,9 +36,9 @@ export default {
 	},
 	async mounted () {
 		await this.$store.dispatch('auth/getUser')
-		/*if (!this.user) {
+		if (!this.user) {
 			this.$router.push('/')
-		}*/
+		}
 	}
 }
 </script>

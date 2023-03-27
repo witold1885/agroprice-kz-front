@@ -224,6 +224,7 @@
 </template>
 
 <script>
+import { STORAGE_URL } from '@/constants'
 import { mapState, mapActions } from 'vuex'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, numeric, minLength, helpers } from '@vuelidate/validators'
@@ -236,18 +237,24 @@ export default {
 		const addImageRefs = ref([])
 		return { v$: useVuelidate(), addImageRefs }
 	},
+	props: {
+		editingProduct: {
+			type: Object,
+			default: null
+		}
+	},
 	directives: { maska: vMaska },
 	data () {
 		return {
 			product: {
-				id: '',
+				id: this.editingProduct ? this.editingProduct.id : '',
 				user_id: '',
-				name: '',
-				description: '',
-				price: 0,
-				price_negotiable: true,
-				location_id: 0,
-				status: '',
+				name: this.editingProduct ? this.editingProduct.name : '',
+				description: this.editingProduct ? this.editingProduct.description : '',
+				price: this.editingProduct ? this.editingProduct.price : 0,
+				price_negotiable: this.editingProduct ? this.editingProduct.price_negotiable : true,
+				location_id: this.editingProduct ? this.editingProduct.location_id : 0,
+				status: this.editingProduct ? this.editingProduct.status : '',
 			},
 			contact: {
 				person: '',
@@ -264,7 +271,7 @@ export default {
 				}
 			],
 			imgs: [],
-			searchLocation: '',
+			searchLocation: this.editingProduct ? this.editingProduct.location.city : '',
 			locations: [],
 			showLocations: false,
 			phoneEntered: false,
@@ -305,6 +312,9 @@ export default {
 	computed: {
 		...mapState('auth', ['user']),
 		...mapState('catalog', ['mainCategories']),
+		storageURL () {
+			return STORAGE_URL
+		}
 	},
 	async mounted () {
 		this.resetErrors()
@@ -313,27 +323,95 @@ export default {
 			this.emitter.emit('auth', this.$route.path)
 		}
 		else {
-			this.product.user_id = this.user.id
-			this.contact.person = this.user.profile.fullname
-			this.contact.email = this.user.email
-			this.contact.phone = this.user.profile.phone
+			if (!this.editingProduct) {
+				this.product.user_id = this.user.id
+				this.contact.person = this.user.profile.fullname
+				this.contact.email = this.user.email
+				this.contact.phone = this.user.profile.phone
+			}
+			else {
+				this.product.user_id = this.editingProduct.user.id
+				this.contact.person = this.editingProduct.user.profile.fullname
+				this.contact.email = this.editingProduct.user.email
+				this.contact.phone = this.editingProduct.user.profile.phone
+			}
 		}
 		await this.$store.dispatch('catalog/getMainCategories')
-		this.cats[0].list = this.mainCategories
-		for (let i = 1; i <= 8; i++) {
-			this.imgs.push({
-				num: i,
-				active: i === 1,
-				imageData: null,
-				name: null,
-				file: null
-			})
-		}
+		await this.formCats()
+		await this.formImgs()
 	},
 	methods: {
 		...mapActions('catalog', ['getChildCategories']),
 		...mapActions('location', ['searchLocations']),
 		...mapActions('product', ['saveProduct']),
+		async formCats () {
+			if (!this.editingProduct) {
+				this.cats[0].list = this.mainCategories
+			}
+			else {
+				this.cats = []
+				let c = 1
+				let last_category_id = 0
+				for (let category of this.editingProduct.categories) {
+					let childCategories = await this.getChildCategories(category.parent_id)
+					this.cats.push({
+						level: c,
+						id: category.id,
+						name: category.name,
+						list: childCategories,
+						show: false
+					})
+					last_category_id = category.id
+					c++
+				}
+				if (last_category_id) {
+					let childCategories = await this.getChildCategories(last_category_id)
+					if (childCategories.length != 0) {
+						this.cats.push({
+							level: c,
+							id: 0,
+							name: 'Не выбрано',
+							list: childCategories,
+							show: false
+						})
+					}
+				}
+			}
+		},
+		async formImgs () {
+			if (!this.editingProduct) {
+				for (let i = 1; i <= 8; i++) {
+					this.imgs.push({
+						num: i,
+						active: i === 1,
+						imageData: null,
+						name: null,
+						file: null
+					})
+				}
+			}
+			else {
+				let activeSet = false
+				for (let i = 1; i <= 8; i++) {
+					let imageData = null
+					let active = false
+					if (this.editingProduct.product_images[i - 1]) {
+						imageData = `${this.storageURL}/${this.editingProduct.product_images[i - 1].path}`
+					}
+					else if (!activeSet) {
+						active = true
+						activeSet = true
+					}
+					this.imgs.push({
+						num: i,
+						active,
+						imageData,
+						name: null,
+						file: null
+					})
+				}
+			}
+		},
 		async selectCategory (category, level) {
 			let cat = this.cats.find(item => item.level == level)
 			cat.id = category.id
@@ -448,7 +526,12 @@ export default {
 					this.errors.save = errorMessages.saveProductError
 				}
 				else {
-					this.emitter.emit('product-created')
+					if (!this.editingProduct) {
+						this.emitter.emit('product-created')
+					}
+					else {
+						this.emitter.emit('product-edited')
+					}
 				}
 			}
 			else {

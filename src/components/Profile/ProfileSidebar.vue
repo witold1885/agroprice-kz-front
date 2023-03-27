@@ -43,7 +43,7 @@
 								:class="{ 'profile-sidebar__menu-subitem-child-active': subchild.active }"
 							>
 								<div v-show="subchild.active" class="profile-sidebar__menu-subitem-child-marker"></div>
-								<div class="profile-sidebar__menu-subitem-child-title">{{ subchild.title }}</div>
+								<div class="profile-sidebar__menu-subitem-child-title" @click="goFurther(subchild.link)">{{ subchild.title }}</div>
 							</div>
 						</div>
 					</div>
@@ -59,39 +59,41 @@ import { mapState, mapActions } from 'vuex'
 export default {
 	data () {
 		return {
-			menu: [
+			status: this.$route.params.status
+		}
+	},
+	computed: {
+		...mapState('auth', ['user']),
+		menu() {
+			return [
 				{
-					title: 'Личный кабинет', action: 'none', icon: 'user', active: true, children: [
-						{ title: 'Настройки', link: '/profile/preferences', active: false, children: [] },
+					title: 'Личный кабинет', action: 'none', icon: 'user', active: this.$route.path == '/profile/preferences', children: [
+						{ title: 'Настройки', link: '/profile/preferences', active: this.$route.path == '/profile/preferences', children: [] },
 						{ title: 'Сообщения', link: null, active: false, children: [] },
 					]
 				},
 				{
-					title: 'Объявление', action: 'none', icon: 'ad', active: false, children: [
-						{ title: 'Мои объявления', link: null, active: false, children: [
-							{ title: 'Опубликованные', link: null, active: true, children: [] },
-							{ title: 'На модерации', link: null, active: false, children: [] },
-							{ title: 'Отклонено', link: null, active: false, children: [] },
-							{ title: 'Архив', link: null, active: false, children: [] },
-							{ title: 'Корзина', link: null, active: false, children: [] },
+					title: 'Объявление', action: 'none', icon: 'ad', active: this.$route.path.indexOf('/profile/products') !== -1, children: [
+						{ title: 'Мои объявления', link: '/profile/products', active: false, children: [
+							{ title: 'Опубликованные', link: '/profile/products/published', active: this.$route.path == '/profile/products/published', children: [] },
+							{ title: 'На модерации', link: '/profile/products/moderating', active: this.$route.path == '/profile/products/moderating', children: [] },
+							{ title: 'Отклонено', link: '/profile/products/declined', active: this.$route.path == '/profile/products/declined', children: [] },
+							{ title: 'Архив', link: '/profile/products/archive', active: this.$route.path == '/profile/products/archive', children: [] },
+							{ title: 'Корзина', link: '/profile/products/trash', active: this.$route.path == '/profile/products/trash', children: [] },
 						] },
-						{ title: 'Разместить объявление', link: null, active: false, children: [] },
+						{ title: 'Разместить объявление', link: '/create-product', active: this.$route.path == '/create-product', children: [] },
 						{ title: 'Избранное', link: null, active: false, children: [] },
 					]
 				},
 				{
 					title: 'Выйти', action: 'logout', icon: 'logout', active: false, children: []
 				},
-			],
+			]
 		}
-	},
-	computed: {
-		...mapState('auth', ['user'])
 	},
 	methods: {
 		...mapActions('auth', ['logoutUser']),
 		async setAction (action) {
-			console.log(action)
 			if (action == 'logout') {
 				await this.logout()
 			}

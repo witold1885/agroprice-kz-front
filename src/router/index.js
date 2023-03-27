@@ -3,8 +3,10 @@ import HomeView from '../views/HomeView.vue'
 import CatalogView from '../views/CatalogView.vue'
 import CompleteRegister from '../views/Profile/CompleteRegister.vue'
 import Preferences from '../views/Profile/Preferences.vue'
+import ProfileProducts from '../views/Profile/Products.vue'
 import ResetPassword from '../views/Actions/ResetPassword.vue'
 import CreateProduct from '../views/Product/CreateProduct.vue'
+import EditProduct from '../views/Product/EditProduct.vue'
 import ProductView from '../views/ProductView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
@@ -18,6 +20,7 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import(/* webpackChunkName: "about" */ '../views/ProfileView.vue'),
+    redirect: '/profile/preferences',
     children: [
       {
         path: 'complete-register',
@@ -26,6 +29,10 @@ const routes = [
       {
         path: 'preferences',
         component: Preferences
+      },
+      {
+        path: 'products/:status?',
+        component: ProfileProducts
       },
     ]
   },
@@ -43,6 +50,11 @@ const routes = [
     path: '/create-product',
     name: 'create-product',
     component: CreateProduct
+  },
+  {
+    path: '/edit-product/:product_id',
+    name: 'edit-product',
+    component: EditProduct
   },
   {
     path: '/product/:product?',
