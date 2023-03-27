@@ -35,12 +35,12 @@ export default {
 	data () {
 		return {
 			defaultProduct: {
-				subcategory: 'Сеялки',
-				title: '8-ми рядковая анкерная пневматическая сеялка',
-				price: '1 581 643',
+				category_name: 'Сеялки',
+				name: '8-ми рядковая анкерная пневматическая сеялка',
+				price: 1581643,
 				oldPrice: '1 581 643',
 				product_images: [{ path: 'last-product.png' }],
-				location: 'Усть-Каменогорск',
+				location: { city: 'Усть-Каменогорск' },
 				date: '12.01.2023',
 				status: 'Новый',
 				views: 324

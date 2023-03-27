@@ -4,6 +4,7 @@ import CatalogView from '../views/CatalogView.vue'
 import CompleteRegister from '../views/Profile/CompleteRegister.vue'
 import Preferences from '../views/Profile/Preferences.vue'
 import ProfileProducts from '../views/Profile/Products.vue'
+import ProfileFavorites from '../views/Profile/Favorites.vue'
 import ResetPassword from '../views/Actions/ResetPassword.vue'
 import CreateProduct from '../views/Product/CreateProduct.vue'
 import EditProduct from '../views/Product/EditProduct.vue'
@@ -33,6 +34,10 @@ const routes = [
       {
         path: 'products/:status?',
         component: ProfileProducts
+      },
+      {
+        path: 'favorites',
+        component: ProfileFavorites
       },
     ]
   },

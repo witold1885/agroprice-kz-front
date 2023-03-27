@@ -29,7 +29,13 @@
 				:product="product"
 			/>
 		</div>
-		<Pagination :pagesCount="pages" v-show="pages > 1"/>
+		<Pagination :pagesCount="pages" v-show="pages > 1" />
+		<div class="profile-products__showmore" v-show="pages > 1">
+			<button
+				class="products__showmore"
+				@click="showMore"
+			>Показать еще</button>
+		</div>
 	</div>
 </template>
 
@@ -61,7 +67,6 @@ export default {
 			await this.getProducts(1)
 		})
 		this.emitter.on('change-page', async (page) => {
-			console.log('CHanging page to ' + page)
 			await this.getProducts(page)
 		})
 	},

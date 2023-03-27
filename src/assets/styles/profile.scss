@@ -405,6 +405,13 @@
 		grid-row-gap: 20px;
 		margin-bottom: 55px;
 	}
+	&__showmore {
+		margin-top: 31px;
+		text-align: center;
+		& button {
+			margin: 0;
+		}
+	}
 }
 
 .profile-product {
@@ -541,6 +548,81 @@
 					cursor: pointer;
 				}
 			}
+		}
+	}
+}
+
+.profile-favorites {
+	width: 955px;
+	margin-bottom: 96px;
+	&__top {
+		width: 100%;
+		grid-row-gap: 23px;
+		margin-bottom: 23px;
+		&-line {
+			width: 100%;
+		}
+		&-fields {
+			grid-column-gap: 13px;
+		}
+		&-menu {
+			position: relative;
+			&-field {
+				width: 163px;
+				height: 32px;
+				background: $color_white;
+				border: 1px solid #C4C4C4;
+				border-radius: 5px;
+				padding: 0 14px;
+				cursor: pointer;
+				&-value {
+					@include font-ubuntu(400, 14px, 15px);
+					color: #414141;
+				}
+				&-icon {
+					width: 10px;
+					height: 6px;
+				}
+			}
+		}
+		&-search {
+			width: 100%;
+			flex: 1;
+			height: 32px;
+			padding: 8px 12px;
+			@include font-ubuntu(400, 14px, 15px);
+			background: #F4F4F4;
+			border-radius: 5px;
+			box-shadow: none;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+		}
+	}
+	&__title {
+		margin: 0;
+		@include font-ubuntu(500, 32px, 37px);
+		color: $color_black;
+	}
+	&__add-btn {
+		width: 182px;
+		height: 41px;
+		background: $color_green;
+		border-radius: 8px;
+		@include font-ubuntu(500, 12px, 14px);
+		color: $color_white;
+		border: none;
+		box-shadow: none;
+		outline: none;
+	}
+	&__list {
+		margin-bottom: 61px;
+	}
+	&__showmore {
+		margin-top: 31px;
+		text-align: center;
+		& button {
+			margin: 0;
 		}
 	}
 }
@@ -908,10 +990,58 @@
 		}
 	}
 
+	.profile-favorites {
+		width: calc(955 * 100vw / 1440);
+		margin-bottom: calc(96 * 100vw / 1440);
+		&__top {
+			grid-row-gap: calc(23 * 100vw / 1440);
+			margin-bottom: calc(23 * 100vw / 1440);
+			&-fields {
+				grid-column-gap: calc(13 * 100vw / 1440);
+			}
+			&-menu {
+				&-field {
+					width: calc(163 * 100vw / 1440);
+					height: calc(32 * 100vw / 1440);
+					border-radius: calc(5 * 100vw / 1440);
+					padding: 0 calc(14 * 100vw / 1440);
+					&-value {
+						@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+					}
+					&-icon {
+						width: calc(10 * 100vw / 1440);
+						height: calc(6 * 100vw / 1440);
+					}
+				}
+			}
+			&-search {
+				height: calc(32 * 100vw / 1440);
+				padding: calc(8 * 100vw / 1440) calc(12 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+				border-radius: calc(5 * 100vw / 1440);
+			}
+		}
+		&__title {
+			@include font-ubuntu(500, calc(32 * 100vw / 1440), calc(37 * 100vw / 1440));
+		}
+		&__add-btn {
+			width: calc(182 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+			@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+		&__list {
+			margin-bottom: calc(61 * 100vw / 1440);
+		}
+		&__showmore {
+			margin-top: calc(31 * 100vw / 1440);
+		}
+	}
+
 }
 
 @media screen and (max-width: 992px) {
-	
+
 	.preferences {
 		&__title {
 			@include font-ubuntu(500, calc(32 * 100vw / 768), calc(37 * 100vw / 768));
@@ -1098,6 +1228,54 @@
 					}
 				}
 			}
+		}
+	}
+
+	.profile-favorites {
+		width: calc(955 * 100vw / 768);
+		margin-bottom: calc(96 * 100vw / 768);
+		&__top {
+			grid-row-gap: calc(23 * 100vw / 768);
+			margin-bottom: calc(23 * 100vw / 768);
+			&-fields {
+				grid-column-gap: calc(13 * 100vw / 768);
+			}
+			&-menu {
+				&-field {
+					width: calc(163 * 100vw / 768);
+					height: calc(32 * 100vw / 768);
+					border-radius: calc(5 * 100vw / 768);
+					padding: 0 calc(14 * 100vw / 768);
+					&-value {
+						@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+					}
+					&-icon {
+						width: calc(10 * 100vw / 768);
+						height: calc(6 * 100vw / 768);
+					}
+				}
+			}
+			&-search {
+				height: calc(32 * 100vw / 768);
+				padding: calc(8 * 100vw / 768) calc(12 * 100vw / 768);
+				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+				border-radius: calc(5 * 100vw / 768);
+			}
+		}
+		&__title {
+			@include font-ubuntu(500, calc(32 * 100vw / 768), calc(37 * 100vw / 768));
+		}
+		&__add-btn {
+			width: calc(182 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+			border-radius: calc(8 * 100vw / 768);
+			@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		}
+		&__list {
+			margin-bottom: calc(61 * 100vw / 768);
+		}
+		&__showmore {
+			margin-top: calc(31 * 100vw / 768);
 		}
 	}
 

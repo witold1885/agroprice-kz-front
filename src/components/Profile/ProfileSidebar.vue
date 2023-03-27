@@ -81,8 +81,8 @@ export default {
 							{ title: 'Архив', link: '/profile/products/archive', active: this.$route.path == '/profile/products/archive', children: [] },
 							{ title: 'Корзина', link: '/profile/products/trash', active: this.$route.path == '/profile/products/trash', children: [] },
 						] },
-						{ title: 'Разместить объявление', link: '/create-product', active: this.$route.path == '/create-product', children: [] },
-						{ title: 'Избранное', link: null, active: false, children: [] },
+						{ title: 'Разместить объявление', link: '/create-product', active: false, children: [] },
+						{ title: 'Избранное', link: '/profile/favorites', active: false, children: [] },
 					]
 				},
 				{
