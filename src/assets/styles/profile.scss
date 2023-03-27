@@ -767,6 +767,340 @@
 		}
 	}
 
+	.profile-products {
+		width: calc(955 * 100vw / 1440);
+		margin-bottom: calc(215 * 100vw / 1440);
+		&__top {
+			grid-row-gap: calc(17 * 100vw / 1440);
+			margin-bottom: calc(28 * 100vw / 1440);
+			&-search {
+				width: calc(588 * 100vw / 1440);
+				height: calc(47 * 100vw / 1440);
+				border-radius: calc(8 * 100vw / 1440);
+				padding: calc(3 * 100vw / 1440);
+				&-field {
+					padding: calc(15 * 100vw / 1440) calc(20 * 100vw / 1440) calc(17 * 100vw / 1440);
+			    	@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+				}
+				&-button {
+					width: calc(41 * 100vw / 1440);
+					height: calc(41 * 100vw / 1440);
+					border-radius: calc(6 * 100vw / 1440);
+					& img {
+						@include box(calc(21 * 100vw / 1440), calc(21 * 100vw / 1440));
+					}
+				}
+			}
+			&-sort {
+			    @include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+			}
+		}
+		&__title {
+			@include font-ubuntu(500, calc(32 * 100vw / 1440), calc(37 * 100vw / 1440));
+		}
+		&__add-btn {
+			width: calc(182 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+			@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+		&__list {
+			grid-row-gap: calc(20 * 100vw / 1440);
+			margin-bottom: calc(55 * 100vw / 1440);
+		}
+	}
+
+	.profile-product {
+		height: calc(117 * 100vw / 1440);
+		border-radius: calc(11 * 100vw / 1440);
+		&__left {
+			grid-column-gap: calc(16 * 100vw / 1440);
+			height: 100%;
+		}
+		&__image {
+			width: calc(126 * 100vw / 1440);
+			height: calc(94 * 100vw / 1440);
+			border-radius: calc(5 * 100vw / 1440);
+			margin-top: calc(11 * 100vw / 1440);
+			margin-left: calc(12 * 100vw / 1440);
+		}
+		&__info {
+			&-title {
+				@include font-ubuntu(500, calc(20 * 100vw / 1440), calc(46 * 100vw / 1440));
+				max-width: calc(300 * 100vw / 1440);
+			}
+			&-price {
+				@include font-ubuntu(500, calc(15 * 100vw / 1440), calc(15 * 100vw / 1440));
+			}
+			&-stats {
+				grid-column-gap: calc(27 * 100vw / 1440);
+				margin-bottom: calc(10 * 100vw / 1440);
+				&-item {
+					grid-column-gap: calc(8 * 100vw / 1440);
+					&-value {
+						@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+					}
+				}
+			}
+		}
+		&__right {
+			margin-right: calc(64 * 100vw / 1440);
+			grid-row-gap: calc(20 * 100vw / 1440);
+		}
+		&__buttons {
+			grid-column-gap: calc(10 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+		}
+		&__status {
+			// width: calc(159 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+			grid-column-gap: calc(8 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+			padding: 0 calc(20 * 100vw / 1440);
+			&-text {
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+			}
+		}
+		&__publish {
+			width: calc(177 * 100vw / 1440);
+			height: calc(41 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+			@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+		&__links {
+			grid-column-gap: calc(48 * 100vw / 1440);
+			&-item {
+				grid-column-gap: calc(10 * 100vw / 1440);
+				&-icon {
+					@include box(calc(13 * 100vw / 1440), calc(13 * 100vw / 1440));
+				}
+				&-text {
+					@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+				}
+			}
+		}
+		&__options {
+			top: calc(9 * 100vw / 1440);
+			right: calc(9 * 100vw / 1440);
+			&-menu {
+				&-button {
+					width: calc(26 * 100vw / 1440);
+					height: calc(26 * 100vw / 1440);
+					border-radius: calc(4 * 100vw / 1440);
+					grid-row-gap: calc(2 * 100vw / 1440);
+					&-dot {
+						width: calc(2 * 100vw / 1440);
+						height: calc(2 * 100vw / 1440);
+					}
+				}
+				&-dropdown {
+					top: calc(33 * 100vw / 1440);
+					right: 0;
+					width: calc(170 * 100vw / 1440);
+					// height: calc(145 * 100vw / 1440);
+					border-radius: calc(4 * 100vw / 1440);
+					padding-left: calc(15 * 100vw / 1440);
+					&-link {
+						@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(36.25 * 100vw / 1440));
+					}
+				}
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: 992px) {
+	
+	.preferences {
+		&__title {
+			@include font-ubuntu(500, calc(32 * 100vw / 768), calc(37 * 100vw / 768));
+		}
+		&__form {
+			margin: calc(27 * 100vw / 768) 0 calc(41 * 100vw / 768);
+			width: calc(955 * 100vw / 768);
+			// height: calc(371 * 100vw / 768);
+			border-radius: calc(11 * 100vw / 768);
+			padding: calc(30 * 100vw / 768) calc(35 * 100vw / 768) calc(37 * 100vw / 768);
+			&-columns {
+				grid-column-gap: calc(34 * 100vw / 768);
+			}
+			&-field {
+				&-label {
+					@include font-ubuntu(500, calc(14 * 100vw / 768), 195.9%);
+				}
+				&-value {
+					@include font-ubuntu(500, calc(14 * 100vw / 768), 195.9%);
+					&-edit {
+						@include box(calc(11 * 100vw / 768), calc(11 * 100vw / 768));
+						margin-left: calc(11 * 100vw / 768);
+					}
+				}
+				&-input {
+					width: calc(224 * 100vw / 768);
+					height: calc(34 * 100vw / 768);
+					border-radius: calc(3 * 100vw / 768);
+					padding: calc(3 * 100vw / 768) calc(12 * 100vw / 768) calc(4 * 100vw / 768);
+					@include font-ubuntu(400, calc(14 * 100vw / 768), 195.9%);
+				}
+			}
+			&-error {
+				bottom: calc(-25 * 100vw / 768);
+				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
+			}
+		}
+		&__buttons {
+			grid-column-gap: calc(14 * 100vw / 768);
+		}
+		&__button {
+			width: calc(131 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+			border-radius: calc(8 * 100vw / 768);
+			@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		}
+	}
+
+	.profile-products {
+		width: calc(955 * 100vw / 768);
+		margin-bottom: calc(215 * 100vw / 768);
+		&__top {
+			grid-row-gap: calc(17 * 100vw / 768);
+			margin-bottom: calc(28 * 100vw / 768);
+			&-search {
+				width: calc(588 * 100vw / 768);
+				height: calc(47 * 100vw / 768);
+				border-radius: calc(8 * 100vw / 768);
+				padding: calc(3 * 100vw / 768);
+				&-field {
+					padding: calc(15 * 100vw / 768) calc(20 * 100vw / 768) calc(17 * 100vw / 768);
+			    	@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+				}
+				&-button {
+					width: calc(41 * 100vw / 768);
+					height: calc(41 * 100vw / 768);
+					border-radius: calc(6 * 100vw / 768);
+					& img {
+						@include box(calc(21 * 100vw / 768), calc(21 * 100vw / 768));
+					}
+				}
+			}
+			&-sort {
+			    @include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+			}
+		}
+		&__title {
+			@include font-ubuntu(500, calc(32 * 100vw / 768), calc(37 * 100vw / 768));
+		}
+		&__add-btn {
+			width: calc(182 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+			border-radius: calc(8 * 100vw / 768);
+			@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		}
+		&__list {
+			grid-row-gap: calc(20 * 100vw / 768);
+			margin-bottom: calc(55 * 100vw / 768);
+		}
+	}
+
+	.profile-product {
+		height: calc(117 * 100vw / 768);
+		border-radius: calc(11 * 100vw / 768);
+		&__left {
+			grid-column-gap: calc(16 * 100vw / 768);
+			height: 100%;
+		}
+		&__image {
+			width: calc(126 * 100vw / 768);
+			height: calc(94 * 100vw / 768);
+			border-radius: calc(5 * 100vw / 768);
+			margin-top: calc(11 * 100vw / 768);
+			margin-left: calc(12 * 100vw / 768);
+		}
+		&__info {
+			&-title {
+				@include font-ubuntu(500, calc(20 * 100vw / 768), calc(46 * 100vw / 768));
+				max-width: calc(300 * 100vw / 768);
+			}
+			&-price {
+				@include font-ubuntu(500, calc(15 * 100vw / 768), calc(15 * 100vw / 768));
+			}
+			&-stats {
+				grid-column-gap: calc(27 * 100vw / 768);
+				margin-bottom: calc(10 * 100vw / 768);
+				&-item {
+					grid-column-gap: calc(8 * 100vw / 768);
+					&-value {
+						@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+					}
+				}
+			}
+		}
+		&__right {
+			margin-right: calc(64 * 100vw / 768);
+			grid-row-gap: calc(20 * 100vw / 768);
+		}
+		&__buttons {
+			grid-column-gap: calc(10 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+		}
+		&__status {
+			// width: calc(159 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+			grid-column-gap: calc(8 * 100vw / 768);
+			border-radius: calc(8 * 100vw / 768);
+			padding: 0 calc(20 * 100vw / 768);
+			&-text {
+				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+			}
+		}
+		&__publish {
+			width: calc(177 * 100vw / 768);
+			height: calc(41 * 100vw / 768);
+			border-radius: calc(8 * 100vw / 768);
+			@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		}
+		&__links {
+			grid-column-gap: calc(48 * 100vw / 768);
+			&-item {
+				grid-column-gap: calc(10 * 100vw / 768);
+				&-icon {
+					@include box(calc(13 * 100vw / 768), calc(13 * 100vw / 768));
+				}
+				&-text {
+					@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+				}
+			}
+		}
+		&__options {
+			top: calc(9 * 100vw / 768);
+			right: calc(9 * 100vw / 768);
+			&-menu {
+				&-button {
+					width: calc(26 * 100vw / 768);
+					height: calc(26 * 100vw / 768);
+					border-radius: calc(4 * 100vw / 768);
+					grid-row-gap: calc(2 * 100vw / 768);
+					&-dot {
+						width: calc(2 * 100vw / 768);
+						height: calc(2 * 100vw / 768);
+					}
+				}
+				&-dropdown {
+					top: calc(33 * 100vw / 768);
+					right: 0;
+					width: calc(170 * 100vw / 768);
+					// height: calc(145 * 100vw / 768);
+					border-radius: calc(4 * 100vw / 768);
+					padding-left: calc(15 * 100vw / 768);
+					&-link {
+						@include font-ubuntu(400, calc(14 * 100vw / 768), calc(36.25 * 100vw / 768));
+					}
+				}
+			}
+		}
+	}
+
 }
 
 @media screen and (max-width: 414px) {
