@@ -563,6 +563,12 @@
 	width: 955px;
 	margin-bottom: 96px;
 	&__top {
+		&-desktop {
+			display: flex;
+		}
+		&-mobile {
+			display: none;
+		}
 		width: 100%;
 		grid-row-gap: 23px;
 		margin-bottom: 23px;
@@ -1741,6 +1747,66 @@
 					}
 				}
 			}
+		}
+	}
+
+	.profile-favorites {
+		margin-bottom: calc(49.81 * 100vw / 320);
+		&__top {
+			&-desktop {
+				display: none;
+			}
+			&-mobile {
+				display: flex;
+				&-menu {
+					margin-top: 0;
+				}
+			}
+			width: 100%;
+			grid-row-gap: calc(20 * 100vw / 320);
+			margin-bottom: calc(27 * 100vw / 320);
+			&-fields {
+				grid-row-gap: calc(10 * 100vw / 320);
+				flex-direction: column;
+			}
+			&-menu {
+				&-field {
+					width: calc(280 * 100vw / 320);
+					height: calc(32 * 100vw / 320);
+					border-radius: calc(5 * 100vw / 320);
+					padding: 0 calc(14 * 100vw / 320);
+					&-value {
+						@include font-ubuntu(400, calc(14 * 100vw / 320), calc(15 * 100vw / 320));
+					}
+					&-icon {
+						width: calc(10 * 100vw / 320);
+						height: calc(6 * 100vw / 320);
+					}
+				}
+			}
+			&-search {
+				width: calc(280 * 100vw / 320);
+				height: calc(32 * 100vw / 320);
+				padding: calc(8 * 100vw / 320) calc(10 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(15 * 100vw / 320));
+				border-radius: calc(5 * 100vw / 320);
+			}
+		}
+		&__title {
+			margin: 0;
+			@include font-ubuntu(500, calc(18 * 100vw / 320), calc(21 * 100vw / 320));
+		}
+		&__add-btn {
+			width: calc(280 * 100vw / 320);
+			height: calc(41 * 100vw / 320);
+			border-radius: calc(8 * 100vw / 320);
+			@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+		}
+		&__list {
+			margin-bottom: calc(34 * 100vw / 320);
+		}
+		&__showmore {
+			margin-top: calc(21.81 * 100vw / 320);
 		}
 	}
 
