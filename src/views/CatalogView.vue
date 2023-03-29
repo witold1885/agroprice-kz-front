@@ -44,6 +44,7 @@ export default {
 			metaTitle: '',
 			metaDescription: '',
 			metaKeywords: '',
+			canonicalUrl: '',
 			products: [],
 			pages: 1,
 			productsPerPage: 20
@@ -61,6 +62,12 @@ export default {
 			description: this.metaDescription,
 			meta: [
 				{ name: 'keywords', content: this.metaKeywords },
+			],
+			link: [
+				{
+					rel: 'canonical',
+					href: this.canonicalUrl
+				}
 			]
 		}
     },
@@ -92,6 +99,7 @@ export default {
 					this.metaTitle = this.category.meta_title || this.category.name
 					this.metaDescription = this.category.meta_description || this.category.name
 					this.metaKeywords = this.category.meta_keywords || this.category.name
+					this.canonicalUrl = 'https://agroprice.kz/' + this.category.url
 					await this.getProducts()
 				}
 			}

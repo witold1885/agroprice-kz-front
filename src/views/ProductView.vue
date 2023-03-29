@@ -175,6 +175,7 @@ export default {
 			metaTitle: '',
 			metaDescription: '',
 			metaKeywords: '',
+			canonicalUrl: '',
 			activeImageIndex: 0,
 			activeImage: null,
 			tabs: [
@@ -225,6 +226,12 @@ export default {
 			meta: [
 				{ name: 'keywords', content: this.metaKeywords },
 			],
+			link: [
+				{
+					rel: 'canonical',
+					href: this.canonicalUrl
+				}
+			]
 		}
     },
 	async mounted () {
@@ -270,6 +277,7 @@ export default {
 					this.metaTitle = this.product.name
 					this.metaDescription = this.product.name
 					this.metaKeywords = this.product.name
+					this.canonicalUrl = 'https://agroprice.kz/' + this.product.url
 					if (this.product.product_images.length != 0) {
 						this.activeImageIndex = 0
 						this.setActiveImage(0)
