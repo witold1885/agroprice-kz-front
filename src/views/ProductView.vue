@@ -96,8 +96,9 @@
 								<button class="product__info-button-allproducts">Все товары продавца</button>
 								<button class="product__info-button-whatsapp">Написать на Whatsapp</button>
 							</div>
-							<button type="button" class="product__info-favorite d-flex align-items-center">
-								<img class="product__info-favorite-icon" :src="require('@/assets/images/heart.png')" />
+							<button type="button" class="product__info-favorite d-flex align-items-center" @click="toggleFavorites">
+								<img v-if="isFavorite" class="product__info-favorite-icon" :src="require('@/assets/images/heart-red.png')" />
+								<img v-else class="product__info-favorite-icon" :src="require('@/assets/images/heart.png')" />
 								<div class="product__info-favorite-text">В избранное</div>									
 							</button>
 						</div>
@@ -198,10 +199,16 @@ export default {
 		}
 	},
 	computed: {
+		...mapState('auth', ['user']),
 		...mapState('product', ['product']),
 		...mapState('catalog', ['randomProducts']),
 		storageURL () {
 			return STORAGE_URL
+		},
+		isFavorite () {
+			if (!this.user || !this.product) return false
+			const favorite = this.user.favorites.findIndex(item => item.product_id == this.product.id)
+			return favorite !== -1
 		}
 	},
 	metaInfo () {
@@ -214,13 +221,30 @@ export default {
 		}
     },
 	async mounted () {
+		await this.$store.dispatch('auth/getUser')
 		await this.init()
 		await this.$store.dispatch('catalog/getRandomProducts')
-		console.log(this.storageURL)
-		console.log(STORAGE_URL)
 	},
 	methods: {
 		...mapActions('product', ['getProduct']),
+		...mapActions('profile', ['addProductToFavorites', 'delProductFromFavorites']),
+		async toggleFavorites () {
+			if (this.user && this.product) {
+				if (!this.isFavorite) {
+					const addSuccess = await this.addProductToFavorites({ user_id: this.user.id, product_id: this.product.id })
+					if (addSuccess) {
+						this.user.favorites.push({ user_id: this.user.id, product_id: this.product.id })
+					}
+				}
+				else {
+					const delSuccess = await this.delProductFromFavorites({ user_id: this.user.id, product_id: this.product.id })
+					if (delSuccess) {
+						const favIndex = this.user.favorites.findIndex(item => item.product_id == this.product.id)
+						this.user.favorites.splice(favIndex, 1)
+					}
+				}
+			}
+		},
 		async init () {
 			if (this.productUrl) {
 				await this.getProduct(this.productUrl)
