@@ -4,11 +4,7 @@
 .banner {
 	width: 100%;
 	height: 436px;
-	// background-color: $color_green;
-	// background-image: url('@/assets/images/banner-mask.png');
-	// background-size: 100%;
 	border-radius: 30px;
-	// padding-top: 80px;
 	padding-left: 52px;
 	position: relative;
 	overflow: hidden;
@@ -20,7 +16,7 @@
 	}
 	&__subtitle {
 		max-width: 382px;
-		height: 67px; // temp
+		height: 67px;
         @include font-ubuntu(300, 12px, 176.9%);
 		color: $color_white;
 	}
@@ -43,11 +39,6 @@
 		top: 0;
 		left: 0;
 		z-index: 2;
-		// width: 629px;
-		// height: 351px;
-		// right: 50px;
-		// bottom: 58px;
-		// object-fit: cover;
 	}
 	&__nav {
 		position: absolute;
@@ -77,7 +68,6 @@
 	.banner {
 		height: calc(436 * 100vw / 1440);
 		border-radius: calc(30 * 100vw / 1440);
-		// padding-top: calc(80 * 100vw / 1440);
 		padding-left: calc(52 * 100vw / 1440);
 		&__title {
 			max-width: calc(462 * 100vw / 1440);
@@ -86,7 +76,7 @@
 		}
 		&__subtitle {
 			max-width: calc(382 * 100vw / 1440);
-			height: calc(67 * 100vw / 1440); // temp
+			height: calc(67 * 100vw / 1440);
 	        @include font-ubuntu(300, calc(12 * 100vw / 1440), 176.9%);
 		}
 		&__button {
@@ -95,13 +85,6 @@
 			height: calc(41 * 100vw / 1440);
 			border-radius: calc(8 * 100vw / 1440);
 	        @include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
-		}
-		&__image {
-			// position: absolute;
-			// width: calc(629 * 100vw / 1440);
-			// height: calc(351 * 100vw / 1440);
-			// right: calc(50 * 100vw / 1440);
-			// bottom: calc(58 * 100vw / 1440);
 		}
 		&__nav {
 			position: absolute;
@@ -125,9 +108,7 @@
 @media screen and (max-width: 992px) {
 	.banner {
 		height: 362px;
-		// background-image: url('@/assets/images/banner-mask-768.png');
 		border-radius: 30px;
-		// padding-top: 33px;
 		padding-left: 38px;
 		&__title {
 			max-width: 316px;
@@ -136,7 +117,7 @@
 		}
 		&__subtitle {
 			max-width: 308px;
-			height: 67px; // temp
+			height: 67px;
 	        @include font-ubuntu(300, 12px, 176.9%);
 		}
 		&__button {
@@ -145,13 +126,6 @@
 			height: 41px;
 			border-radius: 8px;
 	        @include font-ubuntu(500, 12px, 14px);
-			// margin-top: 25px;
-		}
-		&__image {
-			// width: 405px;
-			// height: 225px;
-			// right: 25px;
-			// bottom: 67px;
 		}
 		&__nav {
 			width: 149px;
@@ -174,7 +148,6 @@
 	.banner {
 		height: calc(362 * 100vw / 768);
 		border-radius: calc(30 * 100vw / 768);
-		// padding-top: calc(33 * 100vw / 768);
 		padding-left: calc(38 * 100vw / 768);
 		&__title {
 			max-width: calc(316 * 100vw / 768);
@@ -183,7 +156,7 @@
 		}
 		&__subtitle {
 			max-width: calc(308 * 100vw / 768);
-			height: calc(67 * 100vw / 768); // temp
+			height: calc(67 * 100vw / 768);
 	        @include font-ubuntu(300, calc(12 * 100vw / 768), 176.9%);
 		}
 		&__button {
@@ -192,13 +165,6 @@
 			height: calc(41 * 100vw / 768);
 			border-radius: calc(8 * 100vw / 768);
 	        @include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
-			// margin-top: calc(25 * 100vw / 768);
-		}
-		&__image {
-			// width: calc(405 * 100vw / 768);
-			// height: calc(225 * 100vw / 768);
-			// right: calc(25 * 100vw / 768);
-			// bottom: calc(67 * 100vw / 768);
 		}
 		&__nav {
 			width: calc(149 * 100vw / 768);
@@ -220,9 +186,7 @@
 @media screen and (max-width: 414px) {
 	.banner {
 		height: calc(216 * 100vw / 320);
-		// background-image: url('@/assets/images/banner-mask-320.png');
 		border-radius: calc(5 * 100vw / 320);
-		// padding-top: 20 * 100vw / 320);
 		padding-left: calc(11 * 100vw / 320);
 		&__title {
 			max-width: calc(113 * 100vw / 320);
@@ -231,7 +195,7 @@
 		}
 		&__subtitle {
 			max-width: calc(143 * 100vw / 320);
-			height: calc(67 * 100vw / 320); // temp
+			height: calc(67 * 100vw / 320);
 	        @include font-ubuntu(300, calc(8 * 100vw / 320), 160.4%);
 		}
 		&__button {
@@ -239,13 +203,6 @@
 			width: calc(116 * 100vw / 320);
 			height: calc(33 * 100vw / 320);
 	        @include font-ubuntu(500, calc(10 * 100vw / 320), calc(11 * 100vw / 320));
-			// margin-top: calc(-1 * 7 * 100vw / 320);
-		}
-		&__image {
-			// width: calc(145.07 * 100vw / 320);
-			// height: calc(80.73 * 100vw / 320);
-			// right: calc(7.93 * 100vw / 320);
-			// bottom: calc(91.27 * 100vw / 320);
 		}
 		&__nav {
 			position: absolute;
