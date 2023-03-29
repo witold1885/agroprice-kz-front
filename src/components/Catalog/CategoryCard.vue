@@ -4,7 +4,7 @@
 		:href="`/catalog/${category.url}`"
 	>
 		<div class="category-card__title">{{ category.name }}</div>
-		<div class="category-card__subtitle">Техники (234)</div>
+		<div class="category-card__subtitle">Объявлений ({{ category.productsCount }})</div>
 		<img
 			v-if="category.image"
 			class="category-card__image"

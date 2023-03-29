@@ -3,7 +3,9 @@
 		<div class="footer__wrap d-flex">
 			<div class="footer__left d-flex">
 				<div class="footer__info d-flex flex-column">
-					<div class="footer__logo">LOGO</div>
+					<a href="/" class="footer__logo">
+						<img :src="require('@/assets/images/logo.png')" />
+					</a>
 					<div class="footer__socials d-flex">
 						<a
 							v-for="(soc, index) of socials"
@@ -17,15 +19,15 @@
 						<div class="footer__contacts-location d-flex">
 							<img class="footer__contacts-location-icon" :src="require('@/assets/images/location.png')" />
 							<span class="footer__contacts-location-value">
-								г. Алматы, ул. Лобачевского, 78 склад 2а, 2-ой этаж
+								г. Астана, ул. Сыганак 29, оф. н.п. 5
 							</span>
 						</div>
-						<div class="footer__contacts-phone d-flex align-items-center">
+						<!-- <div class="footer__contacts-phone d-flex align-items-center">
 							<img class="footer__contacts-phone-icon" :src="require('@/assets/images/phone.png')" />
 							<span class="footer__contacts-phone-value">
 								+7 (707) 400-11-31
 							</span>
-						</div>
+						</div> -->
 					</div>
 					<div class="footer__copyright">© 2022 «Agroprice»</div>
 				</div>

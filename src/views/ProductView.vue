@@ -1,11 +1,16 @@
 <template>
 	<div class="product">
+		<div v-if="galleryImage" class="product__slideshow d-flex justify-content-center align-items-center" @click="galleryImage = null">
+			<!-- <div class="product__slideshow-wrap"> -->
+				<img :src="`${storageURL}/${galleryImage.path}`" />
+			<!-- </div> -->
+		</div>
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div v-if="product" class="product__wrap">
 			<div class="product__main d-flex">
 				<div class="product__info-mobile-title">{{ product.name }}</div>
 				<div v-if="activeImage" class="product__images d-flex flex-column justify-content-between">
-					<div class="product__images-full">
+					<div class="product__images-full" @click="galleryImage = activeImage">
 						<img :src="`${storageURL}/${activeImage.path}`" />
 					</div>
 					<carousel
@@ -80,7 +85,7 @@
 										</div>
 										<div class="product__info-mobile-buttons flex-column">
 											<a :href="`tel:${product.contact.phone}`" class="product__info-mobile-button-call">Позвонить</a>
-											<button class="product__info-mobile-button-whatsapp">Написать на Whatsapp</button>
+											<a :href="whatsappLink" class="product__info-mobile-button-whatsapp">Написать на Whatsapp</a>
 										</div>
 									</div>
 								</div>
@@ -94,7 +99,7 @@
 								<a :href="`tel:${product.contact.phone}`" class="product__info-button-call">Позвонить</a>
 								<button class="product__info-button-write">Написать продавцу</button>
 								<button class="product__info-button-allproducts">Все товары продавца</button>
-								<button class="product__info-button-whatsapp">Написать на Whatsapp</button>
+								<a :href="whatsappLink" class="product__info-button-whatsapp">Написать на Whatsapp</a>
 							</div>
 							<button type="button" class="product__info-favorite d-flex align-items-center" @click="toggleFavorites">
 								<img v-if="isFavorite" class="product__info-favorite-icon" :src="require('@/assets/images/heart-red.png')" />
@@ -196,6 +201,8 @@ export default {
 					}
 				}
 			},
+			galleryImage: null,
+			whatsappLink: null
 		}
 	},
 	computed: {
@@ -224,10 +231,19 @@ export default {
 		await this.$store.dispatch('auth/getUser')
 		await this.init()
 		await this.$store.dispatch('catalog/getRandomProducts')
+		await this.makeWhatsappLink()
 	},
 	methods: {
 		...mapActions('product', ['getProduct']),
 		...mapActions('profile', ['addProductToFavorites', 'delProductFromFavorites']),
+		makeWhatsappLink () {
+			let whatsappPhone = this.product.user.profile.whatsapp || this.product.user.profile.phone
+			if (whatsappPhone) {
+				whatsappPhone = whatsappPhone.replace('+', '').replace('(', '').replace(')', '').replace(/-/g, '').replace(/ /g, '')
+				const text = `Я пишу вам с сервиса Agroprice.kz, хотел поитересоваться по товару "${this.product.name}" https://agroprice.kz/${this.product.url} `
+				this.whatsappLink = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(text)}`
+			}
+		},
 		async toggleFavorites () {
 			if (this.user && this.product) {
 				if (!this.isFavorite) {

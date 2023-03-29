@@ -160,7 +160,7 @@
 	}
 	&__middle {
 		width: 100%;
-		padding: 0 11px 12px 20px;
+		padding: 0 5px 12px;
 	}
 	&__subcategory {
 	    @include font-ubuntu(400, 12px, 14px);
@@ -180,7 +180,8 @@
 		}
 	}
 	&__title {
-		margin-left: 20px;
+		margin-left: 5px;
+		margin-right: 5px;
 		margin-bottom: 13px;
         @include font-ubuntu(400, 14px, 144.4%);
 		color: $color_black;
@@ -203,7 +204,8 @@
 	&__price {
 		&-main {
 			// margin-top: 9px;
-			margin-left: 20px;
+			margin-left: 5px;
+			margin-right: 5px;
 			margin-bottom: 7px;
         	@include font-ubuntu(700, 16px, 18px);
 			color: $color_black;
@@ -219,7 +221,7 @@
 	}
 	&__stats {
 		width: 100%;
-		padding: 0 15px 0 21px;
+		padding: 0 5px 0;
 		&-status {
 			grid-column-gap: 7px;
 			&-icon {
@@ -347,7 +349,7 @@
 			padding: calc(5 * 100vw / 1440) calc(5 * 100vw / 1440) 0;
 		}
 		&__middle {
-			padding: 0 calc(11 * 100vw / 1440) calc(12 * 100vw / 1440) calc(20 * 100vw / 1440);
+			padding: 0 calc(5 * 100vw / 1440) calc(12 * 100vw / 1440);
 		}
 		&__subcategory {
 		    @include font-ubuntu(400, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
@@ -363,7 +365,8 @@
 			}
 		}
 		&__title {
-			margin-left: calc(20 * 100vw / 1440);
+			margin-left: calc(5 * 100vw / 1440);
+			margin-right: calc(5 * 100vw / 1440);
 			margin-bottom: calc(13 * 100vw / 1440);
 	        @include font-ubuntu(400, calc(14 * 100vw / 1440), 144.4%);
 			max-height: calc(40.5 * 100vw / 1440);
@@ -375,7 +378,8 @@
 		&__price {
 			&-main {
 				// margin-top: calc(9 * 100vw / 1440);
-				margin-left: calc(20 * 100vw / 1440);
+				margin-left: calc(5 * 100vw / 1440);
+				margin-right: calc(5 * 100vw / 1440);
 				margin-bottom: calc(7 * 100vw / 1440);
 	        	@include font-ubuntu(700, calc(16 * 100vw / 1440), calc(18 * 100vw / 1440));
 			}
@@ -384,7 +388,7 @@
 			}
 		}
 		&__stats {
-			padding: 0 calc(15 * 100vw / 1440) 0 calc(21 * 100vw / 1440);
+			padding: 0 calc(5 * 100vw / 1440) 0;
 			&-status {
 				grid-column-gap: calc(7 * 100vw / 1440);
 				&-icon {
@@ -505,7 +509,7 @@
 			padding: 5px 5px 0;
 		}
 		&__middle {
-			padding: 0 7px 12px 20px;
+			padding: 0 5px 12px;
 		}
 		&__subcategory {
 		    @include font-ubuntu(400, 12px, 14px);
@@ -521,7 +525,8 @@
 			}
 		}
 		&__title {
-			margin-left: 20px;
+			margin-left: 5px;
+			margin-right: 5px;
 			margin-bottom: 13px;
 	        @include font-ubuntu(400, 14px, 144.4%);
 	        max-height: 40.5px;
@@ -533,7 +538,8 @@
 		&__price {
 			&-main {
 				// margin-top: 9px;
-				margin-left: 20px;
+				margin-left: 5px;
+				margin-right: 5px;
 				margin-bottom: 7px;
 	        	@include font-ubuntu(700, 16px, 18px);
 			}
@@ -543,7 +549,7 @@
 			}
 		}
 		&__stats {
-			padding: 0 15px 0 21px;
+			padding: 0 5px;
 			&-status {
 				grid-column-gap: 7px;
 				&-icon {
@@ -658,7 +664,7 @@
 			padding: calc(5 * 100vw / 768) calc(5 * 100vw / 768) 0;
 		}
 		&__middle {
-			padding: 0  calc(7 * 100vw / 768)  calc(12 * 100vw / 768)  calc(20 * 100vw / 768);
+			padding: 0  calc(5 * 100vw / 768)  calc(12 * 100vw / 768);
 		}
 		&__subcategory {
 		    @include font-ubuntu(400,  calc(12 * 100vw / 768),  calc(14 * 100vw / 768));
@@ -674,7 +680,8 @@
 			}
 		}
 		&__title {
-			margin-left: calc(20 * 100vw / 768);
+			margin-left: calc(5 * 100vw / 768);
+			margin-right: calc(5 * 100vw / 768);
 			margin-bottom: calc(13 * 100vw / 768);
 	        @include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
 			max-height: calc(40.5 * 100vw / 768);
@@ -686,7 +693,8 @@
 		&__price {
 			&-main {
 				// margin-top: calc(9 * 100vw / 768);
-				margin-left: calc(20 * 100vw / 768);
+				margin-left: calc(5 * 100vw / 768);
+				margin-right: calc(5 * 100vw / 768);
 				margin-bottom: calc(7 * 100vw / 768);
 	        	@include font-ubuntu(700, calc(16 * 100vw / 768), calc(18 * 100vw / 768));
 			}
@@ -696,7 +704,7 @@
 			}
 		}
 		&__stats {
-			padding: 0 calc(15 * 100vw / 768) 0 calc(21 * 100vw / 768);
+			padding: 0 calc(5 * 100vw / 768) 0;
 			&-status {
 				grid-column-gap: calc(7 * 100vw / 768);
 				&-icon {
@@ -829,7 +837,7 @@
 			height: calc(88 * 100vw / 320);
 		}
 		&__middle {
-			padding: 0 calc(7 * 100vw / 320) calc(5 * 100vw / 320);
+			padding: 0 0 calc(5 * 100vw / 320);
 			flex-direction: column;
 			grid-row-gap: calc(6 * 100vw / 320);
 			align-items: flex-start!important;
@@ -849,7 +857,8 @@
 			}
 		}
 		&__title {
-			margin-left: calc(2 * 100vw / 320);
+			margin-left: 0;
+			margin-right: 0;
 			margin-bottom: calc(9 * 100vw / 320);
 	        @include font-ubuntu(400, calc(10 * 100vw / 320), 144.4%);
 			max-height: calc(29 * 100vw / 320);
@@ -862,6 +871,7 @@
 			&-main {
 				margin-top: calc(9 * 100vw / 320);
 				margin-left: 0;
+				margin-right: 0;
 				margin-bottom: calc(3 * 100vw / 320);
 	        	@include font-ubuntu(700, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
 			}
@@ -872,7 +882,7 @@
 			}
 		}
 		&__stats {
-			padding: 0 calc(9 * 100vw / 320) 0 calc(7 * 100vw / 320);
+			padding: 0;
 			&-status {
 				grid-column-gap: calc(5 * 100vw / 320);
 				&-icon {

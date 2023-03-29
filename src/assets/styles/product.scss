@@ -693,6 +693,23 @@
 }
 
 .product {
+	&__slideshow {
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.7);
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		&-wrap {
+			width: 80%;
+			height: 80%;
+			border: 1px solid red;
+		}
+		& img {
+			cursor: pointer;
+		}
+	}
 	&__main {
 		grid-column-gap: 32px;
 		margin-bottom: 83px;
@@ -709,6 +726,7 @@
 			border-radius: 11px;
 			overflow: hidden;
 			margin-bottom: 17px;
+			cursor: pointer;
 			& img {
 				width: 100%;
 				height: 100%;
@@ -957,7 +975,7 @@
 		&-info {
 			margin-top: 28px;
 			&-description {
-				@include font-ubuntu(400, 14px, 27px);
+				@include font-ubuntu(400, 16px, 27px);
 				color: $color_black;
 			}
 			&-features {
@@ -967,7 +985,7 @@
 					width: 400px;
 					grid-column-gap: 10px;
 					&-name {
-						@include font-ubuntu(400, 14px, 27px);
+						@include font-ubuntu(400, 16px, 27px);
 						color: #8D8D8D;
 					}
 					&-divider {
@@ -977,7 +995,7 @@
 						margin-bottom: 7px;
 					}
 					&-value {
-						@include font-ubuntu(400, 14px, 27px);
+						@include font-ubuntu(400, 16px, 27px);
 						color: $color_black;						
 					}
 				}
@@ -1174,7 +1192,7 @@
 			&-info {
 				margin-top: calc(28 * 100vw / 1440);
 				&-description {
-					@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(27 * 100vw / 1440));
+					@include font-ubuntu(400, calc(16 * 100vw / 1440), calc(27 * 100vw / 1440));
 				}
 				&-features {
 					grid-column-gap: calc(400 * 100vw / 1440);
@@ -1183,13 +1201,13 @@
 						width: calc(400 * 100vw / 1440);
 						grid-column-gap: calc(10 * 100vw / 1440);
 						&-name {
-							@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(27 * 100vw / 1440));
+							@include font-ubuntu(400, calc(16 * 100vw / 1440), calc(27 * 100vw / 1440));
 						}
 						&-divider {
 							margin-bottom: calc(7 * 100vw / 1440);
 						}
 						&-value {
-							@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(27 * 100vw / 1440));	
+							@include font-ubuntu(400, calc(16 * 100vw / 1440), calc(27 * 100vw / 1440));	
 						}
 					}
 				}
@@ -1428,7 +1446,7 @@
 			&-info {
 				margin-top: 29px;
 				&-description {
-					@include font-ubuntu(400, 14px, 27px);
+					@include font-ubuntu(400, 16px, 27px);
 				}
 				&-features {
 					grid-column-gap: 20px;
@@ -1437,13 +1455,13 @@
 						width: 334px;
 						grid-column-gap: 6px;
 						&-name {
-							@include font-ubuntu(400, 14px, 27px);
+							@include font-ubuntu(400, 16px, 27px);
 						}
 						&-divider {
 							margin-bottom: 7px;
 						}
 						&-value {
-							@include font-ubuntu(400, 14px, 27px);	
+							@include font-ubuntu(400, 16px, 27px);	
 						}
 					}
 				}
@@ -1624,7 +1642,7 @@
 			&-info {
 				margin-top: calc(29 * 100vw / 768);
 				&-description {
-					@include font-ubuntu(400, calc(14 * 100vw / 768), calc(27 * 100vw / 768));
+					@include font-ubuntu(400, calc(16 * 100vw / 768), calc(27 * 100vw / 768));
 				}
 				&-features {
 					grid-column-gap: calc(20 * 100vw / 768);
@@ -1633,13 +1651,13 @@
 						width: calc(334 * 100vw / 768);
 						grid-column-gap: calc(6 * 100vw / 768);
 						&-name {
-							@include font-ubuntu(400, calc(14 * 100vw / 768), calc(27 * 100vw / 768));
+							@include font-ubuntu(400, calc(16 * 100vw / 768), calc(27 * 100vw / 768));
 						}
 						&-divider {
 							margin-bottom: calc(7 * 100vw / 768);
 						}
 						&-value {
-							@include font-ubuntu(400, calc(14 * 100vw / 768), calc(27 * 100vw / 768));	
+							@include font-ubuntu(400, calc(16 * 100vw / 768), calc(27 * 100vw / 768));	
 						}
 					}
 				}
@@ -1844,7 +1862,7 @@
 			&-info {
 				margin-top: calc(17 * 100vw / 320);
 				&-description {
-					@include font-ubuntu(400, calc(12 * 100vw / 320), calc(22 * 100vw / 320));
+					@include font-ubuntu(400, calc(14 * 100vw / 320), calc(22 * 100vw / 320));
 				}
 				&-features {
 					grid-row-gap: calc(7 * 100vw / 320);
@@ -1852,13 +1870,13 @@
 						width: calc(280 * 100vw / 320);
 						grid-column-gap: calc(6 * 100vw / 320);
 						&-name {
-							@include font-ubuntu(400, calc(14 * 100vw / 320), calc(27 * 100vw / 320));
+							@include font-ubuntu(400, calc(16 * 100vw / 320), calc(27 * 100vw / 320));
 						}
 						&-divider {
 							margin-bottom: calc(7 * 100vw / 320);
 						}
 						&-value {
-							@include font-ubuntu(400, calc(14 * 100vw / 320), calc(27 * 100vw / 320));	
+							@include font-ubuntu(400, calc(16 * 100vw / 320), calc(27 * 100vw / 320));	
 						}
 					}
 				}
