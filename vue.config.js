@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true
 })
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+/*const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 
@@ -30,5 +30,5 @@ module.exports = {
       ]
     }
   }
-}
+}*/
 
