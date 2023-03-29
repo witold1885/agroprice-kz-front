@@ -37,7 +37,13 @@ export default {
       meta: [
         { name: 'keywords', content: 'сельхозтехника, сельскохозяйственная техника, казахстан, алматы, астана, agroprice, агропрайс, костанай, шымкент, петропавловск, караганда, кокшетау'},
       ],
-      htmlAttrs: { lang: 'ru', amp: true }
+      htmlAttrs: { lang: 'ru', amp: true },
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://agroprice.kz/'
+        }
+      ]
     })
   },
   components: {
