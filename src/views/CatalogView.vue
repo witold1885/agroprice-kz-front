@@ -80,6 +80,13 @@ export default {
 			}
 		)
 	},
+	watch: {
+		'$route' (newValue, oldValue) {
+			if (newValue.query != oldValue.query) {
+				this.onQueryChanged()
+			}
+		}
+	},
 	async mounted () {
 		await this.init()
 		this.emitter.on('change-page', async (page) => {
@@ -94,7 +101,7 @@ export default {
 			if (this.categoryUrl) {
 				await this.getCategory(this.categoryUrl)
 				if (this.category) {
-					console.log(this.category)
+					// console.log(this.category)
 					this.makeBreadcrumbs()
 					this.metaTitle = this.category.meta_title || this.category.name
 					this.metaDescription = this.category.meta_description || this.category.name
@@ -119,11 +126,19 @@ export default {
 			}
 		},
 		async getProducts (page = 1) {
-			const productsData = await this.getCategoryProducts({ category_id: this.category.id, page })
+			const productsData = await this.getCategoryProducts({
+				category_id: this.category.id,
+				page,
+				locations: this.$route.query.locations,
+				sort: this.$route.query.sort
+			})
 			this.products = productsData.products
 			const total = productsData.total
 			// console.log(this.products)
 			this.pages = Math.ceil(total / this.productsPerPage)
+		},
+		async onQueryChanged () {
+			await this.getProducts()
 		},
 		setDefaultBreadcrumbs () {
 			return [

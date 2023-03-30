@@ -1,7 +1,7 @@
 <template>
 	<a :href="`/product/${product.url}`" class="catalog-product d-flex flex-column justify-content-between">
 		<div class="catalog-product__up">
-			<div class="catalog-product__date">{{ product.date }}</div>
+			<!-- <div class="catalog-product__date">{{ product.date }}</div> -->
 			<FavoritesButton class="catalog-product__favorite" border-color="green" :product_id="product.id" />
 			<img v-if="product.product_images.length != 0" class="catalog-product__image" :src="`${storageURL}/${product.product_images[0].path}`" />
 			<img v-else class="catalog-product__image" :src="require('@/assets/images/no-image.png')" />
@@ -30,9 +30,10 @@
 						<img class="catalog-product__location-icon" :src="require('@/assets/images/location.png')" />
 						<div class="catalog-product__location-value">{{ product.location ? product.location.city : 'Не указано' }}</div>
 					</div>
+					<div class="catalog-product__date">{{ formatDate(new Date(product.created_at)) }}</div>
 					<div class="catalog-product__stats-views d-flex justify-content-end align-items-center">
 						<img class="catalog-product__stats-views-icon" :src="require('@/assets/images/eye-darker.png')" />
-						<div class="catalog-product__stats-views-value">{{ product.views || 123 }}</div>
+						<div class="catalog-product__stats-views-value">{{ product.views }}</div>
 					</div>
 				</div>
 			</div>
@@ -76,6 +77,14 @@ export default {
 			if (window.innerWidth > 992) this.breakpoint = 'lg'
 			else if (window.innerWidth > 414) this.breakpoint = 'md'
 			else this.breakpoint = 'sm'
+		},
+		formatDate (date) {
+			const year = date.getFullYear()
+			let month = date.getMonth() + 1
+			month = month >= 10 ? month : '0' + month
+			let day = date.getDate()
+			day = day >= 10 ? day : '0' + day
+			return `${day}.${month}.${year}`
 		}
 	}
 }

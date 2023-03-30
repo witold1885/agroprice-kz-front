@@ -243,7 +243,7 @@ export default {
 		await this.makeWhatsappLink()
 	},
 	methods: {
-		...mapActions('product', ['getProduct']),
+		...mapActions('product', ['getProduct', 'increaseProductViews']),
 		...mapActions('profile', ['addProductToFavorites', 'delProductFromFavorites']),
 		makeWhatsappLink () {
 			let whatsappPhone = this.product.user.profile.whatsapp || this.product.user.profile.phone
@@ -284,6 +284,7 @@ export default {
 						this.activeImageIndex = 0
 						this.setActiveImage(0)
 					}
+					this.increaseProductViews({ product_id: this.product.id })
 				}
 			}
 			else {

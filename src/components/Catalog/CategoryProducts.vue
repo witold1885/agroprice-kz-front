@@ -145,6 +145,14 @@ export default {
 			}
 			this.selectedMethod = this.sortMethods.find(method => method.selected)
 			this.showSortMenu = false
+			if (this.selectedMethod) {
+				this.$router.push({ path: this.$route.path, query: { ...this.$route.query, ...{ sort: this.selectedMethod.type } } })
+			}
+			else {
+				let query = JSON.parse(JSON.stringify(this.$route.query))
+				delete query.sort
+				this.$router.replace({ path: this.$route.path, query: query });
+			}
 		},
 		changeView (view) {
 			if (this.breakpoint != 'sm') {

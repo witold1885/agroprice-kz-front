@@ -40,6 +40,20 @@ export const actions = {
       commit('setError', response.data.error)
     }
   },
+  async increaseProductViews (context, payload) {
+    const response = await api.post('/product/increase-views/', payload)
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      return false
+    }
+  },
 }
 
 export const getters = {

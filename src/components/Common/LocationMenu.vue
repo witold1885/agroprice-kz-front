@@ -168,13 +168,13 @@ export default {
 					}
 				}
 			}
-			console.log('selectedLocations')
-			console.log(this.selectedLocations)
 			if (this.selectedLocationsIds.length != 0) {
-				this.$router.push({ path: this.$route.path, query: { locations: this.selectedLocationsIds.join(',') } })
+				this.$router.push({ path: this.$route.path, query: { ...this.$route.query, ...{ locations: this.selectedLocationsIds.join(',') } } })
 			}
 			else {
-				this.$router.push({ path: this.$route.path, query: {} });
+				let query = JSON.parse(JSON.stringify(this.$route.query))
+				delete query.locations
+				this.$router.replace({ path: this.$route.path, query: query });
 			}
 			this.showMenu = false
 		},

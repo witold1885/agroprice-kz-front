@@ -133,9 +133,9 @@
 		width: 100%;
 	}
 	&__date {
-		position: absolute;
-		top: 22px;
-		left: 14px;
+		// position: absolute;
+		// top: 22px;
+		// left: 14px;
         @include font-ubuntu(400, 12px, 144.4%);
         color: #6C6C6C;
 	}
@@ -332,8 +332,8 @@
 		// padding: calc(13 * 100vw / 1440) 0 calc(20 * 100vw / 1440);
 		padding: 0 0 calc(20 * 100vw / 1440);
 		&__date {
-			top: calc(22 * 100vw / 1440);
-			left: calc(14 * 100vw / 1440);
+			// top: calc(22 * 100vw / 1440);
+			// left: calc(14 * 100vw / 1440);
 	        @include font-ubuntu(400, calc(12 * 100vw / 1440), 144.4%);
 		}
 		&__favorite {
@@ -492,8 +492,8 @@
 		// padding: 13px 0 16px;
 		padding: 0 0 16px;
 		&__date {
-			top: 22px;
-			left: 14px;
+			// top: 22px;
+			// left: 14px;
 	        @include font-ubuntu(400, 12px, 144.4%);
 		}
 		&__favorite {
@@ -647,8 +647,8 @@
 		// padding: calc(13 * 100vw / 768) 0 calc(16 * 100vw / 768);
 		padding: 0 0 calc(16 * 100vw / 768);
 		&__date {
-			top: calc(22 * 100vw / 768);
-			left: calc(14 * 100vw / 768);
+			// top: calc(22 * 100vw / 768);
+			// left: calc(14 * 100vw / 768);
 	        @include font-ubuntu(400, calc(12 * 100vw / 768), 144.4%);
 		}
 		&__favorite {

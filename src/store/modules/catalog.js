@@ -85,7 +85,8 @@ export const actions = {
   },
   async getCategoryProducts (context, payload) {
     // const response = await api.get('/catalog/category-products/' + category_id + '/' + page + '/' + limit)
-    const response = await api.get('/catalog/category-products/' + payload.category_id + '/' + payload.page)
+    // const response = await api.get('/catalog/category-products/' + payload.category_id + '/' + payload.page)
+    const response = await api.post('/catalog/category-products', payload)
       .catch((error) => {
         console.log(error)
       })
