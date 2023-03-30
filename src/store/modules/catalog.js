@@ -6,6 +6,7 @@ export const state = {
   mainCategories: [],
   menuCategories: [],
   randomProducts: [],
+  sellerProducts: [],
   category: null,
   error: null,
 }
@@ -22,6 +23,9 @@ export const mutations = {
   },
   setRandomProducts(state, products) {
     state.randomProducts = products
+  },
+  setSellerProducts(state, products) {
+    state.sellerProducts = products
   },
   setError(state, error) {
     state.error = error
@@ -107,6 +111,19 @@ export const actions = {
     console.log(response.data)
     if (response.data.success) {
       commit('setRandomProducts', response.data.products)
+    }
+    else {
+      console.log(response.data.error)
+    }
+  },
+  async getSellerProducts ({ commit }, payload) {
+    const response = await api.post('/catalog/seller-products/', payload)
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      commit('setSellerProducts', response.data.products)
     }
     else {
       console.log(response.data.error)

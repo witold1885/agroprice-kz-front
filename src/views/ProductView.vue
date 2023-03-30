@@ -145,9 +145,9 @@
 				Укрепление и развитие структуры способствует подготовки и реализации дальнейших направлений развития. Задача организации, в особенности же постоянное информационно-пропагандистское обеспечение нашей деятельности играет важную роль в формировании форм развития. С другой стороны начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке направлений прогрессивного развития. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке форм развития. Товарищи! дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.
 			</div> -->
 			<SellBlock />
-			<div class="product__seller-products">
+			<div v-if="sellerProducts.length != 0" class="product__seller-products">
 				<div class="product__seller-products-title">Все товары продавца</div>
-				<ProductsGrid class="product__seller-products-grid" :products="randomProducts" />
+				<ProductsGrid class="product__seller-products-grid" :products="sellerProducts" />
 				<button
 					class="products__showmore product__seller-products-showmore"
 					@click="showMore"
@@ -205,13 +205,14 @@ export default {
 				}
 			},
 			galleryImage: null,
-			whatsappLink: null
+			whatsappLink: null,
+			sellerProductsLimit: 10
 		}
 	},
 	computed: {
 		...mapState('auth', ['user']),
 		...mapState('product', ['product']),
-		...mapState('catalog', ['randomProducts']),
+		...mapState('catalog', ['sellerProducts']),
 		storageURL () {
 			return STORAGE_URL
 		},
@@ -239,7 +240,6 @@ export default {
 	async mounted () {
 		await this.$store.dispatch('auth/getUser')
 		await this.init()
-		await this.$store.dispatch('catalog/getRandomProducts')
 		await this.makeWhatsappLink()
 	},
 	methods: {
@@ -284,6 +284,7 @@ export default {
 						this.activeImageIndex = 0
 						this.setActiveImage(0)
 					}
+					await this.$store.dispatch('catalog/getSellerProducts', { seller_id: this.product.user.id, limit: this.sellerProductsLimit })
 					this.increaseProductViews({ product_id: this.product.id })
 				}
 			}
@@ -339,8 +340,10 @@ export default {
 		getSeller () {
 
 		},
-		showMore () {
-			this.gridCount += 5
+		async showMore () {
+			// this.gridCount += 5
+			this.sellerProductsLimit += 10
+			await this.$store.dispatch('catalog/getSellerProducts', { seller_id: this.product.user.id, limit: this.sellerProductsLimit })
 		},
 	}
 }
