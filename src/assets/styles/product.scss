@@ -702,9 +702,21 @@
 		left: 0;
 		z-index: 10;
 		&-wrap {
-			width: 80%;
-			height: 80%;
-			border: 1px solid red;
+			// width: 80%;
+			// height: 80%;
+			// border: 1px solid red;
+			position: relative;
+		}
+		&-nav {
+			position: absolute;
+			width: 20px;
+			top: calc(50% - 35px / 2);
+			&-prev {
+				left: -40px;
+			}
+			&-next {
+				right: -40px;
+			}
 		}
 		& img {
 			cursor: pointer;
@@ -802,6 +814,7 @@
 			text-overflow: ellipsis;
 			overflow: hidden;
 			max-width: 100%;
+			margin: 0;
 		}
 		&-sell {
 			grid-column-gap: 18px;

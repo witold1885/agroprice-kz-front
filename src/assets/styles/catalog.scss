@@ -29,6 +29,10 @@
         @include font-ubuntu(500, 21px, 24px);
 		text-align: left;
 		color: #3F3F3F;
+		&-count {
+			color: $color_green;
+			font-style: italic;
+		}
 	}
 	&__subtitle {
 		margin-top: 10px;

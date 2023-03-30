@@ -1,14 +1,16 @@
 <template>
 	<div class="product">
-		<div v-if="galleryImage" class="product__slideshow d-flex justify-content-center align-items-center" @click="galleryImage = null">
-			<!-- <div class="product__slideshow-wrap"> -->
-				<img :src="`${storageURL}/${galleryImage.path}`" />
-			<!-- </div> -->
+		<div v-if="galleryImage" class="product__slideshow d-flex justify-content-center align-items-center">
+			<div class="product__slideshow-wrap">
+				<img class="product__slideshow-nav product__slideshow-nav-prev" :src="require('@/assets/images/arrow-left-white.png')" @click="slidePrev(true)">
+				<img :src="`${storageURL}/${galleryImage.path}`" @click="galleryImage = null" />
+				<img class="product__slideshow-nav product__slideshow-nav-next" :src="require('@/assets/images/arrow-right-white.png')" @click="slideNext(true)">
+			</div>
 		</div>
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div v-if="product" class="product__wrap">
 			<div class="product__main d-flex">
-				<div class="product__info-mobile-title">{{ product.name }}</div>
+				<h1 class="product__info-mobile-title">{{ product.name }}</h1>
 				<div v-if="activeImage" class="product__images d-flex flex-column justify-content-between">
 					<div class="product__images-full" @click="galleryImage = activeImage">
 						<img :src="`${storageURL}/${activeImage.path}`" />
@@ -52,7 +54,7 @@
 					<!-- <div v-if="product.price_negotiable" class="product__info-negotiable">Договорная</div> -->
 					<div class="product__info-main d-flex flex-column justify-content-between align-items-end">
 						<div class="product__info-top">
-							<div class="product__info-title">{{ product.name }}</div>
+							<h1 class="product__info-title">{{ product.name }}</h1>
 							<div class="product__info-sell d-flex">
 								<div class="product__info-sell-left">
 									<div class="product__info-sell-price">
@@ -315,21 +317,23 @@ export default {
 			this.activeImageIndex = index
 			this.activeImage = this.product.product_images[index]
 		},
-		slidePrev () {
+		slidePrev (gallery = false) {
 			this.activeImageIndex--
 			if (this.activeImageIndex < 0) {
 				this.activeImageIndex = this.product.product_images.length - 1
 			}
 			this.setActiveImage(this.activeImageIndex)
 			this.$refs.carousel.slideTo(this.activeImageIndex)
+			if (gallery) this.galleryImage = this.activeImage
 		},
-		slideNext () {
+		slideNext (gallery = false) {
 			this.activeImageIndex++
 			if (this.activeImageIndex > this.product.product_images.length - 1) {
 				this.activeImageIndex = 0
 			}
 			this.setActiveImage(this.activeImageIndex)
 			this.$refs.carousel.slideTo(this.activeImageIndex)
+			if (gallery) this.galleryImage = this.activeImage
 		},
 		getSeller () {
 

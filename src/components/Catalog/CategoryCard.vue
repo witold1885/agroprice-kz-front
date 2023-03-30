@@ -3,8 +3,8 @@
 		class="category-card"
 		:href="`/catalog/${category.url}`"
 	>
-		<div class="category-card__title">{{ category.name }}</div>
-		<div class="category-card__subtitle">Объявлений ({{ category.productsCount }})</div>
+		<div class="category-card__title">{{ category.name }}&nbsp;<span class="category-card__title-count">{{ category.productsCount }}</span></div>
+		<!-- <div class="category-card__subtitle">Объявлений ({{ category.productsCount }})</div> -->
 		<img
 			v-if="category.image"
 			class="category-card__image"
