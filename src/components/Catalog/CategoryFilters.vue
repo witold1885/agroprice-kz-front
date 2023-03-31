@@ -238,6 +238,18 @@ export default {
 			breakpoint: 'lg'
 		}
 	},
+	watch: {
+		minPrice (newValue) {
+			const priceFilter = this.filters.find(filter => filter.title == 'Цена')
+			priceFilter.min = newValue
+			priceFilter.minValue = newValue
+		},
+		maxPrice (newValue) {
+			const priceFilter = this.filters.find(filter => filter.title == 'Цена')
+			priceFilter.max = newValue
+			priceFilter.maxValue = newValue
+		}
+	},
 	created () {
 		window.addEventListener('resize', this.handleResize)
 		this.handleResize()

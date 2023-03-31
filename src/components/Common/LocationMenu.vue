@@ -179,6 +179,9 @@ export default {
 			if (this.selectedLocationsIds.length != 0) {
 				this.emitter.emit('change-location', this.selectedLocationsIds.join(','))
 			}
+			else {
+				this.emitter.emit('change-location', null)
+			}
 			this.showMenu = false
 		},
 		resetAll () {
