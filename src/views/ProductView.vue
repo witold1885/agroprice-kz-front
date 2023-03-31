@@ -254,20 +254,25 @@ export default {
 			}
 		},
 		async toggleFavorites () {
-			if (this.user && this.product) {
-				if (!this.isFavorite) {
-					const addSuccess = await this.addProductToFavorites({ user_id: this.user.id, product_id: this.product.id })
-					if (addSuccess) {
-						this.user.favorites.push({ user_id: this.user.id, product_id: this.product.id })
+			if (this.user) {
+				if (this.product) {
+					if (!this.isFavorite) {
+						const addSuccess = await this.addProductToFavorites({ user_id: this.user.id, product_id: this.product.id })
+						if (addSuccess) {
+							this.user.favorites.push({ user_id: this.user.id, product_id: this.product.id })
+						}
+					}
+					else {
+						const delSuccess = await this.delProductFromFavorites({ user_id: this.user.id, product_id: this.product.id })
+						if (delSuccess) {
+							const favIndex = this.user.favorites.findIndex(item => item.product_id == this.product.id)
+							this.user.favorites.splice(favIndex, 1)
+						}
 					}
 				}
-				else {
-					const delSuccess = await this.delProductFromFavorites({ user_id: this.user.id, product_id: this.product.id })
-					if (delSuccess) {
-						const favIndex = this.user.favorites.findIndex(item => item.product_id == this.product.id)
-						this.user.favorites.splice(favIndex, 1)
-					}
-				}
+			}
+			else {
+				this.emitter.emit('auth', this.$route.path)
 			}
 		},
 		async init () {

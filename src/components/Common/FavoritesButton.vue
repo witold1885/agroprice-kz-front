@@ -34,23 +34,28 @@ export default {
     methods: {
 		...mapActions('profile', ['addProductToFavorites', 'delProductFromFavorites']),
 		async toggleFavorites () {
-			if (this.user && this.product_id) {
-				if (!this.isFavorite) {
-					const addSuccess = await this.addProductToFavorites({ user_id: this.user.id, product_id: this.product_id })
-					console.log(addSuccess)
-					if (addSuccess) {
-						this.user.favorites.push({ user_id: this.user.id, product_id: this.product_id })
+			if (this.user) {
+				if (this.product_id) {
+					if (!this.isFavorite) {
+						const addSuccess = await this.addProductToFavorites({ user_id: this.user.id, product_id: this.product_id })
+						console.log(addSuccess)
+						if (addSuccess) {
+							this.user.favorites.push({ user_id: this.user.id, product_id: this.product_id })
+						}
+					}
+					else {
+						const delSuccess = await this.delProductFromFavorites({ user_id: this.user.id, product_id: this.product_id })
+						console.log(delSuccess)
+						if (delSuccess) {
+							const favIndex = this.user.favorites.findIndex(item => item.product_id == this.product_id)
+							this.user.favorites.splice(favIndex, 1)
+							this.emitter.emit('favorite-deleted')
+						}
 					}
 				}
-				else {
-					const delSuccess = await this.delProductFromFavorites({ user_id: this.user.id, product_id: this.product_id })
-					console.log(delSuccess)
-					if (delSuccess) {
-						const favIndex = this.user.favorites.findIndex(item => item.product_id == this.product_id)
-						this.user.favorites.splice(favIndex, 1)
-						this.emitter.emit('favorite-deleted')
-					}
-				}
+			}
+			else {
+				this.emitter.emit('auth', this.$route.path)
 			}
 		}
 	}

@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import TopMenu from './TopMenu'
 import AccountBlock from './AccountBlock'
 import CatalogMenu from './CatalogMenu'
@@ -39,9 +40,17 @@ export default {
 		FavoritesButton,
 		MobileMenu
 	},
+	computed: {
+		...mapState('auth', ['user'])
+	},
 	methods: {
 		goFavorites () {
-			this.$router.push('/profile/favorites')
+			if (this.user) {
+				this.$router.push('/profile/favorites')
+			}
+			else {
+				this.emitter.emit('auth', this.$route.path)
+			}
 		}
 	}
 }
