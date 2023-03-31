@@ -12,7 +12,7 @@
 				@click="dialog.visible = false"
 			/>
 			<div class="contact-dialog__title">Обратная связь</div>
-			<div class="auth-dialog__form d-flex flex-column justify-content-between align-items-center">
+			<div class="auth-dialog__form contact-dialog__form d-flex flex-column justify-content-between align-items-center">
 				<form
 					class="auth-form d-flex flex-column justify-content-between align-items-center"
 				>
@@ -34,10 +34,10 @@
 						autocomplete
 					/>
 					<textarea
-						class="create-product__form-textarea"
+						class=" contact-dialog__form-textarea"
 						placeholder="Текст письма"
-						v-model="v$.text.$model"
-						:class="{ 'create-product__form-textarea-error': v$.text.$error }"
+						v-model="v$.message.$model"
+						:class="{ 'create-product__form-textarea-error': v$.message.$error }"
 					></textarea>
 				</form>
 				<div class="auth-dialog__form-submit d-flex flex-column align-items-center">
@@ -84,13 +84,14 @@ export default {
 		return {
 			subject: '',
 			email: '',
-			text: '',
+			message: '',
 			captchaVerified: false,
 			captchaError: null
 		}
 	},
 	computed: {
-		...mapState('auth', ['error']),
+		...mapState('auth', ['user']),
+		...mapState('info', ['error']),
 		siteKey () {
 			return SITE_KEY
 		}
@@ -104,14 +105,14 @@ export default {
 				required: helpers.withMessage(errorMessages.required.replace(':field', 'Ваша почта'), required),
 				email: helpers.withMessage(errorMessages.email, email)
 			},
-			text: {
+			message: {
 				required: helpers.withMessage(errorMessages.required.replace(':field', 'Текст письма'), required)
 			}
 		}
 	},
 	methods: {
-		...mapActions('auth', ['forgotPassword']),
-		...mapMutations('auth', ['setError']),
+		...mapActions('info', ['sendFeedback']),
+		...mapMutations('info', ['setError']),
 		captchaSuccess () {
 			this.captchaVerified = true
 		},
@@ -134,9 +135,14 @@ export default {
 			}
 		},
 		async sendRequest() {
-			const success = await this.forgotPassword({ email: this.email })
+			const success = await this.sendFeedback({
+				user_id: this.user ? this.user.id : null,
+				subject: this.subject,
+				email: this.email,
+				message: this.message
+			})
 			if (success) {
-				this.$emit('forgot')
+				this.$emit('sent')
 			}
 		},
 		getErrorMessage () {

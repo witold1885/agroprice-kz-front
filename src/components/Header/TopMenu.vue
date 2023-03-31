@@ -10,7 +10,7 @@
 			{{ item. title }}
 		</a>
 	</div>
-	<ContactDialog :dialog="contactDialog" />
+	<ContactDialog :dialog="contactDialog" @sent="onFeedbackSent" />
 </template>
 
 <script>
@@ -33,6 +33,10 @@ export default {
 	methods: {
 		openContactForm () {
 			this.contactDialog.visible = true
+		},
+		onFeedbackSent () {
+			this.contactDialog.visible = false
+			alert('Ваше обращение успешно отправлено')
 		}
 	}
 }

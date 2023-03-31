@@ -29,6 +29,21 @@ export const actions = {
     else {
       console.log(response.data.error)
     }
+  },
+  async sendFeedback ({ commit }, payload) {
+    const response = await api.post('/info/send-feedback', payload)
+      .catch((error) => {
+        console.log(error)
+      })
+    // console.log(response.data)
+    if (response.data.success) {
+      return true
+    }
+    else {
+      console.log(response.data.error)
+      commit('setError', response.data.error)
+      return false
+    }
   }
 }
 

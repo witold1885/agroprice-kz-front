@@ -241,7 +241,7 @@
 		padding: 14px 18px 13px;
 		box-sizing: border-box;
 		@include font-ubuntu(400, 14px, 25px);
-		color: #868686;
+		color: $color_black;
 		&-error {
 			border: 1px solid red!important;
 		}

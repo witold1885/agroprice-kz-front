@@ -783,25 +783,50 @@ h1 {
 }
 
 .contact-dialog {
-	width: 616px;
-	height: 453px;
+	width: 525.95px;
+	height: 660.51px;
 	background: $color_white;
 	position: relative;
 	&__title {
-		@include font-ubuntu(700, 32px, 25px);
-		color: $color_black;
-		margin: 88px auto 30px;
+		@include font-ubuntu(500, 32px, 37px);
+		color: #313131;
+		margin: 60.77px auto 22.75px;
 		text-align: center;
+	}
+	&__form {
+		&-textarea {
+			width: 473px;
+			height: 154.79px;
+			background: #F4F4F4;
+			border-radius: 5px;
+			@include font-ubuntu(400, 14px, 25px);
+			color: $color_black;
+			padding: 14px 18px 13px;
+			resize: none;
+			border: none;
+			box-shadow: none;
+			outline: none;
+			box-sizing: border-box;
+		}
 	}
 }
 
 @media screen and (max-width: 1440px) {
 	.contact-dialog {
-		width: calc(616 * 100vw / 1440);
-		height: calc(453 * 100vw / 1440);
+		width: calc(525.95 * 100vw / 1440);
+		height: calc(660.51 * 100vw / 1440);
 		&__title {
-			@include font-ubuntu(700, calc(32 * 100vw / 1440), calc(25 * 100vw / 1440));
-			margin: calc(88 * 100vw / 1440) auto calc(30 * 100vw / 1440);
+			@include font-ubuntu(500, calc(32 * 100vw / 1440), calc(37 * 100vw / 1440));
+			margin: calc(60.77 * 100vw / 1440) auto calc(22.75 * 100vw / 1440);
+		}
+		&__form {
+			&-textarea {
+				width: calc(473 * 100vw / 1440);
+				height: calc(154.79 * 100vw / 1440);
+				border-radius: calc(5 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(25 * 100vw / 1440));
+				padding: calc(14 * 100vw / 1440) calc(18 * 100vw / 1440) calc(13 * 100vw / 1440);
+			}
 		}
 	}
 }
@@ -809,12 +834,21 @@ h1 {
 @media screen and (max-width: 414px) {
 	.contact-dialog {
 		width: calc(280 * 100vw / 320);
-		height: calc(321 * 100vw / 320);
+		height: calc(489 * 100vw / 320);
 		&__title {
 			@include font-ubuntu(700, calc(20 * 100vw / 320), calc(25 * 100vw / 320));
 			color: $color_black;
-			margin: calc(44 * 100vw / 320) auto calc(20 * 100vw / 320);
+			margin: calc(37.45 * 100vw / 320) auto calc(20 * 100vw / 320);
 			text-align: center;
+		}
+		&__form {
+			&-textarea {
+				width: calc(246 * 100vw / 320);
+				height: calc(118.5 * 100vw / 320);
+				border-radius: calc(5 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(25 * 100vw / 320));
+				padding: calc(5.95 * 100vw / 320) calc(18 * 100vw / 320);
+			}
 		}
 	}
 }
