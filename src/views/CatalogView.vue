@@ -15,7 +15,7 @@
 				>{{ child.name }}</a>
 			</div>
 			<div class="category__data d-flex">
-				<CategoryFilters />
+				<CategoryFilters v-if="maxPrice != 0 && minPrice != 0" :maxPrice="maxPrice" :minPrice="minPrice" @filtered="filterProducts" />
 				<CategoryProducts v-show="products.length != 0" :products="products" :pages="pages" />
 			</div>
 			<div
@@ -47,7 +47,13 @@ export default {
 			canonicalUrl: '',
 			products: [],
 			pages: 1,
-			productsPerPage: 20
+			productsPerPage: 20,
+			sort: 'popular',
+			locations: null,
+			maxPrice: 0,
+			minPrice: 0,
+			filterMaxPrice: null,
+			filterMinPrice: null,
 		}
 	},
 	computed: {
@@ -90,8 +96,15 @@ export default {
 	async mounted () {
 		await this.init()
 		this.emitter.on('change-page', async (page) => {
-			console.log('CHanging page to ' + page)
 			await this.getProducts(page)
+		})
+		this.emitter.on('change-sort', async (sort) => {
+			this.sort = sort
+			await this.getProducts()
+		})
+		this.emitter.on('change-location', async (locations) => {
+			this.locations = locations
+			await this.getProducts()
 		})
 	},
 	methods: {
@@ -129,15 +142,24 @@ export default {
 			const productsData = await this.getCategoryProducts({
 				category_id: this.category.id,
 				page,
-				locations: this.$route.query.locations,
-				sort: this.$route.query.sort
+				locations: this.locations,
+				sort: this.sort,
+				filter_min_price: this.filterMinPrice,
+				filter_max_price: this.filterMaxPrice,
 			})
 			this.products = productsData.products
 			const total = productsData.total
+			this.maxPrice = productsData.max_price
+			this.minPrice = productsData.min_price
 			// console.log(this.products)
 			this.pages = Math.ceil(total / this.productsPerPage)
 		},
 		async onQueryChanged () {
+			await this.getProducts()
+		},
+		async filterProducts (filterData) {
+			this.filterMinPrice = filterData.minPrice
+			this.filterMaxPrice = filterData.maxPrice
 			await this.getProducts()
 		},
 		setDefaultBreadcrumbs () {

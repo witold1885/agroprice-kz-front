@@ -50,7 +50,7 @@
 							:maxValue="group.maxValue"
 							:min="group.min"
 							:max="group.max"
-							:step="5"
+							:step="1000"
 							:rangeMargin="50"
 							@input="updateGroupRange($event, gi)"
 						/>
@@ -114,7 +114,7 @@
 				</div>
 			</div>
 			<div class="filters__bottom">
-				<button class="filters__submit">Применить</button>
+				<button class="filters__submit" @click="submitFilters">Применить</button>
 			</div>
 		</div>
 	</div>
@@ -125,6 +125,16 @@ import MultiRangeSlider from 'multi-range-slider-vue'
 import "../../../node_modules/multi-range-slider-vue/MultiRangeSliderBarOnly.css";
 
 export default {
+	props: {
+		maxPrice: {
+			type: Number,
+			default: 0
+		},
+		minPrice: {
+			type: Number,
+			default: 0
+		}
+	},
 	components: { MultiRangeSlider },
 	data () {
 		return {
@@ -132,14 +142,14 @@ export default {
 				{
 					title: 'Цена',
 					type: 'range',
-					min: 0,
-					max: 400,
-					minValue: 0,
-					maxValue: 400,
+					min: this.minPrice,
+					max: this.maxPrice,
+					minValue: this.minPrice,
+					maxValue: this.maxPrice,
 					collapsable: false,
 					collapsed: false
 				},
-				{
+				/*{
 					title: 'Бренд',
 					type: 'checkbox',
 					items: [
@@ -158,8 +168,8 @@ export default {
 					collapsable: true,
 					collapsed: true,
 					selectedItems: []
-				},
-				{
+				},*/
+				/*{
 					title: 'Материал',
 					type: 'checkbox',
 					items: [
@@ -174,8 +184,8 @@ export default {
 					collapsable: true,
 					collapsed: true,
 					selectedItems: []
-				},
-				{
+				},*/
+				/*{
 					title: 'Особенности',
 					type: 'checkbox',
 					items: [
@@ -188,8 +198,8 @@ export default {
 					collapsable: true,
 					collapsed: true,
 					selectedItems: []
-				},
-				{
+				},*/
+				/*{
 					title: 'Список',
 					type: 'dropdown',
 					items: [
@@ -202,8 +212,8 @@ export default {
 					collapsed: false,
 					selectedItem: 'Категория 1',
 					showMenu: false
-				},
-				{
+				},*/
+				/*{
 					title: 'Цвет',
 					type: 'color',
 					items: [
@@ -222,7 +232,7 @@ export default {
 					],
 					collapsable: true,
 					collapsed: false
-				},
+				},*/
 			],
 			showFilters: false,
 			breakpoint: 'lg'
@@ -274,6 +284,10 @@ export default {
 			if (this.breakpoint == 'md' || this.breakpoint == 'sm') {
 				this.showFilters = true
 			}
+		},
+		submitFilters () {
+			const priceFilter = this.filters.find(filter => filter.title == 'Цена')
+			this.$emit('filtered', { minPrice: priceFilter.minValue, maxPrice: priceFilter.maxValue })
 		}
 	}
 }

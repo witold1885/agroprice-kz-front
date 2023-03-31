@@ -168,13 +168,16 @@ export default {
 					}
 				}
 			}
-			if (this.selectedLocationsIds.length != 0) {
+			/*if (this.selectedLocationsIds.length != 0) {
 				this.$router.push({ path: this.$route.path, query: { ...this.$route.query, ...{ locations: this.selectedLocationsIds.join(',') } } })
 			}
 			else {
 				let query = JSON.parse(JSON.stringify(this.$route.query))
 				delete query.locations
 				this.$router.replace({ path: this.$route.path, query: query });
+			}*/
+			if (this.selectedLocationsIds.length != 0) {
+				this.emitter.emit('change-location', this.selectedLocationsIds.join(','))
 			}
 			this.showMenu = false
 		},
