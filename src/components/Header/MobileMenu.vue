@@ -19,6 +19,7 @@
 					v-for="(item, index) of menuItems"
 					:key="index"
 					class="mobile-menu__dropdown-item d-flex align-items-center"
+					@click="item.action"
 				>
 					<div class="mobile-menu__dropdown-item-wrap d-flex justify-content-between align-items-center">
 						<a class="mobile-menu__dropdown-item-title">{{ item.title }}</a>
@@ -36,25 +37,29 @@
 			
 		</div>
 	</div>
+	<ContactDialog :dialog="contactDialog" @sent="onFeedbackSent" />
 </template>
 
 <script>
 import CloseButton from '@/components/Common/CloseButton'
+import ContactDialog from '@/components/Common/ContactDialog'
 
 export default {
 	components: {
-		CloseButton
+		CloseButton,
+		ContactDialog
 	},
 	data () {
 		return {
 			showMenu: false,			
 			menuItems: [
-				{ title: 'Новости', active: true },
-				{ title: 'О компании', active: false },
-				{ title: 'Блог', active: false },
-				{ title: 'Вакансии', active: false },
-				{ title: 'Обратная связь', active: false },
-			]
+				{ title: 'Новости', active: true, action: null },
+				{ title: 'О компании', active: false, action: null },
+				{ title: 'Блог', active: false, action: null },
+				{ title: 'Вакансии', active: false, action: null },
+				{ title: 'Обратная связь', active: false, action: this.openContactForm },
+			],
+			contactDialog: { visible: false }
 		}
 	},
 	methods: {
@@ -67,6 +72,14 @@ export default {
 			document.getElementById('app').style.maxHeight = 'unset'
 			document.getElementById('app').style.overflow = 'unset'
 			this.showMenu = false
+		},
+		openContactForm () {
+			this.showMenu = false
+			this.contactDialog.visible = true
+		},
+		onFeedbackSent () {
+			this.contactDialog.visible = false
+			alert('Ваше обращение успешно отправлено')
 		}
 	}
 }
