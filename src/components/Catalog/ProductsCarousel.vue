@@ -15,7 +15,7 @@
 						:key="index"
 						class="products-carousel__slide"
 					>
-						<CatalogProduct :product="product" />
+						<CatalogProduct :product="product" class="products-grid__item" />
 					</slide>
 				</template>
 			</carousel>
@@ -71,7 +71,7 @@ export default {
 				snapAlign: 'start',
 				breakpoints: {
 					993: {
-						itemsToShow: 4
+						itemsToShow: 5
 					},
 					415: {
 						itemsToShow: 3

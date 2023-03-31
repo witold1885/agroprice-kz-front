@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div class="products__actions-buttons d-flex justify-content-end align-items-center">
-				<button class="products__actions-ad">Подать объявление</button>
+				<button class="products__actions-ad" @click="goProductCreate">Подать объявление</button>
 				<button
 					v-show="breakpoint != 'sm' || (breakpoint == 'sm' && view == 'grid')"
 					class="products__actions-view products__actions-view-grid d-flex justify-content-center align-items-center"
@@ -174,6 +174,9 @@ export default {
 		openFilters () {
 			console.log('emit open-filters')
 			this.emitter.emit('open-filters')
+		},
+		goProductCreate () {
+			this.$router.push('/create-product')
 		}
 	}
 }
