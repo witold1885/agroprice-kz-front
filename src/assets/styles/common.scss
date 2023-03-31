@@ -781,3 +781,40 @@ h1 {
 		}
 	}
 }
+
+.contact-dialog {
+	width: 616px;
+	height: 453px;
+	background: $color_white;
+	position: relative;
+	&__title {
+		@include font-ubuntu(700, 32px, 25px);
+		color: $color_black;
+		margin: 88px auto 30px;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.contact-dialog {
+		width: calc(616 * 100vw / 1440);
+		height: calc(453 * 100vw / 1440);
+		&__title {
+			@include font-ubuntu(700, calc(32 * 100vw / 1440), calc(25 * 100vw / 1440));
+			margin: calc(88 * 100vw / 1440) auto calc(30 * 100vw / 1440);
+		}
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.contact-dialog {
+		width: calc(280 * 100vw / 320);
+		height: calc(321 * 100vw / 320);
+		&__title {
+			@include font-ubuntu(700, calc(20 * 100vw / 320), calc(25 * 100vw / 320));
+			color: $color_black;
+			margin: calc(44 * 100vw / 320) auto calc(20 * 100vw / 320);
+			text-align: center;
+		}
+	}
+}

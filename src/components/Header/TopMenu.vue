@@ -5,23 +5,34 @@
 			:key="index"
 			class="top-menu__item"
 			:class="{ 'top-menu__item-active': item.active }"
+			@click="item.action"
 		>
 			{{ item. title }}
 		</a>
 	</div>
+	<ContactDialog :dialog="contactDialog" />
 </template>
 
 <script>
+import ContactDialog from '@/components/Common/ContactDialog'
+
 export default {
+	components: { ContactDialog },
 	data () {
 		return {
 			menuItems: [
-				{ title: 'Новости', active: true },
-				{ title: 'О компании', active: false },
-				{ title: 'Блог', active: false },
-				{ title: 'Вакансии', active: false },
-				{ title: 'Обратная связь', active: false },
-			]
+				{ title: 'Новости', active: true, action: null },
+				{ title: 'О компании', active: false, action: null },
+				{ title: 'Блог', active: false, action: null },
+				{ title: 'Вакансии', active: false, action: null },
+				{ title: 'Обратная связь', active: false, action: this.openContactForm },
+			],
+			contactDialog: { visible: false }
+		}
+	},
+	methods: {
+		openContactForm () {
+			this.contactDialog.visible = true
 		}
 	}
 }

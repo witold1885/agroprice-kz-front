@@ -279,7 +279,7 @@ export default {
 					this.metaTitle = this.product.name
 					this.metaDescription = this.product.name
 					this.metaKeywords = this.product.name
-					this.canonicalUrl = 'https://agroprice.kz/' + this.product.url
+					this.canonicalUrl = 'https://agroprice.kz/product/' + this.product.url
 					if (this.product.product_images.length != 0) {
 						this.activeImageIndex = 0
 						this.setActiveImage(0)

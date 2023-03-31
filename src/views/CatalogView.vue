@@ -106,7 +106,7 @@ export default {
 					this.metaTitle = this.category.meta_title || this.category.name
 					this.metaDescription = this.category.meta_description || this.category.name
 					this.metaKeywords = this.category.meta_keywords || this.category.name
-					this.canonicalUrl = 'https://agroprice.kz/' + this.category.url
+					this.canonicalUrl = 'https://agroprice.kz/catalog/' + this.category.url
 					await this.getProducts()
 				}
 			}
