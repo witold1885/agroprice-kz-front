@@ -46,7 +46,7 @@
 <style lang="scss">
 .seo-text {
   & > * {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 </style>
