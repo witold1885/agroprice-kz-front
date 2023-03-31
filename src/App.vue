@@ -41,7 +41,7 @@ export default {
       link: [
         {
           rel: 'canonical',
-          href: 'https://agroprice.kz'
+          href: 'https://agroprice.kz/'
         }
       ]
     })
