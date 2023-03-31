@@ -34,8 +34,8 @@
 				<div class="footer__account footer__account-mobile flex-column">
 					<div class="footer__account-title">Моя учетная запись</div>
 					<div class="footer__account-buttons d-flex">
-						<button class="footer__account-button footer__account-button-signin">Войти</button>
-						<button class="footer__account-button footer__account-button-signup">Зарегистрироваться</button>
+						<button class="footer__account-button footer__account-button-signin" @click="login">Войти</button>
+						<button class="footer__account-button footer__account-button-signup" @click="register">Зарегистрироваться</button>
 					</div>
 				</div>
 				<div class="footer__nav d-flex">
@@ -59,8 +59,8 @@
 				<div class="footer__account footer__account-desktop flex-column">
 					<div class="footer__account-title">Моя учетная запись</div>
 					<div class="footer__account-buttons d-flex">
-						<button class="footer__account-button footer__account-button-signin">Войти</button>
-						<button class="footer__account-button footer__account-button-signup">Зарегистрироваться</button>
+						<button class="footer__account-button footer__account-button-signin" @click="login">Войти</button>
+						<button class="footer__account-button footer__account-button-signup" @click="register">Зарегистрироваться</button>
 					</div>
 				</div>
 				<div class="footer__payments d-flex flex-column">
@@ -126,6 +126,12 @@ export default {
 			if (window.innerWidth > 992) this.breakpoint = 'lg'
 			else if (window.innerWidth > 414) this.breakpoint = 'md'
 			else this.breakpoint = 'sm'
+		},
+		login () {
+			this.emitter.emit('auth', this.$route.path)
+		},
+		register () {
+			this.emitter.emit('reg', this.$route.path)
 		}
 	}
 }

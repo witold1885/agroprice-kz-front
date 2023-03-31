@@ -80,6 +80,12 @@ export default {
     await this.$store.dispatch('auth/getUser')
     console.log(this.user)
     this.emitter.on('auth', (redirect = '/') => {
+      this.authDialog.name = 'login'
+      this.authDialog.visible = true
+      this.redirect = redirect
+    })
+    this.emitter.on('reg', (redirect = '/') => {
+      this.authDialog.name = 'register'
       this.authDialog.visible = true
       this.redirect = redirect
     })

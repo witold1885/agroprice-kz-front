@@ -125,6 +125,11 @@ export default {
 			activeTab: null
 		}
 	},
+	watch: {
+		'dialog.name' () {
+			this.selectTab(this.dialog.name)
+		}
+	},
 	mounted () {
 		this.selectTab(this.dialog.name)
 	},
