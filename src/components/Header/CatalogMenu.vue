@@ -82,7 +82,7 @@
 			</div>
 			<div 
 				v-if="selectedCategory"
-				class="catalog-menu__dropdown-subcategories d-flex flex-wrap justify-content-between"
+				class="catalog-menu__dropdown-subcategories d-flex flex-wrap"
 			>
 				<div
 					v-for="(subcategory, si) of selectedCategory.subcategories"

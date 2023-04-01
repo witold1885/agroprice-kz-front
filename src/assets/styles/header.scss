@@ -162,7 +162,7 @@ header {
 		left: 0;
 		z-index: 5;
 		width: 100%;
-		height: 500px;
+		height: 600px;
 		background: $color_white;
 		box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
 		border-radius: 8px;
@@ -225,6 +225,7 @@ header {
 			padding: 18px 30px;
 			grid-column-gap: 37px;
 			grid-row-gap: 36px;
+			flex-flow: column wrap;
 			&-row {
 				width: 100%;
 			}
@@ -380,7 +381,7 @@ header {
 		}
 		&__dropdown {
 			top: calc(65 * 100vw / 1440);
-			height: calc(500 * 100vw / 1440);
+			height: calc(600 * 100vw / 1440);
 			border-radius: calc(8 * 100vw / 1440);
 			&-categories {
 				width: calc(370 * 100vw / 1440);
@@ -508,7 +509,7 @@ header {
 		}
 		&__dropdown {
 			top: 62px;
-			height: 500px;
+			height: 600px;
 			border-radius: 8px;
 			&-categories {
 				width: 260px;
@@ -628,7 +629,7 @@ header {
 			}
 		}
 		&__dropdown {
-			height: calc(500 * 100vw / 768);
+			height: calc(600 * 100vw / 768);
 			top: calc(62 * 100vw / 768);
 			border-radius: calc(8 * 100vw / 768);
 			&-categories {

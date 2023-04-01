@@ -98,7 +98,8 @@
 						<div class="product__info-bottom">
 							<div class="product__info-buttons d-flex flex-wrap justify-content-end align-items-end">
 								<div class="product__info-buttons-clearfix"></div>
-								<a :href="`tel:${product.contact.phone}`" class="product__info-button-call">Позвонить</a>
+								<a v-if="!phoneShow" class="product__info-button-call" @click="phoneShow = true">Позвонить</a>
+								<div v-else class="product__info-button-phone d-flex justify-content-center align-items-center">{{ product.contact.phone }}</div>
 								<button class="product__info-button-write">Написать продавцу</button>
 								<button class="product__info-button-allproducts">Все товары продавца</button>
 								<a :href="whatsappLink" class="product__info-button-whatsapp">Написать на Whatsapp</a>
@@ -206,7 +207,8 @@ export default {
 			},
 			galleryImage: null,
 			whatsappLink: null,
-			sellerProductsLimit: 10
+			sellerProductsLimit: 10,
+			phoneShow: false
 		}
 	},
 	computed: {

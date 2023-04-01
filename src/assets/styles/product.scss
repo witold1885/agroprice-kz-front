@@ -967,6 +967,12 @@
 				@include font-ubuntu(500, 14px, 14px);
 				color: $color_white;
 			}
+			&-phone {
+				width: 256px;
+				height: 55px;
+				@include font-ubuntu(500, 18px, 18px);
+				color: $color_black;
+			}
 		}
 	}
 	&__tabs {
@@ -1190,6 +1196,11 @@
 					height: calc(55 * 100vw / 1440);
 					border-radius: calc(8 * 100vw / 1440);
 					@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+				}
+				&-phone {
+					width: calc(256 * 100vw / 1440);
+					height: calc(55 * 100vw / 1440);
+					@include font-ubuntu(500, calc(18 * 100vw / 1440), calc(18 * 100vw / 1440));
 				}
 			}
 		}
@@ -1443,6 +1454,9 @@
 					display: none!important;
 				}
 				&-call {
+					display: none!important;
+				}
+				&-phone {
 					display: none!important;
 				}
 			}
