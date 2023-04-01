@@ -26,7 +26,7 @@
 						<img class="catalog-product__stats-status-icon" :src="require('@/assets/images/ok.png')" />
 						<div class="catalog-product__stats-status-value">Новый</div>
 					</div> -->
-					<div class="catalog-product__location d-flex justify-content-end align-items-center">
+					<div class="catalog-product__location d-flex align-items-center">
 						<img class="catalog-product__location-icon" :src="require('@/assets/images/location.png')" />
 						<div class="catalog-product__location-value">{{ product.location ? product.location.city : 'Не указано' }}</div>
 					</div>

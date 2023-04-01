@@ -180,13 +180,13 @@
 		&-value {
 	        @include font-ubuntu(400, 12px, 14px);
 			color: $color_black;
-			text-align: right;
+			text-align: left;
 		}
 	}
 	&__title {
 		margin-left: 5px;
 		margin-right: 5px;
-		margin-bottom: 13px;
+		// margin-bottom: 13px;
         @include font-ubuntu(400, 14px, 144.4%);
 		color: $color_black;
 		text-align: left;
@@ -371,7 +371,7 @@
 		&__title {
 			margin-left: calc(5 * 100vw / 1440);
 			margin-right: calc(5 * 100vw / 1440);
-			margin-bottom: calc(13 * 100vw / 1440);
+			// margin-bottom: calc(13 * 100vw / 1440);
 	        @include font-ubuntu(400, calc(14 * 100vw / 1440), 144.4%);
 			max-height: calc(40.5 * 100vw / 1440);
 		}
@@ -531,7 +531,7 @@
 		&__title {
 			margin-left: 5px;
 			margin-right: 5px;
-			margin-bottom: 13px;
+			// margin-bottom: 13px;
 	        @include font-ubuntu(400, 14px, 144.4%);
 	        max-height: 40.5px;
 		}
@@ -686,7 +686,7 @@
 		&__title {
 			margin-left: calc(5 * 100vw / 768);
 			margin-right: calc(5 * 100vw / 768);
-			margin-bottom: calc(13 * 100vw / 768);
+			// margin-bottom: calc(13 * 100vw / 768);
 	        @include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
 			max-height: calc(40.5 * 100vw / 768);
 		}
@@ -814,7 +814,8 @@
 	.catalog-product {
 		position: relative;
 		width: calc(131 * 100vw / 320);
-		height: calc(246 * 100vw / 320);
+		height: calc(220 * 100vw / 320)!important;
+		// height: auto;
 		// padding: calc(29 * 100vw / 320) calc(9 * 100vw / 320) calc(10 * 100vw / 320) calc(5 * 100vw / 320);
 		padding: 0 calc(9 * 100vw / 320) calc(10 * 100vw / 320) calc(5 * 100vw / 320);
 		&__date {
@@ -863,10 +864,10 @@
 		&__title {
 			margin-left: 0;
 			margin-right: 0;
-			margin-bottom: calc(9 * 100vw / 320);
+			// margin-bottom: calc(9 * 100vw / 320);
 	        @include font-ubuntu(400, calc(10 * 100vw / 320), 144.4%);
 			max-height: calc(29 * 100vw / 320);
-			margin-top: calc(25 * 100vw / 320);
+			margin-top: calc(12 * 100vw / 320);
 		}
 		&__divider {
 			padding: 0 calc(7 * 100vw / 320);
