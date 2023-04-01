@@ -1403,6 +1403,9 @@
 						background: $color_green;
 						border: 1px solid $color_green;
 					}
+					&-phone {
+						color: $color_black!important;
+					}
 				}
 				&-divider {
 					width: 100%;

@@ -259,6 +259,7 @@ header {
 	flex: 1;
 	border: 1px solid $color_green;
 	border-radius: 8px;
+	position: relative;
 	&__field {
 		width: 100%;
 		height: 100%;
@@ -267,8 +268,8 @@ header {
 		border: none;
 		border-radius: 8px;
 		padding: 17px 19px 16px;
-    @include font-ubuntu(300, 12px, 14px);
-		color: rgba(0, 0, 0, 0.24);
+    	@include font-ubuntu(300, 12px, 14px);
+		color: $color_black;
 	}
 	&__button {
 		margin: 0 2px 0 10px;
@@ -280,6 +281,94 @@ header {
 		color: $color_white;
 	  	box-shadow: none;
 		border: none;
+	}
+	&__dropdown {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 50px;
+		background: $color_white;		
+		box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
+		z-index: 3;
+		border-radius: 8px;
+		padding: 17px 0;
+		grid-row-gap: 20px;
+	}
+	&__products {
+		width: 100%;
+		&-title {
+    		@include font-ubuntu(500, 14px, 14px);
+    		margin-bottom: 17px;
+    		margin-left: 19px;
+		}
+		&-list {
+			width: 100%;
+			// grid-row-gap: 10px;
+			&-item {
+				width: 100%;
+				cursor: pointer;
+				padding: 5px 19px;
+				box-sizing: border-box;
+				&:hover {
+					background: lightgrey;
+				}
+				&-left {
+					grid-column-gap: 10px;
+				}
+				&-image {
+					@include box(50px, 50px);
+					object-fit: cover;
+					object-position: center;
+					border-radius: 3px;
+				}
+				&-title {
+    				@include font-ubuntu(400, 12px, 14px);
+    				color: $color_black;
+				}
+				&-right {
+					grid-column-gap: 10px;
+				}
+				&-price {
+    				@include font-ubuntu(500, 12px, 14px);
+    				color: $color_black;
+				}
+			}
+		}
+		&-more {
+			@include font-ubuntu(400, 12px, 14px);
+			color: $color_black;
+			padding: 5px 19px;
+		}
+	}
+	&__categories {
+		width: 100%;
+		&-title {
+    		@include font-ubuntu(500, 14px, 14px);
+    		margin-bottom: 5px;
+    		margin-left: 19px;
+		}
+		&-list {
+			width: 100%;
+			// grid-row-gap: 10px;
+			&-item {
+				width: 100%;
+				cursor: pointer;
+				padding: 5px 19px;
+				box-sizing: border-box;
+				height: 50px;
+				&:hover {
+					background: lightgrey;
+				}
+				&-title {
+    				@include font-ubuntu(400, 14px, 14px);
+    				color: $color_black;
+				}
+				&-path {
+    				@include font-ubuntu(400, 12px, 14px);
+    				color: rgb(63, 63, 63);
+				}
+			}
+		}
 	}
 }
 
