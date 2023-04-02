@@ -155,7 +155,7 @@ import { mapState } from 'vuex'
 export default {
 	data () {
 		return {
-			showMenu: true,
+			showMenu: false,
 			openRegion: null,
 			selectedLocationsIds: [],
 			selectedLocations: [],
