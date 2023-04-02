@@ -10,6 +10,8 @@ import CreateProduct from '../views/Product/CreateProduct.vue'
 import EditProduct from '../views/Product/EditProduct.vue'
 import ProductView from '../views/ProductView.vue'
 import SearchView from '../views/SearchView.vue'
+import BlogView from '../views/BlogView.vue'
+import Article from '../views/Blog/Article.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
@@ -71,6 +73,16 @@ const routes = [
     path: '/search',
     name: 'search',
     component: SearchView
+  },
+  {
+    path: '/blog',
+    name: 'blog',
+    component: BlogView
+  },
+  {
+    path: '/blog/:article',
+    name: 'article',
+    component: Article
   },
   {
     path: '/:pathMatch(.*)*',
