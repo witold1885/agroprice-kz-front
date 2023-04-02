@@ -1,83 +1,74 @@
 <template>
-		<div class="location-menu">
-			<div
-				class="location-menu__field"
-				@click="showMenu = true"
-			>
-				{{ selectedLocations.length != 0 ? selectedLocations.join(', ') : 'Весь Казахстан' }}
-			</div>
-	<div
-		v-if="showMenu"
-		class="auth-dialog__shadow d-flex justify-content-center align-items-center"
-	>
+	<div class="location-menu">
+		<div
+			class="location-menu__field"
+			@click="showMenu = true"
+		>
+			{{ selectedLocations.length != 0 ? selectedLocations.join(', ') : 'Весь Казахстан' }}
+		</div>
+		<div
+			v-if="showMenu"
+			class="auth-dialog__shadow d-flex justify-content-center align-items-center"
+		>
 			<div class="location-menu__dropdown">
+				<img 
+					class="location-menu__dropdown-close location-menu__dropdown-close-desktop"
+					:src="require('@/assets/images/dialog-close-white.png')"
+					@click="showMenu = false"
+				/>
+				<img 
+					class="location-menu__dropdown-close location-menu__dropdown-close-mobile"
+					:src="require('@/assets/images/dialog-close.png')"
+					@click="showMenu = false"
+				/>
 				<div class="location-menu__dropdown-top d-flex justify-content-center align-items-center">
-					<img 
-						class="auth-dialog__close"
-						:src="require('@/assets/images/dialog-close.png')"
-						@click="showMenu = false"
-					/>
-					<h2 class="location-menu__dropdown-title">Выбор местоположения</h2>
+					<input class="location-menu__dropdown-search" placeholder="Поиск по области, городу, району, микрорайону" />
+					<img class="location-menu__dropdown-search-icon" :src="require('@/assets/images/search-grey.png')">
 				</div>
 				<div 
 					v-if="showMenu && locations.length != 0"
-					class="location-menu__dropdown-body"
+					class="location-menu__dropdown-body-desktop"
 				>
-					<div class="location-menu__dropdown-body-row d-flex flex-wrap">
+					<div class="location-menu__dropdown-body-column">
 						<div 
-							class="location-menu__dropdown-body-row-item"
-							:class="{ 'location-menu__dropdown-body-row-item-active': selectedLocationsIds.length == 0 }"
+							class="location-menu__dropdown-body-column-item"
+							:class="{ 'location-menu__dropdown-body-column-item-active': selectedLocationsIds.length == 0 }"
 							@click="resetAll()"
 						>
 							Весь Казахстан
 						</div>
-					</div>
-					<div class="location-menu__dropdown-body-divider"></div>
-					<div class="location-menu__dropdown-body-row d-flex flex-wrap">
 						<div 
 							v-for="(location, index) of locations.except.cities"
 							:key="index"
-							class="location-menu__dropdown-body-row-item"
-							:class="{ 'location-menu__dropdown-body-row-item-active': isActive(location.id) }"
+							class="location-menu__dropdown-body-column-item"
+							:class="{ 'location-menu__dropdown-body-column-item-active': isActive(location.id) }"
 							@click="toggleLocation(location.id)"
 						>
 							{{ location.city }}
 						</div>
-					</div>
-					<div class="location-menu__dropdown-body-divider"></div>
-					<div v-if="!openRegion" class="location-menu__dropdown-body-row">
-						<div class="location-menu__dropdown-body-row-items d-flex flex-wrap">
-							<div 							
-								v-for="(location, index) of locations.regions"
-								:key="index"
-								class="location-menu__dropdown-body-row-region"
-								@click="openRegion = location"
-							>
-								{{ location.region }}
-							</div>
+						<div 							
+							v-for="(location, index) of locations.regions"
+							:key="index"
+							class="location-menu__dropdown-body-column-item"
+							@click="openRegion = location"
+						>
+							{{ location.region }}
 						</div>
+						
 					</div>
-					<div v-else class="location-menu__dropdown-body-row">
-						<div class="location-menu__dropdown-body-row-actions d-flex justify-content-between align-items-center">
+					<div class="location-menu__dropdown-body-column">
+						<div v-if="openRegion">
 							<div
-								class="location-menu__dropdown-body-row-actions-back"
-								@click="openRegion = null"
-							>
-								Назад
-							</div>
-							<div
-								class="location-menu__dropdown-body-row-actions-all"
+								class="location-menu__dropdown-body-column-item"
 								@click="toggleLocations(openRegion.cities_ids)"
 							>
 								Вся {{ openRegion.region }}
 							</div>
-						</div>
-						<div class="location-menu__dropdown-body-row-items d-flex flex-wrap">
-							<div							
+							<div
 								v-for="(location, index) of openRegion.cities"
 								:key="index"
-								class="location-menu__dropdown-body-row-item"
-								:class="{ 'location-menu__dropdown-body-row-item-active': isActive(location.id) }"
+								class="location-menu__dropdown-body-column-item"
+								:class="{ 'location-menu__dropdown-body-column-item-active': isActive(location.id) }"
 								@click="toggleLocation(location.id)"
 							>
 								{{ location.city }}
@@ -85,15 +76,77 @@
 						</div>
 					</div>
 				</div>
-				<div class="location-menu__dropdown-bottom d-flex justify-content-end align-items-center">
+				<div 
+					v-if="showMenu && locations.length != 0"
+					class="location-menu__dropdown-body-mobile flex-column"
+				>
+					<div class="location-menu__dropdown-body-menu">
+						<div class="location-menu__dropdown-body-menu-field d-flex justify-content-between align-items-center" @click="showMobileRegionsMenu = true">
+							<div class="location-menu__dropdown-body-menu-field-value">{{ openRegion ? openRegion.region : 'Весь Казахстан' }}</div>
+							<img class="location-menu__dropdown-body-menu-field-icon" :src="require('@/assets/images/arrow-down-green.png')" />				
+						</div>
+						<div v-if="showMobileRegionsMenu" class="location-menu__dropdown-body-menu-list">
+							<div 
+								class="location-menu__dropdown-body-menu-list-item"
+								:class="{ 'location-menu__dropdown-body-menu-list-item-active': selectedLocationsIds.length == 0 }"
+								@click="resetAll()"
+							>
+								Весь Казахстан
+							</div>
+							<div 
+								v-for="(location, index) of locations.except.cities"
+								:key="index"
+								class="location-menu__dropdown-body-menu-list-item"
+								:class="{ 'location-menu__dropdown-body-menu-list-item-active': isActive(location.id) }"
+								@click="selectLocation(location)"
+							>
+								{{ location.city }}
+							</div>
+							<div 							
+								v-for="(location, index) of locations.regions"
+								:key="index"
+								class="location-menu__dropdown-body-menu-list-item"
+								@click="selectOpenRegion(location)"
+							>
+								{{ location.region }}
+							</div>							
+						</div>						
+					</div>
+					<div class="location-menu__dropdown-body-menu">
+						<div class="location-menu__dropdown-body-menu-field d-flex justify-content-between align-items-center" @click="showMobileCitiesMenu = true">
+							<div class="location-menu__dropdown-body-menu-field-value">
+								{{ selectedLocations.length != 0 ? selectedLocations.join(', ') : (openRegion ? `Вся ${openRegion.region}` : 'Все города') }}
+							</div>
+							<img class="location-menu__dropdown-body-menu-field-icon" :src="require('@/assets/images/arrow-down-green.png')" />				
+						</div>
+						<div v-if="showMobileCitiesMenu && openRegion" class="location-menu__dropdown-body-menu-list">
+							<div
+								class="location-menu__dropdown-body-menu-list-item"
+								@click="toggleLocations(openRegion.cities_ids)"
+							>
+								Вся {{ openRegion.region }}
+							</div>
+							<div
+								v-for="(location, index) of openRegion.cities"
+								:key="index"
+								class="location-menu__dropdown-body-menu-list-item"
+								:class="{ 'location-menu__dropdown-body-menu-list-item-active': isActive(location.id) }"
+								@click="selectLocation(location)"
+							>
+								{{ location.city }}
+							</div>
+						</div>						
+					</div>
+				</div>
+				<div class="location-menu__dropdown-bottom d-flex justify-content-center align-items-center">
 					<button
 						class="location-menu__dropdown-submit"
 						@click="submitSelection"
-					>OK</button>
+					>Выбрать</button>
 				</div>
 			</div>
-	</div>
 		</div>
+	</div>
 </template>
 
 <script>
@@ -102,10 +155,12 @@ import { mapState } from 'vuex'
 export default {
 	data () {
 		return {
-			showMenu: false,
+			showMenu: true,
 			openRegion: null,
 			selectedLocationsIds: [],
 			selectedLocations: [],
+			showMobileRegionsMenu: false,
+			showMobileCitiesMenu: false,
 		}
 	},
 	computed: {
@@ -151,6 +206,16 @@ export default {
 			}
 			// console.log(this.selectedLocationsIds)
 		},
+		selectOpenRegion (location) {
+			this.openRegion = location
+			this.showMobileRegionsMenu = false
+		},
+		selectLocation (location) {
+			this.selectedLocationsIds = [location.id]
+			this.selectedLocations = [location.city]
+			this.showMobileRegionsMenu = false
+			this.showMobileCitiesMenu = false
+		},
 		isActive (location_id) {
 			return this.selectedLocationsIds.find(item => item == location_id)
 		},
@@ -187,6 +252,8 @@ export default {
 		resetAll () {
 			this.selectedLocationsIds = []
 			this.selectedLocations = []
+			this.openRegion = null
+			this.showMobileRegionsMenu = false
 		}
 	}
 }

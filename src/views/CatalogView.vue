@@ -147,12 +147,20 @@ export default {
 				filter_min_price: this.filterMinPrice,
 				filter_max_price: this.filterMaxPrice,
 			})
-			this.products = productsData.products
-			const total = productsData.total
-			this.maxPrice = productsData.max_price
-			this.minPrice = productsData.min_price
-			// console.log(this.products)
-			this.pages = Math.ceil(total / this.productsPerPage)
+			if (productsData) {
+				this.products = productsData.products
+				const total = productsData.total
+				this.maxPrice = productsData.max_price
+				this.minPrice = productsData.min_price
+				// console.log(this.products)
+				this.pages = Math.ceil(total / this.productsPerPage)
+			}
+			else {				
+				this.products = []
+				this.maxPrice = 0
+				this.minPrice = 100
+				this.pages = 1
+			}
 		},
 		async onQueryChanged () {
 			await this.getProducts()

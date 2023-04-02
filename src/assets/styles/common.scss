@@ -476,79 +476,83 @@ h1 {
 	}
 	&__dropdown {
 		// position: absolute;
-		width: 1200px;
-		// height: 500px;
+		width: 525.95px;
+		height: 591.47px;
 		background: $color_white;
-		// border-radius: 8px;
-		box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
+		border-radius: 9px;
+		padding: 16.22px 14.165px 21.75px;
+		position: relative;
+		&-close {
+			position: absolute;
+			cursor: pointer;
+			&-desktop {
+				width: 17.69px;
+				height: 17.69px;
+				top: -25.47px;
+				right: -30.22px;
+			}
+			&-mobile {
+				display: none;
+			}
+		}
 		&-top {
-			width: 100%;
-			height: 73px;
-			border-bottom: 3px solid #F4F4F4;
 			position: relative;
 		}
-		&-title {
-			@include font-ubuntu(500, 24px, 36px);
+		&-search {
+			width: 497.62px;
+			height: 40px;
+			background: #F4F4F4;
+			border-radius: 5px;
+			border: none;
+			outline: none;
+			box-shadow: none;
+			padding: 11.56px 41.18px 13.44px 14.37px;
+			@include font-ubuntu(400, 14px, 15px);
 			color: $color_black;
+			box-sizing: border-box;
+			&-icon {
+				position: absolute;
+				top: 13px;
+				right: 10.81px;
+				@include box(16px, 16px);
+				cursor: pointer;
+			}
 		}
 		&-body {
-			padding: 10px 30px;
-			&-row {
-				padding: 20px 0;
-				grid-column-gap: 10px;
-				&-actions {
-					padding: 0 10px 20px;
-					& > div {
-						@include font-ubuntu(400, 15px, 20px);
-						cursor: pointer;
-						max-width: 50%;
-					}
-					&-back {
-						text-align: left;
-					}
-					&-all {
-						text-align: right;
-					}
-				}
-				&-items {
-					grid-column-gap: 15px;
-					grid-row-gap: 15px;
-
-				}
-				&-item {
-					@include font-ubuntu(400, 14px, 16px);
-					cursor: pointer;
-					border: 1px solid #F4F4F4;
-					padding: 10px;
-					border-radius: 5px;
-					&-active {
-						border: 1px solid $color_green;
-					}
-				}
-				&-region {
-					@include font-ubuntu(400, 14px, 16px);
-					cursor: pointer;
-					border-bottom: 1px solid #F4F4F4;
-					padding: 10px;
-					width: 30%;
-				}
+			&-desktop {
+				display: flex;
+				grid-column-gap: 17.39px;
+				margin-top: 9.21px;
+				margin-bottom: 17px;
 			}
-			&-divider {
-				width: 100%;
-				height: 3px;
+			&-mobile {
+				display: none;
+			}
+			&-column {
+				width: 240.11px;
+				height: 447.29px;
 				background: #F4F4F4;
+				border-radius: 5px;
+				padding: 9.29px 16.09px;
+				overflow-y: scroll;
+				scrollbar-color: #39BC64 #FFFFFF;
+  				scrollbar-width: 3.28px;
+				&-item {
+					@include font-ubuntu(500, 14px, 25px);
+					color: #414141;
+					cursor: pointer;
+					&-active {
+						color: $color_green;
+					}
+				} 
 			}
-		}
-		&-bottom {
-			border-top: 3px solid #F4F4F4;
-			padding: 20px 30px 20px;
 		}
 		&-submit {
-			@include box(100px, 40px);
+			@include box(197px, 40px);
 			border: none;
 			box-shadow: none;
-			border-radius: 8px;
-			@include font-ubuntu(400, 14px, 16px);
+			border-radius: 5px;
+			@include font-ubuntu(500, 14px, 16px);
 			color: $color_white;
 			background: $color_green;
 		}
@@ -565,47 +569,51 @@ h1 {
 			padding: calc(8 * 100vw / 1440);
 		}
 		&__dropdown {
-			width: calc(1200 * 100vw / 1440);
-			&-top {
-				height: calc(73 * 100vw / 1440);
-			}
-			&-title {
-				@include font-ubuntu(500, calc(24 * 100vw / 1440), calc(36 * 100vw / 1440));
-			}
-			&-body {
-				padding: calc(10 * 100vw / 1440) calc(30 * 100vw / 1440);
-				&-row {
-					padding: calc(20 * 100vw / 1440) 0;
-					grid-column-gap: calc(10 * 100vw / 1440);
-					&-actions {
-						padding: 0 calc(10 * 100vw / 1440) calc(20 * 100vw / 1440);
-						& > div {
-							@include font-ubuntu(400, calc(15 * 100vw / 1440), calc(20 * 100vw / 1440));
-						}
-					}
-					&-items {
-						grid-column-gap: calc(15 * 100vw / 1440);
-						grid-row-gap: calc(15 * 100vw / 1440);
-
-					}
-					&-item {
-						@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
-						padding: calc(10 * 100vw / 1440);
-						border-radius: calc(5 * 100vw / 1440);
-					}
-					&-region {
-						@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
-						padding: calc(10 * 100vw / 1440);
-					}
+			width: calc(525.95 * 100vw / 1440);
+			height: calc(591.47 * 100vw / 1440);
+			border-radius: calc(9 * 100vw / 1440);
+			padding: calc(16.22 * 100vw / 1440) calc(14.165 * 100vw / 1440) calc(21.75 * 100vw / 1440);
+			&-close {
+				&-desktop {
+					width: calc(17.69 * 100vw / 1440);
+					height: calc(17.69 * 100vw / 1440);
+					top: calc(-1 * 25.47 * 100vw / 1440);
+					right: calc(-1 * 30.22 * 100vw / 1440);
 				}
 			}
-			&-bottom {
-				padding: calc(20 * 100vw / 1440) calc(30 * 100vw / 1440) calc(20 * 100vw / 1440);
+			&-search {
+				width: calc(497.62 * 100vw / 1440);
+				height: calc(40 * 100vw / 1440);
+				border-radius: calc(5 * 100vw / 1440);
+				padding: calc(11.56 * 100vw / 1440) calc(41.18 * 100vw / 1440) calc(13.44 * 100vw / 1440) calc(14.37 * 100vw / 1440);
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+				&-icon {
+					top:  calc(13 * 100vw / 1440);
+					right:  calc(10.81 * 100vw / 1440);
+					@include box( calc(16 * 100vw / 1440),  calc(16 * 100vw / 1440));
+				}
+			}
+			&-body {
+				&-desktop {
+					grid-column-gap: calc(17.39 * 100vw / 1440);
+					margin-top: calc(9.21 * 100vw / 1440);
+					margin-bottom: calc(17 * 100vw / 1440);
+				}
+				&-column {
+					width: calc(240.11 * 100vw / 1440);
+					height: calc(447.29 * 100vw / 1440);
+					border-radius: calc(5 * 100vw / 1440);
+					padding: calc(9.29 * 100vw / 1440) calc(16.09 * 100vw / 1440);
+	  				scrollbar-width: calc(3.28 * 100vw / 1440);
+					&-item {
+						@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(25 * 100vw / 1440));
+					} 
+				}
 			}
 			&-submit {
-				@include box(calc(100 * 100vw / 1440), calc(40 * 100vw / 1440));
-				border-radius: calc(8 * 100vw / 1440);
-				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+				@include box(calc(197 * 100vw / 1440), calc(40 * 100vw / 1440));
+				border-radius: calc(5 * 100vw / 1440);
+				@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
 			}
 		}
 	}
@@ -621,47 +629,52 @@ h1 {
 			padding: 8px;
 		}
 		&__dropdown {
-			width: 688px;
-			&-top {
-				height: 73px;
-			}
-			&-title {
-				@include font-ubuntu(500, 24px, 36px);
-			}
-			&-body {
-				padding: 10px 30px;
-				&-row {
-					padding: 10px 0;
-					grid-column-gap: 10px;
-					&-actions {
-						padding: 0 10px 20px;
-						& > div {
-							@include font-ubuntu(400, 15px, 20px);
-						}
-					}
-					&-items {
-						grid-column-gap: 15px;
-						grid-row-gap: 15px;
-
-					}
-					&-item {
-						@include font-ubuntu(400, 14px, 16px);
-						padding: 10px;
-						border-radius: 5px;
-					}
-					&-region {
-						@include font-ubuntu(400, 14px, 16px);
-						padding: 10px;
-					}
+			width: 525.95px;
+			height: 591.47px;
+			border-radius: 9px;
+			padding: 16.22px 14.165px 21.75px;
+			&-close {
+				&-desktop {
+					width: 17.69px;
+					height: 17.69px;
+					top: -25.47px;
+					right: -30.22px;
 				}
 			}
-			&-bottom {
-				padding: 20px 30px 20px;
+			&-search {
+				width: 497.62px;
+				height: 40px;
+				border-radius: 5px;
+				padding: 11.56px 41.18px 13.44px 14.37px;
+				@include font-ubuntu(400, 14px, 15px);
+				&-icon {
+					top: 13px;
+					right: 10.81px;
+					@include box(16px, 16px);
+				}
+			}
+			&-body {
+				&-desktop {
+					display: flex;
+					grid-column-gap: 17.39px;
+					margin-top: 9.21px;
+					margin-bottom: 17px;
+				}
+				&-column {
+					width: 240.11px;
+					height: 447.29px;
+					border-radius: 5px;
+					padding: 9.29px 16.09px;
+	  				scrollbar-width: 3.28px;
+					&-item {
+						@include font-ubuntu(500, 14px, 25px);
+					} 
+				}
 			}
 			&-submit {
-				@include box(100px, 40px);
-				border-radius: 8px;
-				@include font-ubuntu(400, 14px, 16px);
+				@include box(197px, 40px);
+				border-radius: 5px;
+				@include font-ubuntu(500, 14px, 16px);
 			}
 		}
 	}
@@ -676,47 +689,51 @@ h1 {
 			padding: calc(8 * 100vw / 768);
 		}
 		&__dropdown {
-			width: calc(688 * 100vw / 768);
-			&-top {
-				height: calc(73 * 100vw / 768);
-			}
-			&-title {
-				@include font-ubuntu(500, calc(24 * 100vw / 768), calc(36 * 100vw / 768));
-			}
-			&-body {
-				padding: calc(10 * 100vw / 768) calc(30 * 100vw / 768);
-				&-row {
-					padding: calc(10 * 100vw / 768) 0;
-					grid-column-gap: calc(10 * 100vw / 768);
-					&-actions {
-						padding: 0 calc(10 * 100vw / 768) calc(20 * 100vw / 768);
-						& > div {
-							@include font-ubuntu(400, calc(15 * 100vw / 768), calc(20 * 100vw / 768));
-						}
-					}
-					&-items {
-						grid-column-gap: calc(15 * 100vw / 768);
-						grid-row-gap: calc(15 * 100vw / 768);
-
-					}
-					&-item {
-						@include font-ubuntu(400, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
-						padding: calc(10 * 100vw / 768);
-						border-radius: calc(5 * 100vw / 768);
-					}
-					&-region {
-						@include font-ubuntu(400, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
-						padding: calc(10 * 100vw / 768);
-					}
+			width: calc(525.95 * 100vw / 768);
+			height: calc(591.47 * 100vw / 768);
+			border-radius: calc(9 * 100vw / 768);
+			padding: calc(16.22 * 100vw / 768) calc(14.165 * 100vw / 768) calc(21.75 * 100vw / 768);
+			&-close {
+				&-desktop {
+					width: calc(17.69 * 100vw / 768);
+					height: calc(17.69 * 100vw / 768);
+					top: calc(-1 * 25.47 * 100vw / 768);
+					right: calc(-1 * 30.22 * 100vw / 768);
 				}
 			}
-			&-bottom {
-				padding: calc(20 * 100vw / 768) calc(30 * 100vw / 768) calc(20 * 100vw / 768);
+			&-search {
+				width: calc(497.62 * 100vw / 768);
+				height: calc(40 * 100vw / 768);
+				border-radius: calc(5 * 100vw / 768);
+				padding: calc(11.56 * 100vw / 768) calc(41.18 * 100vw / 768) calc(13.44 * 100vw / 768) calc(14.37 * 100vw / 768);
+				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+				&-icon {
+					top:  calc(13 * 100vw / 768);
+					right:  calc(10.81 * 100vw / 768);
+					@include box( calc(16 * 100vw / 768),  calc(16 * 100vw / 768));
+				}
+			}
+			&-body {
+				&-desktop {
+					grid-column-gap: calc(17.39 * 100vw / 768);
+					margin-top: calc(9.21 * 100vw / 768);
+					margin-bottom: calc(17 * 100vw / 768);
+				}
+				&-column {
+					width: calc(240.11 * 100vw / 768);
+					height: calc(447.29 * 100vw / 768);
+					border-radius: calc(5 * 100vw / 768);
+					padding: calc(9.29 * 100vw / 768) calc(16.09 * 100vw / 768);
+	  				scrollbar-width: calc(3.28 * 100vw / 768);
+					&-item {
+						@include font-ubuntu(500, calc(14 * 100vw / 768), calc(25 * 100vw / 768));
+					} 
+				}
 			}
 			&-submit {
-				@include box(calc(100 * 100vw / 768), calc(40 * 100vw / 768));
-				border-radius: calc(8 * 100vw / 768);
-				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
+				@include box(calc(197 * 100vw / 768), calc(40 * 100vw / 768));
+				border-radius: calc(5 * 100vw / 768);
+				@include font-ubuntu(500, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
 			}
 		}
 	}
@@ -734,49 +751,85 @@ h1 {
 		}
 		&__dropdown {
 			width: calc(280 * 100vw / 320);
-			&-top {
-				height: calc(73 * 100vw / 320);
+			height: calc(311 * 100vw / 320);
+			border-radius: calc(9 * 100vw / 320);
+			padding: calc(40 * 100vw / 320) calc(17 * 100vw / 320) calc(34 * 100vw / 320);
+			&-close {
+				&-desktop {
+					display: none;
+				}
+				&-mobile {
+					display: block;
+					width: calc(12 * 100vw / 320);
+					height: calc(12 * 100vw / 320);
+					top: calc(13 * 100vw / 320);
+					right: calc(12 * 100vw / 320);
+				}
 			}
-			&-title {
-				@include font-ubuntu(500, calc(18 * 100vw / 320), calc(21 * 100vw / 320));
+			&-search {
+				width: calc(246 * 100vw / 320);
+				height: calc(52 * 100vw / 320);
+				border-radius: calc(5 * 100vw / 320);
+				padding: calc(7 * 100vw / 320) calc(40 * 100vw / 320) calc(5 * 100vw / 320) calc(12 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(20 * 100vw / 320));
+				&-icon {
+					top:  calc(19 * 100vw / 320);
+					right:  calc(12 * 100vw / 320);
+					@include box( calc(16 * 100vw / 320),  calc(16 * 100vw / 320));
+				}
 			}
 			&-body {
-				max-height: 50vh;
-				overflow: scroll;
-				padding: calc(10 * 100vw / 320) calc(20 * 100vw / 320);
-				&-row {
-					padding: calc(10 * 100vw / 320) 0;
-					grid-column-gap: calc(10 * 100vw / 320);
-					&-actions {
-						padding: 0 calc(10 * 100vw / 320) calc(20 * 100vw / 320);
-						& > div {
-							@include font-ubuntu(400, calc(12 * 100vw / 320), calc(16 * 100vw / 320));
+				&-desktop {
+					display: none;
+				}
+				&-mobile {
+					display: flex;
+					margin-top: calc(7 * 100vw / 320);
+					margin-bottom: calc(12 * 100vw / 320);
+					grid-row-gap: calc(10 * 100vw / 320);
+				}
+				&-menu {
+					position: relative;
+					&-field {
+						width: calc(246 * 100vw / 320);
+						height: calc(52 * 100vw / 320);
+						background: #F4F4F4;
+						border-radius: calc(5 * 100vw / 320);
+						padding: calc(12.75 * 100vw / 320) calc(15 * 100vw / 320) calc(14.25 * 100vw / 320) calc(11.5 * 100vw / 320);
+						cursor: pointer;
+						&-value {
+							@include font-ubuntu(500, calc(14 * 100vw / 320), calc(25 * 100vw / 320));
+							color: #414141;
+						}
+						&-icon {
+							width: calc(14 * 100vw / 320);
 						}
 					}
-					&-items {
-						grid-column-gap: calc(15 * 100vw / 320);
-						grid-row-gap: calc(5 * 100vw / 320);
-
-					}
-					&-item {
-						@include font-ubuntu(400, calc(12 * 100vw / 320), calc(16 * 100vw / 320));
-						padding: calc(10 * 100vw / 320);
+					&-list {
+						position: absolute;
+						top: 0;
+						left: 0;
+						z-index: 2;
+						width: calc(246 * 100vw / 320);
+						height: calc(446.28 * 100vw / 320);
+						background: #F4F4F4;
 						border-radius: calc(5 * 100vw / 320);
-					}
-					&-region {
-						@include font-ubuntu(400, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
-						padding: calc(5 * 100vw / 320) 0;
-						width: 45%;
+						padding: calc(11 * 100vw / 320) calc(14.28 * 100vw / 320) calc(12.95 * 100vw / 320);
+						overflow-y: scroll;
+						scrollbar-color: #39BC64 #FFFFFF;
+		  				scrollbar-width: calc(3.28 * 100vw / 320);
+						&-item {
+							@include font-ubuntu(500, calc(14 * 100vw / 320), calc(25 * 100vw / 320));
+							color: #414141;
+							cursor: pointer;
+						}
 					}
 				}
 			}
-			&-bottom {
-				padding: calc(20 * 100vw / 320) calc(30 * 100vw / 320) calc(20 * 100vw / 320);
-			}
 			&-submit {
-				@include box(calc(100 * 100vw / 320), calc(40 * 100vw / 320));
-				border-radius: calc(8 * 100vw / 320);
-				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
+				@include box(calc(246 * 100vw / 320), calc(52 * 100vw / 320));
+				border-radius: calc(5 * 100vw / 320);
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
 			}
 		}
 	}

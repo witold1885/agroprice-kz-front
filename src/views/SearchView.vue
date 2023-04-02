@@ -107,11 +107,16 @@ export default {
 				locations: this.locations,
 				sort: this.sort,
 			})
-			this.products = productsData.products
-			const total = productsData.total
-			// console.log(this.products)
-			this.pages = Math.ceil(total / this.productsPerPage)
-
+			if (productsData) {
+				this.products = productsData.products
+				const total = productsData.total
+				// console.log(this.products)
+				this.pages = Math.ceil(total / this.productsPerPage)
+			}
+			else {				
+				this.products = []
+				this.pages = 1
+			}
 		},
 		async onQueryChanged () {
 			await this.init()
