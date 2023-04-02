@@ -11,6 +11,7 @@ export const state = {
     products: [],
     categories: [],
   },
+  searchProducts: [],
   category: null,
   error: null,
 }
@@ -34,6 +35,9 @@ export const mutations = {
   setSearchResult(state, data) {
     state.searchResult.products = data.products
     state.searchResult.categories = data.categories
+  },
+  setSearchProducts(state, products) {
+    state.searchProducts = products
   },
   setError(state, error) {
     state.error = error
@@ -138,7 +142,7 @@ export const actions = {
     }
   },
   async getSearchResult ({ commit }, payload) {
-    const response = await api.post('/catalog/search/', payload)
+    const response = await api.post('/catalog/search-result/', payload)
       .catch((error) => {
         console.log(error)
       })
@@ -148,6 +152,21 @@ export const actions = {
     }
     else {
       console.log(response.data.error)
+    }
+  },
+  async getSearchProducts (context, payload) {
+    const response = await api.post('/catalog/search-products/', payload)
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      // commit('setSearchProducts', response.data.products)
+      return response.data
+    }
+    else {
+      console.log(response.data.error)
+      return null
     }
   }
 }

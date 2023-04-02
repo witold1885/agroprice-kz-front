@@ -1,5 +1,5 @@
 <template>
-	<div class="products d-flex flex-column">
+	<div class="products d-flex flex-column" :style="[ mode == 'search' ? { 'width': '100%!important' } : {} ]">
 		<div class="products__actions d-flex justify-content-between align-items-center">
 			<div class="products__actions-sort d-flex align-items-center">
 				<div class="products__actions-sort-legend">Сортировать по:</div>
@@ -104,6 +104,10 @@ export default {
 		pages: {
 			type: Number,
 			default: 1
+		},
+		mode: {
+			type: String,
+			default: 'category'
 		}
 	},
 	components: { ProductsGrid, ProductsList, Pagination },

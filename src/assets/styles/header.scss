@@ -268,7 +268,7 @@ header {
 		border: none;
 		border-radius: 8px;
 		padding: 17px 19px 16px;
-    	@include font-ubuntu(300, 12px, 14px);
+    	@include font-ubuntu(300, 14px, 14px);
 		color: $color_black;
 	}
 	&__button {
@@ -321,21 +321,27 @@ header {
 					object-position: center;
 					border-radius: 3px;
 				}
+				&-info {
+					&-bottom {
+						display: none;
+					}
+				}
 				&-title {
-    				@include font-ubuntu(400, 12px, 14px);
+    				@include font-ubuntu(400, 14px, 14px);
     				color: $color_black;
 				}
 				&-right {
+					display: flex;
 					grid-column-gap: 10px;
 				}
 				&-price {
-    				@include font-ubuntu(500, 12px, 14px);
+    				@include font-ubuntu(500, 14px, 14px);
     				color: $color_black;
 				}
 			}
 		}
 		&-more {
-			@include font-ubuntu(400, 12px, 14px);
+			@include font-ubuntu(400, 14px, 14px);
 			color: $color_black;
 			padding: 5px 19px;
 		}
@@ -522,14 +528,73 @@ header {
 		&__field {
 			border-radius: calc(8 * 100vw / 1440);
 			padding: calc(17 * 100vw / 1440) calc(19 * 100vw / 1440) calc(16 * 100vw / 1440);
-	    @include font-ubuntu(300, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+	    	@include font-ubuntu(300, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
 		}
 		&__button {
 			margin: 0 calc(2 * 100vw / 1440) 0 calc(10 * 100vw / 1440);
 			width: calc(104 * 100vw / 1440);
 			height: calc(41 * 100vw / 1440);
 			border-radius: calc(8 * 100vw / 1440);
-	    @include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+	    	@include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+		}
+		&__dropdown {
+			top: calc(50 * 100vw / 1440);
+			border-radius: calc(8 * 100vw / 1440);
+			padding: calc(17 * 100vw / 1440) 0;
+			grid-row-gap: calc(20 * 100vw / 1440);
+		}
+		&__products {
+			&-title {
+	    		@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+	    		margin-bottom: calc(17 * 100vw / 1440);
+	    		margin-left: calc(19 * 100vw / 1440);
+			}
+			&-list {
+				// grid-row-gap: calc(10 * 100vw / 1440);
+				&-item {
+					padding: calc(5 * 100vw / 1440) calc(19 * 100vw / 1440);
+					&-left {
+						grid-column-gap: calc(10 * 100vw / 1440);
+					}
+					&-image {
+						@include box(calc(50 * 100vw / 1440), calc(50 * 100vw / 1440));
+						border-radius: calc(3 * 100vw / 1440);
+					}
+					&-title {
+	    				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+					}
+					&-right {
+						grid-column-gap: calc(10 * 100vw / 1440);
+					}
+					&-price {
+	    				@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+					}
+				}
+			}
+			&-more {
+				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+				padding: calc(5 * 100vw / 1440) calc(19 * 100vw / 1440);
+			}
+		}
+		&__categories {
+			&-title {
+	    		@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+	    		margin-bottom: calc(5 * 100vw / 1440);
+	    		margin-left: calc(19 * 100vw / 1440);
+			}
+			&-list {
+				// grid-row-gap: calc(10 * 100vw / 1440);
+				&-item {
+					padding: calc(5 * 100vw / 1440) calc(19 * 100vw / 1440);
+					height: calc(50 * 100vw / 1440);
+					&-title {
+	    				@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(14 * 100vw / 1440));
+					}
+					&-path {
+	    				@include font-ubuntu(400, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+					}
+				}
+			}
 		}
 	}
 }
@@ -653,14 +718,83 @@ header {
 		&__field {
 			border-radius: 8px;
 			padding: 17px 19px 16px;
-	    @include font-ubuntu(300, 12px, 14px);
+	    	@include font-ubuntu(300, 14px, 14px);
 		}
 		&__button {
 			margin: 0 2px 0 10px;
 			width: 104px;
 			height: 41px;
 			border-radius: 8px;
-	    @include font-ubuntu(500, 12px, 14px);
+	    	@include font-ubuntu(500, 12px, 14px);
+		}
+		&__dropdown {
+			top: 50px;
+			z-index: 3;
+			border-radius: 8px;
+			padding: 17px 0;
+			grid-row-gap: 20px;
+		}
+		&__products {
+			&-title {
+	    		@include font-ubuntu(500, 14px, 14px);
+	    		margin-bottom: 17px;
+	    		margin-left: 19px;
+			}
+			&-list {
+				// grid-row-gap: 10px;
+				&-item {
+					padding: 5px 19px;
+					&-left {
+						grid-column-gap: 10px;
+					}
+					&-image {
+						@include box(50px, 50px);
+						border-radius: 3px;
+					}
+					&-info {
+						width: 100%;
+						flex: 1;
+						grid-row-gap: 10px;
+						&-bottom {
+							display: flex;
+							grid-column-gap: 10px;
+						}
+					}
+					&-title {
+	    				@include font-ubuntu(400, 14px, 14px);
+					}
+					&-right {
+						display: none;
+					}
+					&-price {
+	    				@include font-ubuntu(500, 14px, 14px);
+					}
+				}
+			}
+			&-more {
+				@include font-ubuntu(400, 14px, 14px);
+				padding: 5px 19px;
+			}
+		}
+		&__categories {
+			&-title {
+	    		@include font-ubuntu(500, 14px, 14px);
+	    		margin-bottom: 5px;
+	    		margin-left: 19px;
+			}
+			&-list {
+				// grid-row-gap: 10px;
+				&-item {
+					padding: 5px 19px;
+					height: 50px;
+					&-title {
+	    				@include font-ubuntu(400, 14px, 14px);
+					}
+					&-path {
+	    				@include font-ubuntu(400, 12px, 14px);
+					}
+				}
+			}
 		}
 	}
 }
@@ -763,14 +897,76 @@ header {
 		&__field {
 			border-radius: calc(8 * 100vw / 768);
 			padding: calc(17 * 100vw / 768) calc(19 * 100vw / 768) calc(16 * 100vw / 768);
-	    @include font-ubuntu(300, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+	    	@include font-ubuntu(300, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
 		}
 		&__button {
 			margin: 0 calc(2 * 100vw / 768) 0 calc(10 * 100vw / 768);
 			width: calc(104 * 100vw / 768);
 			height: calc(41 * 100vw / 768);
 			border-radius: calc(8 * 100vw / 768);
-	    @include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+	    	@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+		}
+		&__dropdown {
+			top: calc(50 * 100vw / 768);
+			border-radius: calc(8 * 100vw / 768);
+			padding: calc(17 * 100vw / 768) 0;
+			grid-row-gap: calc(20 * 100vw / 768);
+		}
+		&__products {
+			&-title {
+	    		@include font-ubuntu(500, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
+	    		margin-bottom: calc(17 * 100vw / 768);
+	    		margin-left: calc(19 * 100vw / 768);
+			}
+			&-list {
+				// grid-row-gap: calc(10 * 100vw / 768);
+				&-item {
+					padding: calc(5 * 100vw / 768) calc(19 * 100vw / 768);
+					&-left {
+						grid-column-gap: calc(10 * 100vw / 768);
+					}
+					&-image {
+						@include box(calc(50 * 100vw / 768), calc(50 * 100vw / 768));
+						border-radius: calc(3 * 100vw / 768);
+					}
+					&-info {
+						grid-row-gap: calc(10 * 100vw / 768);
+						&-bottom {
+							grid-column-gap: calc(10 * 100vw / 768);
+						}
+					}
+					&-title {
+	    				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
+					}
+					&-price {
+	    				@include font-ubuntu(500, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
+					}
+				}
+			}
+			&-more {
+				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
+				padding: calc(5 * 100vw / 768) calc(19 * 100vw / 768);
+			}
+		}
+		&__categories {
+			&-title {
+	    		@include font-ubuntu(500, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
+	    		margin-bottom: calc(5 * 100vw / 768);
+	    		margin-left: calc(19 * 100vw / 768);
+			}
+			&-list {
+				// grid-row-gap: calc(10 * 100vw / 768);
+				&-item {
+					padding: calc(5 * 100vw / 768) calc(19 * 100vw / 768);
+					height: calc(50 * 100vw / 768);
+					&-title {
+	    				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
+					}
+					&-path {
+	    				@include font-ubuntu(400, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+					}
+				}
+			}
 		}
 	}
 }
@@ -1025,10 +1221,75 @@ header {
 		&__field {
 			border-radius: calc(5 * 100vw / 320);
 			padding: calc(17 * 100vw / 320) calc(10 * 100vw / 320) calc(16 * 100vw / 320);
-	    @include font-ubuntu(300, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+	    	@include font-ubuntu(300, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
 		}
 		&__button {
 			display: none;
+		}
+		&__dropdown {
+			top: calc(50 * 100vw / 320);
+			border-radius: calc(8 * 100vw / 320);
+			padding: calc(17 * 100vw / 320) 0;
+			grid-row-gap: calc(20 * 100vw / 320);
+			z-index: 4;
+		}
+		&__products {
+			&-title {
+	    		@include font-ubuntu(500, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
+	    		margin-bottom: calc(17 * 100vw / 320);
+	    		margin-left: calc(19 * 100vw / 320);
+			}
+			&-list {
+				// grid-row-gap: calc(10 * 100vw / 320);
+				&-item {
+					padding: calc(5 * 100vw / 320) calc(19 * 100vw / 320);
+					&-left {
+						grid-column-gap: calc(10 * 100vw / 320);
+					}
+					&-image {
+						@include box(calc(50 * 100vw / 320), calc(50 * 100vw / 320));
+						border-radius: calc(3 * 100vw / 320);
+					}
+					&-info {
+						grid-row-gap: calc(10 * 100vw / 320);
+						&-bottom {
+							flex-direction: column;
+							grid-row-gap: calc(10 * 100vw / 320);
+						}
+					}
+					&-title {
+	    				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
+					}
+					&-price {
+	    				@include font-ubuntu(500, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
+					}
+				}
+			}
+			&-more {
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
+				padding: calc(5 * 100vw / 320) calc(19 * 100vw / 320);
+			}
+		}
+		&__categories {
+			&-title {
+	    		@include font-ubuntu(500, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
+	    		margin-bottom: calc(5 * 100vw / 320);
+	    		margin-left: calc(19 * 100vw / 320);
+			}
+			&-list {
+				// grid-row-gap: calc(10 * 100vw / 320);
+				&-item {
+					padding: calc(5 * 100vw / 320) calc(19 * 100vw / 320);
+					// height: calc(50 * 100vw / 320);
+					height: auto;
+					&-title {
+	    				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
+					}
+					&-path {
+	    				@include font-ubuntu(400, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+					}
+				}
+			}
 		}
 	}
 }

@@ -9,6 +9,7 @@ import ResetPassword from '../views/Actions/ResetPassword.vue'
 import CreateProduct from '../views/Product/CreateProduct.vue'
 import EditProduct from '../views/Product/EditProduct.vue'
 import ProductView from '../views/ProductView.vue'
+import SearchView from '../views/SearchView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
@@ -65,6 +66,11 @@ const routes = [
     path: '/product/:product?',
     name: 'product',
     component: ProductView
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: SearchView
   },
   {
     path: '/:pathMatch(.*)*',
