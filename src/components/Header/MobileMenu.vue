@@ -15,11 +15,12 @@
 		/>	
 		<div v-if="showMenu" class="mobile-menu__dropdown">
 			<div class="mobile-menu__dropdown-items">
-				<div
+				<a
 					v-for="(item, index) of menuItems"
 					:key="index"
 					class="mobile-menu__dropdown-item d-flex align-items-center"
-					@click="item.action"
+					:href="item.link"
+					@click="setAction(item.action)"
 				>
 					<div class="mobile-menu__dropdown-item-wrap d-flex justify-content-between align-items-center">
 						<a class="mobile-menu__dropdown-item-title">{{ item.title }}</a>
@@ -32,12 +33,12 @@
 							:src="require('@/assets/images/arrow-right-white.png')"
 						/>
 					</div>
-				</div>
+				</a>
 			</div>
 			
 		</div>
 	</div>
-	<ContactDialog :dialog="contactDialog" @sent="onFeedbackSent" />
+	<ContactDialog :dialog="contactDialog" @sent="onFeedbackSent" @closed="closeContactForm" />
 </template>
 
 <script>
@@ -52,14 +53,25 @@ export default {
 	data () {
 		return {
 			showMenu: false,			
-			menuItems: [
+			/*menuItems: [
 				{ title: 'Новости', active: true, action: null },
 				{ title: 'О компании', active: false, action: null },
 				{ title: 'Блог', active: false, action: null },
 				{ title: 'Вакансии', active: false, action: null },
 				{ title: 'Обратная связь', active: false, action: this.openContactForm },
-			],
+			],*/
 			contactDialog: { visible: false }
+		}
+	},
+	computed: {
+		menuItems () {
+			return [
+				{ title: 'Новости', active: false, action: null },
+				{ title: 'О компании', active: false, action: null },
+				{ title: 'Блог', active: this.$route.path.indexOf('/blog') !== -1, action: null, link: '/blog' },
+				{ title: 'Вакансии', active: false, action: null },
+				{ title: 'Обратная связь', active: this.contactDialog.visible, action: 'contact-form' },
+			]
 		}
 	},
 	methods: {
@@ -73,6 +85,11 @@ export default {
 			document.getElementById('app').style.overflow = 'unset'
 			this.showMenu = false
 		},
+		setAction (action) {
+			if (action == 'contact-form') {
+				this.openContactForm()
+			}
+		},
 		openContactForm () {
 			this.showMenu = false
 			this.contactDialog.visible = true
@@ -80,6 +97,9 @@ export default {
 		onFeedbackSent () {
 			this.contactDialog.visible = false
 			alert('Ваше обращение успешно отправлено')
+		},
+		closeContactForm () {
+			this.contactDialog.visible = false
 		}
 	}
 }

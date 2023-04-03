@@ -3,8 +3,16 @@
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<h1 class="blog__title heading-1">Блог</h1>
 		<div class="blog__wrap d-flex">
-			<div class="blog__list d-flex flex-wrap">
-				<NewsItem v-for="(item, index) of blogArticles" :key="index" :item="item" :articleType="articleType" class="blog__list-item" />
+			<div class="blog__list d-flex flex-column align-items-center">
+				<div class="blog__list-grid d-flex flex-wrap">
+					<NewsItem v-for="(item, index) of blogArticles" :key="index" :item="item" :articleType="articleType" class="blog__list-item" />
+				</div>
+				<Pagination class="blog__list-pagination" :pagesCount="pages" v-show="pages > 1"/>
+				<button
+					v-show="pages > 1"
+					class="blog__list-showmore products__showmore"
+					@click="showMore"
+				>Показать еще</button>
 			</div>
 			<div class="blog__sidebar d-flex flex-column">
 				<div class="blog__search d-flex flex-column">
@@ -31,9 +39,10 @@ import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 import NewsItem from '@/components/News/NewsItem'
 import news from '@/components/News/news.js'
+import Pagination from '@/components/Common/Pagination'
 
 export default {
-	components: { Breadcrumbs, NewsItem },
+	components: { Breadcrumbs, NewsItem, Pagination },
 	data () {
 		return {
 			breadcrumbs: [

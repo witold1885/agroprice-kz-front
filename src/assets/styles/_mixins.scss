@@ -6,7 +6,20 @@
     line-height: $line-height;
 }
 
+@mixin font-gilroy ($font-weight: 400, $font-size, $line-height) {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
 @mixin box ($width, $height) {
     width: $width;
     height: $height;
+}
+
+@mixin square ($size) {
+    width: $size;
+    height: $size;
 }

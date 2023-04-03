@@ -9,7 +9,7 @@
 			<img 
 				class="auth-dialog__close"
 				:src="require('@/assets/images/dialog-close.png')"
-				@click="dialog.visible = false"
+				@click="closeDialog"
 			/>
 			<div class="contact-dialog__title">Обратная связь</div>
 			<div class="auth-dialog__form contact-dialog__form d-flex flex-column justify-content-between align-items-center">
@@ -150,6 +150,9 @@ export default {
 				this.setError(this.v$.$errors[0].$message)
 			}
 		},
+		closeDialog () {
+			this.$emit('closed')
+		}
 	}
 }
 </script>

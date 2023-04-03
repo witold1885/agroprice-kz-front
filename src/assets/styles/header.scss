@@ -1050,7 +1050,8 @@ header {
 					padding-right: calc(35.5 * 100vw / 320);
 				}
 				&-title {
-        	@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+        			@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+        			color: $color_black;
 				}
 				&:hover &-title {
 					color: $color_white;

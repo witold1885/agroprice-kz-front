@@ -5,12 +5,13 @@
 			:key="index"
 			class="top-menu__item"
 			:class="{ 'top-menu__item-active': item.active }"
-			@click="item.action"
+			:href="item.link"
+			@click="setAction(item.action)"
 		>
 			{{ item. title }}
 		</a>
 	</div>
-	<ContactDialog :dialog="contactDialog" @sent="onFeedbackSent" />
+	<ContactDialog :dialog="contactDialog" @sent="onFeedbackSent" @closed="closeContactForm" />
 </template>
 
 <script>
@@ -20,23 +21,35 @@ export default {
 	components: { ContactDialog },
 	data () {
 		return {
-			menuItems: [
-				{ title: 'Новости', active: true, action: null },
-				{ title: 'О компании', active: false, action: null },
-				{ title: 'Блог', active: false, action: null },
-				{ title: 'Вакансии', active: false, action: null },
-				{ title: 'Обратная связь', active: false, action: this.openContactForm },
-			],
 			contactDialog: { visible: false }
 		}
 	},
+	computed: {
+		menuItems () {
+			return [
+				{ title: 'Новости', active: false, action: null },
+				{ title: 'О компании', active: false, action: null },
+				{ title: 'Блог', active: this.$route.path.indexOf('/blog') !== -1, action: null, link: '/blog' },
+				{ title: 'Вакансии', active: false, action: null },
+				{ title: 'Обратная связь', active: this.contactDialog.visible, action: 'contact-form' },
+			]
+		}
+	},
 	methods: {
+		setAction (action) {
+			if (action == 'contact-form') {
+				this.openContactForm()
+			}
+		},
 		openContactForm () {
 			this.contactDialog.visible = true
 		},
 		onFeedbackSent () {
 			this.contactDialog.visible = false
 			alert('Ваше обращение успешно отправлено')
+		},
+		closeContactForm () {
+			this.contactDialog.visible = false
 		}
 	}
 }
