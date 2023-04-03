@@ -13,7 +13,7 @@
 		margin-bottom: 88px;
 		&-grid {
 			width: 100%;
-			grid-column-gap: 5px;
+			grid-column-gap: 20px;
 			grid-row-gap: 14px;
 		}
 		&-item {
@@ -28,7 +28,7 @@
 		}
 	}
 	&__sidebar {
-		width: 285px;
+		width: 240px;
 		grid-row-gap: 19px;
 	}
 	&__search {
@@ -43,7 +43,7 @@
 			color: $color_black;
 		}
 		&-field {
-			width: 259px;
+			width: 214px;
 			height: 35px;
 			background: $color_white;
 			border-radius: 2px;
@@ -191,7 +191,7 @@
 			width: calc(1135 * 100vw / 1440);
 			margin-bottom: calc(88 * 100vw / 1440);
 			&-grid {
-				grid-column-gap: calc(5 * 100vw / 1440);
+				grid-column-gap: calc(20 * 100vw / 1440);
 				grid-row-gap: calc(14 * 100vw / 1440);
 			}
 			&-pagination {
@@ -202,7 +202,7 @@
 			}
 		}
 		&__sidebar {
-			width: calc(285 * 100vw / 1440);
+			width: calc(240 * 100vw / 1440);
 			grid-row-gap: calc(19 * 100vw / 1440);
 		}
 		&__search {
@@ -214,7 +214,7 @@
 				@include font-ubuntu(500, calc(16 * 100vw / 1440), calc(18 * 100vw / 1440));
 			}
 			&-field {
-				width: calc(259 * 100vw / 1440);
+				width: calc(214 * 100vw / 1440);
 				height: calc(35 * 100vw / 1440);
 				border-radius: calc(2 * 100vw / 1440);
 				@include font-ubuntu(400, calc(12 * 100vw / 1440), 144.4%);
