@@ -41,14 +41,16 @@
 }
 
 .news-item {
-	width: 285px;
+	width: 220px;
 	height: 365px;
 	background: $color_white;
 	border-radius: 8px;
 	overflow: hidden;
 	&__image {
-		width: 285px;
+		width: 220px;
 		height: 182px;
+		object-fit: cover;
+		object-position: center;
 	}
 	&__badge {
 		margin-top: 18px;
@@ -64,6 +66,7 @@
 	&__title {
 		margin-top: 6px;
 		margin-left: 21px;
+		margin-right: 21px;
 		text-align: left;
         @include font-ubuntu(400, 16px, 144.4%);
 		color: $color_black;
@@ -124,11 +127,11 @@
 	}
 
 	.news-item {
-		width: calc(285 * 100vw / 1440);
+		width: calc(220 * 100vw / 1440);
 		height: calc(365 * 100vw / 1440);
 		border-radius: calc(8 * 100vw / 1440);
 		&__image {
-			width: calc(285 * 100vw / 1440);
+			width: calc(220 * 100vw / 1440);
 			height: calc(182 * 100vw / 1440);
 		}
 		&__badge {
@@ -143,6 +146,7 @@
 		&__title {
 			margin-top: calc(6 * 100vw / 1440);
 			margin-left: calc(21 * 100vw / 1440);
+			margin-right: calc(21 * 100vw / 1440);
 	        @include font-ubuntu(400, calc(16 * 100vw / 1440), 144.4%);
 		}
 		&__stats {

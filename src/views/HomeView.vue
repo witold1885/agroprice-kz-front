@@ -4,8 +4,9 @@
     <h1 class="heading-1" style="height: 0; color: white; margin: 0;">Сельхозтехника Продажа сельхозтехники Казахстан</h1>
     <MainCatalog />
     <NewsCarousel
-      title="Новости"
-      :news="homeNews"
+      v-if="lastBlogArticles.length != 0"
+      title="Полезное"
+      :news="lastBlogArticles"
     />
     <div class="seo-text">
 <h2>Продажа сельхозтехники в Казахстане</h2>
@@ -52,6 +53,7 @@
 </style>
 
 <script>
+import { mapState } from 'vuex'
 import Banner from '@/components/Banner/Banner'
 import MainCatalog from '@/components/Catalog/MainCatalog'
 import NewsCarousel from '@/components/News/NewsCarousel'
@@ -68,6 +70,12 @@ export default {
     return {
       homeNews: news
     }
+  },
+  computed: {
+    ...mapState('info', ['lastBlogArticles'])
+  },
+  async mounted () {
+    await this.$store.dispatch('info/getLastBlogArticles')
   }
 }
 </script>

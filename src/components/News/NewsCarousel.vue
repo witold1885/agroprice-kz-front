@@ -71,7 +71,7 @@ export default {
 				snapAlign: 'start',
 				breakpoints: {
 					993: {
-						itemsToShow: 4
+						itemsToShow: 5
 					},
 					415: {
 						itemsToShow: 3

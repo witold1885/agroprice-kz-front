@@ -6,6 +6,7 @@ export const state = {
   banner: null,
   blogArticles: [],
   blogLastArticles: [],
+  lastBlogArticles: [],
   pages: 1,
   blogArticle: null,
   error: null
@@ -20,6 +21,9 @@ export const mutations = {
   },
   setBlogLastArticles(state, lastArticles) {
     state.blogLastArticles = lastArticles
+  },
+  setLastBlogArticles(state, lastArticles) {
+    state.lastBlogArticles = lastArticles
   },
   setPages(state, pages) {
     state.pages = pages
@@ -71,6 +75,19 @@ export const actions = {
       commit('setPages', response.data.pages)
       commit('setBlogArticles', response.data.articles)
       commit('setBlogLastArticles', response.data.lastArticles)
+    }
+    else {
+      console.log(response.data.error)
+    }
+  },
+  async getLastBlogArticles ({ commit }) {
+    const response = await api.get('/blog/last-articles')
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      commit('setLastBlogArticles', response.data.lastArticles)
     }
     else {
       console.log(response.data.error)
