@@ -24,7 +24,7 @@
 					<div class="blog__last-list d-flex flex-column">
 						<a :href="`/blog/${article.url}`" v-for="(article, index) of blogLastArticles" :key="index" class="blog__last-list-item d-flex flex-column">
 							<div class="blog__last-list-item-title">{{ article.title }}</div>
-							<div class="blog__last-list-item-date">12.10.2022</div>							
+							<div class="blog__last-list-item-date">{{ formatDate(new Date(article.date)) }}</div>							
 						</a>
 					</div>					
 				</div>
@@ -74,6 +74,14 @@ export default {
 		async getArticles (page = 1, search = '') {
 			await this.$store.dispatch('info/getBlogArticles', { page, search })
 		},
+		formatDate (date) {
+			const year = date.getFullYear()
+			let month = date.getMonth() + 1
+			month = month >= 10 ? month : '0' + month
+			let day = date.getDate()
+			day = day >= 10 ? day : '0' + day
+			return `${day}.${month}.${year}`
+		}
 	}
 }
 </script>

@@ -9,7 +9,7 @@
 			<div class="news-item__stats-views d-flex align-items-center">
 				<img
 					class="news-item__stats-views-icon"
-					:src="require('@/assets/images/eye.png')"
+					:src="require('@/assets/images/eye-darker.png')"
 				/>
 				<span class="news-item__stats-views-value">{{ item.views }}</span>
 			</div>
@@ -18,7 +18,7 @@
 					class="news-item__stats-date-icon"
 					:src="require('@/assets/images/calendar.png')"
 				/>
-				<span class="news-item__stats-date-value">{{ formatDate(new Date(item.created_at)) }}</span>
+				<span class="news-item__stats-date-value">{{ formatDate(new Date(item.date)) }}</span>
 			</div>
 		</div>
 	</a>

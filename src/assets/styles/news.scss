@@ -65,7 +65,7 @@
 		margin-top: 6px;
 		margin-left: 21px;
 		text-align: left;
-        @include font-ubuntu(400, 14px, 144.4%);
+        @include font-ubuntu(400, 16px, 144.4%);
 		color: $color_black;
 	}
 	&__stats {
@@ -90,7 +90,7 @@
 				height: 11.47px;
 			}
 			&-value {
-        		@include font-ubuntu(300, 12px, 144.4%);
+        		@include font-ubuntu(300, 14px, 144.4%);
 				color: $color_black;
 			}
 		}
@@ -143,7 +143,7 @@
 		&__title {
 			margin-top: calc(6 * 100vw / 1440);
 			margin-left: calc(21 * 100vw / 1440);
-	        @include font-ubuntu(400, calc(14 * 100vw / 1440), 144.4%);
+	        @include font-ubuntu(400, calc(16 * 100vw / 1440), 144.4%);
 		}
 		&__stats {
 			margin-bottom: calc(25.76 * 100vw / 1440);
@@ -165,7 +165,7 @@
 					height: calc(11.47 * 100vw / 1440);
 				}
 				&-value {
-	        		@include font-ubuntu(300, calc(12 * 100vw / 1440), 144.4%);
+	        		@include font-ubuntu(300, calc(14 * 100vw / 1440), 144.4%);
 				}
 			}
 		}
@@ -215,7 +215,7 @@
 		&__title {
 			margin-top: 6px;
 			margin-left: 12px;
-	        @include font-ubuntu(400, 14px, 144.4%);
+	        @include font-ubuntu(400, 16px, 144.4%);
 		}
 		&__stats {
 			margin-bottom: 15.84px;
@@ -237,7 +237,7 @@
 					height: 11.47px;
 				}
 				&-value {
-	        		@include font-ubuntu(300, 12px, 144.4%);
+	        		@include font-ubuntu(300, 14px, 144.4%);
 				}
 			}
 		}
@@ -283,7 +283,7 @@
 		&__title {
 			margin-top: calc(6 * 100vw / 768);
 			margin-left: calc(12 * 100vw / 768);
-	        @include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
+	        @include font-ubuntu(400, calc(16 * 100vw / 768), 144.4%);
 		}
 		&__stats {
 			margin-bottom: calc(15.84 * 100vw / 768);
@@ -305,7 +305,7 @@
 					height: calc(11.47 * 100vw / 768);
 				}
 				&-value {
-	        		@include font-ubuntu(300, calc(12 * 100vw / 768), 144.4%);
+	        		@include font-ubuntu(300, calc(14 * 100vw / 768), 144.4%);
 				}
 			}
 		}
