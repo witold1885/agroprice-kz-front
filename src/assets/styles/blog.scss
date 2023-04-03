@@ -191,7 +191,7 @@
 			width: calc(1135 * 100vw / 1440);
 			margin-bottom: calc(88 * 100vw / 1440);
 			&-grid {
-				grid-column-gap: calc(20 * 100vw / 1440);
+				grid-column-gap: calc(5 * 100vw / 1440);
 				grid-row-gap: calc(14 * 100vw / 1440);
 			}
 			&-pagination {
