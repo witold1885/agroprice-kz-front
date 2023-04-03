@@ -10,7 +10,7 @@
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div v-if="product" class="product__wrap">
 			<div class="product__main d-flex">
-				<h1 class="product__info-mobile-title">{{ product.name }}</h1>
+				<h1 v-if="breakpoint == 'sm'" class="product__info-mobile-title">{{ product.name }}</h1>
 				<div v-if="activeImage" class="product__images d-flex flex-column justify-content-between">
 					<div class="product__images-full" @click="galleryImage = activeImage">
 						<img :src="`${storageURL}/${activeImage.path}`" />
@@ -54,7 +54,7 @@
 					<!-- <div v-if="product.price_negotiable" class="product__info-negotiable">Договорная</div> -->
 					<div class="product__info-main d-flex flex-column justify-content-between align-items-end">
 						<div class="product__info-top">
-							<h1 class="product__info-title">{{ product.name }}</h1>
+							<h1 v-if="breakpoint != 'sm'" class="product__info-title">{{ product.name }}</h1>
 							<div class="product__info-sell d-flex">
 								<div class="product__info-sell-left">
 									<div class="product__info-sell-price">
@@ -209,7 +209,8 @@ export default {
 			galleryImage: null,
 			whatsappLink: null,
 			sellerProductsLimit: 10,
-			phoneShow: false
+			phoneShow: false,
+			breakpoint: 'lg'
 		}
 	},
 	computed: {
@@ -240,6 +241,13 @@ export default {
 			]
 		}
     },
+	created () {
+		window.addEventListener('resize', this.handleResize)
+		this.handleResize()
+	},
+	unmounted () {
+		window.removeEventListener('resize', this.handleResize)
+	},
 	async mounted () {
 		await this.$store.dispatch('auth/getUser')
 		await this.init()
@@ -248,6 +256,11 @@ export default {
 	methods: {
 		...mapActions('product', ['getProduct', 'increaseProductViews']),
 		...mapActions('profile', ['addProductToFavorites', 'delProductFromFavorites']),
+		handleResize () {
+			if (window.innerWidth > 992) this.breakpoint = 'lg'
+			else if (window.innerWidth > 414) this.breakpoint = 'md'
+			else this.breakpoint = 'sm'
+		},
 		makeWhatsappLink () {
 			let whatsappPhone = this.product.user.profile.whatsapp || this.product.user.profile.phone
 			if (whatsappPhone) {
