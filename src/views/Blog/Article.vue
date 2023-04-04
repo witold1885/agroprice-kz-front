@@ -154,26 +154,28 @@ export default {
 					let image = images[0]
 					let contentImage = this.contentImages[i]
 					const rate = contentImage.width / contentImage.height
+					let width, height
 					if (this.breakpoint == 'xl') {
-						image.width = 1200
-						image.height = 1200 / rate
+						width = 1200
+						height = 1200 / rate
 					}
 					else if (this.breakpoint == 'lg') {
-						image.width = 1200 * window.innerWidth / 1440
-						image.height = image.width / rate
+						width = 1200 * window.innerWidth / 1440
+						height = width / rate
 					}
 					else if (this.breakpoint == 'md') {
-						image.width = 688
-						image.height = 688 / rate
+						width = 688
+						height = 688 / rate
 					}
 					else if (this.breakpoint == 'sm') {
-						image.width = 688 * window.innerWidth / 768
-						image.height = image.width / rate
+						width = 688 * window.innerWidth / 768
+						height = width / rate
 					}
 					else if (this.breakpoint == 'xs') {
-						image.width = 280 * window.innerWidth / 320
-						image.height = image.width / rate
+						width = 280 * window.innerWidth / 320
+						height = width / rate
 					}
+					image.style.cssText += `width:${width}px;height:${height}px;`;
 				}
 			}
 		},
