@@ -9,8 +9,8 @@
 			<!-- <img class="article__image" :src="`${storageURL}/${blogArticle.image}`" /> -->
 			<!-- <h1 class="article__title heading-1">{{ blogArticle.title }}</h1> -->
 			<div class="article__content" v-html="blogArticle.content"></div>
-			<div class="article__social d-flex justify-content-between align-items-center">
-				<div class="article__social-text">Нажмите что бы поделиться новостью:</div>
+			<div class="article__social d-flex align-items-center">
+				<div class="article__social-text">Нажмите чтобы поделиться новостью:</div>
 				<div class="article__social-icons d-flex align-items-center">
 					<img class="article__social-icon" :src="require('@/assets/images/socials/fb.png')">
 					<img class="article__social-icon" :src="require('@/assets/images/socials/tt.png')">
@@ -52,7 +52,8 @@ export default {
 				'Ноя',
 				'Дек',
 			],
-			breakpoint: 'lg'
+			breakpoint: 'xl',
+			contentImages: []
 		}
 	},
 	computed: {
@@ -107,9 +108,11 @@ export default {
 	methods: {
 		...mapActions('info', ['getBlogArticle', 'increaseArticleViews']),
 		handleResize () {
-			if (window.innerWidth > 992) this.breakpoint = 'lg'
-			else if (window.innerWidth > 414) this.breakpoint = 'md'
-			else this.breakpoint = 'sm'
+			if (window.innerWidth > 1440) this.breakpoint = 'xl'
+			else if (window.innerWidth > 992) this.breakpoint = 'lg'
+			else if (window.innerWidth > 768) this.breakpoint = 'md'
+			else if (window.innerWidth > 414) this.breakpoint = 'sm'
+			else this.breakpoint = 'xs'
 			this.fixImagesSize()
 		},
 		async init () {
@@ -138,19 +141,40 @@ export default {
 				image.src = src
 					.replace('https://agroprice.kz', 'https://manager.agroprice.kz')
 					.replace('http://localhost:8080', 'https://manager.agroprice.kz')
+				this.contentImages.push({ width: image.width, height: image.height })
 			}
 		},
 		fixImagesSize () {
-			let contentImages = document.querySelectorAll('.article__content img')
-			let mw = 1440
-			if (this.breakpoint == 'md') mw = 768
-			else if (this.breakpoint == 'sm') mw = 320
-			for (let image of contentImages) {
-				const width = image.width
-				const height = image.height
-				const rate = width / height
-				image.width = width * window.innerWidth / mw
-				image.height = image.width / rate
+			let lines = document.querySelectorAll('.article__content p')
+			let i = 0
+			for (let line of lines) {
+				let images = line.querySelectorAll('img')
+				console.log(images)
+				if (images.length == 1) {
+					let image = images[0]
+					let contentImage = this.contentImages[i]
+					const rate = contentImage.width / contentImage.height
+					if (this.breakpoint == 'xl') {
+						image.width = 1200
+						image.height = 1200 / rate
+					}
+					else if (this.breakpoint == 'lg') {
+						image.width = 1200 * window.innerWidth / 1440
+						image.height = image.width / rate
+					}
+					else if (this.breakpoint == 'md') {
+						image.width = 688
+						image.height = 688 / rate
+					}
+					else if (this.breakpoint == 'sm') {
+						image.width = 688 * window.innerWidth / 768
+						image.height = image.width / rate
+					}
+					else if (this.breakpoint == 'xs') {
+						image.width = 280 * window.innerWidth / 320
+						image.height = image.width / rate
+					}
+				}
 			}
 		},
 		makeBreadcrumbs () {

@@ -219,7 +219,7 @@
 		&__title {
 			margin-top: 6px;
 			margin-left: 12px;
-	        @include font-ubuntu(400, 16px, 144.4%);
+	        @include font-ubuntu(400, 14px, 144.4%);
 		}
 		&__stats {
 			margin-bottom: 15.84px;
@@ -287,7 +287,7 @@
 		&__title {
 			margin-top: calc(6 * 100vw / 768);
 			margin-left: calc(12 * 100vw / 768);
-	        @include font-ubuntu(400, calc(16 * 100vw / 768), 144.4%);
+	        @include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
 		}
 		&__stats {
 			margin-bottom: calc(15.84 * 100vw / 768);
