@@ -20,7 +20,7 @@
 			class="banner__image"
 			:src="`${storageURL}/${activeImage.path_sm}`"
 		/>
-		<div class="banner__nav d-flex justify-content-between align-items-center">
+		<div v-if="images.length > 1" class="banner__nav d-flex justify-content-between align-items-center">
 			<NavButton
 				side="left"
 				color="white"
