@@ -372,4 +372,5 @@ export default {
 
 <style lang="scss">
 @import '@/assets/styles/product.scss';
+@import '@/assets/styles/catalog.scss';
 </style>
