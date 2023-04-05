@@ -4,10 +4,21 @@
 		<div class="banner__subtitle">
 			Увеличивайте продажи и повышайте узнаваемость - используйте услуги продвижения экосистемы Своё
 		</div> -->
-		<button class="banner__button">Узнать подробнее</button>
+		<button class="banner__button" @click="goFurther(activeImage.link)">{{ activeImage.button_text }}</button>
 		<img
+			v-if="breakpoint == 'lg'"
 			class="banner__image"
 			:src="`${storageURL}/${activeImage.path}`"
+		/>
+		<img
+			v-if="breakpoint == 'md'"
+			class="banner__image"
+			:src="`${storageURL}/${activeImage.path_md}`"
+		/>
+		<img
+			v-if="breakpoint == 'sm'"
+			class="banner__image"
+			:src="`${storageURL}/${activeImage.path_sm}`"
 		/>
 		<div class="banner__nav d-flex justify-content-between align-items-center">
 			<NavButton
@@ -48,7 +59,8 @@ export default {
 		return {
 			images: [],
 			activeImage: null,
-			autoplayInterval: null
+			autoplayInterval: null,
+			breakpoint: 'lg'
 		}
 	},
 	computed: {
@@ -56,6 +68,13 @@ export default {
 		storageURL () {
 			return STORAGE_URL
 		}
+	},
+	created () {
+		window.addEventListener('resize', this.handleResize)
+		this.handleResize()
+	},
+	unmounted () {
+		window.removeEventListener('resize', this.handleResize)
 	},
 	async mounted () {
 		await this.$store.dispatch('info/getBanner', { code: 'main' })
@@ -65,6 +84,11 @@ export default {
 		this.setAutoplay()
 	},
 	methods: {
+		handleResize () {
+			if (window.innerWidth > 992) this.breakpoint = 'lg'
+			else if (window.innerWidth > 414) this.breakpoint = 'md'
+			else this.breakpoint = 'sm'
+		},
 		changeImage (side) {
 			this.stopAutoplay()
 			this.switchImage(side)
@@ -103,6 +127,9 @@ export default {
 			if (this.autoplayInterval) {
 				clearInterval(this.autoplayInterval)
 			}
+		},
+		goFurther (link) {
+			this.$router.push(link)
 		}
 	}
 }

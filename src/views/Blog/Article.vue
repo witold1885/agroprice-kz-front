@@ -27,7 +27,6 @@
 import { mapState, mapActions } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
-
 export default {
 	components: { Breadcrumbs },
 	data () {
@@ -57,7 +56,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapState('info', ['blogArticle']),
+		...mapState('info', ['blogArticle', 'blogCategories']),
 		storageURL () {
 			return STORAGE_URL
 		},
@@ -103,6 +102,8 @@ export default {
 		window.removeEventListener('resize', this.handleResize)
 	},
 	async mounted () {
+		await this.$store.dispatch('info/getBlogCategories')
+		console.log(this.blogCategories)
 		await this.init()
 	},
 	methods: {
@@ -185,7 +186,6 @@ export default {
 				text: this.blogArticle.title,
 				link: '/blog/' + this.blogArticle.url,
 				current: true
-
 			})
 		},
 		setDefaultBreadcrumbs () {

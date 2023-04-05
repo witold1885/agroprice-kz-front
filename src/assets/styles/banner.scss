@@ -22,14 +22,14 @@
 	}
 	&__button {
 		position: absolute;
-		top: 269px;
+		top: 241px;
 		z-index: 3;
 		width: 144px;
 		height: 41px;
 		background: transparent;
 		border: 1px solid $color_white;
 		border-radius: 8px;
-        @include font-ubuntu(500, 12px, 14px);
+        @include font-ubuntu(500, 10px, 14px);
 		color: $color_white;
 	}
 	&__image {
@@ -80,11 +80,11 @@
 	        @include font-ubuntu(300, calc(12 * 100vw / 1440), 176.9%);
 		}
 		&__button {
-			top: calc(269 * 100vw / 1440);
+			top: calc(241 * 100vw / 1440);
 			width: calc(144 * 100vw / 1440);
 			height: calc(41 * 100vw / 1440);
 			border-radius: calc(8 * 100vw / 1440);
-	        @include font-ubuntu(500, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
+	        @include font-ubuntu(500, calc(10 * 100vw / 1440), calc(14 * 100vw / 1440));
 		}
 		&__nav {
 			position: absolute;
@@ -125,7 +125,7 @@
 			width: 144px;
 			height: 41px;
 			border-radius: 8px;
-	        @include font-ubuntu(500, 12px, 14px);
+	        @include font-ubuntu(500, 10px, 14px);
 		}
 		&__nav {
 			width: 149px;
@@ -164,7 +164,7 @@
 			width: calc(144 * 100vw / 768);
 			height: calc(41 * 100vw / 768);
 			border-radius: calc(8 * 100vw / 768);
-	        @include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+	        @include font-ubuntu(500, calc(10 * 100vw / 768), calc(14 * 100vw / 768));
 		}
 		&__nav {
 			width: calc(149 * 100vw / 768);
@@ -202,7 +202,8 @@
 			top: calc(116 * 100vw / 320);
 			width: calc(116 * 100vw / 320);
 			height: calc(33 * 100vw / 320);
-	        @include font-ubuntu(500, calc(10 * 100vw / 320), calc(11 * 100vw / 320));
+			border-radius: calc(8 * 100vw / 320);
+	        @include font-ubuntu(500, calc(8 * 100vw / 320), calc(11 * 100vw / 320));
 		}
 		&__nav {
 			position: absolute;

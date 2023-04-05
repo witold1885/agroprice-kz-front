@@ -4,6 +4,7 @@ export const namespaced = true
 
 export const state = {
   banner: null,
+  blogCategories: [],
   blogArticles: [],
   blogLastArticles: [],
   lastBlogArticles: [],
@@ -15,6 +16,9 @@ export const state = {
 export const mutations = {
   setBanner(state, banner) {
     state.banner = banner
+  },
+  setBlogCategories(state, categories) {
+    state.blogCategories = categories
   },
   setBlogArticles(state, articles) {
     state.blogArticles = articles
@@ -63,6 +67,19 @@ export const actions = {
       console.log(response.data.error)
       commit('setError', response.data.error)
       return false
+    }
+  },
+  async getBlogCategories ({ commit }) {
+    const response = await api.get('/blog/categories')
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    if (response.data.success) {
+      commit('setBlogCategories', response.data.categories)
+    }
+    else {
+      console.log(response.data.error)
     }
   },
   async getBlogArticles ({ commit }, payload) {
