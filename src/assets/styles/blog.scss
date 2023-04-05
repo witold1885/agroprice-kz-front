@@ -30,6 +30,7 @@
 	&__sidebar {
 		width: 240px;
 		grid-row-gap: 19px;
+		margin-bottom: 88px;
 	}
 	&__search {
 		width: 100%;
@@ -85,12 +86,39 @@
 			}
 		}
 	}
+	&__categories {
+		width: 100%;
+		background: #EFEFEF;
+		border-radius: 8px;
+		padding: 26px 22px 20px;
+		&-title {
+			@include font-ubuntu(500, 20px, 23px);
+			color: $color_black;
+		}
+		&-list {
+			margin-top: 20px;
+			grid-row-gap: 20px;
+			&-item {
+				@include font-ubuntu(400, 14px, 144.4%);
+				color: $color_black;
+				cursor: pointer;
+				&:not(:last-child) {
+					border-bottom: 1px solid #D2D2D2;
+					padding-bottom: 20px;
+				}
+			}
+		}
+	}
 }
 
 .article {
 	&__wrap {
 		width: 100%;
 		position: relative;
+		grid-column-gap: 20px;
+	}
+	&__main {
+		width: 940px;
 	}
 	&__date {
 		position: absolute;
@@ -178,6 +206,9 @@
 			cursor: pointer;
 		}
 	}
+	&__sidebar {
+		width: 240px;
+	}
 }
 
 @media screen and (max-width: 1440px) {
@@ -205,6 +236,7 @@
 		&__sidebar {
 			width: calc(240 * 100vw / 1440);
 			grid-row-gap: calc(19 * 100vw / 1440);
+			margin-bottom: calc(88 * 100vw / 1440);
 		}
 		&__search {
 			height: calc(89 * 100vw / 1440);
@@ -239,6 +271,23 @@
 					}
 					&-date {
 						@include font-ubuntu(300, calc(12 * 100vw / 1440), 144.4%);
+					}
+				}
+			}
+		}
+		&__categories {
+			border-radius: calc(8 * 100vw / 1440);
+			padding: calc(26 * 100vw / 1440) calc(22 * 100vw / 1440) calc(20 * 100vw / 1440);
+			&-title {
+				@include font-ubuntu(500, calc(20 * 100vw / 1440), calc(23 * 100vw / 1440));
+			}
+			&-list {
+				margin-top: calc(20 * 100vw / 1440);
+				grid-row-gap: calc(20 * 100vw / 1440);
+				&-item {
+					@include font-ubuntu(400, calc(14 * 100vw / 1440), 144.4%);
+					&:not(:last-child) {
+						padding-bottom: calc(20 * 100vw / 1440);
 					}
 				}
 			}
@@ -336,6 +385,7 @@
 		&__sidebar {
 			width: 688px;
 			grid-row-gap: 19px;
+			margin-bottom: 88px;
 		}
 		&__search {
 			height: 89px;
@@ -374,6 +424,96 @@
 				}
 			}
 		}
+		&__categories {
+			border-radius: 8px;
+			padding: 26px 22px 20px;
+			&-title {
+				@include font-ubuntu(500, 20px, 23px);
+			}
+			&-list {
+				margin-top: 20px;
+				grid-row-gap: 20px;
+				&-item {
+					@include font-ubuntu(400, 14px, 144.4%);
+					&:not(:last-child) {
+						padding-bottom: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	.article {
+		&__wrap {
+			flex-direction: column;
+			grid-row-gap: 20px;
+		}
+		&__main {
+			width: 688px;
+		}
+		&__date {
+			width: 68px;
+			height: 64px;
+			top: 25px;
+			left: 25px;
+			&-day {
+				@include font-ubuntu(400, 24px, 28px);
+			}
+			&-month {
+				@include font-ubuntu(400, 14px, 16px);
+			}
+		}
+		&__title {
+			margin-top: 22px;
+			margin-bottom: 22px;
+		}
+		&__content {
+			& h1 {
+				@include font-ubuntu(500, 26px, 30px);
+			}
+			& h2 {
+				@include font-ubuntu(500, 20px, 23px);
+			}
+			& p {
+				@include font-gilroy(400, 16px, 21px);
+			}
+			& ul {
+				& li {
+					@include font-gilroy(400, 16px, 21px);
+				    padding-left: 23px;
+				}
+			}
+			& ol {
+				& li {
+					@include font-gilroy(400, 16px, 21px);
+					&:before {
+						margin-right: 10px;
+						@include font-gilroy(700, 16px, 21px);
+					}
+				}
+			}
+		}
+		&__social {
+			margin-top: 47px;
+			margin-bottom: 27px;
+			height: 65px;
+			border-radius: 7px;
+			padding-left: 31px;
+			padding-right: 25px;
+			&-text {
+				@include font-ubuntu(500, 20px, 23px);			
+			}
+			&-icons {
+				grid-column-gap: 15px;
+			}
+			&-icon {
+				@include box(40px, 40px);
+			}
+		}
+		&__sidebar {
+			width: 100%;
+			margin-bottom: 77px;
+		}
 	}
 }
 
@@ -403,6 +543,7 @@
 		&__sidebar {
 			width: calc(688 * 100vw / 768);
 			grid-row-gap: calc(19 * 100vw / 768);
+			margin-bottom: calc(88 * 100vw / 768);
 		}
 		&__search {
 			height: calc(89 * 100vw / 768);
@@ -441,9 +582,32 @@
 				}
 			}
 		}
+		&__categories {
+			border-radius: calc(8 * 100vw / 768);
+			padding: calc(26 * 100vw / 768) calc(22 * 100vw / 768) calc(20 * 100vw / 768);
+			&-title {
+				@include font-ubuntu(500, calc(20 * 100vw / 768), calc(23 * 100vw / 768));
+			}
+			&-list {
+				margin-top: calc(20 * 100vw / 768);
+				grid-row-gap: calc(20 * 100vw / 768);
+				&-item {
+					@include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
+					&:not(:last-child) {
+						padding-bottom: calc(20 * 100vw / 768);
+					}
+				}
+			}
+		}
 	}
 
 	.article {
+		&__wrap {
+			grid-row-gap: calc(20 * 100vw / 768);
+		}
+		&__main {
+			width: calc(688 * 100vw / 768);
+		}
 		&__date {
 			width: calc(68 * 100vw / 768);
 			height: calc(64 * 100vw / 768);
@@ -489,7 +653,7 @@
 		}
 		&__social {
 			margin-top: calc(47 * 100vw / 768);
-			margin-bottom: calc(77 * 100vw / 768);
+			margin-bottom: calc(27 * 100vw / 768);
 			height: calc(65 * 100vw / 768);
 			border-radius: calc(7 * 100vw / 768);
 			padding-left: calc(31 * 100vw / 768);
@@ -503,6 +667,9 @@
 			&-icon {
 				@include box(calc(40 * 100vw / 768), calc(40 * 100vw / 768));
 			}
+		}
+		&__sidebar {
+			margin-bottom: calc(77 * 100vw / 768);
 		}
 	}
 }
@@ -533,6 +700,7 @@
 		&__sidebar {
 			width: calc(280 * 100vw / 320);
 			grid-row-gap: calc(10 * 100vw / 320);
+			margin-bottom: calc(33.65 * 100vw / 320);
 		}
 		&__search {
 			height: calc(89 * 100vw / 320);
@@ -571,9 +739,32 @@
 				}
 			}
 		}
+		&__categories {
+			border-radius: calc(8 * 100vw / 320);
+			padding: calc(26 * 100vw / 320) calc(22 * 100vw / 320) calc(20 * 100vw / 320);
+			&-title {
+				@include font-ubuntu(500, calc(16 * 100vw / 320), calc(18 * 100vw / 320));
+			}
+			&-list {
+				margin-top: calc(20 * 100vw / 320);
+				grid-row-gap: calc(20 * 100vw / 320);
+				&-item {
+					@include font-ubuntu(400, calc(14 * 100vw / 320), 144.4%);
+					&:not(:last-child) {
+						padding-bottom: calc(20 * 100vw / 320);
+					}
+				}
+			}
+		}
 	}
 
 	.article {
+		&__wrap {
+			grid-row-gap: calc(20 * 100vw / 320);
+		}
+		&__main {
+			width: calc(280 * 100vw / 320);
+		}
 		&__date {
 			width: calc(68 * 100vw / 320);
 			height: calc(64 * 100vw / 320);
@@ -622,7 +813,7 @@
 			justify-content: center;
 			grid-row-gap: calc(11 * 100vw / 320);
 			margin-top: calc(27 * 100vw / 320);
-			margin-bottom: calc(45 * 100vw / 320);
+			margin-bottom: calc(7 * 100vw / 320);
 			height: calc(119 * 100vw / 320);
 			border-radius: calc(7 * 100vw / 320);
 			padding: 0;
@@ -637,6 +828,9 @@
 			&-icon {
 				@include box(calc(33 * 100vw / 320), calc(33 * 100vw / 320));
 			}
+		}
+		&__sidebar {
+			margin-bottom: calc(45 * 100vw / 768);
 		}
 	}
 

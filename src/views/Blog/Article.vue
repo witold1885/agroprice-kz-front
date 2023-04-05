@@ -1,22 +1,45 @@
 <template>
 	<div class="article">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
-		<div v-if="blogArticle" class="article__wrap">
+		<div v-if="blogArticle" class="article__wrap d-flex">
 			<!-- <div class="article__date d-flex flex-column justify-content-center align-items-center">
 				<div class="article__date-day">{{ prettyDay }}</div>
 				<div class="article__date-month">{{ prettyMonth }}</div>				
 			</div> -->
 			<!-- <img class="article__image" :src="`${storageURL}/${blogArticle.image}`" /> -->
 			<!-- <h1 class="article__title heading-1">{{ blogArticle.title }}</h1> -->
-			<div class="article__content" v-html="blogArticle.content"></div>
-			<div class="article__social d-flex align-items-center">
-				<div class="article__social-text">Нажмите чтобы поделиться новостью:</div>
-				<div class="article__social-icons d-flex align-items-center">
-					<img class="article__social-icon" :src="require('@/assets/images/socials/fb.png')">
-					<img class="article__social-icon" :src="require('@/assets/images/socials/tt.png')">
-					<img class="article__social-icon" :src="require('@/assets/images/socials/vk.png')">
-					<img class="article__social-icon" :src="require('@/assets/images/socials/ok.png')">
-					<img class="article__social-icon" :src="require('@/assets/images/socials/wa.png')">
+			<div class="article__main">
+				<div class="article__content" v-html="blogArticle.content"></div>
+				<div class="article__social d-flex align-items-center">
+					<div class="article__social-text">Нажмите чтобы поделиться статьей:</div>
+					<div class="article__social-icons d-flex align-items-center">
+						<img class="article__social-icon" :src="require('@/assets/images/socials/fb.png')">
+						<img class="article__social-icon" :src="require('@/assets/images/socials/tt.png')">
+						<img class="article__social-icon" :src="require('@/assets/images/socials/vk.png')">
+						<img class="article__social-icon" :src="require('@/assets/images/socials/ok.png')">
+						<img class="article__social-icon" :src="require('@/assets/images/socials/wa.png')">
+					</div>
+				</div>
+			</div>
+			<div class="article__sidebar">
+				<div class="blog__categories">
+					<div class="blog__categories-title">Категории блога</div>
+					<div class="blog__categories-list d-flex flex-column">
+						<a
+							v-for="(category, index) of blogCategories"
+							:key="index"
+							class="blog__categories-list-item"
+							@click="selectCategory(category.id)"
+						>
+							{{ category.name }}			
+						</a>
+						<a
+							class="blog__categories-list-item"
+							@click="selectCategory(null)"
+						>
+							Все категории		
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -24,7 +47,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 export default {
@@ -103,11 +126,12 @@ export default {
 	},
 	async mounted () {
 		await this.$store.dispatch('info/getBlogCategories')
-		console.log(this.blogCategories)
+		// console.log(this.blogCategories)
 		await this.init()
 	},
 	methods: {
 		...mapActions('info', ['getBlogArticle', 'increaseArticleViews']),
+		...mapMutations('info', ['setBlogCategoryId']),
 		handleResize () {
 			if (window.innerWidth > 1440) this.breakpoint = 'xl'
 			else if (window.innerWidth > 992) this.breakpoint = 'lg'
@@ -150,18 +174,18 @@ export default {
 			let i = 0
 			for (let line of lines) {
 				let images = line.querySelectorAll('img')
-				console.log(images)
+				// console.log(images)
 				if (images.length == 1) {
 					let image = images[0]
 					let contentImage = this.contentImages[i]
 					const rate = contentImage.width / contentImage.height
 					let width, height
 					if (this.breakpoint == 'xl') {
-						width = 1200
-						height = 1200 / rate
+						width = 940
+						height = 940 / rate
 					}
 					else if (this.breakpoint == 'lg') {
-						width = 1200 * window.innerWidth / 1440
+						width = 940 * window.innerWidth / 1440
 						height = width / rate
 					}
 					else if (this.breakpoint == 'md') {
@@ -201,6 +225,10 @@ export default {
 					current: false
 				}
 			]
+		},
+		selectCategory (category_id) {
+			this.setBlogCategoryId(category_id)
+			this.$router.push('/blog')
 		}
 	}
 }

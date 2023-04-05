@@ -10,6 +10,7 @@ export const state = {
   lastBlogArticles: [],
   pages: 1,
   blogArticle: null,
+  category_id: null,
   error: null
 }
 
@@ -34,6 +35,9 @@ export const mutations = {
   },
   setBlogArticle(state, article) {
     state.blogArticle = article
+  },
+  setBlogCategoryId(state, category_id) {
+    state.category_id = category_id
   },
   setError(state, error) {
     state.error = error

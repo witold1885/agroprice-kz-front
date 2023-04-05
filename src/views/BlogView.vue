@@ -20,7 +20,7 @@
 					<input class="blog__search-field" placeholder="Поиск по заголовкам" />					
 				</div>
 				<div v-if="blogLastArticles.length != 0" class="blog__last">
-					<div class="blog__last-title">Последние новости</div>
+					<div class="blog__last-title">Последние статьи</div>
 					<div class="blog__last-list d-flex flex-column">
 						<a :href="`/blog/${article.url}`" v-for="(article, index) of blogLastArticles" :key="index" class="blog__last-list-item d-flex flex-column">
 							<div class="blog__last-list-item-title">{{ article.title }}</div>
@@ -28,13 +28,32 @@
 						</a>
 					</div>					
 				</div>
+				<div class="blog__categories">
+					<div class="blog__categories-title">Категории блога</div>
+					<div class="blog__categories-list d-flex flex-column">
+						<a
+							v-for="(category, index) of blogCategories"
+							:key="index"
+							class="blog__categories-list-item"
+							@click="selectCategory(category.id)"
+						>
+							{{ category.name }}			
+						</a>
+						<a
+							class="blog__categories-list-item"
+							@click="selectCategory(null)"
+						>
+							Все категории		
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 import NewsItem from '@/components/News/NewsItem'
@@ -62,17 +81,22 @@ export default {
 		}
 	},
 	computed: {
-		...mapState('info', ['blogArticles', 'blogLastArticles', 'pages']),
+		...mapState('info', ['blogCategories', 'blogArticles', 'blogLastArticles', 'pages', 'category_id']),
 		storageURL () {
 			return STORAGE_URL
 		}
 	},
 	async mounted () {
+		await this.$store.dispatch('info/getBlogCategories')
 		await this.getArticles()
+		this.emitter.on('change-page', async (page) => {
+			await this.getArticles(page)
+		})
 	},
 	methods: {
+		...mapMutations('info', ['setBlogCategoryId']),
 		async getArticles (page = 1, search = '') {
-			await this.$store.dispatch('info/getBlogArticles', { page, search })
+			await this.$store.dispatch('info/getBlogArticles', { page, search, category_id: this.category_id })
 		},
 		formatDate (date) {
 			const year = date.getFullYear()
@@ -81,6 +105,10 @@ export default {
 			let day = date.getDate()
 			day = day >= 10 ? day : '0' + day
 			return `${day}.${month}.${year}`
+		},
+		async selectCategory (category_id) {
+			this.setBlogCategoryId(category_id)
+			await this.getArticles()
 		}
 	}
 }
