@@ -17,7 +17,12 @@
 			<div class="blog__sidebar d-flex flex-column">
 				<div class="blog__search d-flex flex-column">
 					<div class="blog__search-title">Найти</div>
-					<input class="blog__search-field" placeholder="Поиск по заголовкам" />					
+					<input
+						class="blog__search-field"
+						placeholder="Поиск по заголовкам"
+						v-model="search"
+						@keyup="searchArticles"
+					/>					
 				</div>
 				<div v-if="blogLastArticles.length != 0" class="blog__last">
 					<div class="blog__last-title">Последние статьи</div>
@@ -57,7 +62,6 @@ import { mapState, mapMutations } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 import NewsItem from '@/components/News/NewsItem'
-import news from '@/components/News/news.js'
 import Pagination from '@/components/Common/Pagination'
 
 export default {
@@ -76,8 +80,8 @@ export default {
 					current: true
 				}
 			],
-			articles: news,
-			articleType: 'Блог'
+			articleType: 'Блог',
+			search: ''
 		}
 	},
 	computed: {
@@ -105,6 +109,9 @@ export default {
 			let day = date.getDate()
 			day = day >= 10 ? day : '0' + day
 			return `${day}.${month}.${year}`
+		},
+		async searchArticles () {
+			await this.getArticles(1, this.search)
 		},
 		async selectCategory (category_id) {
 			this.setBlogCategoryId(category_id)
