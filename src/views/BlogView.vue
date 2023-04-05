@@ -123,4 +123,5 @@ export default {
 
 <style lang="scss">
 @import '@/assets/styles/blog.scss';
+@import '@/assets/styles/news.scss';
 </style>
