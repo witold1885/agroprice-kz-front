@@ -45,4 +45,5 @@ export default {
 
 <style lang="scss">
 @import '@/assets/styles/profile.scss';
+@import '@/assets/styles/catalog.scss';
 </style>
