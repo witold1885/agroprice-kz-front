@@ -24,10 +24,10 @@
 					@click="showMoreSubcategories"
 				>Еще</button>
 			</div>
-			<div v-if="showButtons.length != 0">
+			<!-- <div v-if="showButtons.length != 0">
 				<span v-for="(button, index) of showButtons" :key="index">{{ button }}</span>
 			</div>
-			<div v-else>showButtons is empty</div>
+			<div v-else>showButtons is empty</div> -->
 			<div class="category__data d-flex">
 				<CategoryFilters v-if="maxPrice != 0 && minPrice != 0" :maxPrice="maxPrice" :minPrice="minPrice" @filtered="filterProducts" />
 				<CategoryProducts v-show="products.length != 0" :products="products" :pages="pages" />
@@ -73,7 +73,8 @@ export default {
 			showMoreSubcategoriesButton: false,
 			breakpoint: 'lg',
 			maxContainerWidth: 1200,
-			showButtons: []
+			// showButtons: [],
+			isMobileScreen: false
 		}
 	},
 	computed: {
@@ -140,44 +141,59 @@ export default {
 			else if (window.innerWidth > 992) this.maxContainerWidth = 1200 * window.innerWidth / 1440
 			else if (window.innerWidth > 768) this.maxContainerWidth = 688
 			else if (window.innerWidth > 414) this.maxContainerWidth = 688 * window.innerWidth / 768
-			else this.maxContainerWidth = 280 * window.innerWidth / 320
+			else {
+				this.maxContainerWidth = 280 * window.innerWidth / 320
+				this.isMobileScreen = true
+			}
 			this.calcSubcategoriesCount()
 		},
 		calcSubcategoriesCount() {
-			let subcatButtons = document.querySelectorAll('.category__subcategories-item')
-			// console.log(subcatButtons)
-			let showButtons = []
-			let totalWidth = 0;
-			const maxWidth = this.maxContainerWidth - 75
-			let maxWidthExceeded = false
-			for (let button of subcatButtons) {
-				// console.log(button.clientWidth)
-				totalWidth += button.clientWidth + 12
-				if (totalWidth >= maxWidth) {
-					maxWidthExceeded = true
-					break
+			if (!this.isMobileScreen) {
+				let subcatButtons = document.querySelectorAll('.category__subcategories-item')
+				// console.log(subcatButtons)
+				let showButtons = []
+				let totalWidth = 0;
+				const maxWidth = this.maxContainerWidth - 75
+				let maxWidthExceeded = false
+				for (let button of subcatButtons) {
+					// console.log(button.clientWidth)
+					totalWidth += button.clientWidth + 12
+					if (totalWidth >= maxWidth) {
+						maxWidthExceeded = true
+						break
+					}
+					else {
+						showButtons.push(button.innerText)
+					}
+				}
+				// console.log(showButtons)
+				// console.log(maxWidthExceeded)
+				// this.showButtons = showButtons
+				if (maxWidthExceeded) {
+					this.showSubcategories = []
+					for (let child of this.category.children) {
+						if (showButtons.indexOf(child.name) !== -1) {
+							this.showSubcategories.push(child)
+						}
+					}
+					this.showMoreSubcategoriesButton = true
 				}
 				else {
-					showButtons.push(button.innerText)
+					this.showSubcategories = this.category.children
 				}
+				this.subcategoriesLoaded = true
+				// console.log(this.showSubcategories)
 			}
-			// console.log(showButtons)
-			// console.log(maxWidthExceeded)
-			this.showButtons = showButtons
-			if (maxWidthExceeded) {
+			else {
 				this.showSubcategories = []
+				let c = 0
 				for (let child of this.category.children) {
-					if (showButtons.indexOf(child.name) !== -1) {
-						this.showSubcategories.push(child)
-					}
+					this.showSubcategories.push(child)
+					c++
+					if (c == 2) break
 				}
 				this.showMoreSubcategoriesButton = true
 			}
-			else {
-				this.showSubcategories = this.category.children
-			}
-			this.subcategoriesLoaded = true
-			// console.log(this.showSubcategories)
 		},
 		showMoreSubcategories () {
 			this.showSubcategories = this.category.children
