@@ -188,9 +188,9 @@ export default {
 				this.showSubcategories = []
 				let c = 0
 				for (let child of this.category.children) {
+					if (c == 2) break
 					this.showSubcategories.push(child)
 					c++
-					if (c == 2) break
 				}
 				this.showMoreSubcategoriesButton = true
 			}
