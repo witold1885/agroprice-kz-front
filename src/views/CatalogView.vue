@@ -24,6 +24,7 @@
 					@click="showMoreSubcategories"
 				>Еще</button>
 			</div>
+			<span>Test</span>
 			<span v-for="(button, index) of showButtons" :key="index">{{ button }}</span>
 			<div class="category__data d-flex">
 				<CategoryFilters v-if="maxPrice != 0 && minPrice != 0" :maxPrice="maxPrice" :minPrice="minPrice" @filtered="filterProducts" />
