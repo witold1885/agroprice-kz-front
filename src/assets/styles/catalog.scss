@@ -882,7 +882,7 @@
 			margin-left: 0;
 			margin-right: 0;
 			// margin-bottom: calc(9 * 100vw / 320);
-	        @include font-ubuntu(400, calc(10 * 100vw / 320), 144.4%);
+	        @include font-ubuntu(400, calc(12 * 100vw / 320), 144.4%);
 			max-height: calc(29 * 100vw / 320);
 			margin-top: calc(12 * 100vw / 320);
 		}
