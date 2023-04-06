@@ -24,6 +24,7 @@
 					@click="showMoreSubcategories"
 				>Еще</button>
 			</div>
+			<span v-for="(button, index) of showButtons" :key="index">{{ button }}</span>
 			<div class="category__data d-flex">
 				<CategoryFilters v-if="maxPrice != 0 && minPrice != 0" :maxPrice="maxPrice" :minPrice="minPrice" @filtered="filterProducts" />
 				<CategoryProducts v-show="products.length != 0" :products="products" :pages="pages" />
@@ -68,7 +69,8 @@ export default {
 			subcategoriesLoaded: false,
 			showMoreSubcategoriesButton: false,
 			breakpoint: 'lg',
-			maxContainerWidth: 1200
+			maxContainerWidth: 1200,
+			showButtons: ''
 		}
 	},
 	computed: {
@@ -159,6 +161,7 @@ export default {
 			// console.log(showButtons)
 			// console.log(maxWidthExceeded)
 			if (maxWidthExceeded) {
+				this.showButtons = showButtons
 				this.showSubcategories = []
 				for (let child of this.category.children) {
 					if (showButtons.indexOf(child.name) !== -1) {
