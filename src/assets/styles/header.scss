@@ -223,25 +223,29 @@ header {
 			overflow: scroll;
 			flex: 1;
 			padding: 18px 30px;
-			grid-column-gap: 37px;
-			grid-row-gap: 36px;
-			flex-flow: column wrap;
+			grid-column-gap: 10px;
+			grid-row-gap: 15px;
+			// flex-flow: column wrap;
 			&-row {
 				width: 100%;
 			}
 			&-block {
 				// max-width: 229px;
-				grid-row-gap: 17px;
+				width: 185px;
+				grid-row-gap: 10px;
 				&-title {
         			@include font-ubuntu(500, 18px, 113.33%);
 					color: $color_green;
 				}
 				&-items {
-					grid-row-gap: 7px;
+					grid-row-gap: 5px;
 				}
 				&-item {
         			@include font-ubuntu(400, 14px, 16px);
 					color: #3F3F3F;
+					&-all {
+						color: $color_green;
+					}
 				}
 			}
 		}
@@ -503,16 +507,17 @@ header {
 			}
 			&-subcategories {
 				padding: calc(18 * 100vw / 1440) calc(30 * 100vw / 1440);
-				grid-column-gap: calc(37 * 100vw / 1440);
-				grid-row-gap: calc(36 * 100vw / 1440);
+				grid-column-gap: calc(10 * 100vw / 1440);
+				grid-row-gap: calc(15 * 100vw / 1440);
 				&-block {
 					// max-width: calc(229 * 100vw / 1440);
-					grid-row-gap: calc(17 * 100vw / 1440);
+					width: calc(185 * 100vw / 1440);
+					grid-row-gap: calc(10 * 100vw / 1440);
 					&-title {
 	        	@include font-ubuntu(500, calc(18 * 100vw / 1440), 113.33%);
 					}
 					&-items {
-						grid-row-gap: calc(7 * 100vw / 1440);
+						grid-row-gap: calc(5 * 100vw / 1440);
 					}
 					&-item {
 	        	@include font-ubuntu(400, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
