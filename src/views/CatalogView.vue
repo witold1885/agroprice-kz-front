@@ -101,17 +101,19 @@ export default {
 		}
     },
 	created () {
-		// window.addEventListener('resize', this.handleResize)
+		window.addEventListener('resize', this.handleResize)
 		this.$watch(
 			() => this.$route.params.category,
 			async (toParams) => {
 				this.categoryUrl = toParams
+				this.subcategoriesLoaded = false
 				await this.init()
+				this.handleResize()
 			}
 		)
 	},
 	unmounted () {
-		// window.removeEventListener('resize', this.handleResize)
+		window.removeEventListener('resize', this.handleResize)
 	},
 	watch: {
 		'$route' (newValue, oldValue) {
