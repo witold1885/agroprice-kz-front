@@ -46,7 +46,7 @@ header {
 	width: 544px;
 	margin-top: 40px;
 	&__item {
-    @include font-ubuntu(400, 16px, 18px);
+    @include font-ubuntu(400, 18px, 18px);
 		color: $color_black;
 		text-decoration: none;
 		cursor: pointer;
@@ -144,16 +144,16 @@ header {
 			width: 19px;
 			height: 19px;
 			margin-top: 14px;
-			margin-left: 15px;
+			margin-left: 13px;
 			& img {
 				width: 100%;
 			}
 		}
 		&-title {
-      		@include font-ubuntu(500, 14px, 16px);
+      		@include font-ubuntu(500, 16px, 16px);
 			color: #1B1B1B;
 			margin-top: 16px;
-			margin-right: 18px;
+			margin-right: 13px;
 		}
 	}
 	&__dropdown {
@@ -403,7 +403,7 @@ header {
 		width: calc(544 * 100vw / 1440);
 		margin-top: calc(40 * 100vw / 1440);
 		&__item {
-	    @include font-ubuntu(400, calc(16 * 100vw / 1440), calc(18 * 100vw / 1440));
+	    @include font-ubuntu(400, calc(18 * 100vw / 1440), calc(18 * 100vw / 1440));
 			padding-bottom: calc(5 * 100vw / 1440);
 			&-active, &:hover {
 				border-bottom: calc(3 * 100vw / 1440) solid #44BE60;
@@ -470,12 +470,12 @@ header {
 				width: calc(19 * 100vw / 1440);
 				height: calc(19 * 100vw / 1440);
 				margin-top: calc(14 * 100vw / 1440);
-				margin-left: calc(15 * 100vw / 1440);
+				margin-left: calc(13 * 100vw / 1440);
 			}
 			&-title {
-	      		@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+	      		@include font-ubuntu(500, calc(16 * 100vw / 1440), calc(16 * 100vw / 1440));
 				margin-top: calc(16 * 100vw / 1440);
-				margin-right: calc(18 * 100vw / 1440);
+				margin-right: calc(13 * 100vw / 1440);
 			}
 		}
 		&__dropdown {
@@ -626,7 +626,7 @@ header {
 		width: 476px;
 		margin-top: 39px;
 		&__item {
-	    @include font-ubuntu(400, 14px, 16px);
+	    @include font-ubuntu(400, 16px, 16px);
 			padding-bottom: 7px;
 		}
 	}
@@ -658,12 +658,12 @@ header {
 				width: 19px;
 				height: 19px;
 				margin-top: 14px;
-				margin-left: 15px;
+				margin-left: 13px;
 			}
 			&-title {
-	      @include font-ubuntu(500, 14px, 16px);
+	      @include font-ubuntu(500, 16px, 16px);
 				margin-top: 16px;
-				margin-right: 18px;
+				margin-right: 13px;
 			}
 		}
 		&__dropdown {
@@ -823,7 +823,7 @@ header {
 		width: calc(476 * 100vw / 768);
 		margin-top: calc(39 * 100vw / 768);
 		&__item {
-	    @include font-ubuntu(400, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
+	    @include font-ubuntu(400, calc(16 * 100vw / 768), calc(16 * 100vw / 768));
 			padding-bottom: calc(7 * 100vw / 768);
 		}
 	}
@@ -848,12 +848,12 @@ header {
 				width: calc(19 * 100vw / 768);
 				height: calc(19 * 100vw / 768);
 				margin-top: calc(14 * 100vw / 768);
-				margin-left: calc(15 * 100vw / 768);
+				margin-left: calc(13 * 100vw / 768);
 			}
 			&-title {
-	      @include font-ubuntu(500, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
+	      @include font-ubuntu(500, calc(16 * 100vw / 768), calc(16 * 100vw / 768));
 				margin-top: calc(16 * 100vw / 768);
-				margin-right: calc(18 * 100vw / 768);
+				margin-right: calc(13 * 100vw / 768);
 			}
 		}
 		&__dropdown {
