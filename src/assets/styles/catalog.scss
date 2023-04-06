@@ -764,7 +764,12 @@
 		height: calc(129 * 100vw / 320);
 		padding-top: calc(10 * 100vw / 320);
 		padding-left: calc(12 * 100vw / 320);
+		padding-right: calc(12 * 100vw / 320);
 		&__title {
+			position: absolute;
+			top: calc(10 * 100vw / 320);
+			left: calc(12 * 100vw / 320);
+			z-index: 2;
 	        @include font-ubuntu(500, calc(12 * 100vw / 320), calc(12 * 100vw / 320));
 	        &-count {
 	        	@include font-ubuntu(500, calc(10 * 100vw / 320), calc(12 * 100vw / 320));
@@ -883,7 +888,7 @@
 			margin-right: 0;
 			// margin-bottom: calc(9 * 100vw / 320);
 	        @include font-ubuntu(400, calc(12 * 100vw / 320), 144.4%);
-			max-height: calc(29 * 100vw / 320);
+			max-height: calc(35 * 100vw / 320);
 			margin-top: calc(12 * 100vw / 320);
 		}
 		&__divider {
@@ -891,7 +896,7 @@
 		}
 		&__price {
 			&-main {
-				margin-top: calc(9 * 100vw / 320);
+				margin-top: calc(3 * 100vw / 320);
 				margin-left: 0;
 				margin-right: 0;
 				margin-bottom: calc(3 * 100vw / 320);
