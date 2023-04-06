@@ -1164,7 +1164,7 @@ header {
 	        			max-width: unset;
 						margin-top: 0;
 						margin-left: 0;
-	        			@include font-ubuntu(500, calc(12 * 100vw / 320), calc(14 * 100vw / 320));
+	        			@include font-ubuntu(500, calc(13 * 100vw / 320), calc(14 * 100vw / 320));
 					}
 					&:hover {
 						background: transparent;
