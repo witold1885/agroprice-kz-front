@@ -765,9 +765,9 @@
 		padding-top: calc(10 * 100vw / 320);
 		padding-left: calc(12 * 100vw / 320);
 		&__title {
-	        @include font-ubuntu(500, calc(10 * 100vw / 320), calc(11 * 100vw / 320));
+	        @include font-ubuntu(500, calc(12 * 100vw / 320), calc(12 * 100vw / 320));
 	        &-count {
-	        	@include font-ubuntu(500, calc(8 * 100vw / 320), calc(11 * 100vw / 320));
+	        	@include font-ubuntu(500, calc(10 * 100vw / 320), calc(12 * 100vw / 320));
 				font-style: italic;
 	        }
 		}
