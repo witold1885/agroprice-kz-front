@@ -161,7 +161,7 @@ export default {
 			if (maxWidthExceeded) {
 				this.showSubcategories = []
 				for (let child of this.category.children) {
-					if (showButtons.includes(child.name)) {
+					if (showButtons.indexOf(child.name) !== -1) {
 						this.showSubcategories.push(child)
 					}
 				}
