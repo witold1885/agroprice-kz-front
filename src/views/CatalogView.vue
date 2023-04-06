@@ -24,7 +24,7 @@
 					@click="showMoreSubcategories"
 				>Еще</button>
 			</div>
-			<span>{{ windowWidth }}</span>
+			<!-- <span>{{ windowWidth }}</span> -->
 			<!-- <div v-if="showButtons.length != 0">
 				<span v-for="(button, index) of showButtons" :key="index">{{ button }}</span>
 			</div>
@@ -76,7 +76,7 @@ export default {
 			maxContainerWidth: 1200,
 			// showButtons: [],
 			isMobileScreen: false,
-			windowWidth: 0
+			// windowWidth: 0
 		}
 	},
 	computed: {
@@ -134,7 +134,7 @@ export default {
 			await this.getProducts()
 		})
 		this.handleResize()
-		this.windowWidth = window.innerWidth
+		// this.windowWidth = window.innerWidth
 	},
 	methods: {
 		...mapActions('catalog', ['getCategory']),
