@@ -93,7 +93,7 @@ export default {
 		}
     },
 	created () {
-		window.addEventListener('resize', this.handleResize)
+		// window.addEventListener('resize', this.handleResize)
 		this.$watch(
 			() => this.$route.params.category,
 			async (toParams) => {
@@ -103,7 +103,7 @@ export default {
 		)
 	},
 	unmounted () {
-		window.removeEventListener('resize', this.handleResize)
+		// window.removeEventListener('resize', this.handleResize)
 	},
 	watch: {
 		'$route' (newValue, oldValue) {
