@@ -274,6 +274,7 @@
 	        @include font-ubuntu(500, calc(21 * 100vw / 1440), calc(24 * 100vw / 1440));
 	        &-count {
 	        	@include font-ubuntu(500, calc(18 * 100vw / 1440), calc(24 * 100vw / 1440));
+				font-style: italic;
 	        }
 		}
 		&__subtitle {
@@ -438,6 +439,7 @@
 	        @include font-ubuntu(500, 16px, 18px);
 	        &-count {
 	        	@include font-ubuntu(500, 14px, 18px);
+				font-style: italic;
 	        }
 		}
 		&__subtitle {
@@ -602,6 +604,7 @@
 	        @include font-ubuntu(500, calc(16 * 100vw / 768), calc(18 * 100vw / 768));
 	        &-count {
 	        	@include font-ubuntu(500, calc(14 * 100vw / 768), calc(18 * 100vw / 768));
+				font-style: italic;
 	        }
 		}
 		&__subtitle {
@@ -764,7 +767,8 @@
 		&__title {
 	        @include font-ubuntu(500, calc(10 * 100vw / 320), calc(11 * 100vw / 320));
 	        &-count {
-	        	@include font-ubuntu(500, calc(8 * 100vw / 768), calc(11 * 100vw / 768));
+	        	@include font-ubuntu(500, calc(8 * 100vw / 320), calc(11 * 100vw / 320));
+				font-style: italic;
 	        }
 		}
 		&__subtitle {
