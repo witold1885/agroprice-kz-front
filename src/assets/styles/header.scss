@@ -192,7 +192,7 @@ header {
 					padding-right: 14px;
 				}
 				&-title {
-        	@include font-ubuntu(500, 14px, 16px);
+        			@include font-ubuntu(500, 15px, 16px);
 					color: #3F3F3F;
 				}
 				&:hover &-title {
@@ -473,7 +473,7 @@ header {
 				margin-left: calc(15 * 100vw / 1440);
 			}
 			&-title {
-	      @include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+	      		@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
 				margin-top: calc(16 * 100vw / 1440);
 				margin-right: calc(18 * 100vw / 1440);
 			}
@@ -494,7 +494,7 @@ header {
 						padding-right: calc(14 * 100vw / 1440);
 					}
 					&-title {
-	        	@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
+	        			@include font-ubuntu(500, calc(15 * 100vw / 1440), calc(16 * 100vw / 1440));
 					}
 					&:hover &-title {
 						margin-left: calc(14 * 100vw / 1440);
@@ -683,8 +683,8 @@ header {
 						padding-right: 29px;
 					}
 					&-title {
-	        	max-width: 185px;
-	        	@include font-ubuntu(500, 12px, 14px);
+			        	max-width: 185px;
+			        	@include font-ubuntu(500, 14px, 14px);
 					}
 					&:hover &-title {
 						margin-left: 0;
@@ -870,8 +870,8 @@ header {
 						padding-right: calc(29 * 100vw / 768);
 					}
 					&-title {
-	        	max-width: calc(185 * 100vw / 768);
-	        	@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
+			        	max-width: calc(185 * 100vw / 768);
+			        	@include font-ubuntu(500, calc(14 * 100vw / 768), calc(14 * 100vw / 768));
 					}
 				}
 			}
@@ -1133,7 +1133,7 @@ header {
 				margin: 0 auto;
 				&-title {
 					margin-top: calc(19 * 100vw / 320);
-	        @include font-ubuntu(500, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
+	        		@include font-ubuntu(500, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
 				}
 				&-close {
 				}
@@ -1164,7 +1164,7 @@ header {
 	        			max-width: unset;
 						margin-top: 0;
 						margin-left: 0;
-	        			@include font-ubuntu(500, calc(13 * 100vw / 320), calc(14 * 100vw / 320));
+	        			@include font-ubuntu(500, calc(14 * 100vw / 320), calc(14 * 100vw / 320));
 					}
 					&:hover {
 						background: transparent;
