@@ -30,6 +30,7 @@
 		text-align: left;
 		color: #3F3F3F;
 		&-count {
+        	@include font-ubuntu(500, 18px, 24px);
 			color: $color_green;
 			font-style: italic;
 		}
@@ -271,6 +272,9 @@
 		padding-left: calc(26 * 100vw / 1440);
 		&__title {
 	        @include font-ubuntu(500, calc(21 * 100vw / 1440), calc(24 * 100vw / 1440));
+	        &-count {
+	        	@include font-ubuntu(500, calc(18 * 100vw / 1440), calc(24 * 100vw / 1440));
+	        }
 		}
 		&__subtitle {
 			margin-top: calc(10 * 100vw / 1440);
@@ -432,6 +436,9 @@
 		padding-left: 19px;
 		&__title {
 	        @include font-ubuntu(500, 16px, 18px);
+	        &-count {
+	        	@include font-ubuntu(500, 14px, 18px);
+	        }
 		}
 		&__subtitle {
 			margin-top: 12px;
@@ -593,6 +600,9 @@
 		padding-left: calc(19 * 100vw / 768);
 		&__title {
 	        @include font-ubuntu(500, calc(16 * 100vw / 768), calc(18 * 100vw / 768));
+	        &-count {
+	        	@include font-ubuntu(500, calc(14 * 100vw / 768), calc(18 * 100vw / 768));
+	        }
 		}
 		&__subtitle {
 			margin-top: calc(12 * 100vw / 768);
@@ -753,6 +763,9 @@
 		padding-left: calc(12 * 100vw / 320);
 		&__title {
 	        @include font-ubuntu(500, calc(10 * 100vw / 320), calc(11 * 100vw / 320));
+	        &-count {
+	        	@include font-ubuntu(500, calc(8 * 100vw / 768), calc(11 * 100vw / 768));
+	        }
 		}
 		&__subtitle {
 			margin-top: calc(5 * 100vw / 320);
