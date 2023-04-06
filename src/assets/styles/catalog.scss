@@ -943,6 +943,18 @@
 			padding-right: 23px;
 			white-space: nowrap;
 		}
+		&-more {
+			height: 34px;
+			background: $color_green;
+			border-radius: 5px;
+			border: none;
+			outline: none;
+			box-shadow: none;
+			@include font-ubuntu(400, 14px, 15px);
+			color: $color_white;
+			padding-left: 24px;
+			padding-right: 23px;
+		}
 	}
 	&__data {
 		grid-column-gap: 26px;
@@ -967,6 +979,13 @@
 			margin-bottom: calc(33 * 100vw / 1440);
 			&-item {
 				height: calc(32 * 100vw / 1440);
+				border-radius: calc(5 * 100vw / 1440);
+				@include font-ubuntu(400,  calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
+				padding-left: calc(24 * 100vw / 1440);
+				padding-right: calc(23 * 100vw / 1440);
+			}
+			&-more {
+				height: calc(34 * 100vw / 1440);
 				border-radius: calc(5 * 100vw / 1440);
 				@include font-ubuntu(400,  calc(14 * 100vw / 1440), calc(15 * 100vw / 1440));
 				padding-left: calc(24 * 100vw / 1440);
@@ -997,14 +1016,17 @@
 			margin-bottom: 16px;
 			&-item {
 				height: 32px;
-				background: $color_white;
-				border: 1px solid #C4C4C4;
 				border-radius: 5px;
 				@include font-ubuntu(400, 12px, 15px);
-				color: #414141;
 				padding-left: 23px;
 				padding-right: 23px;
-				white-space: nowrap;
+			}
+			&-more {
+				height: 34px;
+				border-radius: 5px;
+				@include font-ubuntu(400, 14px, 15px);
+				padding-left: 24px;
+				padding-right: 23px;
 			}
 		}
 		&__data {
@@ -1032,6 +1054,13 @@
 				padding-left: calc(23 * 100vw / 768);
 				padding-right: calc(23 * 100vw / 768);
 			}
+			&-more {
+				height: calc(34 * 100vw / 768);
+				border-radius: calc(5 * 100vw / 768);
+				@include font-ubuntu(400,  calc(14 * 100vw / 768), calc(15 * 100vw / 768));
+				padding-left: calc(24 * 100vw / 768);
+				padding-right: calc(23 * 100vw / 768);
+			}
 		}
 		&__description {
 			margin-bottom: calc(75 * 100vw / 768);
@@ -1051,6 +1080,13 @@
 			margin-bottom: calc(18 * 100vw / 320);
 			&-item {
 				height: calc(32 * 100vw / 320);
+				border-radius: calc(5 * 100vw / 320);
+				@include font-ubuntu(400, calc(12 * 100vw / 320), calc(15 * 100vw / 320));
+				padding-left: calc(12 * 100vw / 320);
+				padding-right: calc(12 * 100vw / 320);
+			}
+			&-more {
+				height: calc(34 * 100vw / 320);
 				border-radius: calc(5 * 100vw / 320);
 				@include font-ubuntu(400, calc(12 * 100vw / 320), calc(15 * 100vw / 320));
 				padding-left: calc(12 * 100vw / 320);

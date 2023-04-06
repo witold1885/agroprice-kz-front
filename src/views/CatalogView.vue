@@ -6,13 +6,23 @@
 				<h1 class="category__title heading-1">{{ category.meta_heading || category.name }}</h1>
 				<LocationMenu />
 			</div>
-			<div class="category__subcategories d-flex align-items-center">
-				<a
-					v-for="(child, index) of category.children"
-					:key="index"
-					class="category__subcategories-item d-flex justify-content-center align-items-center"
-					@click="goTo(child.url)"
-				>{{ child.name }}</a>
+			<div
+				class="category__subcategories-wrap d-flex justify-content-between"
+				:style="[ subcategoriesLoaded ? { 'height': 'auto' } : { 'height': '0!important', 'overflow': 'hidden' } ]"
+			>
+				<div class="category__subcategories d-flex align-items-center">
+					<a
+						v-for="(child, index) of showSubcategories"
+						:key="index"
+						class="category__subcategories-item d-flex justify-content-center align-items-center"
+						@click="goTo(child.url)"
+					>{{ child.name }}</a>
+				</div>
+				<button
+					v-if="showMoreSubcategoriesButton"
+					class="category__subcategories-more"
+					@click="showMoreSubcategories"
+				>Еще</button>
 			</div>
 			<div class="category__data d-flex">
 				<CategoryFilters v-if="maxPrice != 0 && minPrice != 0" :maxPrice="maxPrice" :minPrice="minPrice" @filtered="filterProducts" />
@@ -54,6 +64,11 @@ export default {
 			minPrice: 0,
 			filterMaxPrice: null,
 			filterMinPrice: null,
+			showSubcategories: [],
+			subcategoriesLoaded: false,
+			showMoreSubcategoriesButton: false,
+			breakpoint: 'lg',
+			maxContainerWidth: 1200
 		}
 	},
 	computed: {
@@ -78,6 +93,7 @@ export default {
 		}
     },
 	created () {
+		window.addEventListener('resize', this.handleResize)
 		this.$watch(
 			() => this.$route.params.category,
 			async (toParams) => {
@@ -85,6 +101,9 @@ export default {
 				await this.init()
 			}
 		)
+	},
+	unmounted () {
+		window.removeEventListener('resize', this.handleResize)
 	},
 	watch: {
 		'$route' (newValue, oldValue) {
@@ -106,14 +125,63 @@ export default {
 			this.locations = locations
 			await this.getProducts()
 		})
+		this.handleResize()
 	},
 	methods: {
 		...mapActions('catalog', ['getCategory']),
 		...mapActions('catalog', ['getCategoryProducts']),
+		handleResize () {
+			if (window.innerWidth > 1440) this.maxContainerWidth = 1200
+			else if (window.innerWidth > 992) this.maxContainerWidth = 1200 * window.innerWidth / 1440
+			else if (window.innerWidth > 768) this.maxContainerWidth = 688
+			else if (window.innerWidth > 414) this.maxContainerWidth = 688 * window.innerWidth / 768
+			else this.maxContainerWidth = 280 * window.innerWidth / 320
+			this.calcSubcategoriesCount()
+		},
+		calcSubcategoriesCount() {
+			let subcatButtons = document.querySelectorAll('.category__subcategories-item')
+			// console.log(subcatButtons)
+			let showButtons = []
+			let totalWidth = 0;
+			const maxWidth = this.maxContainerWidth - 75
+			let maxWidthExceeded = false
+			for (let button of subcatButtons) {
+				// console.log(button.clientWidth)
+				totalWidth += button.clientWidth + 12
+				if (totalWidth >= maxWidth) {
+					maxWidthExceeded = true
+					break
+				}
+				else {
+					showButtons.push(button.innerText)
+				}
+			}
+			// console.log(showButtons)
+			// console.log(maxWidthExceeded)
+			if (maxWidthExceeded) {
+				this.showSubcategories = []
+				for (let child of this.category.children) {
+					if (showButtons.includes(child.name)) {
+						this.showSubcategories.push(child)
+					}
+				}
+				this.showMoreSubcategoriesButton = true
+			}
+			else {
+				this.showSubcategories = this.category.children
+			}
+			this.subcategoriesLoaded = true
+			// console.log(this.showSubcategories)
+		},
+		showMoreSubcategories () {
+			this.showSubcategories = this.category.children
+			this.showMoreSubcategoriesButton = false
+		},
 		async init () {
 			if (this.categoryUrl) {
 				await this.getCategory(this.categoryUrl)
 				if (this.category) {
+					this.showSubcategories = this.category.children
 					// console.log(this.category)
 					this.makeBreadcrumbs()
 					this.metaTitle = this.category.meta_title || this.category.name
