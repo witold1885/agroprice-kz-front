@@ -102,7 +102,7 @@
 						>
 							{{ subsubcategory.name }}
 						</a>
-						<a class="catalog-menu__dropdown-subcategories-block-item catalog-menu__dropdown-subcategories-block-item-all" @click="category.url">Показать все</a>
+						<a class="catalog-menu__dropdown-subcategories-block-item catalog-menu__dropdown-subcategories-block-item-all" @click="subcategory.url">Показать все</a>
 					</div>
 				</div>
 			</div>
