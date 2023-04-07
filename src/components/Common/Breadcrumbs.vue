@@ -1,6 +1,6 @@
 <template>
 	<div class="breadcrumbs">
-		<div class="breadcrumbs__list d-flex align-items-center">
+		<div class="breadcrumbs__list d-flex">
 			<div
 				v-for="(breadcrumb, index) of breadcrumbs"
 				:key="index"

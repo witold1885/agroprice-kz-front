@@ -570,6 +570,7 @@ h1 {
 
 .breadcrumbs {
 	&__list {
+		align-items: center;
 		grid-column-gap: 9px;
 		margin-bottom: 27px;
 	}
@@ -605,9 +606,51 @@ h1 {
 	}
 }
 
+@media screen and (max-width: 992px) {
+	.breadcrumbs {
+		&__list {
+			grid-column-gap: 9px;
+			margin-bottom: 27px;
+		}
+		&__item {
+			grid-column-gap: 9px;
+			&-link {
+				@include font-ubuntu(400, 14px, 16px);
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: 768px) {
+	.breadcrumbs {
+		&__list {
+			grid-column-gap: calc(9 * 100vw / 768);
+			margin-bottom: calc(27 * 100vw / 768);
+		}
+		&__item {
+			grid-column-gap: calc(9 * 100vw / 768);
+			&-link {
+				@include font-ubuntu(400, calc(14 * 100vw / 768), calc(16 * 100vw / 768));
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 414px) {
 	.breadcrumbs {
-		display: none;
+		&__list {
+			flex-direction: column;
+			align-items: flex-start;
+			grid-row-gap: calc(9 * 100vw / 320);
+			margin-bottom: calc(27 * 100vw / 320);
+		}
+		&__item {
+			grid-column-gap: calc(9 * 100vw / 320);
+			&-link {
+				@include font-ubuntu(400, calc(14 * 100vw / 320), calc(16 * 100vw / 320));
+			}
+		}
 	}
 }
 
