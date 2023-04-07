@@ -184,7 +184,7 @@ export default {
 			activeImage: null,
 			tabs: [
 				{ title: 'Описание', code: 'description' },
-				{ title: 'Характеристики', code: 'features' },
+				// { title: 'Характеристики', code: 'features' },
 			],
 			activeTab: 'description',
 			similarProducts: products,
@@ -262,7 +262,7 @@ export default {
 			else this.breakpoint = 'sm'
 		},
 		makeWhatsappLink () {
-			let whatsappPhone = this.product.user.profile.whatsapp || this.product.user.profile.phone
+			let whatsappPhone = this.product.contact.phone || this.product.user.profile.whatsapp || this.product.user.profile.phone
 			if (whatsappPhone) {
 				whatsappPhone = whatsappPhone.replace('+', '').replace('(', '').replace(')', '').replace(/-/g, '').replace(/ /g, '')
 				const text = `Я пишу вам с сервиса Agroprice.kz, хотел поитересоваться по товару "${this.product.name}" https://agroprice.kz/${this.product.url} `
