@@ -11,6 +11,8 @@
 <script>
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 import RulesForPostingInformation from '@/views/Docs/RulesForPostingInformation'
+import PrivacyPolicy from '@/views/Docs/PrivacyPolicy'
+import TermsOfUse from '@/views/Docs/TermsOfUse'
 
 export default {
 	components: { Breadcrumbs },
@@ -19,9 +21,21 @@ export default {
 			breadcrumbs: null,
 			docUrl: this.$route.params.doc,
 			docs: [
-				{ url: 'rules-for-posting-information', name: 'Правила размещения информации', component: RulesForPostingInformation },
-				{ url: 'privacy-policy', name: '' },
-				{ url: 'terms-of-use', name: '' },
+				{
+					url: 'rules-for-posting-information',
+					name: 'Правила размещения информации',
+					component: RulesForPostingInformation
+				},
+				{
+					url: 'privacy-policy',
+					name: 'Политика конфиденциальности',
+					component: PrivacyPolicy
+				},
+				{
+					url: 'terms-of-use',
+					name: 'Пользовательское соглашение',
+					component: TermsOfUse
+				}
 			],
 			doc: null
 		}
@@ -40,6 +54,9 @@ export default {
 					current: true
 
 				})
+			}
+			else {
+				this.$router.push('/404')
 			}
 		},
 		setDefaultBreadcrumbs () {

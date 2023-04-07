@@ -50,7 +50,7 @@
 							<a
 								v-for="(item, index) of navItem.items"
 								:key="index"
-								@click="doAction(item)"
+								:href="item.link"
 							>{{ item.title }}</a>
 						</div>
 					</div>
@@ -104,24 +104,24 @@ export default {
 				{
 					title: 'Компания',
 					items: [
-						{ title: 'О сервисе', action: null },
-						{ title: 'Вакансии', action: null },
-						{ title: 'Контакты', action: null },
+						{ title: 'О сервисе', link: null },
+						{ title: 'Вакансии', link: null },
+						{ title: 'Контакты', link: null },
 					]
 				},
 				{
 					title: 'Услуги',
 					items: [
-						{ title: 'Размещение объявления', action: null },
-						{ title: 'Баннерное размещение', action: null },
+						{ title: 'Размещение объявления', link: null },
+						{ title: 'Баннерное размещение', link: null },
 					]
 				},
 				{
 					title: 'Документы',
 					items: [
-						{ title: 'Правила размещения информации', action: 'open-file', details: { file: 'Политика_конфиденциальности.docx' } },
-						{ title: 'Политика конфиденциальности', action: 'open-file', details: { file: 'Пользовательское_соглашение.docx' } },
-						{ title: 'Пользовательское соглашение', action: 'open-file', details: { file: 'Правила_размещения_информации.docx' } },
+						{ title: 'Правила размещения информации', link: '/doc/rules-for-posting-information' },
+						{ title: 'Политика конфиденциальности', link: '/doc/privacy-policy' },
+						{ title: 'Пользовательское соглашение', link: '/doc/terms-of-use' },
 					]
 				},
 			],
@@ -140,11 +140,6 @@ export default {
 			if (window.innerWidth > 992) this.breakpoint = 'lg'
 			else if (window.innerWidth > 414) this.breakpoint = 'md'
 			else this.breakpoint = 'sm'
-		},
-		doAction (item) {
-			if (item.action == 'open-file') {
-				window.open('./assets/docs/' + item.details.file, '_blank')
-			}
 		},
 		login () {
 			this.emitter.emit('auth', this.$route.path)
