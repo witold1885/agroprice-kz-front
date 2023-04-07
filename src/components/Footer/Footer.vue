@@ -40,7 +40,7 @@
 				</div>
 				<div class="footer__nav d-flex">
 					<div
-						v-for="(num, index) in 3"
+						v-for="(navItem, index) of navItems"
 						:key="index"
 						class="footer__nav-item d-flex flex-column"
 						:class="`footer__nav-item-${num}`"
@@ -50,6 +50,7 @@
 							<a
 								v-for="(item, index) of navItem.items"
 								:key="index"
+								@click="doAction(item)"
 							>{{ item.title }}</a>
 						</div>
 					</div>
@@ -99,18 +100,31 @@ export default {
 				{ name: 'instagram' },
 			],
 			cards: ['mastercard', 'visa'],
-			navItem: {
-				title: 'Навигация',
-				items: [
-					{ title: 'Маркетплейс' },
-					{ title: 'Банковские продукты' },
-					{ title: 'Агросервисы' },
-					{ title: 'Бизнес-сервисы' },
-					{ title: 'Своё Медиа' },
-					{ title: 'Работа' },
-					{ title: 'Частные объявления' },
-				]
-			},
+			navItems: [
+				{
+					title: 'Компания',
+					items: [
+						{ title: 'О сервисе', action: null },
+						{ title: 'Вакансии', action: null },
+						{ title: 'Контакты', action: null },
+					]
+				},
+				{
+					title: 'Услуги',
+					items: [
+						{ title: 'Размещение объявления', action: null },
+						{ title: 'Баннерное размещение', action: null },
+					]
+				},
+				{
+					title: 'Документы',
+					items: [
+						{ title: 'Правила размещения информации', action: 'open-file', details: { file: 'Политика_конфиденциальности.docx' } },
+						{ title: 'Политика конфиденциальности', action: 'open-file', details: { file: 'Пользовательское_соглашение.docx' } },
+						{ title: 'Пользовательское соглашение', action: 'open-file', details: { file: 'Правила_размещения_информации.docx' } },
+					]
+				},
+			],
 			breakpoint: 'lg'
 		}
 	},
@@ -126,6 +140,11 @@ export default {
 			if (window.innerWidth > 992) this.breakpoint = 'lg'
 			else if (window.innerWidth > 414) this.breakpoint = 'md'
 			else this.breakpoint = 'sm'
+		},
+		doAction (item) {
+			if (item.action == 'open-file') {
+				window.open('./assets/docs/' + item.details.file, '_blank')
+			}
 		},
 		login () {
 			this.emitter.emit('auth', this.$route.path)

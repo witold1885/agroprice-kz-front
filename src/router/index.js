@@ -98,6 +98,12 @@ const routes = [
     // component: Article
   },
   {
+    path: '/doc/:doc',
+    name: 'doc',
+    component: () => import(/* webpackChunkName: "doc" */ '../views/DocView.vue'),
+    // component: Article
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     // eslint-disable-next-line

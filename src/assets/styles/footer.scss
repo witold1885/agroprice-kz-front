@@ -72,22 +72,24 @@
 	&__nav {
 		margin-top: 57px;
 		margin-left: 34px;
+		grid-column-gap: 48px;
 		&-item {
-			width: 177px;
+			// width: 177px;
 			grid-row-gap: 18px;
-			&-1 {
+			/* &-1 {
 				margin-right: 48px;
 			}
 			&-2 {
 				margin-right: 74px;
-			}
+			} */
 			&-title {
         		@include font-ubuntu(500, 14px, 16px);
 				color: $color_black;
 			}
 			&-list {
-				width: 177px;
-				height: 232px;
+				// width: 177px;
+				// height: 232px;
+				grid-row-gap: 20px;
 				justify-content: space-between;
         		@include font-ubuntu(300, 14px, 16px);
 				color: rgba(0, 0, 0, 0.53);
@@ -206,21 +208,23 @@
 		&__nav {
 			margin-top: calc(57 * 100vw / 1440);
 			margin-left: calc(34 * 100vw / 1440);
+			grid-column-gap: calc(48 * 100vw / 1440);
 			&-item {
-				width: calc(177 * 100vw / 1440);
+				// width: calc(177 * 100vw / 1440);
 				grid-row-gap: calc(18 * 100vw / 1440);
-				&-1 {
+				/* &-1 {
 					margin-right: calc(48 * 100vw / 1440);
 				}
 				&-2 {
 					margin-right: calc(74 * 100vw / 1440);
-				}
+				} */
 				&-title {
 	        		@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
 				}
 				&-list {
-					width: calc(177 * 100vw / 1440);
-					height: calc(232 * 100vw / 1440);
+					grid-row-gap: calc(20 * 100vw / 1440);
+					// width: calc(177 * 100vw / 1440);
+					// height: calc(232 * 100vw / 1440);
 	        		@include font-ubuntu(300, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
 				}
 			}

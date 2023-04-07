@@ -3,6 +3,17 @@ module.exports = defineConfig({
   transpileDependencies: true
 })
 
+/*module.exports = {
+  configureWebpack: {
+    resolve: {
+      fallback: {
+        util: require.resolve("util/"),
+        path: require.resolve("path-browserify")
+      }
+    }
+  }
+}*/
+
 /*const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
 
 module.exports = {
