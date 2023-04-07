@@ -66,20 +66,21 @@
       </style>
     </noscript>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <!-- <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script> -->
   </head>
   <body>
     <!-- Google tag (gtag.js) -->
-    <amp-analytics type="gtag" data-credentials="include">
-      <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-X462RCHKVP"></script>
+    <!-- <amp-analytics type="gtag" data-credentials="include"> -->
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-X462RCHKVP"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-X462RCHKVP');
-      </script> -->
-      <script type="application/json">
+      </script>
+      <!-- <script type="application/json">
       {
         "vars" : {
           "gtag_id": "G-LKWVL8KQF3",
@@ -88,8 +89,8 @@
           }
         }
       }
-      </script>
-    </amp-analytics>
+      </script> -->
+    <!-- </amp-analytics> -->
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
