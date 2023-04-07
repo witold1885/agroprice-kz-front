@@ -21,37 +21,19 @@
 					</div>
 				</div>
 			</div>
-			<div class="article__sidebar">
-				<div class="blog__categories">
-					<div class="blog__categories-title">Категории блога</div>
-					<div class="blog__categories-list d-flex flex-column">
-						<a
-							v-for="(category, index) of blogCategories"
-							:key="index"
-							class="blog__categories-list-item"
-							@click="selectCategory(category.id)"
-						>
-							{{ category.name }}			
-						</a>
-						<a
-							class="blog__categories-list-item"
-							@click="selectCategory(null)"
-						>
-							Все категории		
-						</a>
-					</div>
-				</div>
-			</div>
+			<BlogSidebar :lastBlogArticles="lastBlogArticles" :blogCategories="blogCategories" />
 		</div>
 	</div>
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
+import BlogSidebar from '@/components/Blog/Sidebar'
+
 export default {
-	components: { Breadcrumbs },
+	components: { Breadcrumbs, BlogSidebar },
 	data () {
 		return {
 			breadcrumbs: null,
@@ -79,7 +61,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapState('info', ['blogArticle', 'blogCategories']),
+		...mapState('info', ['blogArticle', 'blogCategories', 'lastBlogArticles']),
 		storageURL () {
 			return STORAGE_URL
 		},
@@ -126,12 +108,12 @@ export default {
 	},
 	async mounted () {
 		await this.$store.dispatch('info/getBlogCategories')
+		await this.$store.dispatch('info/getLastBlogArticles')
 		// console.log(this.blogCategories)
 		await this.init()
 	},
 	methods: {
 		...mapActions('info', ['getBlogArticle', 'increaseArticleViews']),
-		...mapMutations('info', ['setBlogCategoryId']),
 		handleResize () {
 			if (window.innerWidth > 1440) this.breakpoint = 'xl'
 			else if (window.innerWidth > 992) this.breakpoint = 'lg'
@@ -225,11 +207,11 @@ export default {
 					current: false
 				}
 			]
-		},
-		selectCategory (category_id) {
-			this.setBlogCategoryId(category_id)
-			this.$router.push('/blog')
 		}
 	}
 }
 </script>
+
+<style lang="scss">
+@import '@/assets/styles/blog.scss';
+</style>

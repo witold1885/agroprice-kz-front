@@ -95,7 +95,7 @@ export const actions = {
     if (response.data.success) {
       commit('setPages', response.data.pages)
       commit('setBlogArticles', response.data.articles)
-      commit('setBlogLastArticles', response.data.lastArticles)
+      // commit('setBlogLastArticles', response.data.lastArticles)
     }
     else {
       console.log(response.data.error)
