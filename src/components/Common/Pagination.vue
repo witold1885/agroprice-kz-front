@@ -55,7 +55,7 @@ export default {
 		setActivePage (page) {
 			if (!this.isDotsPage(page)) {
 				this.activePage = page
-				this.emitter.emit('change-page', this.activePage)
+				this.changePage()
 			}
 		},
 		goPrevPage () {
@@ -63,13 +63,18 @@ export default {
 			if (this.activePage < 1) {
 				this.activePage = this.pagesCount
 			}
-			this.emitter.emit('change-page', this.activePage)
+			this.changePage()
 		},
 		goNextPage () {
 			this.activePage++
 			if (this.activePage > this.pagesCount) {
 				this.activePage = 1
 			}
+			this.changePage()
+		},
+		changePage () {
+			let headingTitle = document.querySelector('.heading-1')
+			headingTitle.scrollIntoView({ behavior: 'smooth' })
 			this.emitter.emit('change-page', this.activePage)
 		}
 	}
