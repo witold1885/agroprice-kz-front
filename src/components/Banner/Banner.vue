@@ -1,10 +1,6 @@
 <template>
 	<div v-if="activeImage" class="banner">
-		<!-- <div class="banner__title">Льготный кредит на развитие</div>
-		<div class="banner__subtitle">
-			Увеличивайте продажи и повышайте узнаваемость - используйте услуги продвижения экосистемы Своё
-		</div> -->
-		<button class="banner__button" @click="goFurther(activeImage.link)">{{ activeImage.button_text }}</button>
+		<button v-if="activeImage.link && activeImage.button_text" class="banner__button" @click="goFurther(activeImage.link)">{{ activeImage.button_text }}</button>
 		<img
 			v-if="breakpoint == 'lg'"
 			class="banner__image"

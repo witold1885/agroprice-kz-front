@@ -23,7 +23,7 @@
 					>{{ tab.tabText }}</div>
 				</div>
 			</div>
-			<div class="auth-dialog__title">{{ activeTab.title }}</div>
+			<div class="auth-dialog__title heading-1">{{ activeTab.title }}</div>
 			<div class="auth-dialog__form d-flex flex-column justify-content-between align-items-center">
 				<AuthForm
 					:action="activeTab.name"

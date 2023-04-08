@@ -63,7 +63,7 @@ export default {
 			products: [],
 			pages: 1,
 			productsPerPage: 20,
-			sort: 'popular',
+			sort: 'new',
 			locations: null,
 			maxPrice: 0,
 			minPrice: 0,

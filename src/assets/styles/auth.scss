@@ -49,9 +49,8 @@
 		}
 	}
 	&__title {
-		@include font-ubuntu(700, 32px, 25px);
-		color: $color_black;
-		margin: 67px auto 30px;
+		// @include font-ubuntu(700, 32px, 25px);
+		margin: 55px auto 30px;
 		text-align: center;
 	}
 	&__form {
@@ -124,8 +123,8 @@
 			}
 		}
 		&__title {
-			@include font-ubuntu(700, calc(32 * 100vw / 1440), calc(25 * 100vw / 1440));
-			margin: calc(67 * 100vw / 1440) auto calc(30 * 100vw / 1440);
+			// @include font-ubuntu(700, calc(32 * 100vw / 1440), calc(25 * 100vw / 1440));
+			margin: calc(55 * 100vw / 1440) auto calc(30 * 100vw / 1440);
 		}
 		&__form {
 			grid-row-gap: calc(19 * 100vw / 1440);

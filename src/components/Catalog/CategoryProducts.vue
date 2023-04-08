@@ -114,10 +114,10 @@ export default {
 	data () {
 		return {
 			sortMethods: [
-				{ name: 'Сначала популярные', type: 'popular', selected: true },
+				{ name: 'Сначала новое', type: 'new', selected: true },
 				{ name: 'Сначала подешевле', type: 'cheap', selected: false },
 				{ name: 'Сначала подороже', type: 'expensive', selected: false },
-				{ name: 'Сначала новое', type: 'new', selected: false },
+				{ name: 'Сначала популярные', type: 'popular', selected: false },
 			],
 			selectedMethod: null,
 			showSortMenu: false,

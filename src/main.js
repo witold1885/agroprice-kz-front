@@ -12,6 +12,15 @@ const app = createApp(App)
 
 app.config.globalProperties.emitter = emitter
 
+console.log('window')
+console.log(window.innerWidth)
+
+const handleResize = () => {
+	console.log('window resized')
+}
+
+window.addEventListener('resize', handleResize)
+
 app
   .use(router)
 	.use(store)
