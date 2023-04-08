@@ -14,7 +14,7 @@
 					@click="showMore"
 				>Показать еще</button>
 			</div>
-			<BlogSidebar :lastBlogArticles="lastBlogArticles" :blogCategories="blogCategories" @search="searchArticles" />
+			<BlogSidebar placing="blog" :lastBlogArticles="lastBlogArticles" :blogCategories="blogCategories" @search="searchArticles" />
 		</div>
 	</div>
 </template>

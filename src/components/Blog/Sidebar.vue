@@ -1,5 +1,11 @@
 <template>
-	<div class="blog__sidebar d-flex flex-column">
+	<div
+		class="blog__sidebar d-flex flex-column"
+		:class="{
+			'blog__sidebar-inblog': placing == 'blog',
+			'blog__sidebar-inarticle': placing == 'article'
+		}"
+	>
 		<div v-if="searchBlockVisible" class="blog__search d-flex flex-column">
 			<div class="blog__search-title">Найти</div>
 			<input
@@ -52,6 +58,10 @@ export default {
 		blogCategories: {
 			type: Array,
 			default: () => []
+		},
+		placing: {
+			type: String,
+			default: 'blog'
 		}
 	},
 	data () {
@@ -80,7 +90,6 @@ export default {
 		},
 		async selectCategory (category_id) {
 			this.setBlogCategoryId(category_id)
-			// this.$emit('select_category')
 			if (this.$route.path != '/blog') {
 				this.$router.push('/blog')
 			}

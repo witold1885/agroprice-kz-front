@@ -28,9 +28,14 @@
 		}
 	}
 	&__sidebar {
-		width: 240px;
 		grid-row-gap: 19px;
 		margin-bottom: 88px;
+		&-inblog {
+			width: 240px;
+		}
+		&-inarticle {
+			width: 320px;
+		}
 	}
 	&__search {
 		width: 100%;
@@ -118,7 +123,7 @@
 		grid-column-gap: 20px;
 	}
 	&__main {
-		width: 940px;
+		width: 860px;
 	}
 	&__date {
 		position: absolute;
@@ -206,9 +211,6 @@
 			cursor: pointer;
 		}
 	}
-	&__sidebar {
-		width: 240px;
-	}
 }
 
 @media screen and (max-width: 1440px) {
@@ -234,9 +236,14 @@
 			}
 		}
 		&__sidebar {
-			width: calc(240 * 100vw / 1440);
 			grid-row-gap: calc(19 * 100vw / 1440);
 			margin-bottom: calc(88 * 100vw / 1440);
+			&-inblog {
+				width: calc(240 * 100vw / 1440);
+			}
+			&-inarticle {
+				width: calc(320 * 100vw / 1440);
+			}
 		}
 		&__search {
 			height: calc(89 * 100vw / 1440);
@@ -295,6 +302,9 @@
 	}
 
 	.article {
+		&__main {
+			width: calc(860 * 100vw / 1440);
+		}
 		&__date {
 			width: calc(68 * 100vw / 1440);
 			height: calc(64 * 100vw / 1440);
@@ -383,7 +393,7 @@
 			}
 		}
 		&__sidebar {
-			width: 688px;
+			width: 100%;
 			grid-row-gap: 19px;
 			margin-bottom: 88px;
 		}
@@ -449,7 +459,7 @@
 			grid-row-gap: 20px;
 		}
 		&__main {
-			width: 688px;
+			width: 100%;
 		}
 		&__date {
 			width: 68px;
@@ -510,10 +520,6 @@
 				@include box(40px, 40px);
 			}
 		}
-		&__sidebar {
-			width: 100%;
-			margin-bottom: 77px;
-		}
 	}
 }
 
@@ -541,7 +547,6 @@
 			}
 		}
 		&__sidebar {
-			width: calc(688 * 100vw / 768);
 			grid-row-gap: calc(19 * 100vw / 768);
 			margin-bottom: calc(88 * 100vw / 768);
 		}
@@ -605,9 +610,6 @@
 		&__wrap {
 			grid-row-gap: calc(20 * 100vw / 768);
 		}
-		&__main {
-			width: calc(688 * 100vw / 768);
-		}
 		&__date {
 			width: calc(68 * 100vw / 768);
 			height: calc(64 * 100vw / 768);
@@ -667,9 +669,6 @@
 			&-icon {
 				@include box(calc(40 * 100vw / 768), calc(40 * 100vw / 768));
 			}
-		}
-		&__sidebar {
-			margin-bottom: calc(77 * 100vw / 768);
 		}
 	}
 }
@@ -828,9 +827,6 @@
 			&-icon {
 				@include box(calc(33 * 100vw / 320), calc(33 * 100vw / 320));
 			}
-		}
-		&__sidebar {
-			margin-bottom: calc(45 * 100vw / 768);
 		}
 	}
 

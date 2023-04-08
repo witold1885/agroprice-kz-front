@@ -21,7 +21,7 @@
 					</div>
 				</div>
 			</div>
-			<BlogSidebar :lastBlogArticles="lastBlogArticles" :blogCategories="blogCategories" />
+			<BlogSidebar placing="article" :lastBlogArticles="lastBlogArticles" :blogCategories="blogCategories" />
 		</div>
 	</div>
 </template>
@@ -163,11 +163,11 @@ export default {
 					const rate = contentImage.width / contentImage.height
 					let width, height
 					if (this.breakpoint == 'xl') {
-						width = 940
-						height = 940 / rate
+						width = 860
+						height = 860 / rate
 					}
 					else if (this.breakpoint == 'lg') {
-						width = 940 * window.innerWidth / 1440
+						width = 860 * window.innerWidth / 1440
 						height = width / rate
 					}
 					else if (this.breakpoint == 'md') {
