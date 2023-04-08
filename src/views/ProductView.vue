@@ -1,10 +1,26 @@
 <template>
 	<div class="product">
 		<div v-if="galleryImage" class="product__slideshow d-flex justify-content-center align-items-center">
-			<div class="product__slideshow-wrap">
-				<img class="product__slideshow-nav product__slideshow-nav-prev" :src="require('@/assets/images/arrow-left-white.png')" @click="slidePrev(true)">
-				<img :src="`${storageURL}/${galleryImage.path}`" @click="galleryImage = null" />
-				<img class="product__slideshow-nav product__slideshow-nav-next" :src="require('@/assets/images/arrow-right-white.png')" @click="slideNext(true)">
+			<img
+				class="product__slideshow-close"
+				:src="require('@/assets/images/dialog-close-white.png')"
+				@click="galleryImage = null"
+			>
+			<div class="product__slideshow-wrap d-flex justify-content-center">
+				<img
+					class="product__slideshow-nav product__slideshow-nav-prev"
+					:src="require('@/assets/images/arrow-left-white.png')"
+					@click="slidePrev(true)"
+				>
+				<img
+					v-touch:swipe="swipeHandler"
+					:src="`${storageURL}/${galleryImage.path}`"
+				/>
+				<img
+					class="product__slideshow-nav product__slideshow-nav-next"
+					:src="require('@/assets/images/arrow-right-white.png')"
+					@click="slideNext(true)"
+				>
 			</div>
 		</div>
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
@@ -256,6 +272,10 @@ export default {
 	methods: {
 		...mapActions('product', ['getProduct', 'increaseProductViews']),
 		...mapActions('profile', ['addProductToFavorites', 'delProductFromFavorites']),
+		swipeHandler (direction) {
+			if (direction == 'left') this.slideNext(true)
+			if (direction == 'right') this.slidePrev(true)
+		},
 		handleResize () {
 			if (window.innerWidth > 992) this.breakpoint = 'lg'
 			else if (window.innerWidth > 414) this.breakpoint = 'md'

@@ -6,6 +6,7 @@ import store from './store'
 import { createMetaManager, defaultConfig, plugin as vueMetaPlugin } from 'vue-meta'
 import mitt from 'mitt'
 const emitter = mitt()
+import Vue3TouchEvents from 'vue3-touch-events'
 
 const app = createApp(App)
 
@@ -19,4 +20,5 @@ app
 		meta: { tag: 'meta', nameless: true },
   }))
 	.use(vueMetaPlugin)
+	.use(Vue3TouchEvents)
   .mount('#app')
