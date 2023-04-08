@@ -52,6 +52,21 @@ export default {
 			return STORAGE_URL
 		}
 	},
+	metaInfo () {
+		return {
+			title: 'Самая полезная информация о сельском хозяйстве в нашем блоге',
+			description: 'Блог о сельском хозяйстве. Все самое интересное и полезное от техники доя растений',
+			meta: [
+				{ name: 'keywords', content: 'блог, новости, agroprice, агропрайс' },
+			],
+			link: [
+				{
+					rel: 'canonical',
+					href: 'https://agroprice.kz/blog'
+				}
+			]
+		}
+    },
 	async mounted () {
 		await this.$store.dispatch('info/getBlogCategories')
 		await this.$store.dispatch('info/getLastBlogArticles')
