@@ -1,5 +1,5 @@
 <template>
-	<div class="sell-block d-flex flex-column justify-content-center align-items-center">
+	<div class="sell-block w-100 d-flex flex-column justify-content-center align-items-center">
 		<div class="sell-block__text">
 			Продавайте свои товары
 		</div>

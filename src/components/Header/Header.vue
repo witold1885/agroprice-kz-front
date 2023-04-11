@@ -1,9 +1,9 @@
 <template>
-	<header class="d-flex flex-column justify-content-between align-items-stretch">
+	<header class="w-100 d-flex flex-column justify-content-between align-items-stretch">
 		<div class="header-top d-flex justify-content-between">
 			<div class="header-top__left d-flex align-items-center">
 				<a href="/" class="header-top__logo">
-					<img :src="require('@/assets/images/logo.png')" />
+					<img class="w-100" :src="require('@/assets/images/logo.png')" />
 				</a>
 				<TopMenu />
 			</div>
@@ -14,7 +14,7 @@
 				<MobileMenu />	
 			</div>
 		</div>
-		<div class="header-bottom d-flex justify-content-between">
+		<div class="header-bottom d-flex justify-content-between relative">
 			<CatalogMenu />
 			<SearchBlock />
 			<FavoritesButton class="header__favorites" border-color="grey" @click="goFavorites" />

@@ -1,9 +1,9 @@
 <template>
 	<div class="preferences">
-		<h1 v-if="!preferencesSaved" class="preferences__title">Настройки</h1>
-		<h1 v-else class="preferences__title">Настройки сохранены</h1>
+		<h1 v-if="!preferencesSaved" class="preferences__title heading-1">Настройки</h1>
+		<h1 v-else class="preferences__title heading-1">Настройки сохранены</h1>
 		<ProfileMenu />
-		<div v-if="!preferencesSaved" class="preferences__form d-flex">
+		<div v-if="!preferencesSaved" class="preferences__form d-flex relative background-lightgrey">
 			<div class="preferences__form-avatar justify-content-center align-items-center">
 				<div class="preferences__form-avatar-wrap d-flex justify-content-center align-items-center">
 					<img class="preferences__form-avatar-icon" :src="require('@/assets/images/user.png')" />
@@ -86,11 +86,11 @@
 					</div>
 				</div>
 			</div>
-			<span v-if="error || validateError" class="preferences__form-error">{{ error || validateError }}</span>
+			<span v-if="error || validateError" class="preferences__form-error w-100 absolute">{{ error || validateError }}</span>
 		</div>
 		<div v-if="!preferencesSaved" class="preferences__buttons d-flex align-items-center">
-			<button class="preferences__button preferences__button-save" @click="saveProfile">Сохранить</button>
-			<button class="preferences__button preferences__button-cancel">Отмена</button>
+			<button class="preferences__button preferences__button-save background-green border-none color-white" @click="saveProfile">Сохранить</button>
+			<button class="preferences__button preferences__button-cancel background-transparent border-green color-black">Отмена</button>
 		</div>
 	</div>
 </template>

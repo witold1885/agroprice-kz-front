@@ -1,10 +1,10 @@
 <template>
 	<div class="complete-register">
-		<h1 v-if="!registerCompleted" class="complete-register__title">Завершите регистрацию</h1>
-		<h1 v-else class="complete-register__title">Регистрация завершена</h1>
+		<h1 v-if="!registerCompleted" class="complete-register__title heading-1">Завершите регистрацию</h1>
+		<h1 v-else class="complete-register__title heading-1">Регистрация завершена</h1>
 		<ProfileMenu />
-		<form v-if="!registerCompleted" class="complete-register__form d-flex flex-column">
-			<div v-if="error" class="complete-register__form-error">{{ error }}</div>
+		<form v-if="!registerCompleted" class="complete-register__form d-flex flex-column relative background-lightgrey">
+			<div v-if="error" class="complete-register__form-error w-100 absolute">{{ error }}</div>
 			<div class="complete-register__form-customer d-flex align-items-end">
 				<div class="complete-register__form-customer-name d-flex flex-column">
 					<div v-if="profile.type == 'company'" class="complete-register__form-label">

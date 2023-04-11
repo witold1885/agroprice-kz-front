@@ -4,13 +4,13 @@
 		<h1 class="blog__title heading-1">Блог</h1>
 		<div class="blog__wrap d-flex">
 			<div class="blog__list d-flex flex-column align-items-center">
-				<div class="blog__list-grid d-flex flex-wrap">
-					<NewsItem v-for="(item, index) of blogArticles" :key="index" :item="item" :articleType="articleType" class="blog__list-item" />
+				<div class="blog__list-grid w-100 d-flex flex-wrap">
+					<NewsItem v-for="(item, index) of blogArticles" :key="index" :item="item" :articleType="articleType" class="blog__list-item shadow-custom" />
 				</div>
 				<Pagination class="blog__list-pagination" :pagesCount="pages" v-show="pages > 1"/>
 				<button
 					v-show="pages > 1"
-					class="blog__list-showmore products__showmore"
+					class="showmore blog__list-showmore background-white b-green"
 					@click="showMore"
 				>Показать еще</button>
 			</div>
@@ -105,5 +105,4 @@ export default {
 <style lang="scss">
 @import '@/assets/styles/blog.scss';
 @import '@/assets/styles/news.scss';
-@import '@/assets/styles/catalog.scss';
 </style>

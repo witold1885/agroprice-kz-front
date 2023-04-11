@@ -1,14 +1,14 @@
 <template>
 	<div class="product">
-		<div v-if="galleryImage" class="product__slideshow d-flex justify-content-center align-items-center">
+		<div v-if="galleryImage" class="product__slideshow d-flex justify-content-center align-items-center fixed">
 			<img
-				class="product__slideshow-close"
+				class="product__slideshow-close absolute"
 				:src="require('@/assets/images/dialog-close-white.png')"
 				@click="galleryImage = null"
 			>
-			<div class="product__slideshow-wrap d-flex justify-content-center">
+			<div class="product__slideshow-wrap d-flex justify-content-center relative">
 				<img
-					class="product__slideshow-nav product__slideshow-nav-prev"
+					class="product__slideshow-nav product__slideshow-nav-prev absolute"
 					:src="require('@/assets/images/arrow-left-white.png')"
 					@click="slidePrev(true)"
 				>
@@ -17,7 +17,7 @@
 					:src="`${storageURL}/${galleryImage.path}`"
 				/>
 				<img
-					class="product__slideshow-nav product__slideshow-nav-next"
+					class="product__slideshow-nav product__slideshow-nav-next absolute"
 					:src="require('@/assets/images/arrow-right-white.png')"
 					@click="slideNext(true)"
 				>
@@ -27,14 +27,14 @@
 		<div v-if="product" class="product__wrap">
 			<div class="product__main d-flex">
 				<h1 v-if="breakpoint == 'sm'" class="product__info-mobile-title">{{ product.name }}</h1>
-				<div v-if="activeImage" class="product__images d-flex flex-column justify-content-between">
-					<div class="product__images-full" @click="galleryImage = activeImage">
-						<img :src="`${storageURL}/${activeImage.path}`" />
+				<div v-if="activeImage" class="product__images d-flex flex-column justify-content-between relative">
+					<div class="product__images-full w-100" @click="galleryImage = activeImage">
+						<img class="w-100 h-100 img-centered" :src="`${storageURL}/${activeImage.path}`" />
 					</div>
 					<carousel
 						ref="carousel"
 						:settings="settings"
-						class="product__images-list d-flex"
+						class="product__images-list w-100 d-flex"
 					>
 						<template #slides>
 							<slide
@@ -44,22 +44,22 @@
 								:class="{ 'product__images-list-item-active': img.path == activeImage.path }"
 								@click="setActiveImage(index)"
 							>
-								<img :src="`${storageURL}/${img.path}`" />
+								<img class="img-centered" :src="`${storageURL}/${img.path}`" />
 							</slide>
 						</template>
 					</carousel>
-						<div
-							class="product__images-list-nav product__images-list-nav-prev d-flex justify-content-center align-items-center"
-							@click="slidePrev"
-						>
-							<img :src="require('@/assets/images/arrow-left-green.png')" />
-						</div>					
-						<div
-							class="product__images-list-nav product__images-list-nav-next d-flex justify-content-center align-items-center"
-							@click="slideNext"
-						>
-							<img :src="require('@/assets/images/arrow-right-green.png')" />							
-						</div>
+					<div
+						class="product__images-list-nav product__images-list-nav-prev d-flex justify-content-center align-items-center absolute background-white border-green br-100"
+						@click="slidePrev"
+					>
+						<img :src="require('@/assets/images/arrow-left-green.png')" />
+					</div>					
+					<div
+						class="product__images-list-nav product__images-list-nav-next d-flex justify-content-center align-items-center absolute background-white border-green br-100"
+						@click="slideNext"
+					>
+						<img :src="require('@/assets/images/arrow-right-green.png')" />							
+					</div>
 				</div>
 				<div v-else class="product__images d-flex flex-column justify-content-between">
 					<div class="product__images-full">
@@ -67,9 +67,8 @@
 					</div>
 				</div>
 				<div class="product__info">
-					<!-- <div v-if="product.price_negotiable" class="product__info-negotiable">Договорная</div> -->
 					<div class="product__info-main d-flex flex-column justify-content-between align-items-end">
-						<div class="product__info-top">
+						<div class="product__info-top w-100">
 							<h1 v-if="breakpoint != 'sm'" class="product__info-title">{{ product.name }}</h1>
 							<div class="product__info-sell d-flex">
 								<div class="product__info-sell-left">
@@ -84,7 +83,7 @@
 											</div>
 										</div>	 -->								
 									</div>
-									<div class="product__info-sell-divider"></div>
+									<div class="product__info-sell-divider w-100 h-0"></div>
 									<div class="product__info-sell-location d-flex align-items-center">
 										<img class="product__info-sell-location-icon" :src="require('@/assets/images/location.png')" />
 										<div class="product__info-sell-location-value">{{ product.location.city }}</div>
@@ -102,24 +101,24 @@
 											<img :src="require('@/assets/images/logo.png')" />
 										</div>
 										<div class="product__info-mobile-buttons flex-column">
-											<a v-if="!phoneShow" class="product__info-mobile-button-call" @click="phoneShow = true">Показать телефон</a>
-											<a v-else :href="`tel:${product.contact.phone}`" class="product__info-mobile-button-phone d-flex justify-content-center align-items-center">{{ product.contact.phone }}</a>
-											<a :href="whatsappLink" class="product__info-mobile-button-whatsapp">Написать на Whatsapp</a>
+											<a v-if="!phoneShow" class="product__info-mobile-button-call background-green border-green color-white" @click="phoneShow = true">Показать телефон</a>
+											<a v-else :href="`tel:${product.contact.phone}`" class="product__info-mobile-button-phone d-flex justify-content-center align-items-center color-black">{{ product.contact.phone }}</a>
+											<a :href="whatsappLink" class="product__info-mobile-button-whatsapp background-yellow border-yellow color-white">Написать на Whatsapp</a>
 										</div>
 									</div>
 								</div>
 								
 							</div>
 						</div>
-						<div class="product__info-mobile-divider"></div>
+						<div class="product__info-mobile-divider w-100 h-0"></div>
 						<div class="product__info-bottom">
 							<div class="product__info-buttons d-flex flex-wrap justify-content-end align-items-end">
 								<div class="product__info-buttons-clearfix"></div>
-								<a v-if="!phoneShow" class="product__info-button-call" @click="phoneShow = true">Показать телефон</a>
-								<a v-else :href="`tel:${product.contact.phone}`" class="product__info-button-phone d-flex justify-content-center align-items-center">{{ product.contact.phone }}</a>
-								<button class="product__info-button-write">Написать продавцу</button>
-								<button class="product__info-button-allproducts">Все товары продавца</button>
-								<a :href="whatsappLink" class="product__info-button-whatsapp">Написать на Whatsapp</a>
+								<a v-if="!phoneShow" class="product__info-button-call background-green border-green color-white" @click="phoneShow = true">Показать телефон</a>
+								<a v-else :href="`tel:${product.contact.phone}`" class="product__info-button-phone d-flex justify-content-center align-items-center color-black">{{ product.contact.phone }}</a>
+								<button class="product__info-button-write background-green border-green color-white">Написать продавцу</button>
+								<button class="product__info-button-allproducts background-transparent border-yellow color-black">Все товары продавца</button>
+								<a :href="whatsappLink" class="product__info-button-whatsapp background-yellow border-yellow color-white">Написать на Whatsapp</a>
 							</div>
 							<button type="button" class="product__info-favorite d-flex align-items-center" @click="toggleFavorites">
 								<img v-if="isFavorite" class="product__info-favorite-icon" :src="require('@/assets/images/heart-red.png')" />
@@ -158,16 +157,16 @@
 				title="Похожие товары"
 				:products="product.similar"
 			/>
-			<!-- <div class="product__divider"></div>
-			<div class="product__text">
+			<!-- <div class="product__divider w-100"></div>
+			<div class="product__text color-black">
 				Укрепление и развитие структуры способствует подготовки и реализации дальнейших направлений развития. Задача организации, в особенности же постоянное информационно-пропагандистское обеспечение нашей деятельности играет важную роль в формировании форм развития. С другой стороны начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке направлений прогрессивного развития. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке форм развития. Товарищи! дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.
 			</div> -->
 			<SellBlock />
 			<div v-if="sellerProducts.length != 0" class="product__seller-products">
-				<div class="product__seller-products-title">Все товары продавца</div>
+				<div class="product__seller-products-title color-black">Все товары продавца</div>
 				<ProductsGrid class="product__seller-products-grid" :products="sellerProducts" />
 				<button
-					class="products__showmore product__seller-products-showmore"
+					class="showmore product__seller-products-showmore background-white b-green"
 					@click="showMore"
 				>Показать еще</button>
 			</div>
@@ -393,4 +392,5 @@ export default {
 <style lang="scss">
 @import '@/assets/styles/product.scss';
 @import '@/assets/styles/catalog.scss';
+@import '@/assets/styles/common.scss';
 </style>

@@ -10,7 +10,6 @@
 		width: 221px;
 		height: 560px;
 		margin-top: 7px;
-		background: #F4F4F4;
 		border-radius: 11px;
 		&__top {
 			margin-top: 22px;
@@ -29,22 +28,18 @@
 			}
 			&-username {
 				@include font-ubuntu(400, 15px, 231.9%);
-				color: #000000;
 			}
 		}
 		&__menu {
 			margin-top: 27px;
 			&-item {
 				padding-left: 14px;
-				position: relative;
 				height: 20px;
 				cursor: pointer;
 				&-marker {
-					position: absolute;
 					left: 0;
 					width: 2px;
 					height: 20px;
-					background: $color_green;
 				}
 				&-icon {
 					&-user {
@@ -62,7 +57,6 @@
 				}
 				&-title {
 					@include font-ubuntu(400, 14px, 100%);
-					color: $color_black;
 				}
 			}
 			&-subitems {
@@ -83,16 +77,13 @@
 				}
 				&-child {
 					padding-left: 19px;
-					position: relative;
 					cursor: pointer;
 					color: #484848;
 					&-marker {
-						position: absolute;
 						top: 1.5px;
 						left: 5px;
 						width: 2px;
 						height: 11px;
-						background: $color_green;
 					}
 					&-title {
 						@include font-ubuntu(400, 14px, 100%);
@@ -118,21 +109,14 @@
 .complete-register {
 	&__title {
 		margin: 0;
-		@include font-ubuntu(500, 32px, 37px);
-		color: $color_black;
 	}
 	&__form {
 		margin: 27px 0 41px;
 		width: 955px;
-		background: #F4F4F4;
 		border-radius: 11px;
 		padding: 30px 35px 37px;
-		box-sizing: border-box;
-		position: relative;
 		&-error {
-			position: absolute;
 			top: 15px;
-			width: 100%;
 			text-align: center;
 			@include font-ubuntu(400, 14px, 14px);
 			color: red;
@@ -150,7 +134,6 @@
 		&-field {
 			width: 224px;
 			height: 34px;
-			box-sizing: border-box;
 			background: $color_white;
 			border-radius: 3px;
 			padding: 3px 11px 4px;
@@ -261,18 +244,13 @@
 .preferences {
 	&__title {
 		margin: 0;
-		@include font-ubuntu(500, 32px, 37px);
-		color: $color_black;
 	}
 	&__form {
 		margin: 27px 0 41px;
 		width: 955px;
 		// height: 371px;
-		background: #F4F4F4;
 		border-radius: 11px;
 		padding: 30px 35px 37px;
-		box-sizing: border-box;
-		position: relative;
 		&-avatar {
 			display: none;
 		}
@@ -306,9 +284,7 @@
 			}
 		}
 		&-error {
-			position: absolute;
 			bottom: -25px;
-			width: 100%;
 			@include font-ubuntu(400, 14px, 14px);
 			color: red;
 		}
@@ -321,16 +297,6 @@
 		height: 41px;
 		border-radius: 8px;
 		@include font-ubuntu(500, 12px, 14px);
-		&-save {
-			background: $color_green;
-			border: none;
-			color: $color_white;
-		}
-		&-cancel {
-			background: transparent;
-			border: 1px solid $color_green;
-			color: $color_black;
-		}
 	}
 }
 
@@ -344,36 +310,22 @@
 		&-mobile {
 			display: none;
 		}
-		width: 100%;
 		grid-row-gap: 17px;
 		margin-bottom: 28px;
-		&-line {
-			width: 100%;
-		}
 		&-search {
 			width: 588px;
 			height: 47px;
-			background: $color_white;
 			border: 1px solid #E2E2E2;
 			border-radius: 8px;
 			padding: 3px;
 			&-field {
-				width: 100%;
-				height: 100%;
-				box-sizing: border-box;
-				flex: 1;
-				border: none;
 				padding: 15px 20px 17px;
 		    	@include font-ubuntu(400, 14px, 15px);
 			}
 			&-button {
 				width: 41px;
 				height: 41px;
-				background: $color_green;
 				border-radius: 6px;
-				border: none;
-				box-shadow: none;
-				outline: none;
 				& img {
 					@include box(21px, 21px);
 				}
@@ -385,7 +337,6 @@
 		    	color: #414141;
 		    }
 		    &-value {
-		    	color: $color_green;
 		    	border-bottom: 1px dashed $color_green;
 		    	cursor: pointer;
 		    }
@@ -393,19 +344,12 @@
 	}
 	&__title {
 		margin: 0;
-		@include font-ubuntu(500, 32px, 37px);
-		color: $color_black;
 	}
 	&__add-btn {
 		width: 182px;
 		height: 41px;
-		background: $color_green;
 		border-radius: 8px;
 		@include font-ubuntu(500, 12px, 14px);
-		color: $color_white;
-		border: none;
-		box-shadow: none;
-		outline: none;
 	}
 	&__list {
 		grid-row-gap: 20px;
@@ -421,11 +365,8 @@
 }
 
 .profile-product {
-	width: 100%;
 	height: 117px;
-	background: #F4F4F4;
 	border-radius: 11px;
-	position: relative;
 	&__left {
 		grid-column-gap: 16px;
 		height: 100%;
@@ -436,14 +377,10 @@
 		border-radius: 5px;
 		margin-top: 11px;
 		margin-left: 12px;
-		object-fit: cover;
-		object-position: center;
 	}
 	&__info {
-		height: 100%;
 		&-title {
 			@include font-ubuntu(500, 20px, 46px);
-			color: $color_green;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			max-width: 300px;
@@ -451,7 +388,6 @@
 		}
 		&-price {
 			@include font-ubuntu(500, 15px, 15px);
-			color: $color_black;
 		}
 		&-stats {
 			grid-column-gap: 27px;
@@ -460,7 +396,6 @@
 				grid-column-gap: 8px;
 				&-value {
 					@include font-ubuntu(400, 14px, 15px);
-					color: $color_black;
 				}
 			}
 		}
@@ -468,23 +403,17 @@
 	&__right {
 		margin-right: 64px;
 		grid-row-gap: 20px;
-		height: 100%;
 	}
 	&__buttons {
 		grid-column-gap: 10px;
 		height: 41px;
 	}
 	&__status {
-		// width: 159px;
 		height: 41px;
 		grid-column-gap: 8px;
 		border-radius: 8px;
-		border: none;
 		padding: 0 20px;
 		background: #EAEAEA;
-		&-bordered {
-			border: 1px solid #39BC64;
-		}
 		&-text {
 			@include font-ubuntu(400, 14px, 15px);
 			color: rgba(0, 0, 0, 0.48);
@@ -493,13 +422,8 @@
 	&__publish {
 		width: 177px;
 		height: 41px;
-		background: $color_green;
 		border-radius: 8px;
 		@include font-ubuntu(500, 12px, 14px);
-		color: $color_white;
-		border: none;
-		box-shadow: none;
-		outline: none;
 	}
 	&__links {
 		grid-column-gap: 48px;
@@ -517,20 +441,15 @@
 		}
 	}
 	&__options {
-		position: absolute;
 		top: 9px;
 		right: 9px;
 		&-menu {
-			position: relative;
 			&-button {
 				width: 26px;
 				height: 26px;
 				background: #EAEAEA;
-				border: 1px solid $color_green;
 				border-radius: 4px;
 				grid-row-gap: 2px;
-				box-shadow: none;
-				outline: none;
 				&-dot {
 					width: 2px;
 					height: 2px;
@@ -538,14 +457,10 @@
 				}
 			}
 			&-dropdown {
-				position: absolute;
 				z-index: 2;
 				top: 33px;
 				right: 0;
 				width: 170px;
-				// height: 145px;
-				background: $color_white;
-				box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 				border-radius: 4px;
 				padding-left: 15px;
 				&-link {
@@ -568,21 +483,15 @@
 		&-mobile {
 			display: none;
 		}
-		width: 100%;
 		grid-row-gap: 23px;
 		margin-bottom: 23px;
-		&-line {
-			width: 100%;
-		}
 		&-fields {
 			grid-column-gap: 13px;
 		}
 		&-menu {
-			position: relative;
 			&-field {
 				width: 163px;
 				height: 32px;
-				background: $color_white;
 				border: 1px solid #C4C4C4;
 				border-radius: 5px;
 				padding: 0 14px;
@@ -598,34 +507,21 @@
 			}
 		}
 		&-search {
-			width: 100%;
-			flex: 1;
 			height: 32px;
 			padding: 8px 12px;
 			@include font-ubuntu(400, 14px, 15px);
 			background: #F4F4F4;
 			border-radius: 5px;
-			box-shadow: none;
-			border: none;
-			outline: none;
-			box-sizing: border-box;
 		}
 	}
 	&__title {
 		margin: 0;
-		@include font-ubuntu(500, 32px, 37px);
-		color: $color_black;
 	}
 	&__add-btn {
 		width: 182px;
 		height: 41px;
-		background: $color_green;
 		border-radius: 8px;
 		@include font-ubuntu(500, 12px, 14px);
-		color: $color_white;
-		border: none;
-		box-shadow: none;
-		outline: none;
 	}
 	&__list {
 		margin-bottom: 61px;

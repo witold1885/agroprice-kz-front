@@ -1,16 +1,16 @@
 <template>
-	<footer class="footer">
-		<div class="footer__wrap d-flex">
+	<footer class="footer w-100 background-lightgrey">
+		<div class="footer__wrap h-100 d-flex">
 			<div class="footer__left d-flex">
 				<div class="footer__info d-flex flex-column">
 					<a href="/" class="footer__logo">
-						<img :src="require('@/assets/images/logo.png')" />
+						<img class="w-100 h-100" :src="require('@/assets/images/logo.png')" />
 					</a>
 					<div class="footer__socials d-flex">
 						<a
 							v-for="(soc, index) of socials"
 							:key="index"
-							class="footer__socials-button d-flex justify-content-center align-items-center"
+							class="footer__socials-button d-flex justify-content-center align-items-center background-green"
 						>
 							<img class="footer__socials-button-icon" :src="require(`@/assets/images/socials/${soc.name}-${breakpoint}.png`)">
 						</a>
@@ -34,8 +34,8 @@
 				<div class="footer__account footer__account-mobile flex-column">
 					<div class="footer__account-title">Моя учетная запись</div>
 					<div class="footer__account-buttons d-flex">
-						<button class="footer__account-button footer__account-button-signin" @click="login">Войти</button>
-						<button class="footer__account-button footer__account-button-signup" @click="register">Зарегистрироваться</button>
+						<button class="footer__account-button footer__account-button-signin background-green b-none" @click="login">Войти</button>
+						<button class="footer__account-button footer__account-button-signup b-green" @click="register">Зарегистрироваться</button>
 					</div>
 				</div>
 				<div class="footer__nav d-flex">
@@ -43,7 +43,6 @@
 						v-for="(navItem, index) of navItems"
 						:key="index"
 						class="footer__nav-item d-flex flex-column"
-						:class="`footer__nav-item-${num}`"
 					>
 						<div class="footer__nav-item-title">{{ navItem.title }}</div>
 						<div class="footer__nav-item-list d-flex flex-column">
@@ -60,8 +59,8 @@
 				<div class="footer__account footer__account-desktop flex-column">
 					<div class="footer__account-title">Моя учетная запись</div>
 					<div class="footer__account-buttons d-flex">
-						<button class="footer__account-button footer__account-button-signin" @click="login">Войти</button>
-						<button class="footer__account-button footer__account-button-signup" @click="register">Зарегистрироваться</button>
+						<button class="footer__account-button footer__account-button-signin background-green b-none" @click="login">Войти</button>
+						<button class="footer__account-button footer__account-button-signup b-green" @click="register">Зарегистрироваться</button>
 					</div>
 				</div>
 				<div class="footer__payments d-flex flex-column">
@@ -124,23 +123,10 @@ export default {
 						{ title: 'Пользовательское соглашение', link: '/doc/terms-of-use' },
 					]
 				},
-			],
-			breakpoint: 'lg'
+			]
 		}
 	},
-	created () {
-		window.addEventListener('resize', this.handleResize)
-		this.handleResize()
-	},
-	unmounted () {
-		window.removeEventListener('resize', this.handleResize)
-	},
 	methods: {
-		handleResize () {
-			if (window.innerWidth > 992) this.breakpoint = 'lg'
-			else if (window.innerWidth > 414) this.breakpoint = 'md'
-			else this.breakpoint = 'sm'
-		},
 		login () {
 			this.emitter.emit('auth', this.$route.path)
 		},

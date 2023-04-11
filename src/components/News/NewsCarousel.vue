@@ -20,18 +20,18 @@
 				</template>
 			</carousel>
 		</div>
-		<div class="news-carousel__nav">
-			<div class="news-carousel__nav-buttons">
+		<div class="news-carousel__nav w-100 absolute">
+			<div class="news-carousel__nav-buttons w-100 relative">
 				<NavButton
 					side="left"
 					color="green"
-					class="products-carousel__nav-button products-carousel__nav-button-prev"
+					class="products-carousel__nav-button products-carousel__nav-button-prev absolute"
 					@click="slidePrev"
 				/>
 				<NavButton
 					side="right"
 					color="green"
-					class="products-carousel__nav-button products-carousel__nav-button-next"
+					class="products-carousel__nav-button products-carousel__nav-button-next absolute"
 					@click="slideNext"
 				/>
 			</div>

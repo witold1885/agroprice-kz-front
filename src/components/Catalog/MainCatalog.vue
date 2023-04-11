@@ -1,7 +1,7 @@
 <template>
-	<div class="main-catalog">
+	<div class="main-catalog w-100">
 		<div class="main-catalog__title heading-1">Главный каталог</div>
-		<div class="main-catalog__grid d-flex flex-wrap justify-content-between">
+		<div class="main-catalog__grid w-100 d-flex flex-wrap justify-content-between">
 			<CategoryCard
 				v-for="(category, index) of mainCategories"
 				:key="index"

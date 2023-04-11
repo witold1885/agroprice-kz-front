@@ -1,51 +1,51 @@
 <template>
 	<div class="profile-favorites">	
-		<div class="profile-favorites__top profile-favorites__top-mobile flex-column">
-			<h1 class="profile-favorites__title">Избранное</h1>
+		<div class="profile-favorites__top w-100 profile-favorites__top-mobile flex-column">
+			<h1 class="profile-favorites__title heading-1">Избранное</h1>
 			<ProfileMenu class="profile-favorites__top-mobile-menu" />
-			<div class="profile-favorites__top-line profile-favorites__top-fields d-flex align-items-center">
-				<div class="profile-favorites__top-menu">
-					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center">
+			<div class="profile-favorites__top-line profile-favorites__top-fields w-100 d-flex align-items-center">
+				<div class="profile-favorites__top-menu relative">
+					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center background-white">
 						<span class="profile-favorites__top-menu-field-value">Избранное</span>
 						<img class="profile-favorites__top-menu-field-icon" :src="require('@/assets/images/arrow-down-green.png')">
 					</div>
 				</div>
-				<div class="profile-favorites__top-menu">
-					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center">
+				<div class="profile-favorites__top-menu relative">
+					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center background-white">
 						<span class="profile-favorites__top-menu-field-value">Фильтр</span>
 						<img class="profile-favorites__top-menu-field-icon" :src="require('@/assets/images/arrow-down-green.png')">
 					</div>
 				</div>
-				<input class="profile-favorites__top-search" placeholder="Поиск по объявлениям" />
+				<input class="profile-favorites__top-search flex-fill background-lightgrey border-none" placeholder="Поиск по объявлениям" />
 			</div>
-			<button class="profile-favorites__add-btn" @click="goProductCreate">Добавить объявление</button>
+			<button class="profile-favorites__add-btn background-green border-none color-white" @click="goProductCreate">Добавить объявление</button>
 		</div>	
-		<div class="profile-favorites__top profile-favorites__top-desktop flex-column">
-			<div class="profile-favorites__top-line d-flex justify-content-between align-items-center">
-				<h1 class="profile-favorites__title">Избранное</h1>
-				<button class="profile-favorites__add-btn" @click="goProductCreate">Добавить объявление</button>
+		<div class="profile-favorites__top w-100 profile-favorites__top-desktop flex-column">
+			<div class="profile-favorites__top-line w-100 d-flex justify-content-between align-items-center">
+				<h1 class="profile-favorites__title heading-1">Избранное</h1>
+				<button class="profile-favorites__add-btn background-green border-none color-white" @click="goProductCreate">Добавить объявление</button>
 			</div>
-			<div class="profile-favorites__top-line profile-favorites__top-fields d-flex align-items-center">
-				<div class="profile-favorites__top-menu">
-					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center">
+			<div class="profile-favorites__top-line profile-favorites__top-fields w-100 d-flex align-items-center">
+				<div class="profile-favorites__top-menu relative">
+					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center background-white">
 						<span class="profile-favorites__top-menu-field-value">Избранное</span>
 						<img class="profile-favorites__top-menu-field-icon" :src="require('@/assets/images/arrow-down-green.png')">
 					</div>
 				</div>
-				<div class="profile-favorites__top-menu">
-					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center">
+				<div class="profile-favorites__top-menu relative">
+					<div class="profile-favorites__top-menu-field d-flex justify-content-between align-items-center background-white">
 						<span class="profile-favorites__top-menu-field-value">Фильтр</span>
 						<img class="profile-favorites__top-menu-field-icon" :src="require('@/assets/images/arrow-down-green.png')">
 					</div>
 				</div>
-				<input class="profile-favorites__top-search" placeholder="Поиск по объявлениям" />
+				<input class="profile-favorites__top-search flex-fill background-lightgrey border-none" placeholder="Поиск по объявлениям" />
 			</div>
 		</div>
 		<ProductsGrid v-if="favorites.length != 0" class="profile-favorites__list" :products="favorites" />
 		<Pagination :pagesCount="pages" v-show="pages > 1" />
 		<div class="profile-favorites__showmore" v-show="pages > 1">
 			<button
-				class="products__showmore"
+				class="showmore background-white b-green"
 				@click="showMore"
 			>Показать еще</button>
 		</div>

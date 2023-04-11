@@ -2,8 +2,8 @@
 	<div
 		class="catalog-menu"
 	>
-		<div
-			class="catalog-menu__button d-flex justify-content-between"
+		<button
+			class="catalog-menu__button d-flex justify-content-between b-green"
 			@click="toggleMenu"
 		>
 			<!-- <div class="catalog-menu__button-icon"> -->
@@ -16,9 +16,13 @@
 			>
 				Каталог товаров
 			</div>
-		</div>
+		</button>
 		<div
-			class="catalog-menu__dropdown d-flex"
+			class="catalog-menu__dropdown w-100 d-flex absolute background-white shadow-custom"
+			:class="{
+				'absolute': breakpoint != 'sm',
+				'fixed': breakpoint == 'sm'
+			}"
 			v-if="showMenu"
 			v-click-outside="closeMenu"
 		>
@@ -37,7 +41,7 @@
 					class="catalog-menu__dropdown-categories-item d-flex align-items-center"
 					@mouseover="selectedCategory = category"
 				>
-					<div class="catalog-menu__dropdown-categories-item-wrap d-flex justify-content-between align-items-center">
+					<div class="catalog-menu__dropdown-categories-item-wrap w-100 d-flex justify-content-between align-items-center">
 						<div
 							class="catalog-menu__dropdown-categories-item-title"
 							@click="goTo(category.url)"
@@ -82,7 +86,7 @@
 			</div>
 			<div 
 				v-if="selectedCategory"
-				class="catalog-menu__dropdown-subcategories d-flex flex-wrap"
+				class="catalog-menu__dropdown-subcategories w-100 d-flex flex-wrap"
 			>
 				<div
 					v-for="(subcategory, si) of selectedCategory.subcategories"

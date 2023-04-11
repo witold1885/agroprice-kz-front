@@ -2,14 +2,14 @@
 	<div v-if="showFilters" class="filters__wrap">
 		<div class="filters__wrap-top justify-content-between align-items-center">
 			<div class="filters__wrap-top-title">Фильтр</div>
-			<div
-				class="filters__wrap-top-close d-flex justify-content-center align-items-center"
+			<button
+				class="filters__wrap-top-close d-flex justify-content-center align-items-center background-white b-none"
 				@click="showFilters = false"
 			>
 				<img :src="require('@/assets/images/dialog-close.png')">
-			</div>
+			</button>
 		</div>
-		<div class="filters">
+		<div class="filters background-lightgrey">
 			<div
 				v-for="(group, gi) of filters"
 				:key="gi"
@@ -39,9 +39,9 @@
 							style="text-align: center"
 						>
 							<label :for="`range-${gi}-min`">от</label>
-							<input :id="`range-${gi}-min`" type="number" :value="group.minValue" @keyup="changeRangeValue($event, gi, 'min')" />
+							<input class="background-white" :id="`range-${gi}-min`" type="number" :value="group.minValue" @keyup="changeRangeValue($event, gi, 'min')" />
 							<label :for="`range-${gi}-max`">до</label>
-							<input :id="`range-${gi}-max`" type="number" :value="group.maxValue" @keyup="changeRangeValue($event, gi, 'max')" />
+							<input class="background-white" :id="`range-${gi}-max`" type="number" :value="group.maxValue" @keyup="changeRangeValue($event, gi, 'max')" />
 						</div>
 
 						<MultiRangeSlider
@@ -64,19 +64,19 @@
 							:key="index"
 							class="filters__group-checkbox-item d-flex justify-content-between align-items-center"
 						>
-							<label :for="`item-${gi}-${index}`">{{ item.name }}</label>
-							<div class="filters__group-checkbox-item-switch d-flex justify-content-center align-items-center">
-								<input type="checkbox" :id="`item-${gi}-${index}`" :value="index" v-model="group.selectedItems" />
+							<label class="w-100" :for="`item-${gi}-${index}`">{{ item.name }}</label>
+							<div class="filters__group-checkbox-item-switch d-flex justify-content-center align-items-center background-white relative">
+								<input class="absolute w-0 h-0" type="checkbox" :id="`item-${gi}-${index}`" :value="index" v-model="group.selectedItems" />
 								<img :src="require('@/assets/images/ok.png')" />
 							</div>
 						</div>
 					</div>
 					<div
 						v-if="group.type == 'dropdown'"
-						class="filters__group-dropdown"
+						class="filters__group-dropdown relative"
 					>
 						<div 
-							class="filters__group-dropdown-field d-flex justify-content-between align-items-center"
+							class="filters__group-dropdown-field d-flex justify-content-between align-items-center background-white"
 							@click="group.showMenu = !group.showMenu"
 						>
 							<span class="filters__group-dropdown-field-value">{{ group.selectedItem }}</span>
@@ -88,7 +88,7 @@
 						</div>
 						<div
 							v-if="group.showMenu" 
-							class="filters__group-dropdown-menu"
+							class="filters__group-dropdown-menu absolute background-white"
 						>
 							<div
 								v-for="(item, index) of group.items"
@@ -114,7 +114,7 @@
 				</div>
 			</div>
 			<div class="filters__bottom">
-				<button class="filters__submit" @click="submitFilters">Применить</button>
+				<button class="filters__submit background-green b-none" @click="submitFilters">Применить</button>
 			</div>
 		</div>
 	</div>

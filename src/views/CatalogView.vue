@@ -10,7 +10,7 @@
 				class="category__subcategories-wrap d-flex justify-content-between"
 				:style="[ subcategoriesLoaded ? { 'height': 'auto' } : { 'height': '0!important', 'overflow': 'hidden' } ]"
 			>
-				<div class="category__subcategories d-flex align-items-center">
+				<div class="category__subcategories w-100 d-flex flex-wrap align-items-center">
 					<a
 						v-for="(child, index) of showSubcategories"
 						:key="index"
@@ -72,7 +72,6 @@ export default {
 			showSubcategories: [],
 			subcategoriesLoaded: false,
 			showMoreSubcategoriesButton: false,
-			breakpoint: 'lg',
 			maxContainerWidth: 1200,
 			// showButtons: [],
 			isMobileScreen: false,

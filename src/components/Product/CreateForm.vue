@@ -37,7 +37,7 @@
 							</div>
 							<div
 								v-show="cat.show"
-								class="create-product__form-select-menu"
+								class="create-product__form-select-menu w-100 absolute background-white"
 							>
 								<div
 									v-for="(category, index) of cat.list"
@@ -64,8 +64,8 @@
 						<div
 							v-for="(img, index) of imgs"
 							:key="`thumb-${index}`"
-							class="create-product__form-thumb d-flex flex-column justify-content-center align-items-center"
-							:class="{ 'create-product__form-thumb-active': img.active }"
+							class="create-product__form-thumb d-flex flex-column justify-content-center align-items-center background-white"
+							:class="{ 'create-product__form-thumb-active border-green shadow-custom': img.active }"
 							:style="{ 'background-image': `url(${img.imageData})` }"
 							@click="selectImage(img, index)"
 						>
@@ -89,7 +89,7 @@
 						Описание*
 					</div>
 					<textarea
-						class="create-product__form-textarea"
+						class="create-product__form-textarea w-100 background-white border-none"
 						placeholder="Подумайте, какие подробности вы хотели бы узнать из объявления. И добавьте их в описание"
 						v-model="v$.product.description.$model"
 						:class="{ 'create-product__form-textarea-error': v$.product.description.$error }"
@@ -116,11 +116,11 @@
 						Договорная
 					</div>
 					<div
-						class="create-product__form-switch"
+						class="create-product__form-switch relative background-white"
 						@click="product.price_negotiable = !product.price_negotiable"
 					>
 						<div
-							class="create-product__form-switch-position"
+							class="create-product__form-switch-position absolute br-100 shadow-custom"
 							:class="{
 								'create-product__form-switch-position-on': product.price_negotiable,
 								'create-product__form-switch-position-off': !product.price_negotiable,
@@ -151,7 +151,7 @@
 						</div>
 						<div
 							v-show="showLocations"
-							class="create-product__form-select-menu"
+							class="create-product__form-select-menu w-100 absolute background-white"
 						>
 							<div
 								v-for="(location, index) of locations"
@@ -184,16 +184,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="create-product__form-bottom d-flex justify-content-between align-items-center">
+		<div class="create-product__form-bottom d-flex justify-content-between align-items-center relative">
 			<div class="create-product__form-block-error create-product__form-block-error-save">{{ errors.save }}</div>
 			<div class="create-product__form-limitation d-flex align-items-center">
 				<div class="create-product__form-limitation-option">Без ограничения</div>
 				<div
-					class="create-product__form-switch"
+					class="create-product__form-switch relative background-white"
 					@click="noLimitation = !noLimitation"
 				>
 					<div
-						class="create-product__form-switch-position"
+						class="create-product__form-switch-position absolute br-100 shadow-custom"
 						:class="{
 							'create-product__form-switch-position-on': noLimitation,
 							'create-product__form-switch-position-off': !noLimitation,
@@ -205,17 +205,17 @@
 			<div class="create-product__form-buttons d-flex justify-content-end align-items-center">
 				<button
 					type="button"
-					class="create-product__form-button-publish"
+					class="create-product__form-button-publish background-green color-white border-none"
 					@click="onSubmit('moderating')"
 				>Публикация</button>
 				<button
 					type="button"
-					class="create-product__form-button-preview"
+					class="create-product__form-button-preview background-white color-black border-green"
 					@click="onSubmit('draft')"
 				>Предпросмотр</button>
 				<button
 					type="button"
-					class="create-product__form-button-cancel"
+					class="create-product__form-button-cancel background-white color-black border-green"
 					@click="cancelCreating"
 				>Отмена</button>
 			</div>

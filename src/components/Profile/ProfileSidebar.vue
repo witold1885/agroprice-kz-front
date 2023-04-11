@@ -1,5 +1,5 @@
 <template>
-	<div class="profile-sidebar">
+	<div class="profile-sidebar background-lightgrey">
 		<div v-if="user" class="profile-sidebar__top d-flex align-items-center">
 			<img v-if="user.profile.avatar" class="profile-sidebar__top-avatar" :src="`${storageURL}/${user.profile.avatar}`" @click="selectAvatar" />
 			<div v-else class="profile-sidebar__top-avatar d-flex justify-content-center align-items-center" @click="selectAvatar">
@@ -11,7 +11,7 @@
 				ref="avatar"
 				@change="onAvatarSelected"
 			>
-			<div class="profile-sidebar__top-username">{{ user.profile.fullname || `user-${user.name}` }}</div>
+			<div class="profile-sidebar__top-username color-black">{{ user.profile.fullname || `user-${user.name}` }}</div>
 		</div>
 		<div class="profile-sidebar__menu d-flex flex-column">
 			<div
@@ -20,14 +20,14 @@
 				class="profile-sidebar__menu-item-wrap d-flex flex-column"
 				
 			>	
-				<div class="profile-sidebar__menu-item d-flex align-items-center">
-					<div v-if="item.active" class="profile-sidebar__menu-item-marker"></div>
+				<div class="profile-sidebar__menu-item d-flex align-items-center relative">
+					<div v-if="item.active" class="profile-sidebar__menu-item-marker absolute background-green"></div>
 					<img
 						class="profile-sidebar__menu-item-icon"
 						:class="`profile-sidebar__menu-item-icon-${item.icon}`"
 						:src="require(`@/assets/images/${item.icon}-green.png`)"
 					/>
-					<div class="profile-sidebar__menu-item-title" @click="setAction(item.action)">{{ item.title }}</div>
+					<div class="profile-sidebar__menu-item-title color-black" @click="setAction(item.action)">{{ item.title }}</div>
 				</div>
 				<div
 					v-if="item.children.length != 0"
@@ -46,10 +46,10 @@
 							<div
 								v-for="(subchild, index) of child.children"
 								:key="index"
-								class="profile-sidebar__menu-subitem-child"
+								class="profile-sidebar__menu-subitem-child relative"
 								:class="{ 'profile-sidebar__menu-subitem-child-active': subchild.active }"
 							>
-								<div v-show="subchild.active" class="profile-sidebar__menu-subitem-child-marker"></div>
+								<div v-show="subchild.active" class="profile-sidebar__menu-subitem-child-marker absolute background-green"></div>
 								<div class="profile-sidebar__menu-subitem-child-title" @click="goFurther(subchild.link)">{{ subchild.title }}</div>
 							</div>
 						</div>

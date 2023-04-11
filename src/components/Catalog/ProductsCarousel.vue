@@ -1,5 +1,5 @@
 <template>
-	<div class="products-carousel__container">
+	<div class="products-carousel__container relative">
 		<div class="products-carousel">
 			<div class="products-carousel__title heading-1">{{ title }}</div>
 			<carousel
@@ -20,18 +20,18 @@
 				</template>
 			</carousel>
 		</div>
-		<div class="products-carousel__nav">
-			<div class="products-carousel__nav-buttons">
+		<div class="products-carousel__nav w-100 absolute">
+			<div class="products-carousel__nav-buttons w-100 relative">
 				<NavButton
 					side="left"
 					color="green"
-					class="products-carousel__nav-button products-carousel__nav-button-prev"
+					class="products-carousel__nav-button products-carousel__nav-button-prev absolute"
 					@click="slidePrev"
 				/>
 				<NavButton
 					side="right"
 					color="green"
-					class="products-carousel__nav-button products-carousel__nav-button-next"
+					class="products-carousel__nav-button products-carousel__nav-button-next absolute"
 					@click="slideNext"
 				/>
 			</div>

@@ -1,10 +1,10 @@
 <template>
-	<div v-if="products.length != 0" class="products-grid d-flex flex-wrap">
+	<div v-if="products.length != 0" class="products-grid w-100 d-flex flex-wrap">
 		<CatalogProduct
 			v-for="(product, index) of products"
 			:key="index"
 			:product="product"
-			class="products-grid__item"
+			class="products-grid__item background-white shadow-custom"
 		/>
 	</div>
 	<div v-else class="products-grid d-flex flex-wrap">
@@ -12,7 +12,7 @@
 			v-for="i in count"
 			:key="i"
 			:product="defaultProduct"
-			class="products-grid__item"
+			class="products-grid__item background-white shadow-custom"
 		/>
 	</div>
 </template>

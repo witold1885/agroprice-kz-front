@@ -6,14 +6,6 @@
 				<h1 class="category__title heading-1">{{ pageTitle }}</h1>
 				<LocationMenu />
 			</div>
-			<!-- <div class="category__subcategories d-flex align-items-center">
-				<a
-					v-for="(child, index) of category.children"
-					:key="index"
-					class="category__subcategories-item d-flex justify-content-center align-items-center"
-					@click="goTo(child.url)"
-				>{{ child.name }}</a>
-			</div> -->
 			<div class="category__data d-flex">
 				<!-- <CategoryFilters v-if="maxPrice != 0 && minPrice != 0" :maxPrice="maxPrice" :minPrice="minPrice" @filtered="filterProducts" /> -->
 				<CategoryProducts v-show="products.length != 0" :products="products" :pages="pages" mode="search" />
@@ -23,7 +15,7 @@
 </template>
 
 <script>
-import { /*mapState, */mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
 import LocationMenu from '@/components/Common/LocationMenu'
@@ -58,7 +50,6 @@ export default {
 		}
 	},
 	computed: {
-		// ...mapState('catalog', ['searchProducts']),
 		storageURL () {
 			return STORAGE_URL
 		}
@@ -89,15 +80,6 @@ export default {
 			if (this.q) {
 				this.pageTitle = `Результаты поиска по запросу "${this.q}"`
 				await this.getProducts()
-				/*if (this.category) {
-					// console.log(this.category)
-					this.makeBreadcrumbs()
-					this.metaTitle = this.category.meta_title || this.category.name
-					this.metaDescription = this.category.meta_description || this.category.name
-					this.metaKeywords = this.category.meta_keywords || this.category.name
-					this.canonicalUrl = 'https://agroprice.kz/catalog/' + this.category.url
-					await this.getProducts()
-				}*/
 			}
 		},
 		async getProducts (page = 1) {
@@ -110,7 +92,6 @@ export default {
 			if (productsData) {
 				this.products = productsData.products
 				const total = productsData.total
-				// console.log(this.products)
 				this.pages = Math.ceil(total / this.productsPerPage)
 			}
 			else {				
@@ -126,3 +107,7 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+@import '@/assets/styles/catalog.scss';
+</style>

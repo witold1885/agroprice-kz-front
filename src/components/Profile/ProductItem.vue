@@ -1,40 +1,40 @@
 <template>
-	<div class="profile-product d-flex justify-content-between">
+	<div class="profile-product w-100 d-flex justify-content-between relative background-lightgrey">
 		<div class="profile-product__left d-flex">
-			<img v-if="product.product_images.length != 0" class="profile-product__image" :src="`${storageURL}/${product.product_images[0].path}`" />
-			<img v-else class="profile-product__image" :src="require('@/assets/images/no-image.png')" />
-			<div class="profile-product__info d-flex flex-column justify-content-between">
+			<img v-if="product.product_images.length != 0" class="profile-product__image img-centered" :src="`${storageURL}/${product.product_images[0].path}`" />
+			<img v-else class="profile-product__image img-centered" :src="require('@/assets/images/no-image.png')" />
+			<div class="profile-product__info h-100 d-flex flex-column justify-content-between">
 				<div class="profile-product__info-main">
-					<div class="profile-product__info-title">{{ product.name }}</div>
-					<div class="profile-product__info-price">{{ product.price }} тенге</div>					
+					<div class="profile-product__info-title color-green">{{ product.name }}</div>
+					<div class="profile-product__info-price color-black">{{ product.price }} тенге</div>					
 				</div>
 				<div class="profile-product__info-stats d-flex align-items-center">
 					<div class="profile-product__info-stats-item d-flex align-items-center">
 						<img class="profile-product__info-stats-item-icon" :src="require('@/assets/images/eye-darker.png')" />
-						<span class="profile-product__info-stats-item-value">324</span>
+						<span class="profile-product__info-stats-item-value color-black">324</span>
 					</div>
 					<div class="profile-product__info-stats-item d-flex align-items-center">
 						<img class="profile-product__info-stats-item-icon" :src="require('@/assets/images/call.png')" />
-						<span class="profile-product__info-stats-item-value">78</span>
+						<span class="profile-product__info-stats-item-value color-black">78</span>
 					</div>
 					<div class="profile-product__info-stats-item d-flex align-items-center">
 						<img class="profile-product__info-stats-item-icon" :src="require('@/assets/images/heart-red.png')" />
-						<span class="profile-product__info-stats-item-value">7543</span>
+						<span class="profile-product__info-stats-item-value color-black">7543</span>
 					</div>					
 				</div>
 			</div>
 		</div>
-		<div class="profile-product__right d-flex flex-column justify-content-center align-items-end">
+		<div class="profile-product__right h-100 d-flex flex-column justify-content-center align-items-end">
 			<div class="profile-product__buttons d-flex justify-content-end align-items-center">
 				<div
 					v-if="statuses[product.status].text"
-					class="profile-product__status d-flex justify-content-center align-items-center"
-					:class="{ 'profile-product__status-bordered': statuses[product.status].border }"
+					class="profile-product__status d-flex justify-content-center align-items-center border-none"
+					:class="{ 'profile-product__status-bordered border-green': statuses[product.status].border }"
 				>
 					<img class="profile-product__status-icon" :src="require(`@/assets/images/${statuses[product.status].icon}`)" />
 					<span class="profile-product__status-text">{{ statuses[product.status].text }}</span>
 				</div>
-				<button v-if="canPublish" class="profile-product__publish" @click="publish">Быстрая публикация</button>
+				<button v-if="canPublish" class="profile-product__publish background-green color-white border-none" @click="publish">Быстрая публикация</button>
 			</div>
 			<div class="profile-product__links d-flex justify-content-end align-items-center">
 				<div class="profile-product__links-item d-flex">
@@ -47,15 +47,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="profile-product__options">
-			<div class="profile-product__options-menu">
+		<div class="profile-product__options absolute">
+			<div class="profile-product__options-menu relative">
 				<button
-					class="profile-product__options-menu-button d-flex flex-column justify-content-center align-items-center"
+					class="profile-product__options-menu-button d-flex flex-column justify-content-center align-items-center border-green"
 					@click="showMenu = !showMenu"
 				>
 					<div class="profile-product__options-menu-button-dot" v-for="i in 3" :key="i"></div>
 				</button>
-				<div v-if="showMenu" class="profile-product__options-menu-dropdown d-flex flex-column justify-content-around">
+				<div v-if="showMenu" class="profile-product__options-menu-dropdown d-flex flex-column justify-content-around absolute background-white shadow-custom">
 					<div v-if="canPublish" class="profile-product__options-menu-dropdown-link" @click="publish">Опубликовать</div>
 					<div class="profile-product__options-menu-dropdown-link" @click="edit">Редактировать</div>
 					<div v-if="canArchivate" class="profile-product__options-menu-dropdown-link" @click="archivate">В архив</div>

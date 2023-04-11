@@ -1,43 +1,43 @@
 <template>
 	<div class="profile-products">
-		<div class="profile-products__top profile-products__top-mobile flex-column">
-			<h1 class="profile-products__title">Поиск по объявлениям</h1>
+		<div class="profile-products__top profile-products__top-mobile w-100 flex-column">
+			<h1 class="profile-products__title heading-1">Поиск по объявлениям</h1>
 			<ProfileMenu class="profile-products__top-mobile-menu" />
-			<div class="profile-products__top-search d-flex justify-content-between align-items-center">
+			<div class="profile-products__top-search d-flex justify-content-between align-items-center background-white">
 				<input
-					class="profile-products__top-search-field"
+					class="profile-products__top-search-field flex-fill h-100 border-none"
 					placeholder="Поиск"
 					v-model="search"
 				/>
-				<button class="profile-products__top-search-button d-flex justify-content-center align-items-center" @click="goSearch">
+				<button class="profile-products__top-search-button d-flex justify-content-center align-items-center background-green border-none" @click="goSearch">
 					<img :src="require('@/assets/images/search.png')">
 				</button>
 			</div>
-			<button class="profile-products__add-btn" @click="goProductCreate">Добавить объявление</button>
+			<button class="profile-products__add-btn background-green border-none color-white" @click="goProductCreate">Добавить объявление</button>
 			<div class="profile-products__top-sort">
 				<span class="profile-products__top-sort-label">Сортировать по:</span>&nbsp;
-				<span class="profile-products__top-sort-value">Дате добавления</span>					
+				<span class="profile-products__top-sort-value color-green">Дате добавления</span>					
 			</div>
 		</div>
-		<div class="profile-products__top profile-products__top-desktop flex-column">
-			<div class="profile-products__top-line d-flex justify-content-between align-items-center">
-				<h1 class="profile-products__title">Поиск по объявлениям</h1>
-				<button class="profile-products__add-btn" @click="goProductCreate">Добавить объявление</button>
+		<div class="profile-products__top profile-products__top-desktop w-100 flex-column">
+			<div class="profile-products__top-line w-100 d-flex justify-content-between align-items-center">
+				<h1 class="profile-products__title heading-1">Поиск по объявлениям</h1>
+				<button class="profile-products__add-btn background-green border-none color-white" @click="goProductCreate">Добавить объявление</button>
 			</div>
-			<div class="profile-products__top-line d-flex justify-content-between align-items-center">
-				<div class="profile-products__top-search d-flex justify-content-between align-items-center">
+			<div class="profile-products__top-line w-100 d-flex justify-content-between align-items-center">
+				<div class="profile-products__top-search d-flex justify-content-between align-items-center background-white">
 					<input
-						class="profile-products__top-search-field"
+						class="profile-products__top-search-field flex-fill h-100 border-none"
 						placeholder="Поиск"
 						v-model="search"
 					/>
-					<button class="profile-products__top-search-button d-flex justify-content-center align-items-center" @click="goSearch">
+					<button class="profile-products__top-search-button d-flex justify-content-center align-items-center background-green border-none" @click="goSearch">
 						<img :src="require('@/assets/images/search.png')">
 					</button>
 				</div>
 				<div class="profile-products__top-sort">
 					<span class="profile-products__top-sort-label">Сортировать по:</span>&nbsp;
-					<span class="profile-products__top-sort-value">Дате добавления</span>					
+					<span class="profile-products__top-sort-value color-green">Дате добавления</span>					
 				</div>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 		<Pagination :pagesCount="pages" v-show="pages > 1" />
 		<div class="profile-products__showmore" v-show="pages > 1">
 			<button
-				class="products__showmore"
+				class="showmore background-white b-green"
 				@click="showMore"
 			>Показать еще</button>
 		</div>

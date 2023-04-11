@@ -16,9 +16,14 @@ console.log('window')
 console.log(window.innerWidth)
 
 const handleResize = () => {
-	console.log('window resized')
+	let breakpoint
+	if (window.innerWidth > 992) breakpoint = 'lg'
+	else if (window.innerWidth > 414) breakpoint = 'md'
+	else breakpoint = 'sm'
+	app.config.globalProperties.breakpoint = breakpoint
 }
 
+handleResize()
 window.addEventListener('resize', handleResize)
 
 app

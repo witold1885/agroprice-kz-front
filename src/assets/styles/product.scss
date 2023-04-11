@@ -72,7 +72,6 @@
 		&-field {
 			width: 100%;
 			height: 52px;
-			box-sizing: border-box;
 			background: $color_white;
 			border-radius: 5px;
 			padding: 14px 18px 13px;
@@ -138,10 +137,7 @@
 				}
 			}
 			&-menu {
-				position: absolute;
 				top: 47px;
-				width: 100%;
-				background: $color_white;
 				border-radius: 5px;
 				padding: 5px 14px 13px 18px;
 				z-index: 2;
@@ -164,13 +160,10 @@
 		&-thumb {
 			width: 272px;
 			height: 158px;
-			background: $color_white;
 			border-radius: 5px;
 			background-size: cover;
   			background-position: center center;
 			&-active {
-				box-shadow: 0px 7px 11px rgba(0, 0, 0, 0.08);
-				border: 1px solid $color_green;
 				cursor: pointer;
 			}
 			&-text {
@@ -184,15 +177,8 @@
 			}
 		}
 		&-textarea {
-			width: 100%;
 			height: 182px;
-			box-sizing: border-box;
-			background: $color_white;
 			border-radius: 5px;
-			resize: none;
-			border: none;
-			box-shadow: none;
-			outline: none;
 			@include font-ubuntu(400, 14px, 25px);
 			color: $color_black;
 			padding: 14px 18px 13px;
@@ -203,17 +189,11 @@
 		&-switch {
 			width: 40px;
 			height: 20px;
-			background: $color_white;
 			border-radius: 10px;
-			position: relative;
 			cursor: pointer;
 			&-position {
-				width: 20px;
-				height: 20px;
-				box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
-				position: absolute;
+				@include square(20px);
 				top: 0;
-				border-radius: 100%;
 				&-on {
 					right: 0;
 					background: $color_green;
@@ -229,7 +209,6 @@
 			grid-row-gap: 11px;
 		}
 		&-bottom {
-			position: relative;
 			margin-top: 38px;
 			margin-bottom: 93px;
 		}
@@ -250,25 +229,7 @@
 				width: 205px;
 				height: 39px;
 				border-radius: 5px;
-				box-shadow: none;
 				@include font-ubuntu(400, 13px, 14px);
-			}
-		}
-		&-button {
-			&-publish {
-				background: $color_green;
-				color: $color_white;
-				border: none;
-			}
-			&-preview {
-				background: $color_white;
-				color: $color_black;
-				border: 1px solid $color_green;
-			}
-			&-cancel {
-				background: $color_white;
-				color: $color_black;
-				border: 1px solid $color_green;
 			}
 		}
 	}
@@ -286,11 +247,7 @@
 			width: 205px;
 			height: 39px;
 			border-radius: 5px;
-			box-shadow: none;
 			@include font-ubuntu(400, 14px, 14px);
-			background: $color_green;
-			color: $color_white;
-			border: none;
 		}
 	}
 }
@@ -697,19 +654,13 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: rgba(0, 0, 0, 0.7);
-		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: 10;
 		&-wrap {
 			width: 100%;
-			// width: 80%;
-			// height: 80%;
-			// border: 1px solid red;
-			position: relative;
 		}
 		&-nav {
-			position: absolute;
 			width: 20px;
 			top: calc(50% - 35px / 2);
 			&-prev {
@@ -724,7 +675,6 @@
 			cursor: pointer;
 		}
 		&-close {
-			position: absolute;
 			width: 35px;
 			height: 35px;
 			top: 40px;
@@ -739,31 +689,18 @@
 	&__images {
 		width: 418px;
 		height: 508px;
-		position: relative;
 		&-full {
-			width: 100%;
 			height: 415px;
 			border: 1px solid #DFDFDF;
 			border-radius: 11px;
 			overflow: hidden;
 			margin-bottom: 17px;
 			cursor: pointer;
-			& img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				object-position: center;
-			}
 		}
 		&-list {
 			grid-column-gap: 9px;
-			width: 100%;
 			overflow-x: hidden;
 			&-item {
-				/* flex-grow: 1;
-  				flex-shrink: 1;
-				flex-basis: 75px; */
-				// flex: 0 0 75px;
 				& img {
 					width: 75px;
 					height: 77px;
@@ -771,8 +708,6 @@
 					border-radius: 11px;
 					overflow: hidden;
 					cursor: pointer;
-					object-fit: cover;
-					object-position: center;
 				}
 				&-active {
 					& img {
@@ -781,13 +716,9 @@
 				}
 			}
 			&-nav {
-				position: absolute;
 				width: 23px;
 				height: 23px;
 				bottom: 24px;
-				background: $color_white;
-				border: 1px solid $color_green;
-				border-radius: 100%;
 				cursor: pointer;
 				& img {
 					width: 5px;
@@ -804,17 +735,8 @@
 	}
 	&__info {
 		width: 748px;
-		&-negotiable {
-			@include font-ubuntu(500, 36px, 41px);
-			color: $color_black;
-			margin-top: 39px;
-			margin-bottom: 62px;
-		}
 		&-main {
 			height: 508px;
-			width: 100%;
-		}
-		&-top {
 			width: 100%;
 		}
 		&-title {
@@ -862,8 +784,6 @@
 				}
 			}
 			&-divider {
-				width: 100%;
-				height: 0;
 				border: 1px solid #E4E4E4;
 				margin: 27px 0 24px;
 			}
@@ -943,44 +863,31 @@
 			&-write {
 				width: 228px;
 				height: 55px;
-				background: $color_green;
-				border: 1px solid $color_green;
 				border-radius: 8px;
 				@include font-ubuntu(700, 16px, 16px);
-				color: $color_white;
 			}
 			&-allproducts {
 				width: 228px;
 				height: 55px;
-				background: transparent;
-				border: 1px solid #F79E1B;
 				border-radius: 8px;
 				@include font-ubuntu(400, 16px, 16px);
-				color: $color_black;
 			}
 			&-whatsapp {
 				width: 256px;
 				height: 55px;
-				background: #F79E1B;;
-				border: 1px solid #F79E1B;
 				border-radius: 8px;
 				@include font-ubuntu(500, 14px, 14px);
-				color: $color_white;
 			}
 			&-call {
 				width: 256px;
 				height: 55px;
-				background: $color_green;
-				border: 1px solid $color_green;
 				border-radius: 8px;
 				@include font-ubuntu(500, 14px, 14px);
-				color: $color_white;
 			}
 			&-phone {
 				width: 256px;
 				height: 55px;
 				@include font-ubuntu(500, 18px, 18px);
-				color: $color_black;
 			}
 		}
 	}
@@ -1031,7 +938,6 @@
 		}
 	}
 	&__divider {
-		width: 100%;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 	}
 	&__text {		
@@ -1040,7 +946,6 @@
 		font-weight: 400;
 		font-size: 14px;
 		line-height: 27px;
-		color: $color_black;
 		margin-top: 55px;
 		margin-bottom: 54px;
 	}
@@ -1048,7 +953,6 @@
 		text-align: center;
 		&-title {
 			@include font-ubuntu(500, 32px, 37px);
-			color: $color_black;
 			margin-bottom: 30px;
 			text-align: left;
 		}
@@ -1056,7 +960,7 @@
 			margin-bottom: 58px!important;
 		}
 		&-showmore {
-			margin: 0 auto 58px!important;
+			margin: 0 auto 58px;
 		}
 	}
 }
@@ -1097,11 +1001,6 @@
 		}
 		&__info {
 			width: calc(748 * 100vw / 1440);
-			&-negotiable {
-				@include font-ubuntu(500, calc(36 * 100vw / 1440), calc(41 * 100vw / 1440));
-				margin-top: calc(39 * 100vw / 1440);
-				margin-bottom: calc(62 * 100vw / 1440);
-			}
 			&-main {
 				height: calc(508 * 100vw / 1440);
 			}
@@ -1261,7 +1160,7 @@
 				margin-bottom: calc(58 * 100vw / 1440)!important;
 			}
 			&-showmore {
-				margin: 0 auto calc(58 * 100vw / 1440)!important;
+				margin: 0 auto calc(58 * 100vw / 1440);
 			}
 		}
 	}
@@ -1327,17 +1226,8 @@
 		}
 		&__info {
 			width: 334px;
-			/* &-negotiable {
-				@include font-ubuntu(500, 36px, 41px);
-				color: $color_black;
-				margin-top: 39px;
-				margin-bottom: 62px;
-			} */
 			&-main {
 				height: auto;
-			}
-			&-top {
-				width: 100%;
 			}
 			&-title {
 				@include font-ubuntu(500, 24px, 28px);
@@ -1414,7 +1304,6 @@
 					grid-row-gap: 11px;
 					margin-left: 12px;
 					& button, & a {
-						box-sizing: border-box;
 						display: flex;
 						justify-content: center;
 						align-items: center;
@@ -1422,25 +1311,9 @@
 						height: 55px;
 						border-radius: 8px;
 						@include font-ubuntu(500, 14px, 14px);
-						color: $color_white;
-					}
-				}
-				&-button {
-					&-whatsapp {
-						background: #F79E1B;;
-						border: 1px solid #F79E1B;
-					}
-					&-call {
-						background: $color_green;
-						border: 1px solid $color_green;
-					}
-					&-phone {
-						color: $color_black!important;
 					}
 				}
 				&-divider {
-					width: 100%;
-					height: 0;
 					border: 1px solid #E4E4E4;
 					margin: 25px 0 21px;
 				}
@@ -1469,20 +1342,14 @@
 				&-write {
 					width: 160px;
 					height: 55px;
-					background: $color_green;
-					border: 1px solid $color_green;
 					border-radius: 8px;
 					@include font-ubuntu(700, 14px, 14px);
-					color: $color_white;
 				}
 				&-allproducts {
 					width: 160px;
 					height: 55px;
-					background: transparent;
-					border: 1px solid #F79E1B;
 					border-radius: 8px;
 					@include font-ubuntu(400, 14px, 14px);
-					color: $color_black;
 				}
 				&-whatsapp {
 					display: none!important;
@@ -1529,7 +1396,6 @@
 			}
 		}
 		&__divider {
-			width: 100%;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 		}
 		&__text {
@@ -1547,7 +1413,7 @@
 				margin-bottom: 33px!important;
 			}
 			&-showmore {
-				margin: 0 auto 57px!important;
+				margin: 0 auto 57px;
 			}
 		}
 	}
@@ -1739,7 +1605,7 @@
 				margin-bottom: calc(33 * 100vw / 768)!important;
 			}
 			&-showmore {
-				margin: 0 auto calc(57 * 100vw / 768)!important;
+				margin: 0 auto calc(57 * 100vw / 768);
 			}
 		}
 	}
@@ -1813,9 +1679,6 @@
 			position: relative;
 			&-main {
 				height: auto;
-			}
-			&-top {
-				width: 100%;
 			}
 			&-title {
 				display: none;
@@ -1980,7 +1843,7 @@
 				margin-bottom: calc(39 * 100vw / 320)!important;
 			}
 			&-showmore {
-				margin: 0 auto calc(59 * 100vw / 320)!important;
+				margin: 0 auto calc(59 * 100vw / 320);
 			}
 		}
 	}

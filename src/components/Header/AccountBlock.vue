@@ -4,11 +4,11 @@
 		class="account-block account-block__user justify-content-between"
 	>
 		<div
-			class="account-block__avatar d-flex justify-content-center align-items-center"
+			class="account-block__avatar d-flex justify-content-center align-items-center br-100"
 			@click="handleAccount"
 		>
-			<img v-if="user.profile.avatar" :src="`${storageURL}/${user.profile.avatar}`" />
-			<img v-else :src="require('@/assets/images/fake-avatar.png')" />
+			<img class="w-100 h-100 img-centered" v-if="user.profile.avatar" :src="`${storageURL}/${user.profile.avatar}`" />
+			<img class="w-100 h-100 img-centered" v-else :src="require('@/assets/images/fake-avatar.png')" />
 		</div>
 		<div
 			class="account-block__link account-block__link-user"
@@ -29,7 +29,7 @@
 		@click="handleAccount"
 	>
 		<div class="account-block__icon d-flex justify-content-center align-items-center">
-			<img :src="require('@/assets/images/account.png')" />
+			<img class="w-100" :src="require('@/assets/images/account.png')" />
 		</div>
 		<div class="account-block__link account-block__link-login">
 			<a>Войти/Регистрация</a>

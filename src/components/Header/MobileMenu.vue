@@ -13,8 +13,8 @@
 			v-if="showMenu"
 			@click="closeMenu"
 		/>	
-		<div v-if="showMenu" class="mobile-menu__dropdown">
-			<div class="mobile-menu__dropdown-items">
+		<div v-if="showMenu" class="mobile-menu__dropdown fixed background-white">
+			<div class="mobile-menu__dropdown-items w-100">
 				<a
 					v-for="(item, index) of menuItems"
 					:key="index"

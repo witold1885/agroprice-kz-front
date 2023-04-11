@@ -2,12 +2,9 @@
 @import '@/assets/styles/_mixins.scss';
 
 .footer {
-	width: 100%;
 	height: 392px;
-	background: #F4F4F4;
 	&__wrap {
 		width: 1200px;
-		height: 100%;
 		margin: 0 auto;
 		justify-content: space-between;
 	}
@@ -18,10 +15,6 @@
 		width: 127px;
 		height: 28px;
 		color: $color_black;
-		& img {
-			width: 100%;
-			height: 100%;
-		}
 	}
 	&__socials {
 		margin-top: 33px;
@@ -29,7 +22,6 @@
 		&-button {
 			width: 34px;
 			height: 34px;
-			background: $color_green;
 			border-radius: 4px;
 		}
 	}
@@ -74,27 +66,17 @@
 		margin-left: 34px;
 		grid-column-gap: 48px;
 		&-item {
-			// width: 177px;
 			grid-row-gap: 18px;
-			/* &-1 {
-				margin-right: 48px;
-			}
-			&-2 {
-				margin-right: 74px;
-			} */
 			&-title {
         		@include font-ubuntu(500, 14px, 16px);
 				color: $color_black;
 			}
 			&-list {
-				// width: 177px;
-				// height: 232px;
 				grid-row-gap: 20px;
 				justify-content: space-between;
         		@include font-ubuntu(300, 14px, 16px);
-				color: rgba(0, 0, 0, 0.53);
 				& a {
-					color: inherit;
+					color: rgba(0, 0, 0, 0.53);
 				}
 			}
 		}
@@ -127,16 +109,11 @@
 			height: 39px;
 			border-radius: 5px;
         	@include font-ubuntu(400, 13px, 14px);
-			text-align: center;
 			&-signin {
 				color: $color_white;
-				background: $color_green;
-				border: none;
 			}
 			&-signup {
 				color: $color_black;
-				background: transparent;
-				border: 1px solid $color_green;
 			}
 		}
 	}
@@ -213,21 +190,12 @@
 			margin-left: calc(34 * 100vw / 1440);
 			grid-column-gap: calc(48 * 100vw / 1440);
 			&-item {
-				// width: calc(177 * 100vw / 1440);
 				grid-row-gap: calc(18 * 100vw / 1440);
-				/* &-1 {
-					margin-right: calc(48 * 100vw / 1440);
-				}
-				&-2 {
-					margin-right: calc(74 * 100vw / 1440);
-				} */
 				&-title {
 	        		@include font-ubuntu(500, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
 				}
 				&-list {
 					grid-row-gap: calc(20 * 100vw / 1440);
-					// width: calc(177 * 100vw / 1440);
-					// height: calc(232 * 100vw / 1440);
 	        		@include font-ubuntu(300, calc(14 * 100vw / 1440), calc(16 * 100vw / 1440));
 				}
 			}
@@ -332,20 +300,11 @@
 			margin-left: 36px;
 			grid-column-gap: 24px;
 			&-item {
-				// width: 152px;
 				grid-row-gap: 20px;
-				/* &-1 {
-					margin-right: 24px;
-				}
-				&-2 {
-					margin-right: 24px;
-				} */
 				&-title {
 	        		@include font-ubuntu(500, 12px, 14px);
 				}
 				&-list {
-					// width: 152px;
-					// height: 176px;
 					grid-row-gap: 13px;
 	        		@include font-ubuntu(300, 12px, 14px);
 				}
@@ -449,20 +408,11 @@
 			margin-left: calc(36 * 100vw / 768);
 			grid-column-gap: calc(24 * 100vw / 768);
 			&-item {
-				// width: calc(152 * 100vw / 768);
 				grid-row-gap: calc(20 * 100vw / 768);
-				/* &-1 {
-					margin-right: calc(24 * 100vw / 768);
-				}
-				&-2 {
-					margin-right: calc(24 * 100vw / 768);
-				} */
 				&-title {
 	        		@include font-ubuntu(500, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
 				}
 				&-list {
-					// width: calc(152 * 100vw / 768);
-					// height: calc(176 * 100vw / 768);
 					grid-row-gap: calc(13 * 100vw / 768);
 	        		@include font-ubuntu(300, calc(12 * 100vw / 768), calc(14 * 100vw / 768));
 				}

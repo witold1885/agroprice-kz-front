@@ -1,9 +1,9 @@
 <template>
-	<a :href="`/product/${product.url}`" class="list-product d-flex justify-content-between">
-		<div class="list-product__left d-flex">
-			<img v-if="product.product_images.length != 0" class="list-product__image" :src="`${storageURL}/${product.product_images[0].path}`" />
-			<img v-else class="catalog-product__image" :src="require('@/assets/images/no-image.png')" />
-			<div class="list-product__info d-flex flex-column justify-content-between">
+	<a :href="`/product/${product.url}`" class="list-product w-100 d-flex justify-content-between relative background-white shadow-custom">
+		<div class="list-product__left h-100 d-flex">
+			<img v-if="product.product_images.length != 0" class="list-product__image h-100" :src="`${storageURL}/${product.product_images[0].path}`" />
+			<img v-else class="catalog-product__image h-100" :src="require('@/assets/images/no-image.png')" />
+			<div class="list-product__info h-100 d-flex flex-column justify-content-between">
 				<div>
 					<div class="list-product__subcategory d-flex justify-content-between align-items-center">
 						{{ product.category_name }}
@@ -19,7 +19,7 @@
 					</div> -->
 					<div class="list-product__price-main">{{ product.price != 0 ? Intl.NumberFormat('ru-RU').format(product.price) + ' тенге' : 'Цена договорная' }}</div>				
 				</div>
-				<div class="list-product__location d-flex">
+				<div class="list-product__location d-flex align-items-center">
 					<img class="list-product__location-icon" :src="require('@/assets/images/location.png')" />
 					<div class="list-product__location-value">{{ product.location.city }}</div>
 				</div>
@@ -35,8 +35,8 @@
 				</div>
 			</div>
 		</div>
-		<FavoritesButton class="list-product__favorite" border-color="green" :product_id="product.id" />
-		<div class="list-product__right d-flex flex-column justify-content-between align-items-end">
+		<FavoritesButton class="list-product__favorite absolute" border-color="green" :product_id="product.id" />
+		<div class="list-product__right h-100 d-flex flex-column justify-content-between align-items-end">
 			<div class="list-product__right-top">
 				<div class="list-product__date">{{ product.date }}</div>
 				<!-- <div class="list-product__location d-flex">

@@ -332,8 +332,8 @@
     font-style: italic;
 }
 
-div {
-	box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
 a, button {
@@ -345,14 +345,92 @@ a {
 }
 
 button {
-	box-sizing: border-box;
 	padding: 0;
 	box-shadow: none;
+    outline: none!important;
+    background: transparent;
+}
+
+input {
+    outline: none!important;
+    box-shadow: none;
 }
 
 input:focus, input:active {
 	border: none!important;
 	outline: none!important;
+    box-shadow: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.b-none {
+    border: none;
+}
+
+.b-green {
+    border: 1px solid $color_green;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.background-transparent {
+    background: transparent;
+}
+
+.background-white {
+    background: $color_white;
+}
+
+.background-green {
+   background: $color_green;
+}
+
+.background-lightgrey {
+    background: $color_lightgrey;
+}
+
+.background-yellow {
+    background: $color_yellow;
+}
+
+.color-white {
+    color: $color_white;
+}
+
+.color-green {
+   color: $color_green;
+}
+
+.color-black {
+    color: $color_black;
+}
+
+.shadow-custom {
+    box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
+}
+
+.flex-fill {
+    width: 100%;
+    flex: 1;
 }
 
 .d-flex {
@@ -397,6 +475,10 @@ input:focus, input:active {
 	align-items: flex-end!important;
 }
 
+.border-none {
+    border: none;
+}
+
 .border-white {
 	border: 1px solid $color_white;
 }
@@ -407,6 +489,35 @@ input:focus, input:active {
 
 .border-green {
 	border: 1px solid $color_green;	
+}
+
+.border-yellow {
+    border: 1px solid $color_yellow; 
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.w-0 {
+    width: 0;
+}
+
+.h-0 {
+    height: 0;
+}
+
+.br-100 {
+    border-radius: 100%;
+}
+
+.img-centered {
+    object-fit: cover;
+    object-position: center;
 }
 
 h1 {
@@ -562,6 +673,23 @@ h1 {
 		right: 11px;
 		bottom: 11px;
 	}
+}
+
+@media screen and (max-width: 414px) {
+    .close-button {
+        width: calc(35 * 100vw / 320);
+        height: calc(35 * 100vw / 320);
+        border-radius: calc(5 * 100vw / 320);
+        margin-top: calc(10 * 100vw / 320);
+        &__icon {
+            width: calc(12.02 * 100vw / 320);
+            height: calc(12.02 * 100vw / 320);
+            top: calc(11 * 100vw / 320);
+            left: calc(11 * 100vw / 320);
+            right: calc(11 * 100vw / 320);
+            bottom: calc(11 * 100vw / 320);
+        }
+    }
 }
 
 .carousel__viewport {
@@ -1195,4 +1323,48 @@ h1 {
 			list-style: none;
 		}
 	}
+}
+
+.showmore {
+    width: 199px;
+    height: 41px;
+    border-radius: 5px;
+    @include font-ubuntu(400, 13px, 14px);
+    color: $color_black;
+}
+
+@media screen and (max-width: 1440px) {
+    .showmore {
+        width: calc(199 * 100vw / 1440);
+        height: calc(41 * 100vw / 1440);
+        border-radius: calc(5 * 100vw / 1440);
+        @include font-ubuntu(400, calc(13 * 100vw / 1440), calc(14 * 100vw / 1440));
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .showmore {
+        width: 199px;
+        height: 41px;
+        border-radius: 5px;
+        @include font-ubuntu(400, 13px, 14px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .showmore {
+        width: calc(199 * 100vw / 768);
+        height: calc(41 * 100vw / 768);
+        border-radius: calc(5 * 100vw / 768);
+        @include font-ubuntu(400, calc(13 * 100vw / 768), calc(14 * 100vw / 768));
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .showmore {
+        width: calc(176 * 100vw / 320);
+        height: calc(35 * 100vw / 320);
+        border-radius: calc(5 * 100vw / 320);
+        @include font-ubuntu(400, calc(13 * 100vw / 320), calc(14 * 100vw / 320));
+    }
 }

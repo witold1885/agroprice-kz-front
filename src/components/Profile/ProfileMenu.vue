@@ -27,7 +27,7 @@
 						
 					>	
 						<div class="profile-sidebar__menu-item d-flex align-items-center">
-							<div v-if="item.active" class="profile-sidebar__menu-item-marker"></div>
+							<div v-if="item.active" class="profile-sidebar__menu-item-marker absolute background-green"></div>
 							<img
 								class="profile-sidebar__menu-item-icon"
 								:class="`profile-sidebar__menu-item-icon-${item.icon}`"
@@ -52,10 +52,10 @@
 									<div
 										v-for="(subchild, index) of child.children"
 										:key="index"
-										class="profile-sidebar__menu-subitem-child"
+										class="profile-sidebar__menu-subitem-child relative"
 										:class="{ 'profile-sidebar__menu-subitem-child-active': subchild.active }"
 									>
-										<div v-show="subchild.active" class="profile-sidebar__menu-subitem-child-marker"></div>
+										<div v-show="subchild.active" class="profile-sidebar__menu-subitem-child-marker absolute background-green"></div>
 										<div class="profile-sidebar__menu-subitem-child-title" @click="goFurther(subchild.link)">{{ subchild.title }}</div>
 									</div>
 								</div>

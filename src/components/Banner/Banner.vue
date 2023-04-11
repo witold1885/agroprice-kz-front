@@ -3,17 +3,17 @@
 		<button v-if="activeImage.link && activeImage.button_text" class="banner__button" @click="goFurther(activeImage.link)">{{ activeImage.button_text }}</button>
 		<img
 			v-if="breakpoint == 'lg'"
-			class="banner__image"
+			class="banner__image w-100 h-100"
 			:src="`${storageURL}/${activeImage.path}`"
 		/>
 		<img
 			v-if="breakpoint == 'md'"
-			class="banner__image"
+			class="banner__image w-100 h-100"
 			:src="`${storageURL}/${activeImage.path_md}`"
 		/>
 		<img
 			v-if="breakpoint == 'sm'"
-			class="banner__image"
+			class="banner__image w-100 h-100"
 			:src="`${storageURL}/${activeImage.path_sm}`"
 		/>
 		<div v-if="images.length > 1" class="banner__nav d-flex justify-content-between align-items-center">
