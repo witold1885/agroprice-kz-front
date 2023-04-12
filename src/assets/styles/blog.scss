@@ -70,7 +70,7 @@
 					border-bottom: 1px solid #D2D2D2;				
 				}
 				&-title {
-					@include font-ubuntu(400, 14px, 144.4%);
+					@include font-ubuntu(400, 15px, 144.4%);
 					color: $color_black;
 				}
 				&-date {
@@ -246,7 +246,7 @@
 					grid-row-gap: calc(11 * 100vw / 1440);
 					padding-bottom: calc(20 * 100vw / 1440);
 					&-title {
-						@include font-ubuntu(400, calc(14 * 100vw / 1440), 144.4%);
+						@include font-ubuntu(400, calc(15 * 100vw / 1440), 144.4%);
 					}
 					&-date {
 						@include font-ubuntu(300, calc(12 * 100vw / 1440), 144.4%);
@@ -394,7 +394,7 @@
 					grid-row-gap: 11px;
 					padding-bottom: 20px;
 					&-title {
-						@include font-ubuntu(400, 14px, 144.4%);
+						@include font-ubuntu(400, 15px, 144.4%);
 					}
 					&-date {
 						@include font-ubuntu(300, 12px, 144.4%);
@@ -543,7 +543,7 @@
 					grid-row-gap: calc(11 * 100vw / 768);
 					padding-bottom: calc(20 * 100vw / 768);
 					&-title {
-						@include font-ubuntu(400, calc(14 * 100vw / 768), 144.4%);
+						@include font-ubuntu(400, calc(15 * 100vw / 768), 144.4%);
 					}
 					&-date {
 						@include font-ubuntu(300, calc(12 * 100vw / 768), 144.4%);
@@ -690,7 +690,7 @@
 					grid-row-gap: calc(11 * 100vw / 320);
 					padding-bottom: calc(20 * 100vw / 320);
 					&-title {
-						@include font-ubuntu(400, calc(14 * 100vw / 320), 144.4%);
+						@include font-ubuntu(400, calc(15 * 100vw / 320), 144.4%);
 					}
 					&-date {
 						@include font-ubuntu(300, calc(12 * 100vw / 320), 144.4%);
