@@ -125,6 +125,7 @@
 		padding: 0 5px 12px;
 	}
 	&__subcategory {
+		height: 14px;
 	    @include font-ubuntu(400, 12px, 14px);
 		color: #BEBEBE;
 	}
@@ -147,6 +148,7 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 		max-height: 40.5px;
+		text-align: left;
 	}
 	&__divider {
 		height: 0;
@@ -302,6 +304,7 @@
 			padding: 0 calc(5 * 100vw / 1440) calc(12 * 100vw / 1440);
 		}
 		&__subcategory {
+			height: calc(14 * 100vw / 1440);
 		    @include font-ubuntu(400, calc(12 * 100vw / 1440), calc(14 * 100vw / 1440));
 		}
 		&__location {
@@ -459,6 +462,7 @@
 			padding: 0 5px 12px;
 		}
 		&__subcategory {
+			height: 14px;
 		    @include font-ubuntu(400, 12px, 14px);
 		}
 		&__location {
@@ -611,6 +615,7 @@
 			padding: 0  calc(5 * 100vw / 768)  calc(12 * 100vw / 768);
 		}
 		&__subcategory {
+			height: calc(14 * 100vw / 768);
 		    @include font-ubuntu(400,  calc(12 * 100vw / 768),  calc(14 * 100vw / 768));
 		}
 		&__location {
@@ -785,6 +790,7 @@
 			margin-top: calc(15 * 100vw / 768);
 		}
 		&__subcategory {
+			height: calc(11 * 100vw / 320);
 		    @include font-ubuntu(400, calc(10 * 100vw / 320), calc(11 * 100vw / 320));
 		}
 		&__location {
