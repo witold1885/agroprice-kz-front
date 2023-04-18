@@ -14,7 +14,7 @@ module.exports = defineConfig({
   }
 }*/
 
-/*const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
+const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
 
 module.exports = {
   configureWebpack: {
@@ -22,12 +22,12 @@ module.exports = {
       // new MiniCssExtractPlugin(),
       new HTMLInlineCSSWebpackPlugin({
         styleTagFactory({ style }) {
-          return `<style amp-custom>${style.replace(/\!important/g, '')}</style>`;
+          return `<style amp-custom>${style}</style>`;
         },
       }),
     ],
   },
-};*/
+};
 
 /*const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
 

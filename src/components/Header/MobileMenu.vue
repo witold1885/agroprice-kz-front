@@ -2,7 +2,7 @@
 	<div class="mobile-menu">
 		<button
 			v-if="!showMenu"
-			class="mobile-menu__button d-flex flex-column justify-content-center align-items-end"
+			class="mobile-menu__button d-flex flex-column justify-content-center align-items-end background-transparent border-grey"
 			@click="openMenu"
 		>
 			<img :src="require('@/assets/images/burger-long-line.png')" />
@@ -23,7 +23,7 @@
 					@click="setAction(item.action)"
 				>
 					<div class="mobile-menu__dropdown-item-wrap d-flex justify-content-between align-items-center">
-						<a class="mobile-menu__dropdown-item-title">{{ item.title }}</a>
+						<a class="mobile-menu__dropdown-item-title color-black">{{ item.title }}</a>
 						<img
 							class="mobile-menu__dropdown-item-arrow mobile-menu__dropdown-item-arrow-green"
 							:src="require('@/assets/images/arrow-right-green.png')"

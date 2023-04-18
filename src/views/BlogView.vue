@@ -10,7 +10,7 @@
 				<Pagination class="blog__list-pagination" :pagesCount="pages" v-show="pages > 1"/>
 				<button
 					v-show="pages > 1"
-					class="showmore blog__list-showmore background-white b-green"
+					class="showmore blog__list-showmore background-white border-green"
 					@click="showMore"
 				>Показать еще</button>
 			</div>

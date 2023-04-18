@@ -9,7 +9,10 @@
 			</div>
 			<!-- <FavoritesButton class="header__favorites-mobile" border-color="grey"/> -->
 			<div class="header-top__buttons d-flex justify-content-end">
-				<FavoritesButton class="header__favorites-mobile" border-color="grey"/>
+				<FavoritesButton
+					class="header__favorites-mobile"
+					border-color="grey"
+				/>
 				<AccountBlock />	
 				<MobileMenu />	
 			</div>
@@ -17,7 +20,11 @@
 		<div class="header-bottom d-flex justify-content-between relative">
 			<CatalogMenu />
 			<SearchBlock />
-			<FavoritesButton class="header__favorites" border-color="grey" @click="goFavorites" />
+			<FavoritesButton
+				class="header__favorites"
+				border-color="grey"
+				@click="goFavorites"
+			/>
 		</div>
 	</header>
 </template>
@@ -41,9 +48,36 @@ export default {
 		MobileMenu
 	},
 	computed: {
-		...mapState('auth', ['user'])
+		...mapState('auth', ['user']),
+	},
+	created () {
+		window.addEventListener('resize', this.handleResize)
+	},
+	unmounted () {
+		window.removeEventListener('resize', this.handleResize)
+	},
+	mounted () {
+		this.getMobileFavoritesShow()
+		this.getDesktopFavoritesShow()
 	},
 	methods: {
+		handleResize () {
+			this.getMobileFavoritesShow()
+			this.getDesktopFavoritesShow()
+		},
+		getMobileFavoritesShow () {
+			const display = this.breakpoint == 'sm' ? 'flex' : 'none'
+			let favMobile = document.querySelector('.header__favorites-mobile') 
+			favMobile.style.cssText = `display:${display};`
+			if (this.breakpoint == 'sm') {
+				favMobile.style.cssText += `width:calc(35 * 100vw / 320);height:calc(35 * 100vw / 320);border-radius:calc(5 * 100vw / 320)`
+			}
+		},
+		getDesktopFavoritesShow () {
+			const display = this.breakpoint == 'sm' ? 'none' : 'flex'
+			let favDesktop = document.querySelector('.header__favorites') 
+			favDesktop.style.cssText = `display:${display};`
+		},
 		goFavorites () {
 			if (this.user) {
 				this.$router.push('/profile/favorites')

@@ -1,13 +1,13 @@
 <template>
 	<a
-		class="category-card"
+		class="category-card relative background-white shadow-custom"
 		:href="`/catalog/${category.url}`"
 	>
-		<div class="category-card__title">{{ breakpoint == 'sm' && category.name == 'Сельскохозяйственная техника' ? 'Сельхозтехника' : category.name }} <span class="category-card__title-count">{{ category.productsCount }}</span></div>
+		<div class="category-card__title">{{ breakpoint == 'sm' && category.name == 'Сельскохозяйственная техника' ? 'Сельхозтехника' : category.name }} <span class="category-card__title-count color-green">{{ category.productsCount }}</span></div>
 		<!-- <div class="category-card__subtitle">Объявлений ({{ category.productsCount }})</div> -->
 		<img
 			v-if="category.image"
-			class="category-card__image"
+			class="category-card__image absolute"
 			:src="`${storageURL}/${category.image}`"
 		/>
 	</a>

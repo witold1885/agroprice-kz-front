@@ -51,7 +51,7 @@
 		<Pagination :pagesCount="pages" v-show="pages > 1" />
 		<div class="profile-products__showmore" v-show="pages > 1">
 			<button
-				class="showmore background-white b-green"
+				class="showmore background-white border-green"
 				@click="showMore"
 			>Показать еще</button>
 		</div>

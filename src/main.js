@@ -12,9 +12,6 @@ const app = createApp(App)
 
 app.config.globalProperties.emitter = emitter
 
-console.log('window')
-console.log(window.innerWidth)
-
 const handleResize = () => {
 	let breakpoint
 	if (window.innerWidth > 992) breakpoint = 'lg'

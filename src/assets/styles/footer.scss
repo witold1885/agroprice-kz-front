@@ -14,7 +14,6 @@
 	&__logo {
 		width: 127px;
 		height: 28px;
-		color: $color_black;
 	}
 	&__socials {
 		margin-top: 33px;
@@ -69,7 +68,6 @@
 			grid-row-gap: 18px;
 			&-title {
         		@include font-ubuntu(500, 14px, 16px);
-				color: $color_black;
 			}
 			&-list {
 				grid-row-gap: 20px;
@@ -98,7 +96,6 @@
 			width: 100%;
         	@include font-ubuntu(500, 14px, 16px);
 			text-align: center;
-			color: $color_black;
 		}
 		&-buttons {
 			flex-direction: column;
@@ -109,12 +106,6 @@
 			height: 39px;
 			border-radius: 5px;
         	@include font-ubuntu(400, 13px, 14px);
-			&-signin {
-				color: $color_white;
-			}
-			&-signup {
-				color: $color_black;
-			}
 		}
 	}
 	&__payments {
@@ -241,7 +232,7 @@
 		height: 393px;
 		&__wrap {
 			width: 688px;
-			flex-direction: column!important;
+			flex-direction: column;
 			justify-content: flex-start;
 		}
 		&__info {
@@ -314,7 +305,7 @@
 			margin-top: 25px;
 			grid-column-gap: 175px;
 			flex-direction: row-reverse;
-			justify-content: space-between!important;
+			justify-content: space-between;
 			width: 100%;
 		}
 		&__account {
@@ -545,7 +536,7 @@
 		}
 		&__right {
 			margin-top: calc(29 * 100vw / 320);
-			justify-content: flex-start!important;
+			justify-content: flex-start;
 			flex-direction: row;
 		}
 		&__account {

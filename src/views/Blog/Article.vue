@@ -2,7 +2,7 @@
 	<div class="article">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
 		<div v-if="blogArticle" class="article__wrap w-100 d-flex relative">
-			<!-- <div class="article__date d-flex flex-column justify-content-center align-items-center absolute background-green">
+			<!-- <div class="article__date d-flex flex-column justify-content-center align-items-center absolute background-green color-white">
 				<div class="article__date-day">{{ prettyDay }}</div>
 				<div class="article__date-month">{{ prettyMonth }}</div>				
 			</div> -->
@@ -164,7 +164,7 @@ export default {
 						width = 280 * window.innerWidth / 320
 						height = width / rate
 					}
-					image.style.cssText += `width:${width}px;height:${height}px;`;
+					image.style.cssText += `width:${width}px;height:${height}px;`
 				}
 			}
 		},

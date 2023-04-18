@@ -1,6 +1,6 @@
 <template>
 	<div class="profile-product w-100 d-flex justify-content-between relative background-lightgrey">
-		<div class="profile-product__left d-flex">
+		<div class="profile-product__left h-100 d-flex">
 			<img v-if="product.product_images.length != 0" class="profile-product__image img-centered" :src="`${storageURL}/${product.product_images[0].path}`" />
 			<img v-else class="profile-product__image img-centered" :src="require('@/assets/images/no-image.png')" />
 			<div class="profile-product__info h-100 d-flex flex-column justify-content-between">

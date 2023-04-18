@@ -1,38 +1,38 @@
 <template>
 	<form class="create-product__form">
 		<div class="create-product__form-blocks d-flex flex-column">
-			<div class="create-product__form-block create-product__form-block-main">
-				<div class="create-product__form-block-error">{{ errors.name }}</div>
-				<div class="create-product__form-block-item create-product__form-name">
-					<div ref="product_name" class="create-product__form-block-refpoint"></div>
-					<div class="create-product__form-label">
+			<div class="create-product__form-block create-product__form-block-main relative background-lightgrey">
+				<div class="create-product__form-block-error absolute color-red">{{ errors.name }}</div>
+				<div class="create-product__form-block-item create-product__form-name w-100">
+					<div ref="product_name" class="create-product__form-block-refpoint absolute"></div>
+					<div class="create-product__form-label color-black">
 						Укажите название товара*
 					</div>
 					<input
-						class="create-product__form-field"
+						class="create-product__form-field background-white color-black border-none"
 						placeholder="Например оборудование"
 						v-model="v$.product.name.$model"
-						:class="{ 'create-product__form-field-error': v$.product.name.$error }"
+						:class="{ 'create-product__form-field-error border-red': v$.product.name.$error }"
 					/>
 					<div class="create-product__form-hint">Не менее 35 символов</div>
 				</div>
-				<div class="create-product__form-block-error create-product__form-block-error-category">{{ errors.category }}</div>
+				<div class="create-product__form-block-error create-product__form-block-error-category absolute color-red">{{ errors.category }}</div>
 				<div class="create-product__form-block-item create-product__form-category">
-					<div ref="product_category" class="create-product__form-block-refpoint"></div>
-					<div class="create-product__form-label">
+					<div ref="product_category" class="create-product__form-block-refpoint absolute"></div>
+					<div class="create-product__form-label color-black">
 						Выберите категорию*
 					</div>
 					<div class="create-product__form-selects d-flex flex-wrap">
 						<div
 							v-for="(cat, index) in cats"
 							:key="`category-${index}`"
-							class="create-product__form-select"
+							class="create-product__form-select relative"
 						>
 							<div
-								class="create-product__form-select-field d-flex justify-content-between align-items-center"
+								class="create-product__form-select-field w-100 d-flex justify-content-between align-items-center background-white border-none"
 								@click="cat.show = !cat.show"
 							>
-								<div class="create-product__form-select-field-value">{{ cat.name }}</div>
+								<div class="create-product__form-select-field-value color-black">{{ cat.name }}</div>
 								<img class="create-product__form-select-field-arrow" :src="require('@/assets/images/arrow-down-green.png')">
 							</div>
 							<div
@@ -42,7 +42,7 @@
 								<div
 									v-for="(category, index) of cat.list"
 									:key="index"
-									class="create-product__form-select-menu-item"
+									class="create-product__form-select-menu-item color-black"
 									@click="selectCategory(category, cat.level)"
 								>{{ category.name }}</div>
 							</div>
@@ -50,11 +50,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="create-product__form-block create-product__form-block-images">
-				<div class="create-product__form-block-error create-product__form-block-error-images">{{ errors.images }}</div>		
+			<div class="create-product__form-block create-product__form-block-images relative background-lightgrey">
+				<div class="create-product__form-block-error create-product__form-block-error-images absolute color-red">{{ errors.images }}</div>		
 				<div class="create-product__form-block-item">
-					<div ref="product_images" class="create-product__form-block-refpoint"></div>
-					<div class="create-product__form-label">
+					<div ref="product_images" class="create-product__form-block-refpoint absolute"></div>
+					<div class="create-product__form-label color-black">
 						Фото
 					</div>
 					<div class="create-product__form-thumbs-sublabel">
@@ -70,7 +70,7 @@
 							@click="selectImage(img, index)"
 						>
 							<img v-if="!img.imageData" :src="require('@/assets/images/add-image.png')">
-							<div v-if="img.active" class="create-product__form-thumb-text">Добавить фото</div>
+							<div v-if="img.active" class="create-product__form-thumb-text color-green">Добавить фото</div>
 							<input
 								type="file"
 								style="display: none"
@@ -81,38 +81,38 @@
 					</div>
 				</div>
 			</div>
-			<div class="create-product__form-block create-product__form-block-description">
+			<div class="create-product__form-block create-product__form-block-description relative background-lightgrey">
 				<div class="create-product__form-block-error">{{ errors.description }}</div>
 				<div class="create-product__form-block-item create-product__form-description">
-					<div ref="product_description" class="create-product__form-block-refpoint"></div>
-					<div class="create-product__form-label">
+					<div ref="product_description" class="create-product__form-block-refpoint absolute"></div>
+					<div class="create-product__form-label color-black">
 						Описание*
 					</div>
 					<textarea
-						class="create-product__form-textarea w-100 background-white border-none"
+						class="create-product__form-textarea w-100 background-white border-none color-black"
 						placeholder="Подумайте, какие подробности вы хотели бы узнать из объявления. И добавьте их в описание"
 						v-model="v$.product.description.$model"
-						:class="{ 'create-product__form-textarea-error': v$.product.description.$error }"
+						:class="{ 'create-product__form-textarea-error border-red': v$.product.description.$error }"
 					></textarea>
 					<div class="create-product__form-hint">Напишите еще 80 символов</div>
 				</div>
 			</div>
-			<div class="create-product__form-block create-product__form-block-price d-flex">
+			<div class="create-product__form-block create-product__form-block-price d-flex relative background-lightgrey">
 				<div class="create-product__form-block-error">{{ errors.price }}</div>
 				<div class="create-product__form-block-item">
-					<div ref="product_price" class="create-product__form-block-refpoint"></div>
-					<div class="create-product__form-label">
+					<div ref="product_price" class="create-product__form-block-refpoint absolute"></div>
+					<div class="create-product__form-label color-black">
 						Цена
 					</div>
 					<input
-						class="create-product__form-field create-product__form-field-price"
+						class="create-product__form-field create-product__form-field-price background-white color-black border-none"
 						placeholder="12 000"
 						v-model="v$.product.price.$model"
 						:class="{ 'create-product__form-textarea-error': v$.product.price.$error }"
 					/>
 				</div>
 				<div class="create-product__form-block-item create-product__form-block-item-negotiable d-flex align-items-center">
-					<div class="create-product__form-label create-product__form-label-inline">
+					<div class="create-product__form-label create-product__form-label-inline color-black">
 						Договорная
 					</div>
 					<div
@@ -129,21 +129,21 @@
 					</div>
 				</div>
 			</div>
-			<div class="create-product__form-block create-product__form-block-location">	
+			<div class="create-product__form-block create-product__form-block-location relative background-lightgrey">	
 				<div class="create-product__form-block-error">{{ errors.location }}</div>				
 				<div class="create-product__form-block-item">
-					<div ref="product_location" class="create-product__form-block-refpoint"></div>
-					<div class="create-product__form-label">
+					<div ref="product_location" class="create-product__form-block-refpoint absolute"></div>
+					<div class="create-product__form-label color-black">
 						Местоположение
 					</div>
 					<div
-						class="create-product__form-select create-product__form-select-location"
+						class="create-product__form-select create-product__form-select-location relative"
 					>
 						<div
-							class="create-product__form-select-field d-flex justify-content-between align-items-center"
+							class="create-product__form-select-field w-100 d-flex justify-content-between align-items-center background-white border-none"
 						>
 							<input
-								class="create-product__form-select-field-input" placeholder="Выберите"
+								class="create-product__form-select-field-input flex-fill color-black border-none" placeholder="Выберите"
 								v-model="searchLocation"
 								@keyup="getLocations"
 							/>
@@ -156,24 +156,24 @@
 							<div
 								v-for="(location, index) of locations"
 								:key="index"
-								class="create-product__form-select-menu-item"
+								class="create-product__form-select-menu-item color-black"
 								@click="selectLocation(location)"
 							>{{ location.city }}</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="create-product__form-block create-product__form-block-contacts">
+			<div class="create-product__form-block create-product__form-block-contacts relative background-lightgrey">
 				<div class="create-product__form-block-error">{{ errors.person || errors.email || errors.phone }}</div>
 				<div class="create-product__form-block-item">
-					<div class="create-product__form-label">
+					<div class="create-product__form-label color-black">
 						Контактная информация
 					</div>
 					<div class="create-product__form-inputs d-flex flex-column">
-						<input class="create-product__form-field" placeholder="Контактное лицо*" v-model="contact.person" />
-						<input class="create-product__form-field" placeholder="Email-адрес" v-model="contact.email" />
+						<input class="create-product__form-field background-white color-black border-none" placeholder="Контактное лицо*" v-model="contact.person" />
+						<input class="create-product__form-field background-white color-black border-none" placeholder="Email-адрес" v-model="contact.email" />
 						<input
-							class="create-product__form-field"
+							class="create-product__form-field background-white color-black border-none"
 							placeholder="Номер телефона"
 							v-model="contact.phone"
 							v-maska
@@ -185,9 +185,9 @@
 			</div>
 		</div>
 		<div class="create-product__form-bottom d-flex justify-content-between align-items-center relative">
-			<div class="create-product__form-block-error create-product__form-block-error-save">{{ errors.save }}</div>
+			<div class="create-product__form-block-error create-product__form-block-error-save absolute color-red">{{ errors.save }}</div>
 			<div class="create-product__form-limitation d-flex align-items-center">
-				<div class="create-product__form-limitation-option">Без ограничения</div>
+				<div class="create-product__form-limitation-option color-black">Без ограничения</div>
 				<div
 					class="create-product__form-switch relative background-white"
 					@click="noLimitation = !noLimitation"
@@ -200,7 +200,7 @@
 						}"
 					></div>
 				</div>
-				<div class="create-product__form-limitation-description">Публикация без окончания срока</div>
+				<div class="create-product__form-limitation-description color-black">Публикация без окончания срока</div>
 			</div>
 			<div class="create-product__form-buttons d-flex justify-content-end align-items-center">
 				<button

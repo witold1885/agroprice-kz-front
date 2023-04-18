@@ -1,32 +1,32 @@
 <template>
 	<div
 		v-if="dialog.visible"
-		class="auth-dialog__shadow d-flex justify-content-center align-items-center"
+		class="auth-dialog__shadow d-flex justify-content-center align-items-center fixed"
 	>
 		<div
-			class="forgot-dialog"
+			class="forgot-dialog relative background-white"
 		>
 			<img 
-				class="auth-dialog__close"
+				class="auth-dialog__close absolute"
 				:src="require('@/assets/images/dialog-close.png')"
 				@click="dialog.visible = false"
 			/>
-			<div class="forgot-dialog__title">Забыли пароль</div>
+			<div class="forgot-dialog__title color-black">Забыли пароль</div>
 			<div class="auth-dialog__form d-flex flex-column justify-content-between align-items-center">
 				<form
-					class="auth-form d-flex flex-column justify-content-between align-items-center"
+					class="auth-form w-100 d-flex flex-column justify-content-between align-items-center relative"
 				>
-					<div v-if="error" class="auth-form__error">{{ error }}</div>
+					<div v-if="error" class="auth-form__error absolute color-red">{{ error }}</div>
 					<input
 						type="email"
-						class="auth-form__field"
+						class="auth-form__field background-lightgrey color-black border-none"
 						placeholder="E-mail"
 						v-model="v$.email.$model"
-						:class="{ 'auth-form__field-error': v$.email.$error }"
+						:class="{ 'auth-form__field-error border-red': v$.email.$error }"
 						autocomplete
 					/>
 				</form>
-				<div class="auth-dialog__form-submit d-flex flex-column align-items-center">
+				<div class="auth-dialog__form-submit d-flex flex-column align-items-center relative">
 					<VueRecaptcha
 						class="auth-dialog__form-submit-captcha"
 						:sitekey="siteKey"
@@ -34,9 +34,9 @@
 						@verify="captchaSuccess"
 						@error="captchaFailed"
 					></VueRecaptcha>
-					<span v-if="captchaError" class="auth-dialog__form-submit-captcha-error">{{ captchaError }}</span>
+					<span v-if="captchaError" class="auth-dialog__form-submit-captcha-error absolute color-red">{{ captchaError }}</span>
 					<button
-						class="auth-dialog__form-submit-button"
+						class="auth-dialog__form-submit-button background-green color-white border-none"
 						@click="onSubmit"
 					>Отправить запрос</button>
 				</div>

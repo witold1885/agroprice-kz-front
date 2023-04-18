@@ -1,35 +1,35 @@
 <template>
-	<div class="location-menu">
+	<div class="location-menu relative">
 		<div
-			class="location-menu__field"
+			class="location-menu__field border-green"
 			@click="showMenu = true"
 		>
 			{{ selectedLocations.length != 0 ? selectedLocations.join(', ') : 'Весь Казахстан' }}
 		</div>
 		<div
 			v-if="showMenu"
-			class="auth-dialog__shadow d-flex justify-content-center align-items-center"
+			class="auth-dialog__shadow d-flex justify-content-center align-items-center fixed"
 		>
-			<div class="location-menu__dropdown">
+			<div class="location-menu__dropdown relative background-white">
 				<img 
-					class="location-menu__dropdown-close location-menu__dropdown-close-desktop"
+					class="location-menu__dropdown-close location-menu__dropdown-close-desktop absolute"
 					:src="require('@/assets/images/dialog-close-white.png')"
 					@click="showMenu = false"
 				/>
 				<img 
-					class="location-menu__dropdown-close location-menu__dropdown-close-mobile"
+					class="location-menu__dropdown-close location-menu__dropdown-close-mobile absolute"
 					:src="require('@/assets/images/dialog-close.png')"
 					@click="showMenu = false"
 				/>
-				<div class="location-menu__dropdown-top d-flex justify-content-center align-items-center">
-					<input class="location-menu__dropdown-search" placeholder="Поиск по области, городу, району, микрорайону" />
-					<img class="location-menu__dropdown-search-icon" :src="require('@/assets/images/search-grey.png')">
+				<div class="location-menu__dropdown-top d-flex justify-content-center align-items-center relative">
+					<input class="location-menu__dropdown-search background-lightgrey border-none color-black" placeholder="Поиск по области, городу, району, микрорайону" />
+					<img class="location-menu__dropdown-search-icon absolute" :src="require('@/assets/images/search-grey.png')">
 				</div>
 				<div 
 					v-if="showMenu && locations.length != 0"
 					class="location-menu__dropdown-body-desktop"
 				>
-					<div class="location-menu__dropdown-body-column">
+					<div class="location-menu__dropdown-body-column background-lightgrey">
 						<div 
 							class="location-menu__dropdown-body-column-item"
 							:class="{ 'location-menu__dropdown-body-column-item-active': selectedLocationsIds.length == 0 }"
@@ -140,7 +140,7 @@
 				</div>
 				<div class="location-menu__dropdown-bottom d-flex justify-content-center align-items-center">
 					<button
-						class="location-menu__dropdown-submit"
+						class="location-menu__dropdown-submit background-green color-white border-none"
 						@click="submitSelection"
 					>Выбрать</button>
 				</div>

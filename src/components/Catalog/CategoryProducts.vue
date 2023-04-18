@@ -7,7 +7,7 @@
 					v-for="(method, index) of sortMethods"
 					:key="index"
 					class="products__actions-sort-method"
-					:class="{ 'products__actions-sort-method-selected background-white b-green': method.selected }"
+					:class="{ 'products__actions-sort-method-selected background-white border-green': method.selected }"
 					@click="selectSortMethod(index)"
 				>{{ method.name }}</div>
 				<div v-if="selectedMethod" class="products__actions-sort-dropdown">
@@ -32,10 +32,10 @@
 				</div>
 			</div>
 			<div class="products__actions-buttons d-flex justify-content-end align-items-center">
-				<button class="products__actions-ad background-green b-none" @click="goProductCreate">Подать объявление</button>
+				<button class="products__actions-ad background-green border-none color-white" @click="goProductCreate">Подать объявление</button>
 				<button
 					v-show="breakpoint != 'sm' || (breakpoint == 'sm' && view == 'grid')"
-					class="products__actions-view products__actions-view-grid d-flex justify-content-center align-items-center background-lightgrey b-none"
+					class="products__actions-view products__actions-view-grid d-flex justify-content-center align-items-center background-lightgrey border-none"
 					:class="{ 'products__actions-view-active': view == 'grid' }"
 					@click="changeView('grid')"
 				>
@@ -50,7 +50,7 @@
 				</button>
 				<button
 					v-show="breakpoint != 'sm' || (breakpoint == 'sm' && view == 'list')"
-					class="products__actions-view products__actions-view-list d-flex justify-content-center align-items-center background-lightgrey b-none"
+					class="products__actions-view products__actions-view-list d-flex justify-content-center align-items-center background-lightgrey border-none"
 					:class="{ 'products__actions-view-active': view == 'list' }"
 					@click="changeView('list')"
 				>
@@ -72,7 +72,7 @@
 					</div>
 				</button>
 				<button
-					class="products__actions-filter align-items-center background-green b-none"
+					class="products__actions-filter align-items-center background-green border-none"
 					@click="openFilters"
 				>
 					<img :src="require('@/assets/images/filter.png')">
@@ -84,7 +84,7 @@
 		<ProductsList v-if="view == 'list'" v-show="products.length != 0" :count="listCount" :products="products" />
 		<Pagination :pagesCount="pages" v-show="pages > 1"/>
 		<button
-			class="showmore products__showmore background-white b-green"
+			class="showmore products__showmore background-white border-green"
 			@click="showMore"
 		>Показать еще</button>
 	</div>

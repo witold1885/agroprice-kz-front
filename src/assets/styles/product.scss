@@ -7,18 +7,14 @@
 			grid-row-gap: 10px;
 		}
 		&-block {
-			position: relative;
 			width: 1200px;
 			padding-top: 24px;
 			padding-left: 25px;
 			padding-right: 25px;
-			background: #F4F4F4;
 			border-radius: 11px;
 			&-error {
-				position: absolute;
 				top: 10px;
 				@include font-ubuntu(400, 12px, 12px);
-				color: red;
 				&-category {
 					top: 150px;
 				}
@@ -57,13 +53,11 @@
 				padding-bottom: 27px;
 			}
 			&-refpoint {
-				position: absolute;
 				top: -50px;
 			}
 		}
 		&-label {
 			@include font-ubuntu(700, 14px, 25px);
-			color: $color_black;
 			margin-bottom: 10px;
 			&-inline {
 				margin-bottom: 0;
@@ -72,17 +66,11 @@
 		&-field {
 			width: 100%;
 			height: 52px;
-			background: $color_white;
 			border-radius: 5px;
 			padding: 14px 18px 13px;
-			border: none;
 			@include font-ubuntu(400, 14px, 25px);
-			color: $color_black;
 			&-price {
 				width: 336px;
-			}
-			&-error {
-				border: 1px solid red;
 			}
 		}
 		&-hint {
@@ -91,7 +79,6 @@
 			margin-top: 4px;
 		}
 		&-name {
-			width: 100%;
 			margin-bottom: 25px;
 		}
 		&-selects {
@@ -100,22 +87,16 @@
 		}
 		&-select {
 			width: 565px;
-			position: relative;
 			&-location {
 				width: 473px;
 			}
 			&-field {
-				width: 100%;
 				height: 52px;
-				box-sizing: border-box;
-				background: $color_white;
 				border-radius: 5px;
 				padding: 14px 14px 13px 18px;
-				border: none;
 				cursor: pointer;
 				&-value {
 					@include font-ubuntu(400, 14px, 25px);
-					color: $color_black;					
 				}
 				&-arrow {
 					width: 13px;
@@ -123,11 +104,6 @@
 				}
 				&-input {
 					@include font-ubuntu(400, 14px, 25px);
-					color: $color_black;
-					width: 100%;
-					flex: 1;
-					border: none;
-					outline: none;
 					padding: 0;
 				}
 				&-location {
@@ -143,7 +119,6 @@
 				z-index: 2;
 				&-item {
 					@include font-ubuntu(400, 14px, 25px);
-					color: $color_black;	
 					cursor: pointer;				
 				}
 			}
@@ -168,7 +143,6 @@
 			}
 			&-text {
 				@include font-ubuntu(700, 14px, 25px);
-				color: $color_green;
 				margin-bottom: 8px;
 			}
 			& img {
@@ -180,11 +154,7 @@
 			height: 182px;
 			border-radius: 5px;
 			@include font-ubuntu(400, 14px, 25px);
-			color: $color_black;
 			padding: 14px 18px 13px;
-			&-error {
-				border: 1px solid red;
-			}
 		}
 		&-switch {
 			width: 40px;
@@ -216,11 +186,9 @@
 			grid-column-gap: 15px;
 			&-option {
 				@include font-ubuntu(500, 14px, 25px);
-				color: $color_black;
 			}
 			&-description {
 				@include font-ubuntu(400, 14px, 25px);
-				color: $color_black;
 			}
 		}
 		&-buttons {
@@ -499,7 +467,6 @@
 			}
 			&-label {
 				@include font-ubuntu(700, calc(14 * 100vw / 320), calc(25 * 100vw / 320));
-				color: $color_black;
 				margin-bottom: calc(10 * 100vw / 320);
 				&-inline {
 					margin-bottom: 0;
@@ -520,7 +487,6 @@
 				margin-top: calc(4 * 100vw / 320);
 			}
 			&-name {
-				width: 100%;
 				margin-bottom: calc(25 * 100vw / 320);
 			}
 			&-selects {
@@ -533,7 +499,6 @@
 					width: 100%;
 				}
 				&-field {
-					width: 100%;
 					height: calc(52 * 100vw / 320);
 					border-radius: calc(5 * 100vw / 320);
 					padding: calc(14 * 100vw / 320) calc(14 * 100vw / 320) calc(13 * 100vw / 320) calc(18 * 100vw / 320);
@@ -741,7 +706,6 @@
 		}
 		&-title {
 			@include font-ubuntu(500, 32px, 133.9%);
-			color: $color_black;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			max-width: 100%;
@@ -760,11 +724,9 @@
 					font-weight: 400;
 					font-size: 14px;
 					line-height: 14px;
-					color: $color_black;
 				}
 				&-value {
 					@include font-ubuntu(500, 36px, 41px);
-					color: $color_black;
 					margin-top: 10px;
 				}
 				&-condition {
@@ -778,7 +740,6 @@
 						grid-column-gap: 7px;
 						&-text {
 							@include font-ubuntu(400, 14px, 15px);
-							color: $color_green;
 						}
 					}
 				}
@@ -795,7 +756,6 @@
 					font-weight: 400;
 					font-size: 16px;
 					line-height: 16px;
-					color: $color_black;
 				}
 			}
 			&-user {
@@ -806,7 +766,6 @@
 				font-style: normal;
 				font-size: 14px;
 				line-height: 20px;
-				color: $color_black;
 				&-text {
 					font-weight: 700;
 				}
@@ -817,7 +776,6 @@
 			&-avatar {
 				width: 254px;
 				height: 121px;
-				border: 1px solid #ECECEC;
 				border-radius: 8px;
 			}
 		}
@@ -832,9 +790,7 @@
 		&-favorite {
 			width: 145px;
 			height: 47px;
-			border: 1px solid #ECECEC;
 			border-radius: 8px;
-			background: transparent;
 			padding: 14px 0 14px 14px;
 			grid-column-gap: 14px;
 			&-icon {
@@ -842,7 +798,6 @@
 			}
 			&-text {
 				@include font-ubuntu(400, 14px, 14px);
-				color: $color_black;
 			}
 		}
 		&-buttons {
@@ -853,38 +808,41 @@
 				width: 474px;
 			}
 			& button, & a {
-				box-sizing: border-box;
-				display: flex;
 				justify-content: center;
 				align-items: center;
 			}
 		}
 		&-button {
 			&-write {
+				display: flex;
 				width: 228px;
 				height: 55px;
 				border-radius: 8px;
 				@include font-ubuntu(700, 16px, 16px);
 			}
 			&-allproducts {
+				display: flex;
 				width: 228px;
 				height: 55px;
 				border-radius: 8px;
 				@include font-ubuntu(400, 16px, 16px);
 			}
 			&-whatsapp {
+				display: flex;
 				width: 256px;
 				height: 55px;
 				border-radius: 8px;
 				@include font-ubuntu(500, 14px, 14px);
 			}
 			&-call {
+				display: flex;
 				width: 256px;
 				height: 55px;
 				border-radius: 8px;
 				@include font-ubuntu(500, 14px, 14px);
 			}
 			&-phone {
+				display: flex;
 				width: 256px;
 				height: 55px;
 				@include font-ubuntu(500, 18px, 18px);
@@ -911,7 +869,6 @@
 			margin-top: 28px;
 			&-description {
 				@include font-ubuntu(400, 16px, 27px);
-				color: $color_black;
 			}
 			&-features {
 				grid-column-gap: 400px;
@@ -930,8 +887,7 @@
 						margin-bottom: 7px;
 					}
 					&-value {
-						@include font-ubuntu(400, 16px, 27px);
-						color: $color_black;						
+						@include font-ubuntu(400, 16px, 27px);	
 					}
 				}
 			}
@@ -956,13 +912,14 @@
 			margin-bottom: 30px;
 			text-align: left;
 		}
-		&-grid {
-			margin-bottom: 58px!important;
-		}
 		&-showmore {
 			margin: 0 auto 58px;
 		}
 	}
+}
+
+.carousel__track {
+	margin: 0;
 }
 
 @media screen and (max-width: 1440px) {
@@ -1156,9 +1113,6 @@
 				@include font-ubuntu(500, calc(32 * 100vw / 1440), calc(37 * 100vw / 1440));
 				margin-bottom: calc(30 * 100vw / 1440);
 			}
-			&-grid {
-				margin-bottom: calc(58 * 100vw / 1440)!important;
-			}
 			&-showmore {
 				margin: 0 auto calc(58 * 100vw / 1440);
 			}
@@ -1173,17 +1127,12 @@
 				width: 80%;
 			}
 			&-nav {
-				// width: 20px;
-				// top: calc(50% - 35px / 2);
 				&-prev {
 					left: -40px;
 				}
 				&-next {
 					right: -40px;
 				}
-			}
-			& img {
-
 			}
 			&-close {
 				top: 20px;
@@ -1351,14 +1300,8 @@
 					border-radius: 8px;
 					@include font-ubuntu(400, 14px, 14px);
 				}
-				&-whatsapp {
-					display: none!important;
-				}
-				&-call {
-					display: none!important;
-				}
-				&-phone {
-					display: none!important;
+				&-whatsapp, &-call, &-phone {
+					display: none;
 				}
 			}
 		}
@@ -1408,9 +1351,6 @@
 			&-title {
 				@include font-ubuntu(500, 24px, 28px);
 				margin-bottom: 25px;
-			}
-			&-grid {
-				margin-bottom: 33px!important;
 			}
 			&-showmore {
 				margin: 0 auto 57px;
@@ -1601,9 +1541,6 @@
 				@include font-ubuntu(500, calc(24 * 100vw / 768), calc(28 * 100vw / 768));
 				margin-bottom: calc(25 * 100vw / 768);
 			}
-			&-grid {
-				margin-bottom: calc(33 * 100vw / 768)!important;
-			}
 			&-showmore {
 				margin: 0 auto calc(57 * 100vw / 768);
 			}
@@ -1618,17 +1555,12 @@
 				width: 80%;
 			}
 			&-nav {
-				// width: 20px;
-				// top: calc(50% - 35px / 2);
 				&-prev {
 					left: -30px;
 				}
 				&-next {
 					right: -30px;
 				}
-			}
-			& img {
-
 			}
 			&-close {
 				top: 10px;
@@ -1838,9 +1770,6 @@
 			&-title {
 				@include font-ubuntu(500, calc(18 * 100vw / 320), calc(21 * 100vw / 320));
 				margin-bottom: calc(17 * 100vw / 320);
-			}
-			&-grid {
-				margin-bottom: calc(39 * 100vw / 320)!important;
 			}
 			&-showmore {
 				margin: 0 auto calc(59 * 100vw / 320);

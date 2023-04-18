@@ -336,29 +336,27 @@
     box-sizing: border-box;
 }
 
-a, button {
-	cursor: pointer;
-}
-
 a {
+    cursor: pointer;
 	text-decoration: none;
 }
 
 button {
+    cursor: pointer;
 	padding: 0;
 	box-shadow: none;
-    outline: none!important;
+    outline: none;
     background: transparent;
 }
 
 input {
-    outline: none!important;
+    outline: none;
     box-shadow: none;
 }
 
 input:focus, input:active {
-	border: none!important;
-	outline: none!important;
+	border: none;
+	outline: none;
     box-shadow: none;
 }
 
@@ -370,14 +368,6 @@ textarea {
     resize: none;
     box-shadow: none;
     outline: none;
-}
-
-.b-none {
-    border: none;
-}
-
-.b-green {
-    border: 1px solid $color_green;
 }
 
 .relative {
@@ -424,6 +414,10 @@ textarea {
     color: $color_black;
 }
 
+.color-red {
+    color: red;
+}
+
 .shadow-custom {
     box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
 }
@@ -440,7 +434,7 @@ textarea {
 }
 
 .flex-column {
-	flex-direction: column!important;
+	flex-direction: column;
 }
 
 .flex-wrap {
@@ -448,31 +442,31 @@ textarea {
 }
 
 .justify-content-center {
-	justify-content: center!important;
+	justify-content: center;
 }
 
 .justify-content-between {
-	justify-content: space-between!important;
+	justify-content: space-between;
 }
 
 .justify-content-around {
-	justify-content: space-around!important;
+	justify-content: space-around;
 }
 
 .justify-content-end {
-	justify-content: flex-end!important;
+	justify-content: flex-end;
 }
 
 .align-items-center {
-	align-items: center!important;
+	align-items: center;
 }
 
 .align-items-stretch {
-	align-items: stretch!important;
+	align-items: stretch;
 }
 
 .align-items-end {
-	align-items: flex-end!important;
+	align-items: flex-end;
 }
 
 .border-none {
@@ -493,6 +487,10 @@ textarea {
 
 .border-yellow {
     border: 1px solid $color_yellow; 
+}
+
+.border-red {
+    border: 1px solid red;
 }
 
 .w-100 {
@@ -693,7 +691,7 @@ h1 {
 }
 
 .carousel__viewport {
-	overflow: visible!important;
+	overflow: visible;
 }
 
 .breadcrumbs {
@@ -808,7 +806,7 @@ h1 {
 				color: $color_white;
 			}
 			&-dot {
-				cursor: default!important;
+				cursor: default;
 			}
 		}
 	}
@@ -871,11 +869,9 @@ h1 {
 }
 
 .location-menu {
-	position: relative;
 	&__field {
 		width: 300px;
 		height: 32px;
-		border: 1px solid $color_green;
 		border-radius: 8px;
 		@include font-ubuntu(400, 14px, 16px);
 		color: rgba(0, 0, 0, 0.53);
@@ -886,15 +882,11 @@ h1 {
 		white-space: nowrap;
 	}
 	&__dropdown {
-		// position: absolute;
 		width: 525.95px;
 		height: 591.47px;
-		background: $color_white;
 		border-radius: 9px;
 		padding: 16.22px 14.165px 21.75px;
-		position: relative;
 		&-close {
-			position: absolute;
 			cursor: pointer;
 			&-desktop {
 				width: 17.69px;
@@ -906,23 +898,13 @@ h1 {
 				display: none;
 			}
 		}
-		&-top {
-			position: relative;
-		}
 		&-search {
 			width: 497.62px;
 			height: 40px;
-			background: #F4F4F4;
 			border-radius: 5px;
-			border: none;
-			outline: none;
-			box-shadow: none;
 			padding: 11.56px 41.18px 13.44px 14.37px;
 			@include font-ubuntu(400, 14px, 15px);
-			color: $color_black;
-			box-sizing: border-box;
 			&-icon {
-				position: absolute;
 				top: 13px;
 				right: 10.81px;
 				@include box(16px, 16px);
@@ -942,7 +924,6 @@ h1 {
 			&-column {
 				width: 240.11px;
 				height: 447.29px;
-				background: #F4F4F4;
 				border-radius: 5px;
 				padding: 9.29px 16.09px;
 				overflow-y: scroll;
@@ -960,12 +941,8 @@ h1 {
 		}
 		&-submit {
 			@include box(197px, 40px);
-			border: none;
-			box-shadow: none;
 			border-radius: 5px;
 			@include font-ubuntu(500, 14px, 16px);
-			color: $color_white;
-			background: $color_green;
 		}
 	}
 }
@@ -1249,8 +1226,6 @@ h1 {
 .contact-dialog {
 	width: 525.95px;
 	height: 660.51px;
-	background: $color_white;
-	position: relative;
 	&__title {
 		@include font-ubuntu(500, 32px, 37px);
 		color: #313131;
@@ -1261,16 +1236,9 @@ h1 {
 		&-textarea {
 			width: 473px;
 			height: 154.79px;
-			background: #F4F4F4;
 			border-radius: 5px;
 			@include font-ubuntu(400, 14px, 25px);
-			color: $color_black;
 			padding: 14px 18px 13px;
-			resize: none;
-			border: none;
-			box-shadow: none;
-			outline: none;
-			box-sizing: border-box;
 		}
 	}
 }
@@ -1293,6 +1261,26 @@ h1 {
 			}
 		}
 	}
+}
+
+@media screen and (max-width: 992px) {
+    .contact-dialog {
+        width: calc(525.95 * 100vw / 768);
+        height: calc(660.51 * 100vw / 768);
+        &__title {
+            @include font-ubuntu(500, calc(32 * 100vw / 768), calc(37 * 100vw / 768));
+            margin: calc(60.77 * 100vw / 768) auto calc(22.75 * 100vw / 768);
+        }
+        &__form {
+            &-textarea {
+                width: calc(473 * 100vw / 768);
+                height: calc(154.79 * 100vw / 768);
+                border-radius: calc(5 * 100vw / 768);
+                @include font-ubuntu(400, calc(14 * 100vw / 768), calc(25 * 100vw / 768));
+                padding: calc(14 * 100vw / 768) calc(18 * 100vw / 768) calc(13 * 100vw / 768);
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 414px) {

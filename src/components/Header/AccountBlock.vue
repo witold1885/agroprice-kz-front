@@ -1,7 +1,7 @@
 <template>
 	<div
 		v-if="user"
-		class="account-block account-block__user justify-content-between"
+		class="account-block account-block__user justify-content-between border-grey"
 	>
 		<div
 			class="account-block__avatar d-flex justify-content-center align-items-center br-100"
@@ -36,7 +36,7 @@
 		</div>
 	</div>	
 	<button
-		class="account-button justify-content-center align-items-center"
+		class="account-button justify-content-center align-items-center background-transparent border-grey"
 		@click="handleAccount"
 	>
 		<img

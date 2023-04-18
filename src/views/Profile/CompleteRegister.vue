@@ -8,24 +8,24 @@
 			<div class="complete-register__form-customer d-flex align-items-end">
 				<div class="complete-register__form-customer-name d-flex flex-column">
 					<div v-if="profile.type == 'company'" class="complete-register__form-label">
-						Название организации<span class="complete-register__form-required">*</span>
+						Название организации<span class="complete-register__form-required color-red">*</span>
 					</div>
 					<div v-else class="complete-register__form-label">
-						Имя<span class="complete-register__form-required">*</span>
+						Имя<span class="complete-register__form-required color-red">*</span>
 					</div>
-					<input class="complete-register__form-field" v-model="v$.profile.fullname.$model" autocomplete />
+					<input class="complete-register__form-field background-white border-none color-black" v-model="v$.profile.fullname.$model" autocomplete />
 				</div>
 				<div class="complete-register__form-customer-type d-flex align-items-center">
 					<div class="complete-register__form-customer-type-item d-flex align-items-center">
-						<div class="complete-register__form-customer-type-item-switch d-flex justify-content-center align-items-center">
-							<input type="radio" id="private" value="private" v-model="profile.type" />
+						<div class="complete-register__form-customer-type-item-switch d-flex justify-content-center align-items-center relative background-white">
+							<input class="w-0 h-0 absolute" type="radio" id="private" value="private" v-model="profile.type" />
 							<img :src="require('@/assets/images/ok.png')" />
 						</div>
 						<label for="private">Частное лицо</label>
 					</div>
 					<div class="complete-register__form-customer-type-item d-flex align-items-center">
-						<div class="complete-register__form-customer-type-item-switch d-flex justify-content-center align-items-center">
-							<input type="radio" id="company" value="company" v-model="profile.type" />
+						<div class="complete-register__form-customer-type-item-switch d-flex justify-content-center align-items-center relative background-white">
+							<input class="w-0 h-0 absolute" type="radio" id="company" value="company" v-model="profile.type" />
 							<img :src="require('@/assets/images/ok.png')" />
 						</div>
 						<label for="company">Организация</label>
@@ -36,10 +36,10 @@
 			<div class="complete-register__form-phone d-flex align-items-end">
 				<div class="complete-register__form-phone-specify d-flex flex-column">
 					<div class="complete-register__form-label">
-						Номер телефона<span class="complete-register__form-required">*</span>
+						Номер телефона<span class="complete-register__form-required color-red">*</span>
 					</div>
 					<input
-						class="complete-register__form-field"
+						class="complete-register__form-field background-white border-none color-black"
 						v-model="v$.profile.phone.$model"
 						v-maska
 						data-maska="['+7 (7##) ###-##-##']"
@@ -47,15 +47,15 @@
 						autocomplete
 					/>
 				</div>
-				<!-- <button type="button" class="complete-register__form-phone-submit">Подтвердить</button> -->
+				<!-- <button type="button" class="complete-register__form-phone-submit background-green border-none color-white">Подтвердить</button> -->
 			</div>
 			<div class="complete-register__form-phone d-flex align-items-end">
 				<div class="complete-register__form-phone-specify d-flex flex-column">
 					<div class="complete-register__form-label">
-						Whatsapp<span class="complete-register__form-required">*</span>
+						Whatsapp<span class="complete-register__form-required color-red">*</span>
 					</div>
 					<input
-						class="complete-register__form-field"
+						class="complete-register__form-field background-white border-none color-black"
 						v-model="v$.profile.whatsapp.$model"
 						v-maska
 						data-maska="['+7 (7##) ###-##-##']"
@@ -76,25 +76,25 @@
 			<div class="complete-register__form-password d-flex align-items-end">
 				<div class="complete-register__form-password-specify d-flex flex-column">
 					<div class="complete-register__form-label">
-						Пароль<span class="complete-register__form-required">*</span>
+						Пароль<span class="complete-register__form-required color-red">*</span>
 					</div>
-					<input type="password" class="complete-register__form-field" v-model="v$.password.$model" />
+					<input type="password" class="complete-register__form-field background-white border-none color-black" v-model="v$.password.$model" />
 				</div>
 				<div class="complete-register__form-password-confirm d-flex flex-column">
 					<div class="complete-register__form-label">
-						Подтверждение пароля<span class="complete-register__form-required">*</span>
+						Подтверждение пароля<span class="complete-register__form-required color-red">*</span>
 					</div>
-					<input type="password" class="complete-register__form-field" v-model="v$.password_confirmation.$model" />
+					<input type="password" class="complete-register__form-field background-white border-none color-black" v-model="v$.password_confirmation.$model" />
 				</div>
 			</div>
 		</form>
-		<div v-else class="complete-register__success">Поздравляем! Регистрация на agroprice.kz завершена успешно</div>
+		<div v-else class="complete-register__success color-black">Поздравляем! Регистрация на agroprice.kz завершена успешно</div>
 		<div v-if="!registerCompleted" class="complete-register__buttons d-flex align-items-center">
-			<button class="complete-register__button complete-register__button-save" @click="save">Сохранить</button>
-			<button class="complete-register__button complete-register__button-cancel">Отмена</button>
+			<button class="complete-register__button complete-register__button-save background-green border-none color-white" @click="save">Сохранить</button>
+			<button class="complete-register__button complete-register__button-cancel background-transparent border-green color-black">Отмена</button>
 		</div>
 		<div v-else class="complete-register__buttons d-flex align-items-center">
-			<button class="complete-register__button complete-register__button-save" @click="goHome">На главную</button>
+			<button class="complete-register__button complete-register__button-save background-green border-none color-white" @click="goHome">На главную</button>
 		</div>
 	</div>
 </template>

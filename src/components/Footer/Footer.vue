@@ -32,10 +32,10 @@
 					<div class="footer__copyright">© 2022 «Agroprice»</div>
 				</div>
 				<div class="footer__account footer__account-mobile flex-column">
-					<div class="footer__account-title">Моя учетная запись</div>
+					<div class="footer__account-title color-black">Моя учетная запись</div>
 					<div class="footer__account-buttons d-flex">
-						<button class="footer__account-button footer__account-button-signin background-green b-none" @click="login">Войти</button>
-						<button class="footer__account-button footer__account-button-signup b-green" @click="register">Зарегистрироваться</button>
+						<button class="footer__account-button footer__account-button-signin background-green border-none color-white" @click="login">Войти</button>
+						<button class="footer__account-button footer__account-button-signup background-transparent border-green color-black" @click="register">Зарегистрироваться</button>
 					</div>
 				</div>
 				<div class="footer__nav d-flex">
@@ -44,7 +44,7 @@
 						:key="index"
 						class="footer__nav-item d-flex flex-column"
 					>
-						<div class="footer__nav-item-title">{{ navItem.title }}</div>
+						<div class="footer__nav-item-title color-black">{{ navItem.title }}</div>
 						<div class="footer__nav-item-list d-flex flex-column">
 							<a
 								v-for="(item, index) of navItem.items"
@@ -57,10 +57,10 @@
 			</div>
 			<div class="footer__right d-flex">
 				<div class="footer__account footer__account-desktop flex-column">
-					<div class="footer__account-title">Моя учетная запись</div>
+					<div class="footer__account-title color-black">Моя учетная запись</div>
 					<div class="footer__account-buttons d-flex">
-						<button class="footer__account-button footer__account-button-signin background-green b-none" @click="login">Войти</button>
-						<button class="footer__account-button footer__account-button-signup b-green" @click="register">Зарегистрироваться</button>
+						<button class="footer__account-button footer__account-button-signin background-green border-none color-white" @click="login">Войти</button>
+						<button class="footer__account-button footer__account-button-signup background-transparent border-green color-black" @click="register">Зарегистрироваться</button>
 					</div>
 				</div>
 				<div class="footer__payments d-flex flex-column">

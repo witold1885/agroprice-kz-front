@@ -1,9 +1,9 @@
 <template>
 	<div class="sell-block w-100 d-flex flex-column justify-content-center align-items-center">
-		<div class="sell-block__text">
+		<div class="sell-block__text color-white">
 			Продавайте свои товары
 		</div>
-		<button class="sell-block__button" @click="goProductCreate">
+		<button class="sell-block__button border-white color-white" @click="goProductCreate">
 			Подать объявление
 		</button>
 	</div>

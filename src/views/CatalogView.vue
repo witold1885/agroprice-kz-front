@@ -14,13 +14,13 @@
 					<a
 						v-for="(child, index) of showSubcategories"
 						:key="index"
-						class="category__subcategories-item d-flex justify-content-center align-items-center"
+						class="category__subcategories-item d-flex justify-content-center align-items-center background-white"
 						@click="goTo(child.url)"
 					>{{ child.name }}</a>
 				</div>
 				<button
 					v-if="showMoreSubcategoriesButton"
-					class="category__subcategories-more"
+					class="category__subcategories-more background-green color-white border-none"
 					@click="showMoreSubcategories"
 				>Еще</button>
 			</div>

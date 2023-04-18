@@ -9,8 +9,8 @@
 			<h1 class="create-product__success-title heading-1">Объявление изменено успешно!</h1>
 			<div class="create-product__success-info">Ваше объявление успешно изменено</div>
 			<div class="create-product__success-buttons d-flex justify-content-center align-items-center">
-				<button class="create-product__success-button" @click="goHome">На главную</button>
-				<button class="create-product__success-button" @click="createMore">Создать новое объявление</button>
+				<button class="create-product__success-button background-green color-white border-none" @click="goHome">На главную</button>
+				<button class="create-product__success-button background-green color-white border-none" @click="createMore">Создать новое объявление</button>
 			</div>
 		</div>
 	</div>

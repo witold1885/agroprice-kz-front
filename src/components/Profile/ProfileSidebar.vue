@@ -2,7 +2,7 @@
 	<div class="profile-sidebar background-lightgrey">
 		<div v-if="user" class="profile-sidebar__top d-flex align-items-center">
 			<img v-if="user.profile.avatar" class="profile-sidebar__top-avatar" :src="`${storageURL}/${user.profile.avatar}`" @click="selectAvatar" />
-			<div v-else class="profile-sidebar__top-avatar d-flex justify-content-center align-items-center" @click="selectAvatar">
+			<div v-else class="profile-sidebar__top-avatar d-flex justify-content-center align-items-center br-100" @click="selectAvatar">
 				<img class="profile-sidebar__top-avatar-icon" :src="require('@/assets/images/user.png')" />
 			</div>
 			<input
@@ -20,8 +20,11 @@
 				class="profile-sidebar__menu-item-wrap d-flex flex-column"
 				
 			>	
-				<div class="profile-sidebar__menu-item d-flex align-items-center relative">
-					<div v-if="item.active" class="profile-sidebar__menu-item-marker absolute background-green"></div>
+				<div
+					class="profile-sidebar__menu-item d-flex align-items-center relative"
+					:class="{ 'profile-sidebar__menu-item-active': item.active }"
+				>
+					<div class="profile-sidebar__menu-item-marker absolute background-green"></div>
 					<img
 						class="profile-sidebar__menu-item-icon"
 						:class="`profile-sidebar__menu-item-icon-${item.icon}`"
@@ -49,7 +52,7 @@
 								class="profile-sidebar__menu-subitem-child relative"
 								:class="{ 'profile-sidebar__menu-subitem-child-active': subchild.active }"
 							>
-								<div v-show="subchild.active" class="profile-sidebar__menu-subitem-child-marker absolute background-green"></div>
+								<div class="profile-sidebar__menu-subitem-child-marker absolute background-green"></div>
 								<div class="profile-sidebar__menu-subitem-child-title" @click="goFurther(subchild.link)">{{ subchild.title }}</div>
 							</div>
 						</div>

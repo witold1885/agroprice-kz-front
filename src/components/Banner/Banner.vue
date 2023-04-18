@@ -1,6 +1,6 @@
 <template>
-	<div v-if="activeImage" class="banner">
-		<button v-if="activeImage.link && activeImage.button_text" class="banner__button" @click="goFurther(activeImage.link)">{{ activeImage.button_text }}</button>
+	<div v-if="activeImage" class="banner w-100 relative">
+		<button v-if="activeImage.link && activeImage.button_text" class="banner__button absolute background-transparent border-white color-white" @click="goFurther(activeImage.link)">{{ activeImage.button_text }}</button>
 		<img
 			v-if="breakpoint == 'lg'"
 			class="banner__image w-100 h-100"
@@ -16,7 +16,7 @@
 			class="banner__image w-100 h-100"
 			:src="`${storageURL}/${activeImage.path_sm}`"
 		/>
-		<div v-if="images.length > 1" class="banner__nav d-flex justify-content-between align-items-center">
+		<div v-if="images.length > 1" class="banner__nav d-flex justify-content-between align-items-center absolute">
 			<NavButton
 				side="left"
 				color="white"
@@ -27,7 +27,7 @@
 				<div
 					v-for="(image, index) of images"
 					:key="index"
-					class="banner__nav-dots-item"
+					class="banner__nav-dots-item br-100"
 					:class="{ 'banner__nav-dots-item-active': image.show }"
 					@click="changeActiveImage(image.num)"
 				></div>

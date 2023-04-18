@@ -3,7 +3,7 @@
 		<a
 			v-for="(item, index) of menuItems"
 			:key="index"
-			class="top-menu__item"
+			class="top-menu__item color-black"
 			:class="{ 'top-menu__item-active': item.active }"
 			:href="item.link"
 			@click="setAction(item.action)"

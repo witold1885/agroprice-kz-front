@@ -17,7 +17,7 @@
 						class="preferences__form-field d-flex flex-column"
 					>
 						<div class="preferences__form-field-label">{{ field.label }}</div>
-						<div v-if="!field.edit" class="preferences__form-field-value">
+						<div v-if="!field.edit" class="preferences__form-field-value color-black">
 							{{ field.value || 'не указано' }}
 							<img
 								class="preferences__form-field-value-edit"
@@ -28,7 +28,7 @@
 						<div v-else>
 							<input
 								v-if="index == 'phone'"
-								class="preferences__form-field-input"
+								class="preferences__form-field-input background-white border-none color-black"
 								v-model="field.value"
 								@keyup.native.enter="onFieldEdited($event, index)"
 								v-maska
@@ -37,7 +37,7 @@
 							/>
 							<input
 								v-else
-								class="preferences__form-field-input"
+								class="preferences__form-field-input background-white border-none color-black"
 								v-model="field.value"
 								@keyup.native.enter="onFieldEdited($event, index)"
 							/>
@@ -47,7 +47,7 @@
 				<div class="preferences__form-column d-flex flex-column">
 					<div class="preferences__form-field d-flex flex-column">
 						<div class="preferences__form-field-label">{{ birthdate.label }}</div>
-						<div v-show="!birthdate.edit" class="preferences__form-field-value">
+						<div v-show="!birthdate.edit" class="preferences__form-field-value color-black">
 							{{ birthdate.value || 'не указано' }}
 							<img
 								class="preferences__form-field-value-edit"
@@ -57,7 +57,7 @@
 						</div>
 						<Datepicker
 							v-show="birthdate.edit"
-							class="preferences__form-field-input"
+							class="preferences__form-field-input background-white border-none color-black"
 							v-model="pickedDate"
 							:locale="locale"
 							inputFormat="dd.MM.yyyy"
@@ -65,7 +65,7 @@
 					</div>
 					<div class="preferences__form-field d-flex flex-column">
 						<div class="preferences__form-field-label">{{ gender.label }}</div>
-						<div v-if="!gender.edit" class="preferences__form-field-value">
+						<div v-if="!gender.edit" class="preferences__form-field-value color-black">
 							{{ gender.value }}
 							<img
 								class="preferences__form-field-value-edit"
@@ -75,7 +75,7 @@
 						</div>
 						<select
 							v-else
-							class="preferences__form-field-input"
+							class="preferences__form-field-input background-white border-none color-black"
 							v-model="gender.value"
 							@change="gender.edit = false"
 						>
@@ -86,7 +86,7 @@
 					</div>
 				</div>
 			</div>
-			<span v-if="error || validateError" class="preferences__form-error w-100 absolute">{{ error || validateError }}</span>
+			<span v-if="error || validateError" class="preferences__form-error w-100 absolute color-red">{{ error || validateError }}</span>
 		</div>
 		<div v-if="!preferencesSaved" class="preferences__buttons d-flex align-items-center">
 			<button class="preferences__button preferences__button-save background-green border-none color-white" @click="saveProfile">Сохранить</button>

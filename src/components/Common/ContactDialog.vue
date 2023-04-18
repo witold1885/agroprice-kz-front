@@ -1,46 +1,46 @@
 <template>
 	<div
 		v-if="dialog.visible"
-		class="auth-dialog__shadow d-flex justify-content-center align-items-center"
+		class="auth-dialog__shadow d-flex justify-content-center align-items-center fixed"
 	>
 		<div
-			class="contact-dialog"
+			class="contact-dialog background-white relative"
 		>
 			<img 
-				class="auth-dialog__close"
+				class="auth-dialog__close absolute"
 				:src="require('@/assets/images/dialog-close.png')"
 				@click="closeDialog"
 			/>
 			<div class="contact-dialog__title">Обратная связь</div>
 			<div class="auth-dialog__form contact-dialog__form d-flex flex-column justify-content-between align-items-center">
 				<form
-					class="auth-form d-flex flex-column justify-content-between align-items-center"
+					class="auth-form d-flex flex-column justify-content-between align-items-center relative"
 				>
-					<div v-if="error" class="auth-form__error">{{ error }}</div>
+					<div v-if="error" class="auth-form__error absolute color-red">{{ error }}</div>
 					<input
 						type="text"
-						class="auth-form__field"
+						class="auth-form__field background-lightgrey color-black border-none"
 						placeholder="Тема письма"
 						v-model="v$.subject.$model"
-						:class="{ 'auth-form__field-error': v$.subject.$error }"
+						:class="{ 'auth-form__field-error border-red': v$.subject.$error }"
 						autocomplete
 					/>
 					<input
 						type="email"
-						class="auth-form__field"
+						class="auth-form__field background-lightgrey color-black border-none"
 						placeholder="Ваша почта"
 						v-model="v$.email.$model"
-						:class="{ 'auth-form__field-error': v$.email.$error }"
+						:class="{ 'auth-form__field-error border-red': v$.email.$error }"
 						autocomplete
 					/>
 					<textarea
-						class=" contact-dialog__form-textarea"
+						class=" contact-dialog__form-textarea background-lightgrey border-none color-black"
 						placeholder="Текст письма"
 						v-model="v$.message.$model"
 						:class="{ 'create-product__form-textarea-error': v$.message.$error }"
 					></textarea>
 				</form>
-				<div class="auth-dialog__form-submit d-flex flex-column align-items-center">
+				<div class="auth-dialog__form-submit d-flex flex-column align-items-center relative">
 					<VueRecaptcha
 						class="auth-dialog__form-submit-captcha"
 						:sitekey="siteKey"
@@ -50,7 +50,7 @@
 					></VueRecaptcha>
 					<span v-if="captchaError" class="auth-dialog__form-submit-captcha-error">{{ captchaError }}</span>
 					<button
-						class="auth-dialog__form-submit-button"
+						class="auth-dialog__form-submit-button background-green color-white border-none"
 						@click="onSubmit"
 					>Отправить запрос</button>
 				</div>

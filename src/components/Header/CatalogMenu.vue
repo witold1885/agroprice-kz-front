@@ -3,7 +3,7 @@
 		class="catalog-menu"
 	>
 		<button
-			class="catalog-menu__button d-flex justify-content-between b-green"
+			class="catalog-menu__button d-flex justify-content-between border-green"
 			@click="toggleMenu"
 		>
 			<!-- <div class="catalog-menu__button-icon"> -->
@@ -59,7 +59,7 @@
 					</div>
 					<div 
 						v-if="category.show && breakpoint == 'sm'"
-						class="catalog-menu__dropdown-mobile-subcategories d-flex flex-column justify-content-between"
+						class="catalog-menu__dropdown-mobile-subcategories flex-fill flex-column justify-content-between"
 					>
 						<div
 							v-for="(subcategory, si) of category.subcategories"
@@ -67,7 +67,7 @@
 							class="catalog-menu__dropdown-mobile-subcategories-block d-flex flex-column"
 						>
 							<a
-								class="catalog-menu__dropdown-mobile-subcategories-block-title"
+								class="catalog-menu__dropdown-mobile-subcategories-block-title color-green"
 								@click="goTo(subcategory.url)"
 							>{{ subcategory.name }}</a>
 							<div class="catalog-menu__dropdown-mobile-subcategories-block-items d-flex flex-column">
@@ -79,6 +79,7 @@
 								>
 									{{ subsubcategory.name }}
 								</a>
+								<a class="catalog-menu__dropdown-mobile-subcategories-block-item catalog-menu__dropdown-mobile-subcategories-block-item-all" @click="goTo(subcategory.url)">Показать все</a>
 							</div>
 						</div>
 					</div>
@@ -86,7 +87,7 @@
 			</div>
 			<div 
 				v-if="selectedCategory"
-				class="catalog-menu__dropdown-subcategories w-100 d-flex flex-wrap"
+				class="catalog-menu__dropdown-subcategories flex-fill flex-wrap"
 			>
 				<div
 					v-for="(subcategory, si) of selectedCategory.subcategories"
@@ -94,7 +95,7 @@
 					class="catalog-menu__dropdown-subcategories-block d-flex flex-column"
 				>
 					<a
-						class="catalog-menu__dropdown-subcategories-block-title"
+						class="catalog-menu__dropdown-subcategories-block-title color-green"
 						@click="goTo(subcategory.url)"
 					>{{ subcategory.name }}</a>
 					<div class="catalog-menu__dropdown-subcategories-block-items d-flex flex-column">

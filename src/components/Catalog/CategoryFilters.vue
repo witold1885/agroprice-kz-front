@@ -3,7 +3,7 @@
 		<div class="filters__wrap-top justify-content-between align-items-center">
 			<div class="filters__wrap-top-title">Фильтр</div>
 			<button
-				class="filters__wrap-top-close d-flex justify-content-center align-items-center background-white b-none"
+				class="filters__wrap-top-close d-flex justify-content-center align-items-center background-white border-none"
 				@click="showFilters = false"
 			>
 				<img :src="require('@/assets/images/dialog-close.png')">
@@ -64,7 +64,7 @@
 							:key="index"
 							class="filters__group-checkbox-item d-flex justify-content-between align-items-center"
 						>
-							<label class="w-100" :for="`item-${gi}-${index}`">{{ item.name }}</label>
+							<label class="flex-fill" :for="`item-${gi}-${index}`">{{ item.name }}</label>
 							<div class="filters__group-checkbox-item-switch d-flex justify-content-center align-items-center background-white relative">
 								<input class="absolute w-0 h-0" type="checkbox" :id="`item-${gi}-${index}`" :value="index" v-model="group.selectedItems" />
 								<img :src="require('@/assets/images/ok.png')" />
@@ -79,7 +79,7 @@
 							class="filters__group-dropdown-field d-flex justify-content-between align-items-center background-white"
 							@click="group.showMenu = !group.showMenu"
 						>
-							<span class="filters__group-dropdown-field-value">{{ group.selectedItem }}</span>
+							<span class="filters__group-dropdown-field-value color-black">{{ group.selectedItem }}</span>
 							<img
 								class="filters__group-dropdown-field-arrow"
 								:class="{ 'filters__group-dropdown-field-arrow-reverse': group.showMenu }"
@@ -93,7 +93,7 @@
 							<div
 								v-for="(item, index) of group.items"
 								:key="index"
-								class="filters__group-dropdown-menu-item"
+								class="filters__group-dropdown-menu-item color-black"
 								@click="selectDropdownItem(gi, index)"
 							>
 								{{ item.name }}
@@ -114,7 +114,7 @@
 				</div>
 			</div>
 			<div class="filters__bottom">
-				<button class="filters__submit background-green b-none" @click="submitFilters">Применить</button>
+				<button class="filters__submit background-green border-none color-white" @click="submitFilters">Применить</button>
 			</div>
 		</div>
 	</div>

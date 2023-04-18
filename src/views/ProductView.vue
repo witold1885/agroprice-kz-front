@@ -69,35 +69,35 @@
 				<div class="product__info">
 					<div class="product__info-main d-flex flex-column justify-content-between align-items-end">
 						<div class="product__info-top w-100">
-							<h1 v-if="breakpoint != 'sm'" class="product__info-title">{{ product.name }}</h1>
+							<h1 v-if="breakpoint != 'sm'" class="product__info-title color-black">{{ product.name }}</h1>
 							<div class="product__info-sell d-flex">
 								<div class="product__info-sell-left">
 									<div class="product__info-sell-price">
-										<div class="product__info-sell-price-text">Цена</div>
-										<div class="product__info-sell-price-value">{{ product.price != 0 ? Intl.NumberFormat('ru-RU').format(product.price) + ' тенге' : 'Цена договорная' }}</div>									
+										<div class="product__info-sell-price-text color-black">Цена</div>
+										<div class="product__info-sell-price-value color-black">{{ product.price != 0 ? Intl.NumberFormat('ru-RU').format(product.price) + ' тенге' : 'Цена договорная' }}</div>									
 										<!-- <div class="product__info-sell-price-condition d-flex align-items-center">
 											<div class="product__info-sell-price-condition-text">Состояние:</div>
 											<div class="product__info-sell-price-condition-value d-flex align-items-center">
 												<img class="product__info-sell-price-condition-value-icon" :src="require('@/assets/images/ok.png')" />
-												<div class="product__info-sell-price-condition-value-text">Новый</div>
+												<div class="product__info-sell-price-condition-value-text color-green">Новый</div>
 											</div>
 										</div>	 -->								
 									</div>
 									<div class="product__info-sell-divider w-100 h-0"></div>
 									<div class="product__info-sell-location d-flex align-items-center">
 										<img class="product__info-sell-location-icon" :src="require('@/assets/images/location.png')" />
-										<div class="product__info-sell-location-value">{{ product.location.city }}</div>
+										<div class="product__info-sell-location-value color-black">{{ product.location.city }}</div>
 										
 									</div>
 								</div>
 								<div class="product__info-sell-right">
-									<div class="product__info-sell-user">
+									<div class="product__info-sell-user color-black">
 										<span class="product__info-sell-user-text">Продавец: </span>
 										<span class="product__info-sell-user-value">{{ product.contact.person }}</span>
 										
 									</div>
 									<div class="d-flex">
-										<div class="product__info-sell-avatar d-flex justify-content-center align-items-center">
+										<div class="product__info-sell-avatar d-flex justify-content-center align-items-center border-grey">
 											<img :src="require('@/assets/images/logo.png')" />
 										</div>
 										<div class="product__info-mobile-buttons flex-column">
@@ -115,15 +115,15 @@
 							<div class="product__info-buttons d-flex flex-wrap justify-content-end align-items-end">
 								<div class="product__info-buttons-clearfix"></div>
 								<a v-if="!phoneShow" class="product__info-button-call background-green border-green color-white" @click="phoneShow = true">Показать телефон</a>
-								<a v-else :href="`tel:${product.contact.phone}`" class="product__info-button-phone d-flex justify-content-center align-items-center color-black">{{ product.contact.phone }}</a>
+								<a v-else :href="`tel:${product.contact.phone}`" class="product__info-button-phone justify-content-center align-items-center color-black">{{ product.contact.phone }}</a>
 								<button class="product__info-button-write background-green border-green color-white">Написать продавцу</button>
 								<button class="product__info-button-allproducts background-transparent border-yellow color-black">Все товары продавца</button>
 								<a :href="whatsappLink" class="product__info-button-whatsapp background-yellow border-yellow color-white">Написать на Whatsapp</a>
 							</div>
-							<button type="button" class="product__info-favorite d-flex align-items-center" @click="toggleFavorites">
+							<button type="button" class="product__info-favorite d-flex align-items-center background-transparent border-grey" @click="toggleFavorites">
 								<img v-if="isFavorite" class="product__info-favorite-icon" :src="require('@/assets/images/heart-red.png')" />
 								<img v-else class="product__info-favorite-icon" :src="require('@/assets/images/heart.png')" />
-								<div class="product__info-favorite-text">В избранное</div>									
+								<div class="product__info-favorite-text color-black">В избранное</div>									
 							</button>
 						</div>
 					</div>
@@ -140,7 +140,7 @@
 					>{{ tab.title }}</div>
 					
 				</div>
-				<div v-if="activeTab == 'description'" class="product__tabs-info product__tabs-info-description">{{ product.description }}</div>
+				<div v-if="activeTab == 'description'" class="product__tabs-info product__tabs-info-description color-black">{{ product.description }}</div>
 				<div v-if="activeTab == 'features'" class="product__tabs-info product__tabs-info-features d-flex flex-wrap justify-content-between">
 					<div
 						v-for="i in 12" :key="i"
@@ -148,7 +148,7 @@
 					>
 						<div class="product__tabs-info-features-item-name">Название</div>
 						<div class="product__tabs-info-features-item-divider"></div>
-						<div class="product__tabs-info-features-item-value">Описание товара</div>
+						<div class="product__tabs-info-features-item-value color-black">Описание товара</div>
 					</div>
 				</div>
 				
@@ -164,9 +164,13 @@
 			<SellBlock />
 			<div v-if="sellerProducts.length != 0" class="product__seller-products">
 				<div class="product__seller-products-title color-black">Все товары продавца</div>
-				<ProductsGrid class="product__seller-products-grid" :products="sellerProducts" />
+				<ProductsGrid
+					:style="{ 'margin-bottom': getGridMarginBottom }"
+					class="product__seller-products-grid"
+					:products="sellerProducts"
+				/>
 				<button
-					class="showmore product__seller-products-showmore background-white b-green"
+					class="showmore product__seller-products-showmore background-white border-green"
 					@click="showMore"
 				>Показать еще</button>
 			</div>
@@ -225,7 +229,7 @@ export default {
 			whatsappLink: null,
 			sellerProductsLimit: 10,
 			phoneShow: false,
-			breakpoint: 'lg'
+			localBreakpoint: 'xl',
 		}
 	},
 	computed: {
@@ -239,6 +243,14 @@ export default {
 			if (!this.user || !this.product) return false
 			const favorite = this.user.favorites.findIndex(item => item.product_id == this.product.id)
 			return favorite !== -1
+		},
+		getGridMarginBottom () {
+			if (this.localBreakpoint == 'xl') return '58px';
+			else if (this.localBreakpoint == 'lg') return 'calc(58 * 100vw / 1440)';
+			else if (this.localBreakpoint == 'md') return '33px';
+			else if (this.localBreakpoint == 'sm') return 'calc(33 * 100vw / 768)';
+			else if (this.localBreakpoint == 'xs') return 'calc(39 * 100vw / 320)';
+			else return 'auto';
 		}
 	},
 	metaInfo () {
@@ -258,7 +270,6 @@ export default {
     },
 	created () {
 		window.addEventListener('resize', this.handleResize)
-		this.handleResize()
 	},
 	unmounted () {
 		window.removeEventListener('resize', this.handleResize)
@@ -271,14 +282,16 @@ export default {
 	methods: {
 		...mapActions('product', ['getProduct', 'increaseProductViews']),
 		...mapActions('profile', ['addProductToFavorites', 'delProductFromFavorites']),
+		handleResize () {
+			if (window.innerWidth > 1440) this.localBreakpoint = 'xl'
+			else if (window.innerWidth > 992) this.localBreakpoint = 'lg'
+			else if (window.innerWidth > 768) this.localBreakpoint = 'md'
+			else if (window.innerWidth > 414) this.localBreakpoint = 'sm'
+			else this.localBreakpoint = 'xs'
+		},
 		swipeHandler (direction) {
 			if (direction == 'left') this.slideNext(true)
 			if (direction == 'right') this.slidePrev(true)
-		},
-		handleResize () {
-			if (window.innerWidth > 992) this.breakpoint = 'lg'
-			else if (window.innerWidth > 414) this.breakpoint = 'md'
-			else this.breakpoint = 'sm'
 		},
 		makeWhatsappLink () {
 			let whatsappPhone = this.product.contact.phone || this.product.user.profile.whatsapp || this.product.user.profile.phone

@@ -1,19 +1,19 @@
 <template>
 	<form
-		class="auth-form d-flex flex-column justify-content-between align-items-center"
+		class="auth-form w-100 d-flex flex-column justify-content-between align-items-center relative"
 	>
-		<div v-if="error" class="auth-form__error">{{ error }}</div>
+		<div v-if="error" class="auth-form__error absolute color-red">{{ error }}</div>
 		<input
 			v-for="(field, index) of fields"
 			:key="index"
 			:type="field.type"
-			class="auth-form__field"
+			class="auth-form__field background-lightgrey color-black border-none"
 			:placeholder="field.placeholder"
 			v-model="v$.form[field.variable].$model"
-			:class="{ 'auth-form__field-error': v$.form[field.variable].$error }"
+			:class="{ 'auth-form__field-error border-red': v$.form[field.variable].$error }"
 		/>
 	</form>
-	<div class="auth-dialog__form-submit d-flex flex-column align-items-center">
+	<div class="auth-dialog__form-submit d-flex flex-column align-items-center relative">
 		<VueRecaptcha
 			class="auth-dialog__form-submit-captcha"
 			:sitekey="siteKey"
@@ -21,9 +21,9 @@
 			@verify="captchaSuccess"
 			@error="captchaFailed"
 		></VueRecaptcha>
-		<span v-if="captchaError" class="auth-dialog__form-submit-captcha-error">{{ captchaError }}</span>
+		<span v-if="captchaError" class="auth-dialog__form-submit-captcha-error absolute color-red">{{ captchaError }}</span>
 		<button
-			class="auth-dialog__form-submit-button"
+			class="auth-dialog__form-submit-button background-green color-white border-none"
 			@click="onSubmit"
 		>{{ submitButtonText }}</button>
 		<a

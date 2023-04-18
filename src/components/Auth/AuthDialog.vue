@@ -1,15 +1,15 @@
 <template>
 	<div
 		v-if="activeTab && dialog.visible"
-		class="auth-dialog__shadow d-flex justify-content-center align-items-center"
+		class="auth-dialog__shadow d-flex justify-content-center align-items-center fixed"
 	>
 		<div
-			class="auth-dialog"
+			class="auth-dialog background-white"
 			:class="`auth-dialog-${activeTab.name}`"
 		>
-			<div class="auth-dialog__top d-flex justify-content-center align-items-end">
+			<div class="auth-dialog__top w-100 d-flex justify-content-center align-items-end">
 				<img 
-					class="auth-dialog__close"
+					class="auth-dialog__close absolute"
 					:src="require('@/assets/images/dialog-close.png')"
 					@click="dialog.visible = false"
 				/>
@@ -18,7 +18,7 @@
 						v-for="(tab, index) of tabs"
 						:key="index"
 						class="auth-dialog__tabs-item d-flex justify-content-center"
-						:class="{ 'auth-dialog__tabs-item-active': tab.active }"
+						:class="{ 'auth-dialog__tabs-item-active color-black': tab.active }"
 						@click="selectTab(tab.name)"
 					>{{ tab.tabText }}</div>
 				</div>

@@ -1,5 +1,5 @@
 <template>
-	<div class="news-carousel__container">
+	<div class="news-carousel__container relative">
 		<div class="news-carousel">
 			<div class="news-carousel__title heading-1">{{ title }}</div>
 			<carousel

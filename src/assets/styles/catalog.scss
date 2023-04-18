@@ -15,12 +15,9 @@
 .category-card {
 	width: 285px;
 	height: 280px;
-	background: $color_white;
-	box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.12);
 	border-radius: 8px;
 	padding-top: 30px;
 	padding-left: 26px;
-	position: relative;
 	cursor: pointer;
 	&__title {
         @include font-ubuntu(500, 21px, 24px);
@@ -28,7 +25,6 @@
 		color: #3F3F3F;
 		&-count {
         	@include font-ubuntu(500, 18px, 24px);
-			color: $color_green;
 			font-style: italic;
 		}
 	}
@@ -39,7 +35,6 @@
 		color: #BEBEBE;
 	}
 	&__image {
-		position: absolute;
 		width: 166px;
 		bottom: 26px;
 		right: 19px;
@@ -55,15 +50,12 @@
 	grid-row-gap: 23px;
 	&__text {
         @include font-ubuntu(700, 24px, 28px);
-		color: $color_white;
 	}
 	&__button {
 		width: 174px;
 		height: 41px;
-		border: 1px solid $color_white;
 		border-radius: 8px;
         @include font-ubuntu(500, 12px, 14px);
-		color: $color_white;
 	}
 }
 
@@ -108,8 +100,6 @@
 	&__favorite {
 		top: 11px;
 		right: 11px;
-		width: 35px;
-		height: 35px;
 		& > .favorites-button__icon {
 			width: 14.89px;
 			height: 14.89px;
@@ -117,8 +107,6 @@
 	}
 	&__image {
 		height: 177px;
-		object-fit: cover;
-		object-position: center;
 		padding: 5px 5px 0;
 	}
 	&__middle {
@@ -137,14 +125,12 @@
 		}
 		&-value {
 	        @include font-ubuntu(400, 12px, 14px);
-			color: $color_black;
 		}
 	}
 	&__title {
 		margin-left: 5px;
 		margin-right: 5px;
         @include font-ubuntu(400, 14px, 144.4%);
-		color: $color_black;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		max-height: 40.5px;
@@ -165,7 +151,6 @@
 			margin-right: 5px;
 			margin-bottom: 7px;
         	@include font-ubuntu(700, 16px, 18px);
-			color: $color_black;		
 		}
 		&-old {
 			display: none;
@@ -289,8 +274,6 @@
 		&__favorite {
 			top: calc(11 * 100vw / 1440);
 			right: calc(11 * 100vw / 1440);
-			width: calc(35 * 100vw / 1440);
-			height: calc(35 * 100vw / 1440);
 			& > .favorites-button__icon {
 				width: calc(14.89 * 100vw / 1440);
 				height: calc(14.89 * 100vw / 1440);
@@ -389,7 +372,6 @@
 	        @include font-ubuntu(400, 14px, 16px);
 		}
 		&__image {
-			position: absolute;
 			width: 148px;
 			bottom: 14px;
 			right: 11px;
@@ -447,8 +429,6 @@
 		&__favorite {
 			top: 11px;
 			right: 7px;
-			width: 35px;
-			height: 35px;
 			& > .favorites-button__icon {
 				width: 14.89px;
 				height: 14.89px;
@@ -600,8 +580,6 @@
 		&__favorite {
 			top: calc(11 * 100vw / 768);
 			right: calc(7 * 100vw / 768);
-			width: calc(35 * 100vw / 768);
-			height: calc(35 * 100vw / 768);
 			& > .favorites-button__icon {
 				width: calc(14.89 * 100vw / 768);
 				height: calc(14.89 * 100vw / 768);
@@ -761,7 +739,7 @@
 
 	.catalog-product {
 		width: calc(131 * 100vw / 320);
-		height: calc(220 * 100vw / 320)!important;
+		height: calc(220 * 100vw / 320);
 		padding: 0 calc(9 * 100vw / 320) calc(10 * 100vw / 320) calc(5 * 100vw / 320);
 		&__date {
 			display: none;
@@ -769,9 +747,6 @@
 		&__favorite {
 			top: calc(7 * 100vw / 320);
 			right: calc(7 * 100vw / 320);
-			width: calc(31 * 100vw / 320)!important;
-			height: calc(31 * 100vw / 320)!important;
-			border-radius: calc(5 * 100vw / 320)!important;
 			& > .favorites-button__icon {
 				width: calc(13.19 * 100vw / 320);
 				height: calc(13.19 * 100vw / 320);
@@ -786,7 +761,7 @@
 			padding: 0 0 calc(5 * 100vw / 320);
 			flex-direction: column;
 			grid-row-gap: calc(6 * 100vw / 320);
-			align-items: flex-start!important;
+			align-items: flex-start;
 			margin-top: calc(15 * 100vw / 768);
 		}
 		&__subcategory {
@@ -863,7 +838,6 @@
 		margin-bottom: 33px;
 		&-item {
 			height: 32px;
-			background: $color_white;
 			border: 1px solid #C4C4C4;
 			border-radius: 5px;
 			@include font-ubuntu(400, 14px, 15px);
@@ -874,11 +848,8 @@
 		}
 		&-more {
 			height: 34px;
-			background: $color_green;
 			border-radius: 5px;
-			border: none;
 			@include font-ubuntu(400, 14px, 15px);
-			color: $color_white;
 			padding-left: 24px;
 			padding-right: 23px;
 		}
@@ -1059,7 +1030,6 @@
 				& label {
 					@include font-ubuntu(400, 14px, 25px);
 					color: #414141;
-					flex: 1;
 				}
 				&-switch {
 					@include box(17px, 17px);
@@ -1111,7 +1081,6 @@
 				cursor: pointer;
 				&-value {
 					@include font-ubuntu(400, 14px, 25px);
-					color: $color_black;
 				}
 				&-arrow {
 					@include box(6px, 3px);
@@ -1129,7 +1098,6 @@
 				&-item {
 					padding: 2px 13px 3px 10px;
 					@include font-ubuntu(400, 14px, 25px);
-					color: $color_black;
 					cursor: pointer;
 				}
 			}
@@ -1152,7 +1120,6 @@
 		height: 40px;
 		border-radius: 5px;
 		@include font-ubuntu(500, 14px, 16px);
-		color: $color_white;
 	}
 }
 
@@ -1704,7 +1671,6 @@
 			height: 41px;
 			border-radius: 8px;
 			@include font-ubuntu(500, 12px, 14px);
-			color: $color_white;
 		}
 		&-view {
 			width: 43px;
@@ -1864,7 +1830,7 @@
 			&-sort {
 				grid-row-gap: 14px;
 				flex-direction: column;
-				align-items: flex-start!important;
+				align-items: flex-start;
 				&-legend {
 					@include font-ubuntu(400, 12px, 15px);
 					color: #414141;
@@ -2092,7 +2058,7 @@
 	.products {
 		&__actions {
 			margin-bottom: calc(20 * 100vw / 320);
-			align-items: flex-end!important;
+			align-items: flex-end;
 			&-sort {
 				grid-row-gap: calc(14 * 100vw / 320);
 				&-legend {
@@ -2176,7 +2142,7 @@
 			margin-bottom: calc(34 * 100vw / 320);
 			&__item {
 				width: calc(131 * 100vw / 320);
-				height: calc(246 * 100vw / 320);
+				height: calc(220 * 100vw / 320);
 				border-radius: calc(8 * 100vw / 320);
 			}
 		}
@@ -2204,8 +2170,6 @@
 	&__image {
 		width: 211px;
 		padding: 5px 0 5px 5px;
-		object-fit: cover;
-		object-position: center;
 	}
 	&__subcategory {
 		margin-top: 25px;
@@ -2218,7 +2182,6 @@
 	&__title {
 		margin-top: 10px;
         @include font-ubuntu(400, 14px, 144.4%);
-		color: $color_black;
 	}
 	&__description {
 		margin-top: 8px;
@@ -2227,21 +2190,17 @@
 		font-weight: 400;
 		font-size: 14px;
 		line-height: 22px;
-		color: #000000;
 		max-width: 423px;
 	}
 	&__price {
 		&-main {
 			margin-top: 20px;
         	@include font-ubuntu(700, 20px, 23px);
-			color: $color_black;		
 		}
 	}
 	&__favorite {
 		top: 11px;
 		right: 12px;
-		width: 35px;
-		height: 35px;
 		& > .favorites-button__icon {
 			width: 14.89px;
 			height: 14.89px;
@@ -2267,7 +2226,6 @@
 		}
 		&-value {
 	        @include font-ubuntu(400, 12px, 14px);
-			color: $color_black;
 		}
 	}
 	&__stats {
@@ -2295,7 +2253,6 @@
 			}
 			&-value {
         		@include font-ubuntu(400, 14px, 15px);
-        		color: $color_black;
 			}
 		}
 	}
@@ -2336,8 +2293,6 @@
 		&__favorite {
 			top: calc(11 * 100vw / 1440);
 			right: calc(12 * 100vw / 1440);
-			width: calc(35 * 100vw / 1440);
-			height: calc(35 * 100vw / 1440);
 			& > .favorites-button__icon {
 				width: calc(14.89 * 100vw / 1440);
 				height: calc(14.89 * 100vw / 1440);
@@ -2402,12 +2357,10 @@
 		&__subcategory {
 			margin-top: 22px;
 		    @include font-ubuntu(400, 12px, 14px);
-			color: #BEBEBE;
 		}
 		&__title {
 			margin-top: 10px;
 	        @include font-ubuntu(400, 16px, 144.4%);
-			color: $color_black;
 		}
 		&__description {
 			margin-top: 8px;
@@ -2424,8 +2377,6 @@
 		&__favorite {
 			top: 13px;
 			right: 12px;
-			width: 35px;
-			height: 35px;
 			& > .favorites-button__icon {
 				width: 14.89px;
 				height: 14.89px;
@@ -2437,7 +2388,6 @@
 			width: 74px;
 			text-align: left;
 	        @include font-ubuntu(400, 12px, 144.4%);
-	        color: #6C6C6C;
 		}
 		&__location {
 			margin-top: 27px;
@@ -2512,8 +2462,6 @@
 		&__favorite {
 			top: calc(13 * 100vw / 768);
 			right: calc(12 * 100vw / 768);
-			width: calc(35 * 100vw / 768);
-			height: calc(35 * 100vw / 768);
 			& > .favorites-button__icon {
 				width: calc(14.89 * 100vw / 768);
 				height: calc(14.89 * 100vw / 768);
@@ -2605,8 +2553,6 @@
 			position: absolute;
 			top: calc(9 * 100vw / 320);
 			right: calc(9 * 100vw / 320);
-			width: calc(35 * 100vw / 320)!important;
-			height: calc(35 * 100vw / 320)!important;
 			& > .favorites-button__icon {
 				width: calc(14.89 * 100vw / 320);
 				height: calc(14.89 * 100vw / 320);
