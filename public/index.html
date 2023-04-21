@@ -100,6 +100,9 @@
     <!-- built files will be auto injected -->
     <script type="text/javascript">
       $(document).ready(function () {
+        const styleTags = $('style')
+        console.log('styleTags:')
+        console.log(styleTags)
         let css = ''
         $('style').each(function () {
           let typeAttr = $(this).attr('type')
@@ -110,7 +113,7 @@
             $(this).remove()
           }
         })
-        console.log(css)
+        // console.log(css)
         $('head').append(`<style amp-custom>${css}</style>`)
       })
     </script>
