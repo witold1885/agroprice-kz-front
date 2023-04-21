@@ -100,6 +100,7 @@
     <!-- built files will be auto injected -->
     <script type="text/javascript">
       $(document).ready(function () {
+        console.log('document is ready');
         const styleTags = $('style')
         console.log('styleTags:')
         console.log(styleTags)
@@ -116,6 +117,12 @@
         // console.log(css)
         $('head').append(`<style amp-custom>${css}</style>`)
       })
+      jQuery(window).load(function () {
+        console.log('page is loaded');
+        const styleTags = $('style')
+        console.log('styleTags:')
+        console.log(styleTags)
+      });
     </script>
   </body>
 </html>
