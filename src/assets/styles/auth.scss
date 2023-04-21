@@ -116,12 +116,6 @@
 			grid-row-gap: calc(19 * 100vw / 1440);
 			&-submit {
 				grid-row-gap: calc(30 * 100vw / 1440);
-				&-captcha {
-					// width: calc(405.64 * 100vw / 1440);
-					// height: calc(102.08 * 100vw / 1440);
-					// border: calc(1.34317 * 100vw / 1440) solid #D3D3D3;
-					// border-radius: calc(4.02952 * 100vw / 1440);
-				}
 				&-button {
 					width: calc(205 * 100vw / 1440);
 					height: calc(52 * 100vw / 1440);
@@ -175,12 +169,6 @@
 			grid-row-gap: calc(19 * 100vw / 768);
 			&-submit {
 				grid-row-gap: calc(30 * 100vw / 768);
-				&-captcha {
-					// width: calc(405.64 * 100vw / 768);
-					// height: calc(102.08 * 100vw / 768);
-					// border: calc(1.34317 * 100vw / 768) solid #D3D3D3;
-					// border-radius: calc(4.02952 * 100vw / 768);
-				}
 				&-button {
 					width: calc(205 * 100vw / 768);
 					height: calc(52 * 100vw / 768);

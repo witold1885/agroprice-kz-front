@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import '@/assets/styles/catalog.scss'
 import { mapActions } from 'vuex'
 import { STORAGE_URL } from '@/constants'
 import Breadcrumbs from '@/components/Common/Breadcrumbs'
@@ -107,7 +108,3 @@ export default {
 
 }
 </script>
-
-<style lang="scss">
-@import '@/assets/styles/catalog.scss';
-</style>

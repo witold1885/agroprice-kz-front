@@ -596,7 +596,6 @@
 		&__form {
 			margin: calc(27 * 100vw / 1440) 0 calc(41 * 100vw / 1440);
 			width: calc(955 * 100vw / 1440);
-			// height: calc(371 * 100vw / 1440);
 			border-radius: calc(11 * 100vw / 1440);
 			padding: calc(30 * 100vw / 1440) calc(35 * 100vw / 1440) calc(37 * 100vw / 1440);
 			&-error {
@@ -684,7 +683,6 @@
 		&__form {
 			margin: calc(27 * 100vw / 1440) 0 calc(41 * 100vw / 1440);
 			width: calc(955 * 100vw / 1440);
-			// height: calc(371 * 100vw / 1440);
 			border-radius: calc(11 * 100vw / 1440);
 			padding: calc(30 * 100vw / 1440) calc(35 * 100vw / 1440) calc(37 * 100vw / 1440);
 			&-columns {
@@ -809,7 +807,6 @@
 			height: calc(41 * 100vw / 1440);
 		}
 		&__status {
-			// width: calc(159 * 100vw / 1440);
 			height: calc(41 * 100vw / 1440);
 			grid-column-gap: calc(8 * 100vw / 1440);
 			border-radius: calc(8 * 100vw / 1440);
@@ -854,7 +851,6 @@
 					top: calc(33 * 100vw / 1440);
 					right: 0;
 					width: calc(170 * 100vw / 1440);
-					// height: calc(145 * 100vw / 1440);
 					border-radius: calc(4 * 100vw / 1440);
 					padding-left: calc(15 * 100vw / 1440);
 					&-link {
@@ -924,7 +920,6 @@
 		&__form {
 			margin: calc(27 * 100vw / 768) 0 calc(41 * 100vw / 768);
 			width: calc(955 * 100vw / 768);
-			// height: calc(371 * 100vw / 768);
 			border-radius: calc(11 * 100vw / 768);
 			padding: calc(30 * 100vw / 768) calc(35 * 100vw / 768) calc(37 * 100vw / 768);
 			&-columns {
@@ -1049,7 +1044,6 @@
 			height: calc(41 * 100vw / 768);
 		}
 		&__status {
-			// width: calc(159 * 100vw / 768);
 			height: calc(41 * 100vw / 768);
 			grid-column-gap: calc(8 * 100vw / 768);
 			border-radius: calc(8 * 100vw / 768);
@@ -1094,7 +1088,6 @@
 					top: calc(33 * 100vw / 768);
 					right: 0;
 					width: calc(170 * 100vw / 768);
-					// height: calc(145 * 100vw / 768);
 					border-radius: calc(4 * 100vw / 768);
 					padding-left: calc(15 * 100vw / 768);
 					&-link {
@@ -1283,7 +1276,6 @@
 		&__form {
 			margin: calc(17 * 100vw / 320) 0 calc(28 * 100vw / 320);
 			width: calc(280 * 100vw / 320);
-			// height: 371 * 100vw / 320);
 			border-radius: calc(11 * 100vw / 320);
 			padding: calc(11 * 100vw / 320) calc(15 * 100vw / 320) calc(25 * 100vw / 320);
 			&-error {
@@ -1379,7 +1371,6 @@
 		&__form {
 			margin: calc(17 * 100vw / 320) 0 calc(28 * 100vw / 320);
 			width: calc(280 * 100vw / 320);
-			// height: 371 * 100vw / 320);
 			border-radius: calc(11 * 100vw / 320);
 			padding: calc(11 * 100vw / 320) calc(15 * 100vw / 320) calc(25 * 100vw / 320);
 			flex-direction: column;
@@ -1493,7 +1484,6 @@
 
 	.profile-product {
 		width: calc(280 * 100vw / 320);
-		// height: calc(305 * 100vw / 320);
 		height: auto;
 		border-radius: calc(11 * 100vw / 320);
 		flex-direction: column;

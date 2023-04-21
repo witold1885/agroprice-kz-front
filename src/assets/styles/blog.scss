@@ -488,7 +488,6 @@
 			grid-column-gap: calc(20 * 100vw / 768);
 		}
 		&__list {
-			// width: calc(1135 * 100vw / 768);
 			width: 100%;
 			margin-bottom: calc(88 * 100vw / 768);
 			&-grid {
@@ -634,7 +633,6 @@
 
 		}
 		&__list {
-			// width: calc(1135 * 100vw / 320);
 			width: 100%;
 			margin-bottom: calc(33.65 * 100vw / 320);
 			&-grid {

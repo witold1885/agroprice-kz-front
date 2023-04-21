@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import HomeView from '../views/HomeView.vue'
 // import CatalogView from '../views/CatalogView.vue'
+// import ProfileView from '../views/ProfileView.vue'
 // import CompleteRegister from '../views/Profile/CompleteRegister.vue'
 // import Preferences from '../views/Profile/Preferences.vue'
 // import ProfileProducts from '../views/Profile/Products.vue'
@@ -31,6 +32,7 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import(/* webpackChunkName: "profile" */ '../views/ProfileView.vue'),
+    // component: ProfileView,
     redirect: '/profile/preferences',
     children: [
       {
