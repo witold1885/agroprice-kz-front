@@ -8,14 +8,14 @@
     <!-- <link rel="canonical" href="https://agroprice.kz/"> -->
     <title><%= htmlWebpackPlugin.options.title %></title>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X462RCHKVP"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-X462RCHKVP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-X462RCHKVP');
-    </script>
+    </script> -->
     <style amp-boilerplate>
       body {
         -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
@@ -76,29 +76,30 @@
     </noscript>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <!-- AMP Analytics -->
-    <!-- <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script> -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  </head>
-  <body>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <!-- Google tag (gtag.js) -->
-    <!-- <amp-analytics type="gtag" config="https://www.googletagmanager.com/amp.json?id=G-X462RCHKVP" data-credentials="include">
+    <amp-analytics type="gtag" config="https://www.googletagmanager.com/amp.json?id=G-X462RCHKVP" data-credentials="include">
       <script type="application/json">
       {
         "vars" : {
-          "gtag_id": "G-LKWVL8KQF3",
+          "gtag_id": "G-X462RCHKVP",
           "config" : {
-            "G-LKWVL8KQF3": { "groups": "default" }
+            "G-X462RCHKVP": { "groups": "default" }
           }
         }
       }
       </script>
-    </amp-analytics> -->
+    </amp-analytics>
+  </head>
+  <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <script type="text/javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="ampcustom.js"></script>
+    <!-- <script type="text/javascript">
       $(document).ready(function () {
         console.log('document is ready');
         const styleTags = $('style')
@@ -123,6 +124,6 @@
         console.log('styleTags:')
         console.log(styleTags)
       });
-    </script>
+    </script> -->
   </body>
 </html>
