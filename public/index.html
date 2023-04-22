@@ -77,8 +77,12 @@
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <!-- AMP Analytics -->
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
     <!-- Google tag (gtag.js) -->
-    <!-- <amp-analytics type="gtag" config="https://www.googletagmanager.com/amp.json?id=G-X462RCHKVP" data-credentials="include"> -->
     <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-N54PTFF" data-credentials="include">
       <script type="application/json">
       {
@@ -91,11 +95,6 @@
       }
       </script>
     </amp-analytics>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
