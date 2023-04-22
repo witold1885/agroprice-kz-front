@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="https://agroprice.kz/favicon.png">
-    <link rel="canonical" href="https://agroprice.kz/">
+    <!-- <link rel="canonical" href="https://agroprice.kz/"> -->
     <title><%= htmlWebpackPlugin.options.title %></title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X462RCHKVP"></script>
@@ -117,7 +117,7 @@
         // console.log(css)
         $('head').append(`<style amp-custom>${css}</style>`)
       })
-      jQuery(window).load(function () {
+      $(window).load(function () {
         console.log('page is loaded');
         const styleTags = $('style')
         console.log('styleTags:')
