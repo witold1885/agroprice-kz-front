@@ -75,6 +75,7 @@
       </style>
     </noscript>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
     <!-- AMP Analytics -->
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   </head>
@@ -97,33 +98,7 @@
     </amp-analytics>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="ampcustom.js"></script>
-    <!-- <script type="text/javascript">
-      $(document).ready(function () {
-        console.log('document is ready');
-        const styleTags = $('style')
-        console.log('styleTags:')
-        console.log(styleTags)
-        let css = ''
-        $('style').each(function () {
-          let typeAttr = $(this).attr('type')
-          if (typeof typeAttr !== 'undefined' && typeAttr !== false) {
-            // $(this).removeAttr('type')
-            // $(this).attr('amp-custom', '')
-            css += $(this).text()
-            $(this).remove()
-          }
-        })
-        // console.log(css)
-        $('head').append(`<style amp-custom>${css}</style>`)
-      })
-      $(window).load(function () {
-        console.log('page is loaded');
-        const styleTags = $('style')
-        console.log('styleTags:')
-        console.log(styleTags)
-      });
-    </script> -->
+    <amp-script layout="container" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></amp-script>
+    <amp-script layout="container" src="ampcustom.js"></amp-script>
   </body>
 </html>
