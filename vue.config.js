@@ -22,6 +22,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
 // const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 // const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+// const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
+// const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   chainWebpack: (config) => {
@@ -43,6 +46,11 @@ module.exports = {
   runtimeCompiler: true,
   productionSourceMap: false,
   configureWebpack: {
+    // target: 'node',
+    /*output: {
+      // ...
+      libraryTarget: 'commonjs2'
+    },*/
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'amp-index.html',
@@ -50,48 +58,14 @@ module.exports = {
         minify: true,
         inject: true,
         scriptLoading: 'blocking',
-        /*custom: {
-          ampBoilerplate: '<style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style>',
-        },
-        scriptAttributes: {
-          type: 'text/javascript',
-          'data-amphtml': true,
-        },
-        styleAttributes: {
-          'amp-custom': '',
-        },*/
       }),
-      /*new HTMLInlineCSSWebpackPlugin({
-        removeStyleTags: false,
-        replaceAttributes: {
-          noscript: ['id'],
-          link: ['href'],
-        },
-        htmlWebpackPlugin: {
-          enabled: true,
-          // `html-webpack-inline-source-plugin` configuration
-          inlineSource: '.(css)$',
-          transform: (html, options) => {
-            const regex = /<style([^>]*)>([\s\S]*?)<\/style>/gm;
-            return html.replace(regex, (match, attributes, styleContent) => {
-              const ampCustomTag = '<style amp-custom>';
-              const css = `${ampCustomTag}${styleContent}</style>`;
-              return css;
-            });
-          },
-        },
-      }),*/
-      // new HtmlWebpackInlineSourcePlugin(),
-      /*new HtmlWebpackExternalsPlugin({
-        externals: [
-          {
-            module: 'STYLE', // задаємо ім'я модулю
-            entry: 'https://cdn.ampproject.org/v0.css', // задаємо зовнішнє посилання
-            global: 'amp-custom', // встановлюємо атрибут глобального селектора
-          },
-        ],
-      }),*/
+      // new VueSSRServerPlugin(),
+      // new VueSSRClientPlugin(),
     ],
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
+    },
   },
 };
 
