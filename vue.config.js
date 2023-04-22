@@ -24,7 +24,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 // const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 // const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+// const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   chainWebpack: (config) => {
@@ -62,10 +62,10 @@ module.exports = {
       // new VueSSRServerPlugin(),
       // new VueSSRClientPlugin(),
     ],
-    optimization: {
+    /*optimization: {
       minimize: true,
       minimizer: [new TerserPlugin()],
-    },
+    },*/
   },
 };
 
