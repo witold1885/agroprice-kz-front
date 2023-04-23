@@ -14,7 +14,7 @@ module.exports = defineConfig({
   }
 }*/
 
-const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
+/*const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
 
 module.exports = {
   configureWebpack: {
@@ -27,7 +27,7 @@ module.exports = {
       }),
     ],
   },
-};
+};*/
 
 /*const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default
 
