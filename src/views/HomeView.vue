@@ -75,7 +75,7 @@ export default {
     ...mapState('info', ['lastBlogArticles'])
   },
   async mounted () {
-    await this.$store.dispatch('info/getLastBlogArticles')
+    await this.$store.dispatch('info/getLastArticles', { view: 'blog' })
   }
 }
 </script>

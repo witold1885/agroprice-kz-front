@@ -15,7 +15,7 @@
 						:key="index"
 						class="news-carousel__slide"
 					>
-						<NewsItem :item="item" />
+						<NewsItem :item="item" view="blog" articleType="Блог"/>
 					</slide>
 				</template>
 			</carousel>

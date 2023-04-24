@@ -88,13 +88,27 @@ const routes = [
   {
     path: '/blog',
     name: 'blog',
+    props: { view: 'blog' },
     component: () => import(/* webpackChunkName: "blog" */ '../views/BlogView.vue'),
     // component: BlogView
   },
   {
     path: '/blog/:article',
-    name: 'article',
-    component: () => import(/* webpackChunkName: "article" */ '../views/Blog/Article.vue'),
+    name: 'blog-article',
+    component: () => import(/* webpackChunkName: "blog-article" */ '../views/Blog/Article.vue'),
+    // component: Article
+  },
+  {
+    path: '/news',
+    name: 'news',
+    props: { view: 'news' },
+    component: () => import(/* webpackChunkName: "blog" */ '../views/BlogView.vue'),
+    // component: BlogView
+  },
+  {
+    path: '/news/:article',
+    name: 'news-article',
+    component: () => import(/* webpackChunkName: "news-article" */ '../views/News/Article.vue'),
     // component: Article
   },
   {

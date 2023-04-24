@@ -1,5 +1,5 @@
 <template>
-	<a :href="`/blog/${item.url}`" class="news-item d-flex flex-column justify-content-between background-white">
+	<a :href="`/${view}/${item.url}`" class="news-item d-flex flex-column justify-content-between background-white">
 		<div class="news-item__info">
 			<img class="news-item__image img-centered" :src="`${storageURL}/${item.image}`" />
 			<div class="news-item__badge background-green color-white">{{ articleType }}</div>
@@ -32,6 +32,10 @@ export default {
 		item: {
 			type: Object,
 			default: () => {}
+		},
+		view: {
+			type: String,
+			default: 'news'
 		},
 		articleType: {
 			type: String,

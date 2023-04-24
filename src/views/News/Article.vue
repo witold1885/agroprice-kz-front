@@ -1,13 +1,13 @@
 <template>
 	<div class="article">
 		<Breadcrumbs :breadcrumbs="breadcrumbs" />
-		<div v-if="blogArticle" class="article__wrap w-100 d-flex relative">
+		<div v-if="newsArticle" class="article__wrap w-100 d-flex relative">
 			<!-- <div class="article__date d-flex flex-column justify-content-center align-items-center absolute background-green color-white">
 				<div class="article__date-day">{{ prettyDay }}</div>
 				<div class="article__date-month">{{ prettyMonth }}</div>				
 			</div> -->
 			<div class="article__main">
-				<div class="article__content w-100" v-html="blogArticle.content"></div>
+				<div class="article__content w-100" v-html="newsArticle.content"></div>
 				<div class="article__social w-100 d-flex align-items-center background-lightgrey">
 					<div class="article__social-text">Нажмите чтобы поделиться статьей:</div>
 					<div class="article__social-icons d-flex align-items-center">
@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			</div>
-			<BlogSidebar placing="article" view="blog" :lastArticles="lastBlogArticles" :categories="blogCategories" />
+			<BlogSidebar placing="article" view="news" :lastArticles="lastNewsArticles" />
 		</div>
 	</div>
 </template>
@@ -46,13 +46,13 @@ export default {
 		}
 	},
 	computed: {
-		...mapState('info', ['blogArticle', 'blogCategories', 'lastBlogArticles']),
+		...mapState('info', ['newsArticle', 'lastNewsArticles']),
 		storageURL () {
 			return STORAGE_URL
 		},
 		prettyDay () {
-			if (this.blogArticle) {
-				const ts = Date.parse(this.blogArticle.date)
+			if (this.newsArticle) {
+				const ts = Date.parse(this.newsArticle.date)
 				const date = new Date(ts)
 				let day = date.getDate()
 				if (day < 10) day = '0' + day
@@ -61,8 +61,8 @@ export default {
 			return null
 		},
 		prettyMonth () {
-			if (this.blogArticle) {
-				const ts = Date.parse(this.blogArticle.date)
+			if (this.newsArticle) {
+				const ts = Date.parse(this.newsArticle.date)
 				const date = new Date(ts)
 				let month = this.months[date.getMonth()] 
 				return month
@@ -92,8 +92,7 @@ export default {
 		window.removeEventListener('resize', this.handleResize)
 	},
 	async mounted () {
-		await this.$store.dispatch('info/getBlogCategories')
-		await this.$store.dispatch('info/getLastArticles', { view: 'blog' })
+		await this.$store.dispatch('info/getLastArticles', { view: 'news' })
 		await this.init()
 	},
 	methods: {
@@ -108,14 +107,14 @@ export default {
 		},
 		async init () {
 			if (this.articleUrl) {
-				await this.getArticle({ view: 'blog', articleUrl: this.articleUrl })
-				if (this.blogArticle) {
+				await this.getArticle({ view: 'news', articleUrl: this.articleUrl })
+				if (this.newsArticle) {
 					this.makeBreadcrumbs()
-					this.metaTitle = this.blogArticle.title
-					this.metaDescription = this.blogArticle.title
-					this.metaKeywords = this.blogArticle.title
-					this.canonicalUrl = 'https://agroprice.kz/blog/' + this.blogArticle.url
-					this.increaseArticleViews({ view: 'blog', article_id: this.blogArticle.id })
+					this.metaTitle = this.newsArticle.title
+					this.metaDescription = this.newsArticle.title
+					this.metaKeywords = this.newsArticle.title
+					this.canonicalUrl = 'https://agroprice.kz/news/' + this.newsArticle.url
+					this.increaseArticleViews({ view: 'news', article_id: this.newsArticle.id })
 					this.setImagesPath()
 					this.handleResize()
 				}
@@ -171,8 +170,8 @@ export default {
 		makeBreadcrumbs () {
 			this.breadcrumbs = this.setDefaultBreadcrumbs()
 			this.breadcrumbs.push({
-				text: this.blogArticle.title,
-				link: '/blog/' + this.blogArticle.url,
+				text: this.newsArticle.title,
+				link: '/news/' + this.newsArticle.url,
 				current: true
 			})
 		},
@@ -184,8 +183,8 @@ export default {
 					current: false
 				},
 				{
-					text: 'Блог',
-					link: '/blog',
+					text: 'Новости',
+					link: '/news',
 					current: false
 				}
 			]

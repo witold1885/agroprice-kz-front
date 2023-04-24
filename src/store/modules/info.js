@@ -1,16 +1,24 @@
 import api from '@/services/api'
+import { capitalize } from '@/services/helpers'
 
 export const namespaced = true
 
 export const state = {
   banner: null,
+
   blogCategories: [],
   blogArticles: [],
-  blogLastArticles: [],
   lastBlogArticles: [],
-  pages: 1,
+  blogPages: 1,
   blogArticle: null,
   category_id: null,
+
+  newsCategories: [],
+  newsArticles: [],
+  lastNewsArticles: [],
+  newsPages: 1,
+  newsArticle: null,
+
   error: null
 }
 
@@ -21,20 +29,17 @@ export const mutations = {
   setBlogCategories(state, categories) {
     state.blogCategories = categories
   },
-  setBlogArticles(state, articles) {
-    state.blogArticles = articles
+  setArticles(state, data) {
+    state[`${data.view}Articles`] = data.articles
   },
-  setBlogLastArticles(state, lastArticles) {
-    state.blogLastArticles = lastArticles
+  setLastArticles(state, data) {
+    state[`last${capitalize(data.view)}Articles`] = data.lastArticles
   },
-  setLastBlogArticles(state, lastArticles) {
-    state.lastBlogArticles = lastArticles
+  setPages(state, data) {
+    state[`${data.view}Pages`] = data.pages
   },
-  setPages(state, pages) {
-    state.pages = pages
-  },
-  setBlogArticle(state, article) {
-    state.blogArticle = article
+  setArticle(state, data) {
+    state[`${data.view}Article`] = data.article
   },
   setBlogCategoryId(state, category_id) {
     state.category_id = category_id
@@ -78,7 +83,7 @@ export const actions = {
       .catch((error) => {
         console.log(error)
       })
-    console.log(response.data)
+    // console.log(response.data)
     if (response.data.success) {
       commit('setBlogCategories', response.data.categories)
     }
@@ -86,42 +91,41 @@ export const actions = {
       console.log(response.data.error)
     }
   },
-  async getBlogArticles ({ commit }, payload) {
-    const response = await api.post('/blog/articles', payload)
+  async getArticles ({ commit }, payload) {
+    const response = await api.post(`/${payload.view}/articles`, payload)
       .catch((error) => {
         console.log(error)
       })
-    console.log(response.data)
+    // console.log(response.data)
     if (response.data.success) {
-      commit('setPages', response.data.pages)
-      commit('setBlogArticles', response.data.articles)
-      // commit('setBlogLastArticles', response.data.lastArticles)
+      commit('setPages', { view: payload.view, pages: response.data.pages })
+      commit('setArticles', { view: payload.view, articles: response.data.articles })
     }
     else {
       console.log(response.data.error)
     }
   },
-  async getLastBlogArticles ({ commit }) {
-    const response = await api.get('/blog/last-articles')
+  async getLastArticles ({ commit }, payload) {
+    const response = await api.get(`/${payload.view}/last-articles`)
       .catch((error) => {
         console.log(error)
       })
-    console.log(response.data)
+    // console.log(response.data)
     if (response.data.success) {
-      commit('setLastBlogArticles', response.data.lastArticles)
+      commit('setLastArticles', { view: payload.view, lastArticles: response.data.lastArticles })
     }
     else {
       console.log(response.data.error)
     }
   },
-  async getBlogArticle ({ commit }, articleUrl) {
-    const response = await api.get('/blog/article/' + articleUrl)
+  async getArticle ({ commit }, payload) {
+    const response = await api.get(`/${payload.view}/article/${payload.articleUrl}`)
       .catch((error) => {
         console.log(error)
       })
-    console.log(response.data)
+    // console.log(response.data)
     if (response.data.success) {
-      commit('setBlogArticle', response.data.article)
+      commit('setArticle', { view: payload.view, article: response.data.article })
     }
     else {
       console.log(response.data.error)
@@ -129,11 +133,11 @@ export const actions = {
     }
   },
   async increaseArticleViews (context, payload) {
-    const response = await api.post('/blog/increase-views/', payload)
+    const response = await api.post(`/${payload.view}/increase-views/`, payload)
       .catch((error) => {
         console.log(error)
       })
-    console.log(response.data)
+    // console.log(response.data)
     if (response.data.success) {
       return true
     }

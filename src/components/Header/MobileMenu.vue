@@ -66,7 +66,7 @@ export default {
 	computed: {
 		menuItems () {
 			return [
-				{ title: 'Новости', active: false, action: null },
+				{ title: 'Новости', active: this.$route.path.indexOf('/news') !== -1, action: null, link: '/news' },
 				{ title: 'О компании', active: false, action: null },
 				{ title: 'Блог', active: this.$route.path.indexOf('/blog') !== -1, action: null, link: '/blog' },
 				{ title: 'Вакансии', active: false, action: null },

@@ -2,7 +2,7 @@
 	<div
 		class="blog__sidebar d-flex flex-column"
 		:class="{
-			'blog__sidebar-inblog': placing == 'blog',
+			'blog__sidebar-ingrid': placing == 'grid',
 			'blog__sidebar-inarticle': placing == 'article'
 		}"
 	>
@@ -15,20 +15,20 @@
 				@keyup="searchArticles"
 			/>					
 		</div>
-		<div v-if="lastBlogArticles.length != 0" class="blog__last w-100">
+		<div v-if="lastArticles.length != 0" class="blog__last w-100">
 			<div class="blog__last-title color-black">Последние статьи</div>
 			<div class="blog__last-list d-flex flex-column">
-				<a :href="`/blog/${article.url}`" v-for="(article, index) of lastBlogArticles" :key="index" class="blog__last-list-item d-flex flex-column">
+				<a :href="`/${view}/${article.url}`" v-for="(article, index) of lastArticles" :key="index" class="blog__last-list-item d-flex flex-column">
 					<div class="blog__last-list-item-title color-black">{{ article.title }}</div>
 					<div class="blog__last-list-item-date color-black">{{ formatDate(new Date(article.date)) }}</div>						
 				</a>
 			</div>					
 		</div>
-		<div class="blog__categories w-100">
+		<div v-if="categories.length != 0" class="blog__categories w-100">
 			<div class="blog__categories-title color-black">Категории блога</div>
 			<div class="blog__categories-list d-flex flex-column">
 				<a
-					v-for="(category, index) of blogCategories"
+					v-for="(category, index) of categories"
 					:key="index"
 					class="blog__categories-list-item color-black"
 					@click="selectCategory(category.id)"
@@ -51,28 +51,32 @@ import { mapMutations } from 'vuex'
 
 export default {
 	props: {
-		lastBlogArticles: {
+		lastArticles: {
 			type: Array,
 			default: () => []
 		},
-		blogCategories: {
+		categories: {
 			type: Array,
 			default: () => []
+		},
+		view: {
+			type: String,
+			default: 'blog'
 		},
 		placing: {
 			type: String,
-			default: 'blog'
+			default: 'grid'
 		}
 	},
 	data () {
 		return {
 			search: '',
-			searchBlockVisible: this.$route.path == '/blog'
+			searchBlockVisible: this.placing == 'grid'
 		}
 	},
 	watch: {
 		'$route.path' (newValue) {
-			this.searchBlockVisible = newValue == '/blog'
+			this.searchBlockVisible = (newValue == '/blog' || newValue == '/news')
 		}
 	},
 	methods: {
