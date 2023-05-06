@@ -777,6 +777,9 @@
 				width: 254px;
 				height: 121px;
 				border-radius: 8px;
+				& img {
+					@include box(108px, 23px);
+				}
 			}
 		}
 		&-mobile {
@@ -1014,6 +1017,9 @@
 					width: calc(254 * 100vw / 1440);
 					height: calc(121 * 100vw / 1440);
 					border-radius: calc(8 * 100vw / 1440);
+					& img {
+						@include box(calc(108 * 100vw / 1440), calc(23 * 100vw / 1440));
+					}
 				}
 			}
 			&-favorite {
